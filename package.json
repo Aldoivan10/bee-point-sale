@@ -1,0 +1,30 @@
+{
+  "name": "bee-sale-point",
+  "version": "1.0.0",
+  "description": "Punto de venta para Ferreteria la Abeja",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aldoivan10/bee-point-sale.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "electron",
+    "js",
+    "tailwind",
+    "node"
+  ],
+  "author": "Aldoivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aldoivan10/bee-point-sale/issues"
+  },
+  "homepage": "https://github.com/Aldoivan10/bee-point-sale#readme",
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  }
+}
