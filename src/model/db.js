@@ -13,13 +13,9 @@ module.exports = class DB {
 
     async fetchProducts() {
         const sql = "SELECT * FROM vista_producto"
-        return await this.fetch(
-            sql,
-            [],
-            (action = (rows) => {
-                return rows.map((row) => JSON.parse(row["producto"]))
-            })
-        )
+        return await this.fetch(sql, [], (rows) => {
+            return rows.map((row) => JSON.parse(row["producto"]))
+        })
     }
 
     async fetchCodes() {

@@ -1,5 +1,5 @@
-const { app, BrowserWindow } = require("electron")
-const path = require("path")
+const { app, BrowserWindow, ipcMain } = require("electron")
+const path = require("node:path")
 const DB = require("../model/db.js")
 
 const db = new DB()
@@ -9,7 +9,7 @@ const createWindow = async () => {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, "src/js/preload.js"),
+            preload: path.join(__dirname, "preload.js"),
         },
     })
     /* INICIAR DB */
@@ -19,5 +19,7 @@ const createWindow = async () => {
 }
 
 app.whenReady().then(() => {
+    ipcMain.handle("fetchProducts", async () => await db.fetchProducts())
+
     createWindow()
 })
