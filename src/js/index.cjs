@@ -15,11 +15,12 @@ const createWindow = async () => {
     /* INICIAR DB */
     await db.init("src/ferreteria.sqlite")
     /* CARGAR PAGINCA */
-    win.loadFile("src/index.html")
+    win.loadFile("src/public/index.html")
 }
 
 app.whenReady().then(() => {
     ipcMain.handle("fetchProducts", async () => await db.fetchProducts())
+    ipcMain.handle("fetchCodes", async () => await db.fetchCodes())
 
     createWindow()
 })

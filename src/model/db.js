@@ -19,7 +19,7 @@ module.exports = class DB {
     }
 
     async fetchCodes() {
-        const sql = "SELECT * FROM vista_producto"
+        const sql = "SELECT nombre FROM codigo ORDER BY id_codigo"
         return await this.fetch(sql, [], (rows) => {
             return rows
         })

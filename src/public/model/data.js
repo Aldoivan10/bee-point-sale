@@ -32,3 +32,5 @@ class LiveVar {
         }
     }
 }
+
+class LiveArr {}
