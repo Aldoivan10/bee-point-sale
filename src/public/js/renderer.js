@@ -1,5 +1,4 @@
-async function getProducts() {
-    const products = await window.products.get()
-    console.log(products[0])
-    return products
-}
+const productsCtrl = new TableController(
+    new TableView("table"),
+    new TableModel()
+).init()

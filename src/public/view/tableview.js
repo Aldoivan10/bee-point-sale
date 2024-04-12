@@ -1,27 +1,37 @@
 class TableView {
     constructor(selector) {
-        this.$table = document.querySelector(selector)
+        const $table = document.querySelector(selector)
+        this.$header = $table.querySelector("thead > tr")
+        this.$body = $table.querySelector("tbody")
     }
 
     buildHeader(headers) {
-        const template = "<td>name</td>"
-        const $header = this.$table.querySelector("thead > tr")
-        $header.innerHTML = ""
+        removeChilds(this.$header)
         for (const header of headers) {
-            $header.innerHTML += template.replace("name", header)
+            const col = this._createtCol(header)
+            this.$header.appendChild(col)
         }
     }
 
     buildBody(rows) {
-        const colTemplate = "<td>data</td>"
-        const $body = this.$table.querySelector("tbody")
-        $body.innerHTML = ""
+        removeChilds(this.$body)
         for (const row of rows) {
-            const $row = document.createElement("tr")
-            for (const col in row) {
-                $row.innerHTML += colTemplate.replace("data", col)
-            }
-            $body.appendChild($row)
+            this.addRow(row)
         }
+    }
+
+    addRow(row) {
+        const $row = document.createElement("tr")
+        for (const column of row) {
+            const col = this._createtCol(column)
+            $row.appendChild(col)
+        }
+        this.$body.appendChild($row)
+    }
+
+    _createtCol(text) {
+        const col = document.createElement("td")
+        col.textContent = text
+        return col
     }
 }

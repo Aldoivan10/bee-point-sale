@@ -13,13 +13,30 @@ module.exports = class DB {
 
     async fetchProducts() {
         const sql = "SELECT * FROM vista_producto"
-        return await this.fetch(sql, [], (rows) => {
-            return rows.map((row) => JSON.parse(row["producto"]))
+        return await this.fetch(sql, [], (data) => {
+            const jsonRows = data.map((row) => JSON.parse(row["producto"]))
+            const rows = jsonRows.reduce((rows, product) => {
+                const row = product.codigos
+                const units = product.unidades.reduce((acc, val) => {
+                    acc.push([val.cantidad, val.unidad, val.precio_venta])
+                    return acc
+                }, [])
+                row.push(product.nombre)
+                row.push(units[0])
+                rows.push(row.flat())
+                for (const unit of units.slice(1)) {
+                    const otherRow = Array.form("".repeat(row.length))
+                    otherRow.push(unit)
+                    rows.push(otherRow.flat())
+                }
+                return rows
+            }, [])
+            return rows
         })
     }
 
     async fetchCodes() {
-        const sql = "SELECT nombre FROM codigo ORDER BY id_codigo"
+        const sql = "SELECT nombre FROM codigo ORDER BY nombre"
         return await this.fetch(sql, [], (rows) => {
             return rows
         })
