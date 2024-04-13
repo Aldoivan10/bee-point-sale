@@ -58,6 +58,17 @@ class TableModel {
         this.dataListeners.push(listener)
     }
 
+    filter(str) {
+        const filtered = this.data.filter((row) => {
+            const cols = row.slice(0, 4)
+            for (const col of cols) {
+                if (col.toLowerCase().includes(str)) return true
+            }
+            return false
+        })
+        return filtered
+    }
+
     _remove(arr, item, notifier) {
         const index = typeof item === "string" ? arr.indexOf(item) : item
         const removed = arr[index]

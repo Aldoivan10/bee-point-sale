@@ -1,5 +1,5 @@
 const removeChilds = (element) => {
-    while (element.firsChild) {
-        element.removeChild(element.firsChild)
+    while (element.firstChild) {
+        element.removeChild(element.firstChild)
     }
 }

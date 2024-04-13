@@ -23,8 +23,7 @@ class TableView {
     addRow(row) {
         const $row = document.createElement("tr")
         for (const column of row) {
-            const col = this._createtCol(column)
-            $row.appendChild(col)
+            $row.innerHTML += `<td>${column}</td>`
         }
         this.$body.appendChild($row)
     }
