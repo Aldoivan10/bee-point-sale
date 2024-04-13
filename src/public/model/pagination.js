@@ -14,8 +14,10 @@ class Pagination {
 
     buildPagination(total) {
         removeChilds(this.$pagination)
-        this.steps = Math.floor(total / this.pageSize)
-        for (let step = 1; step <= this.maxSteps; step++) {
+        this.steps = Math.ceil(total / this.pageSize)
+        const numButtons =
+            this.steps < this.maxSteps ? this.steps : this.maxSteps
+        for (let step = 1; step <= numButtons; step++) {
             const input = document.createElement("input")
             input.type = "radio"
             input.name = "pagination"
@@ -27,6 +29,7 @@ class Pagination {
             input.onclick = () => this.updatePage(+input.ariaLabel)
             this.$pagination.appendChild(input)
         }
+
         this.total = total
         this.reset()
     }
@@ -78,7 +81,7 @@ class Pagination {
     updatePage(newPage) {
         if (newPage === this.page) return
         this.$pagination.setAttribute("page", newPage)
-        this.offsetSize = newPage * this.pageSize
+        this.offsetSize = (newPage - 1) * this.pageSize
         this.page = newPage
         this.updatePagination(newPage, this.steps, this.maxSteps)
         this.notify()
