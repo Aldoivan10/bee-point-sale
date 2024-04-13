@@ -1,7 +1,9 @@
 const { contextBridge, ipcRenderer } = require("electron")
 
 contextBridge.exposeInMainWorld("products", {
-    get: () => ipcRenderer.invoke("fetchProducts"),
+    get: (pageSize, offset) =>
+        ipcRenderer.invoke("fetchProducts", pageSize, offset),
+    total: () => ipcRenderer.invoke("fetchTotal", "producto"),
 })
 
 contextBridge.exposeInMainWorld("codes", {

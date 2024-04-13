@@ -1,18 +1,19 @@
 class TableController {
-    constructor(view, model, input, mapper) {
+    constructor(view, model, pagination, filter, mapper) {
         this.$view = view
         this.$model = model
-        this.$input = input
         this.$mapper = mapper
+        this.$pagination = pagination
 
         model.addHeaderListener(this.onHeaderUpdate)
         model.addDataListener(this.onDataUpdate)
+        pagination.addListener(this.onPaginationUpdate)
     }
 
     init() {
         this._getHeaders()
-        this._getData()
-        this.$input.addEventListener("input", this.onFilter)
+        this._getData(this.$pagination.size(), this.$pagination.offset())
+        this._buildPagination()
         return this
     }
 
@@ -24,10 +25,16 @@ class TableController {
         this.$model.setHeaders(headers)
     }
 
-    async _getData() {
-        window.products.get().then((data) => {
+    async _getData(pageSize, offset) {
+        this.$view.cleanRows()
+        window.products.get(pageSize, offset).then((data) => {
             this.$model.setData(data)
-            this.onDataUpdate(data, null, null)
+        })
+    }
+
+    async _buildPagination() {
+        window.products.total().then((total) => {
+            this.$pagination.buildPagination(total)
         })
     }
 
@@ -35,6 +42,8 @@ class TableController {
         const text = evt.target.value.toLowerCase()
         this.onDataUpdate(this.$model.filter(text), null, null)
     }
+
+    onPaginationUpdate = (pageSize, offset) => this._getData(pageSize, offset)
 
     onHeaderUpdate = (headers, added, removed) => {
         if (added) {

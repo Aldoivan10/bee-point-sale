@@ -8,6 +8,8 @@ const createWindow = async () => {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
+        minWidth: 800,
+        minHeight: 600,
         webPreferences: {
             preload: path.join(__dirname, "preload.js"),
         },
@@ -19,7 +21,11 @@ const createWindow = async () => {
 }
 
 app.whenReady().then(() => {
-    ipcMain.handle("fetchProducts", async () => await db.fetchProducts())
+    ipcMain.handle(
+        "fetchProducts",
+        async (_, pageSize, offset) => await db.fetchProducts(pageSize, offset)
+    )
+    ipcMain.handle("fetchTotal", async (_, table) => await db.fetchTotal(table))
     ipcMain.handle("fetchCodes", async () => await db.fetchCodes())
 
     createWindow()

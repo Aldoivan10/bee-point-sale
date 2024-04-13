@@ -8,7 +8,7 @@
         />
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self'"
+            content="default-src 'self'; script-src 'self'; img-src 'self' data:"
         />
         <link
             rel="stylesheet"
@@ -20,7 +20,7 @@
         <body class="flex flex-col h-[100dvh]">
             <header class="navbar bg-base-200">
                 <div class="navbar-start">
-                    <div class="dropdown">
+                    <div class="dropdown z-10">
                         <div
                             tabindex="0"
                             role="button"
@@ -117,11 +117,24 @@
             <main class="flex-grow flex flex-col h-[1rem] p-4">
                 <div class="pb-6 flex gap-6">
                     <input
-                        id="search"
+                        id="filter"
                         type="text"
                         placeholder="Buscar..."
                         class="input input-bordered input-primary w-full max-w-xs"
                     />
+                    <div class="flex items-center gap-3">
+                        <label for="select-num-results">Mostrar:</label>
+                        <select
+                            id="select-num-results"
+                            class="select select-primary w-full max-w-xs"
+                        >
+                            <option>25</option>
+                            <option>50</option>
+                            <option>100</option>
+                            <option>250</option>
+                            <option>500</option>
+                        </select>
+                    </div>
                     <div
                         class="tooltip font-bold"
                         data-tip="Crear nuevo"
@@ -140,19 +153,28 @@
                     </div>
                 </div>
                 <section
-                    class="overflow-auto rounded border border-slate-700 h-[100%]"
+                    class="overflow-auto rounded border border-slate-700 h-[100%] justify-center relative grid place-items-center [&:has(tbody>tr)_span]:hidden"
                 >
-                    <table class="table table-pin-rows table-pin-cols">
+                    <table
+                        class="table table-pin-rows table-pin-cols absolute h-[100%] w-[100%] left-0 top-0"
+                    >
                         <thead>
                             <tr
                                 class="bg-primary text-white font-bold text-sm"
                             ></tr>
                         </thead>
-                        <tbody class="font-bold">
-                            <tr class="hover"></tr>
-                        </tbody>
+                        <tbody
+                            class="font-bold [&>tr]:h-[45px] [&>tr>td]:h-[45px]"
+                        ></tbody>
                     </table>
+                    <span
+                        class="loading loading-ring loading-lg absolute text-accent mt-[44.5px]"
+                    ></span>
                 </section>
+                <div
+                    id="pagination"
+                    class="join mt-4 flex justify-center w-[100%]"
+                ></div>
             </main>
             <footer class="btm-nav bg-base-200 relative">
                 <div
@@ -210,6 +232,7 @@
         </body>
         <script src="js/util.js"></script>
         <script src="model/tablemodel.js"></script>
+        <script src="model/pagination.js"></script>
         <script src="view/tableview.js"></script>
         <script src="controller/tablecontroller.js"></script>
         <script src="js/renderer.js"></script>

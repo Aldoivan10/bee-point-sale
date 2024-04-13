@@ -14,16 +14,19 @@ class TableView {
     }
 
     buildBody(rows) {
-        removeChilds(this.$body)
         for (const row of rows) {
             this.addRow(row)
         }
     }
 
+    cleanRows() {
+        removeChilds(this.$body)
+    }
+
     addRow(row) {
         const $row = document.createElement("tr")
         for (const column of row) {
-            $row.innerHTML += `<td>${column}</td>`
+            $row.innerHTML += `<td class="hover">${column}</td>`
         }
         this.$body.appendChild($row)
     }

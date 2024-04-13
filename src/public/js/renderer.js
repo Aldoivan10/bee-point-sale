@@ -1,7 +1,8 @@
 const productsCtrl = new TableController(
     new TableView("table"),
     new TableModel(),
-    document.getElementById("search"),
+    new Pagination("#pagination", "#select-num-results"),
+    document.getElementById("filter"),
     [
         ,
         ,

@@ -11,8 +11,8 @@ module.exports = class DB {
         return this
     }
 
-    async fetchProducts() {
-        const sql = "SELECT * FROM vista_producto"
+    async fetchProducts(pageSize, offset) {
+        const sql = `SELECT * FROM vista_producto LIMIT ${pageSize} OFFSET ${offset}`
         return await this.fetch(sql, [], (data) => {
             const jsonRows = data.map((row) => JSON.parse(row["producto"]))
             const rows = jsonRows.reduce((rows, product) => {
@@ -37,9 +37,12 @@ module.exports = class DB {
 
     async fetchCodes() {
         const sql = "SELECT nombre FROM codigo ORDER BY nombre"
-        return await this.fetch(sql, [], (rows) => {
-            return rows
-        })
+        return await this.fetch(sql, [], (rows) => rows)
+    }
+
+    async fetchTotal(table) {
+        const sql = `SELECT COUNT(1) total FROM ${table}`
+        return await this.fetch(sql, [], (rows) => rows[0]["total"])
     }
 
     async fetch(sql, params = [], action = () => {}) {
