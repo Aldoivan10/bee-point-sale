@@ -8,7 +8,7 @@ class TableController {
         this.filterCode = null
         this.filterName = null
         this.filterTimer = null
-        this.filterWaitingTime = 300
+        this.filterWaitingTime = 500
 
         model.addHeaderListener(this.onHeaderUpdate)
         model.addDataListener(this.onDataUpdate)
