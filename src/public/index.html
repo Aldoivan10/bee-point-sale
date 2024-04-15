@@ -17,7 +17,9 @@
         <title>Punto de venta</title>
     </head>
     <body>
-        <body class="flex flex-col h-[100dvh]">
+        <body
+            class="flex flex-col h-[100dvh] [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px] has-[&_loading:visible]:[&_input]:disabled"
+        >
             <header class="navbar bg-base-200">
                 <div class="navbar-start">
                     <div class="dropdown z-10">
@@ -117,9 +119,15 @@
             <main class="flex-grow flex flex-col h-[1rem] p-4">
                 <div class="pb-6 flex gap-6">
                     <input
-                        id="filter"
+                        id="filterCode"
                         type="text"
-                        placeholder="Buscar..."
+                        placeholder="Buscar código..."
+                        class="input input-bordered input-primary w-full max-w-xs"
+                    />
+                    <input
+                        id="filterName"
+                        type="text"
+                        placeholder="Buscar producto..."
                         class="input input-bordered input-primary w-full max-w-xs"
                     />
                     <div class="flex items-center gap-3">
@@ -166,7 +174,11 @@
                         </thead>
                         <tbody
                             class="font-bold [&>tr]:h-[45px] [&>tr>td]:h-[45px]"
-                        ></tbody>
+                        >
+                            <tr class="hover">
+                                <td class="text-center">Sin resultados</td>
+                            </tr>
+                        </tbody>
                     </table>
                     <span
                         class="loading loading-ring loading-lg absolute text-accent mt-[44.5px]"

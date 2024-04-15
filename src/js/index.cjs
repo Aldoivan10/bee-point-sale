@@ -23,7 +23,8 @@ const createWindow = async () => {
 app.whenReady().then(() => {
     ipcMain.handle(
         "fetchProducts",
-        async (_, pageSize, offset) => await db.fetchProducts(pageSize, offset)
+        async (_, pageSize, offset, filterCode, filterName) =>
+            await db.fetchProducts(pageSize, offset, filterCode, filterName)
     )
     ipcMain.handle("fetchTotal", async (_, table) => await db.fetchTotal(table))
     ipcMain.handle("fetchCodes", async () => await db.fetchCodes())

@@ -11,7 +11,15 @@ module.exports = class DB {
         return this
     }
 
-    async fetchProducts(pageSize, offset) {
+    async fetchProducts(pageSize, offset, filterCode, filterName) {
+        const code = filterCode ? `'${filterCode}'` : "null"
+        const name = filterName ? `'${filterName}'` : "null"
+        await this.update(
+            `UPDATE variables SET valor = ${code} WHERE nombre = 'productos_codigo'`
+        )
+        await this.update(
+            `UPDATE variables SET valor = ${name} WHERE nombre = 'productos_nombre'`
+        )
         const sql = `SELECT * FROM vista_producto LIMIT ${pageSize} OFFSET ${offset}`
         return await this.fetch(sql, [], (data) => {
             const jsonRows = data.map((row) => JSON.parse(row["producto"]))
@@ -53,6 +61,17 @@ module.exports = class DB {
                     reject([])
                 }
                 resolve(action(rows))
+            })
+        })
+    }
+
+    async update(sql, params = [], action = () => {}, error = () => {}) {
+        return new Promise((resolve, reject) => {
+            this.db.run(sql, params, async (err) => {
+                if (err) {
+                    reject(error(err))
+                }
+                resolve(action())
             })
         })
     }

@@ -14,9 +14,21 @@ class TableView {
     }
 
     buildBody(rows) {
-        for (const row of rows) {
-            this.addRow(row)
-        }
+        if (rows.length > 0)
+            for (const row of rows) {
+                this.addRow(row)
+            }
+        else this.setEmpty()
+    }
+
+    setEmpty() {
+        const $row = document.createElement("tr")
+        const $col = document.createElement("td")
+        $col.textContent = "No se encontraron resultados"
+        $col.setAttribute("colspan", "100%")
+        $col.classList.add("text-center")
+        $row.appendChild($col)
+        this.$body.appendChild($row)
     }
 
     cleanRows() {

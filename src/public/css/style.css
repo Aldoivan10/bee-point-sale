@@ -2978,6 +2978,10 @@ input.tab:checked + .tab-content,
   padding-top: 0.5rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .align-middle {
   vertical-align: middle;
 }
@@ -3016,6 +3020,34 @@ input.tab:checked + .tab-content,
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+@media (hover: hover) {
+  .btm-nav > .has-\[\&_loading\:visible\]\:\[\&_input\]\:disabled input:has(.has-\[\&_loading\:visible\]\:\[\&_input\]\:disabled input loading:visible)*:hover {
+    pointer-events: none;
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.1;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.menu .has-\[\&_loading\:visible\]\:\[\&_input\]\:disabled input:has(.has-\[\&_loading\:visible\]\:\[\&_input\]\:disabled input loading:visible)li {
+  cursor: not-allowed;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  color: var(--fallback-bc,oklch(var(--bc)/0.3));
+}
+
+.btm-nav > .has-\[\&_loading\:visible\]\:\[\&_input\]\:disabled input:has(.has-\[\&_loading\:visible\]\:\[\&_input\]\:disabled input loading:visible)* {
+  pointer-events: none;
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.1;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
 .\[\&\:has\(tbody\>tr\)_span\]\:hidden:has(tbody>tr) span {
   display: none;
 }
@@ -3024,14 +3056,93 @@ input.tab:checked + .tab-content,
   height: 45px;
 }
 
-.\[\&\>tr\>td\]\:max-h-\[45px\]>tr>td {
-  max-height: 45px;
-}
-
 .\[\&\>tr\]\:h-\[45px\]>tr {
   height: 45px;
 }
 
-.\[\&\>tr\]\:max-h-\[45px\]>tr {
-  max-height: 45px;
+.\[\&_mark\]\:rounded mark {
+  border-radius: 0.25rem;
+}
+
+.\[\&_mark\]\:bg-slate-500 mark {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.\[\&_mark\]\:bg-slate-500\/\[\] mark {
+  background-color: rgb(100 116 139 / );
+}
+
+.\[\&_mark\]\:bg-slate-500\/\[0\.5\] mark {
+  background-color: rgb(100 116 139 / 0.5);
+}
+
+.\[\&_mark\]\:bg-secondary\/\[0\.5\] mark {
+  background-color: var(--fallback-s,oklch(var(--s)/0.5));
+}
+
+.\[\&_mark\]\:bg-accent\/\[0\.5\] mark {
+  background-color: var(--fallback-a,oklch(var(--a)/0.5));
+}
+
+.\[\&_mark\]\:bg-accent\/\[0\.2\] mark {
+  background-color: var(--fallback-a,oklch(var(--a)/0.2));
+}
+
+.\[\&_mark\]\:bg-secondary\/\[0\.2\] mark {
+  background-color: var(--fallback-s,oklch(var(--s)/0.2));
+}
+
+.\[\&_mark\]\:bg-secondary mark {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-s,oklch(var(--s)/var(--tw-bg-opacity)));
+}
+
+.\[\&_mark\]\:bg-secondary-content mark {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-sc,oklch(var(--sc)/var(--tw-bg-opacity)));
+}
+
+.\[\&_mark\]\:px-2 mark {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.\[\&_mark\]\:px-1 mark {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.\[\&_mark\]\:px-\[2px\] mark {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.\[\&_mark\]\:font-bold mark {
+  font-weight: 700;
+}
+
+.\[\&_mark\]\:text-white mark {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.\[\&_mark\]\:text-gray-300 mark {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.\[\&_mark\]\:text-gray-600 mark {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.\[\&_mark\]\:text-gray-500 mark {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.\[\&_mark\]\:text-gray-400 mark {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
