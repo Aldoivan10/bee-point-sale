@@ -1,8 +1,11 @@
 const { app, BrowserWindow, ipcMain } = require("electron")
 const path = require("node:path")
 const DB = require("../model/db.js")
+const { Product } = require("../model/schemes.js")
 
 const db = new DB()
+db.init("src/ferreteria.sqlite")
+const productScheme = new Product(db)
 
 const createWindow = async () => {
     const win = new BrowserWindow({
@@ -11,11 +14,9 @@ const createWindow = async () => {
         minWidth: 800,
         minHeight: 600,
         webPreferences: {
-            preload: path.join(__dirname, "preload.js"),
+            preload: path.join(__dirname, "preload.cjs"),
         },
     })
-    /* INICIAR DB */
-    await db.init("src/ferreteria.sqlite")
     /* CARGAR PAGINCA */
     win.loadFile("src/public/index.html")
 }
@@ -24,10 +25,14 @@ app.whenReady().then(() => {
     ipcMain.handle(
         "fetchProducts",
         async (_, pageSize, offset, filterCode, filterName) =>
-            await db.fetchProducts(pageSize, offset, filterCode, filterName)
+            await productScheme.all(pageSize, offset, filterCode, filterName)
     )
-    ipcMain.handle("fetchTotal", async (_, table) => await db.fetchTotal(table))
-    ipcMain.handle("fetchCodes", async () => await db.fetchCodes())
+    ipcMain.handle("fetchCodes", async () => await productScheme.codes())
+    ipcMain.handle(
+        "fetchTotalProducts",
+        async (_, filterCode, filterName) =>
+            await productScheme.total(filterCode, filterName)
+    )
 
     createWindow()
 })

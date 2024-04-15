@@ -5,8 +5,8 @@ class TableController {
         this.$mapper = mapper
         this.$pagination = pagination
 
-        this.filterCode = ""
-        this.filterName = ""
+        this.filterCode = null
+        this.filterName = null
         this.filterTimer = null
         this.filterWaitingTime = 300
 
@@ -20,7 +20,7 @@ class TableController {
     init() {
         this._getHeaders()
         this._getData(this.$pagination.size(), this.$pagination.offset())
-        this._buildPagination()
+        this._buildPagination(this.filterCode, this.filterName)
         return this
     }
 
@@ -32,7 +32,7 @@ class TableController {
         this.$model.setHeaders(headers)
     }
 
-    async _getData(pageSize, offset, filterCode = "", filterName = "") {
+    async _getData(pageSize, offset, filterCode = null, filterName = null) {
         this.$view.cleanRows()
         window.products
             .get(pageSize, offset, filterCode, filterName)
@@ -41,8 +41,8 @@ class TableController {
             })
     }
 
-    async _buildPagination() {
-        window.products.total().then((total) => {
+    async _buildPagination(filterCode = null, filterName = null) {
+        window.products.total(filterCode, filterName).then((total) => {
             this.$pagination.buildPagination(total)
         })
     }
@@ -58,7 +58,10 @@ class TableController {
     }
 
     initFilterTimer() {
-        if (this.filterTimer) clearTimeout(this.filterTimer)
+        if (this.filterTimer) {
+            clearTimeout(this.filterTimer)
+            this.filterTimer = null
+        }
         this.filterTimer = setTimeout(() => {
             this._getData(
                 this.$pagination.size(),
@@ -66,10 +69,12 @@ class TableController {
                 this.filterCode,
                 this.filterName
             )
+            this._buildPagination(this.filterCode, this.filterName)
         }, this.filterWaitingTime)
     }
 
-    onPaginationUpdate = (pageSize, offset) => this._getData(pageSize, offset)
+    onPaginationUpdate = (pageSize, offset) =>
+        this._getData(pageSize, offset, this.filterCode, this.filterName)
 
     onHeaderUpdate = (headers, added, removed) => {
         if (added) {

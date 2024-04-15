@@ -4,18 +4,12 @@ const productsCtrl = new TableController(
     new Pagination("#pagination", "#select-num-results"),
     "#filterCode",
     "#filterName",
-    [
-        ,
-        ,
-        ,
-        ,
-        ,
-        ,
-        (val) => {
+    {
+        6: (val) => {
             return val.toLocaleString("es-MX", {
                 style: "currency",
                 currency: "MXN",
             })
         },
-    ]
+    }
 ).init()

@@ -2916,6 +2916,10 @@ input.tab:checked + .tab-content,
   overflow: auto;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -3052,6 +3056,10 @@ input.tab:checked + .tab-content,
   display: none;
 }
 
+.\[\&\>input\:first-child\:nth-last-child\(1\)\]\:rounded>input:first-child:nth-last-child(1) {
+  border-radius: 0.25rem;
+}
+
 .\[\&\>tr\>td\]\:h-\[45px\]>tr>td {
   height: 45px;
 }
@@ -3060,89 +3068,23 @@ input.tab:checked + .tab-content,
   height: 45px;
 }
 
-.\[\&_mark\]\:rounded mark {
+.\[\&_\*\]\:box-border * {
+  box-sizing: border-box;
+}
+
+.\[\&_input\:first-child\:nth-last-child\(1\)\]\:rounded input:first-child:nth-last-child(1) {
   border-radius: 0.25rem;
 }
 
-.\[\&_mark\]\:bg-slate-500 mark {
-  --tw-bg-opacity: 1;
-  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
-}
-
-.\[\&_mark\]\:bg-slate-500\/\[\] mark {
-  background-color: rgb(100 116 139 / );
-}
-
-.\[\&_mark\]\:bg-slate-500\/\[0\.5\] mark {
-  background-color: rgb(100 116 139 / 0.5);
+.\[\&_mark\]\:rounded mark {
+  border-radius: 0.25rem;
 }
 
 .\[\&_mark\]\:bg-secondary\/\[0\.5\] mark {
   background-color: var(--fallback-s,oklch(var(--s)/0.5));
 }
 
-.\[\&_mark\]\:bg-accent\/\[0\.5\] mark {
-  background-color: var(--fallback-a,oklch(var(--a)/0.5));
-}
-
-.\[\&_mark\]\:bg-accent\/\[0\.2\] mark {
-  background-color: var(--fallback-a,oklch(var(--a)/0.2));
-}
-
-.\[\&_mark\]\:bg-secondary\/\[0\.2\] mark {
-  background-color: var(--fallback-s,oklch(var(--s)/0.2));
-}
-
-.\[\&_mark\]\:bg-secondary mark {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-s,oklch(var(--s)/var(--tw-bg-opacity)));
-}
-
-.\[\&_mark\]\:bg-secondary-content mark {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-sc,oklch(var(--sc)/var(--tw-bg-opacity)));
-}
-
-.\[\&_mark\]\:px-2 mark {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
-.\[\&_mark\]\:px-1 mark {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
 .\[\&_mark\]\:px-\[2px\] mark {
   padding-left: 2px;
   padding-right: 2px;
-}
-
-.\[\&_mark\]\:font-bold mark {
-  font-weight: 700;
-}
-
-.\[\&_mark\]\:text-white mark {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.\[\&_mark\]\:text-gray-300 mark {
-  --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity));
-}
-
-.\[\&_mark\]\:text-gray-600 mark {
-  --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-
-.\[\&_mark\]\:text-gray-500 mark {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-
-.\[\&_mark\]\:text-gray-400 mark {
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
 }

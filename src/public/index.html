@@ -18,7 +18,7 @@
     </head>
     <body>
         <body
-            class="flex flex-col h-[100dvh] [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px] has-[&_loading:visible]:[&_input]:disabled"
+            class="flex flex-col h-[100dvh] overflow-hidden [&_*]:box-border [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px]"
         >
             <header class="navbar bg-base-200">
                 <div class="navbar-start">
@@ -186,7 +186,7 @@
                 </section>
                 <div
                     id="pagination"
-                    class="join mt-4 flex justify-center w-[100%]"
+                    class="join mt-4 flex justify-center w-[100%] [&_input:first-child:nth-last-child(1)]:rounded"
                 ></div>
             </main>
             <footer class="btm-nav bg-base-200 relative">

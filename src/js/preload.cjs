@@ -9,7 +9,8 @@ contextBridge.exposeInMainWorld("products", {
             filterCode,
             filterName
         ),
-    total: () => ipcRenderer.invoke("fetchTotal", "producto"),
+    total: (filterCode, filterName) =>
+        ipcRenderer.invoke("fetchTotalProducts", filterCode, filterName),
 })
 
 contextBridge.exposeInMainWorld("codes", {
