@@ -6,7 +6,8 @@ class Scheme {
 
 class Product extends Scheme {
     async all(pageSize, offset, filterCode, filterName) {
-        filterCode = filterCode ? `'${filterCode}'` : "null"
+        filterCode = filterCode ? filterCode : ""
+        filterName = filterName ? filterName : ""
         const query = `
             SELECT
                 json_object
@@ -17,8 +18,10 @@ class Product extends Scheme {
                             JSON_GROUP_ARRAY
                             (
                                 CASE
-                                    WHEN ${filterCode} IS NOT NULL AND INSTR(UPPER(PC.codigo), UPPER(${filterCode})) > 0 THEN
-                                        SUBSTR(COALESCE(PC.codigo, ''), 0, INSTR(UPPER(PC.codigo), UPPER(${filterCode}))) || '<mark>' || SUBSTR(COALESCE(PC.codigo, ''), INSTR(UPPER(PC.codigo), UPPER(${filterCode})), LENGTH(${filterCode})) || '</mark>' || SUBSTR(COALESCE(PC.codigo, ''), INSTR(UPPER(PC.codigo), UPPER(${filterCode})) + LENGTH(${filterCode}))
+                                    WHEN LENGTH('${filterCode}') > 0 AND INSTR(UPPER(PC.codigo), UPPER('${filterCode}')) > 0 THEN
+                                        SUBSTR(COALESCE(PC.codigo, ''), 0, INSTR(UPPER(PC.codigo), UPPER('${filterCode}'))) || 
+                                        '<mark>' || SUBSTR(COALESCE(PC.codigo, ''), INSTR(UPPER(PC.codigo), UPPER('${filterCode}')), LENGTH('${filterCode}')) || 
+                                        '</mark>' || SUBSTR(COALESCE(PC.codigo, ''), INSTR(UPPER(PC.codigo), UPPER('${filterCode}')) + LENGTH('${filterCode}'))
                                     ELSE
                                         COALESCE(PC.codigo, '')
                                         
@@ -36,7 +39,14 @@ class Product extends Scheme {
                             C.nombre
                     ),
                     'nombre',
-                    P.nombre,
+                    CASE
+                        WHEN LENGTH('${filterName}') > 0 AND INSTR(UPPER(P.nombre), UPPER('${filterName}')) > 0 THEN
+                            SUBSTR(COALESCE(P.nombre, ''), 0, INSTR(UPPER(P.nombre), UPPER('${filterName}'))) || 
+                            '<mark>' || SUBSTR(COALESCE(P.nombre, ''), INSTR(UPPER(P.nombre), UPPER('${filterName}')), LENGTH('${filterName}')) || 
+                            '</mark>' || SUBSTR(COALESCE(P.nombre, ''), INSTR(UPPER(P.nombre), UPPER('${filterName}')) + LENGTH('${filterName}'))
+                        ELSE
+                            P.nombre
+                    END,
                     'unidades',
                     (
                         SELECT 
@@ -68,8 +78,10 @@ class Product extends Scheme {
                 FROM
                     Producto_Codigo PC
                 WHERE
-                    PC.codigo LIKE '%'||COALESCE(${filterCode}, '')||'%'
+                    PC.codigo LIKE '%${filterCode}%'
             )
+            WHERE
+                P.nombre LIKE '%${filterName}%' 
             LIMIT ${pageSize}
             OFFSET ${offset}
         `
@@ -100,9 +112,15 @@ class Product extends Scheme {
         SELECT
             COUNT(DISTINCT PC.id_producto) total
         FROM
+            Producto P
+        INNER JOIN
             Producto_Codigo PC
-        WHERE
+        ON
+            PC.id_producto = P.id_producto
+        AND
             PC.codigo LIKE '%${filterCode ? filterCode : ""}%'
+        WHERE
+            P.nombre LIKE '%${filterName ? filterName : ""}%' 
         `
         return await this.db.fetch(sql, [], (rows) => rows[0]["total"])
     }
