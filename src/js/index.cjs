@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require("electron")
+const { app, BrowserWindow, ipcMain, globalShortcut } = require("electron")
 const path = require("node:path")
 const DB = require("../model/db.js")
 const { Product, User } = require("../model/schemes.js")
@@ -36,8 +36,11 @@ app.whenReady().then(() => {
     )
     ipcMain.handle(
         "fetchUser",
-        async (user, pass) => await userScheme.get(user, pass)
+        async (_, user, pass) => await userScheme.get(user, pass)
     )
+
+    /* globalShortcut.unregister("F5")
+    globalShortcut.unregister("CommandOrControl+R") */
 
     createWindow()
 })

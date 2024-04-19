@@ -151,7 +151,7 @@ class User extends Scheme {
                     U.nombre,
                     'rol',
                     R.nombre
-                )
+                ) usuario
             FROM 
                 Usuario U
             INNER JOIN 
@@ -163,8 +163,13 @@ class User extends Scheme {
             AND
                 U.contrasenia = ?
         `
-
-        return await this.db.fetch(sql, [user, pass], (rows) => rows[0])
+        return await this.db.fetch(
+            sql,
+            [user, pass],
+            (rows) =>
+                rows.length > 0 ? JSON.stringify(rows[0]["usuario"]) : null,
+            () => null
+        )
     }
 }
 

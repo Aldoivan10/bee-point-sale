@@ -42,6 +42,7 @@
                             type="text"
                             placeholder="Usuario"
                             class="grow"
+                            required
                         />
                     </label>
                     <label
@@ -65,7 +66,10 @@
                 </p>
                 <div class="modal-action m-0">
                     <form method="dialog">
-                        <button class="btn btn-outline btn-success">
+                        <button
+                            id="btnLogin"
+                            class="btn btn-outline btn-success"
+                        >
                             Aceptar
                         </button>
                         <button class="btn btn-outline btn-error">
@@ -74,6 +78,7 @@
                     </form>
                 </div>
             </div>
+            <div class="toast-admin toast toast-bottom toast-end z-20"></div>
         </dialog>
         <object
             id="header"
@@ -183,6 +188,7 @@
         <script src="model/tablemodel.js"></script>
         <script src="model/pagination.js"></script>
         <script src="view/tableview.js"></script>
+        <script src="controller/alertscontroller.js"></script>
         <script src="controller/tablecontroller.js"></script>
         <script src="js/vars.js"></script>
         <script src="js/renderer.js"></script>
