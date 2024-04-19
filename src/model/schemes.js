@@ -139,4 +139,33 @@ class Product extends Scheme {
     async create(product) {}
 }
 
-module.exports = { Product }
+class User extends Scheme {
+    async get(user, pass) {
+        const sql = `
+            SELECT
+                JSON_OBJECT
+                (
+                    'usuario',
+                    U.usuario,
+                    'nombre',
+                    U.nombre,
+                    'rol',
+                    R.nombre
+                )
+            FROM 
+                Usuario U
+            INNER JOIN 
+                Rol R
+            ON 
+                R.id_rol = U.id_rol
+            WHERE
+                U.usuario = ?
+            AND
+                U.contrasenia = ?
+        `
+
+        return await this.db.fetch(sql, [user, pass], (rows) => rows[0])
+    }
+}
+
+module.exports = { Product, User }

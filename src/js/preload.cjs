@@ -16,3 +16,7 @@ contextBridge.exposeInMainWorld("products", {
 contextBridge.exposeInMainWorld("codes", {
     get: () => ipcRenderer.invoke("fetchCodes"),
 })
+
+contextBridge.exposeInMainWorld("users", {
+    get: (user, pass) => ipcRenderer.invoke("fetchUser", user, pass),
+})
