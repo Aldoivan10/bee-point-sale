@@ -24,6 +24,8 @@ function adminVars() {
     const $inputPass = document.querySelector("input[placeholder=Contraseña]")
     const $alertContainer = document.querySelector(".toast-login")
 
+    const $mainBody = $main.querySelector("body")
+
     return {
         $name,
         $btnSendUser,
@@ -35,5 +37,6 @@ function adminVars() {
         $btnDelItem,
         $headerBody,
         $btnLogout,
+        $mainBody,
     }
 }

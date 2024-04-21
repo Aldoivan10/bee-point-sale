@@ -33,6 +33,7 @@ function initAdmin(tblController) {
         $btnDelItem,
         $headerBody,
         $btnLogout,
+        $mainBody,
     } = adminVars()
     const userController = new UserController(
         new UserModel(),
@@ -44,7 +45,8 @@ function initAdmin(tblController) {
             $btnSendUser,
             $btnAddItem,
             $btnDelItem,
-            $headerBody
+            $headerBody,
+            $mainBody
         ),
         $btnLogin,
         $btnLogout,

@@ -7,7 +7,8 @@ class UserView {
         btnSendUser,
         btnAddItem,
         btnDelItem,
-        headerBody
+        headerBody,
+        mainBody
     ) {
         this.$name = name
         this.$btnLogin = btnLogin
@@ -17,6 +18,7 @@ class UserView {
         this.$btnDelItem = btnDelItem
         this.$btnSendUser = btnSendUser
         this.$headerBody = headerBody
+        this.$mainBody = mainBody
         this.loginListeners = []
 
         inputUser.onkeypress = this.onFormComplete
@@ -28,12 +30,16 @@ class UserView {
     }
 
     login(name, type) {
-        if (type === "admin") this.$headerBody.classList.add("admin")
+        if (type === "admin") {
+            this.$headerBody.classList.add("admin")
+            this.$mainBody.classList.add("admin")
+        }
         this.setName(name)
     }
 
     logout() {
         this.$headerBody.classList.remove("admin")
+        this.$mainBody.classList.remove("admin")
         this.setName("")
     }
 
