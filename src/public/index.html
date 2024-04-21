@@ -17,10 +17,10 @@
         <title>Punto de venta</title>
     </head>
     <body
-        class="flex flex-col h-[100dvh] min-w-[100dvw] overflow-hidden [&_*]:box-border [&:not(.admin)_.btn-admin]:hidden [&:is(.admin)_.btn-admin]:block"
+        class="flex flex-col h-[100dvh] min-w-[100dvw] overflow-hidden [&_*]:box-border"
     >
         <dialog
-            id="modal_admin"
+            id="modalUser"
             class="modal"
         >
             <div class="modal-box">
@@ -67,7 +67,7 @@
                 <div class="modal-action m-0">
                     <form method="dialog">
                         <button
-                            id="btnLogin"
+                            id="btnSendUser"
                             class="btn btn-outline btn-success"
                         >
                             Aceptar
@@ -109,6 +109,7 @@
         <script src="model/components/tablemodel.js"></script>
         <script src="model/components/usermodel.js"></script>
         <script src="view/tableview.js"></script>
+        <script src="view/userview.js"></script>
         <script src="controller/tablecontroller.js"></script>
         <script src="controller/usercontrolller.js"></script>
         <script src="js/renderer.js"></script>

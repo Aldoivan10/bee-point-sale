@@ -1,23 +1,39 @@
 function tableVars() {
-    const container = document.querySelector("#main").contentDocument
-    const $table = container.getElementById("tableProducts")
-    const $filterName = container.getElementById("filterName")
-    const $filterCode = container.getElementById("filterCode")
-    const $pagination = container.getElementById("productsPagination")
-    const $pageSizeSelector = container.getElementById("select-num-results")
+    const $main = document.getElementById("main").contentDocument
+    const $table = $main.getElementById("tableProducts")
+    const $filterName = $main.getElementById("filterName")
+    const $filterCode = $main.getElementById("filterCode")
+    const $pagination = $main.getElementById("productsPagination")
+    const $pageSizeSelector = $main.getElementById("select-num-results")
     return { $table, $filterName, $filterCode, $pagination, $pageSizeSelector }
 }
 
 function adminVars() {
-    const $btnAdmin = document
-        .querySelector("#header")
-        .contentDocument.querySelector("#btn-admin")
-    const $btnLogin = document.getElementById("btnLogin")
+    const $header = document.getElementById("header").contentDocument
+    const $main = document.getElementById("main").contentDocument
+
+    const $headerBody = $header.querySelector("body")
+    const $name = $header.getElementById("userName")
+    const $btnAddItem = $main.getElementById("btnAddItem")
+    const $btnDelItem = $main.getElementById("btnDelItem")
+
+    const $btnLogin = $header.getElementById("btnLogin")
+    const $btnLogout = $header.getElementById("btnLogout")
+    const $btnSendUser = document.getElementById("btnSendUser")
     const $inputUser = document.querySelector("input[placeholder=Usuario]")
     const $inputPass = document.querySelector("input[placeholder=Contraseña]")
-    const $toastAdmin = document.querySelector(".toast-admin")
+    const $alertContainer = document.querySelector(".toast-login")
 
-    const $body = document.querySelector("body")
-
-    return { $body, $btnAdmin, $btnLogin, $inputUser, $inputPass, $toastAdmin }
+    return {
+        $name,
+        $btnSendUser,
+        $btnLogin,
+        $inputUser,
+        $inputPass,
+        $alertContainer,
+        $btnAddItem,
+        $btnDelItem,
+        $headerBody,
+        $btnLogout,
+    }
 }
