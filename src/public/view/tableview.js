@@ -1,8 +1,7 @@
 class TableView {
-    constructor(selector) {
-        const $table = document.querySelector(selector)
-        this.$header = $table.querySelector("thead > tr")
-        this.$body = $table.querySelector("tbody")
+    constructor(table) {
+        this.$header = table.querySelector("thead > tr")
+        this.$body = table.querySelector("tbody")
     }
 
     buildHeader(headers) {

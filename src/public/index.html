@@ -17,14 +17,14 @@
         <title>Punto de venta</title>
     </head>
     <body
-        class="flex flex-col h-[100dvh] min-w-[100dvw] overflow-hidden [&_*]:box-border [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px] [&:not(.admin)_.btn-admin]:hidden [&:is(.admin)_.btn-admin]:block"
+        class="flex flex-col h-[100dvh] min-w-[100dvw] overflow-hidden [&_*]:box-border [&:not(.admin)_.btn-admin]:hidden [&:is(.admin)_.btn-admin]:block"
     >
         <dialog
             id="modal_admin"
             class="modal"
         >
             <div class="modal-box">
-                <h3 class="font-bold text-lg">Identificarse</h3>
+                <h3 class="font-bold text-2xl my-2">Identificarse</h3>
                 <p class="py-4 flex gap-6 flex-col">
                     <label
                         class="input input-bordered flex items-center gap-2 input-primary fill-current has-[input:focus]:fill-primary"
@@ -78,105 +78,22 @@
                     </form>
                 </div>
             </div>
-            <div class="toast-admin toast toast-bottom toast-end z-20"></div>
+            <div class="toast-login toast toast-bottom toast-end z-20"></div>
         </dialog>
+
         <object
             id="header"
             class="h-[65px]"
             data="html/header.html"
             type="text/html"
         ></object>
-        <main class="flex-grow flex flex-col h-[1rem] p-4">
-            <div class="pb-6 flex gap-6 justify-between">
-                <span class="flex gap-6">
-                    <input
-                        id="filterCode"
-                        type="text"
-                        placeholder="Buscar código..."
-                        class="input input-bordered input-primary w-full max-w-xs"
-                    />
-                    <input
-                        id="filterName"
-                        type="text"
-                        placeholder="Buscar producto..."
-                        class="input input-bordered input-primary w-full max-w-xs"
-                    />
-                </span>
-                <span class="flex gap-6">
-                    <div class="flex items-center gap-3">
-                        <label for="select-num-results">Mostrar:</label>
-                        <select
-                            id="select-num-results"
-                            class="select select-primary w-full max-w-xs"
-                        >
-                            <option>25</option>
-                            <option>50</option>
-                            <option>100</option>
-                            <option>250</option>
-                            <option>500</option>
-                            <option>1000</option>
-                        </select>
-                    </div>
-                    <div
-                        class="tooltip font-bold transition transform btn-admin"
-                        data-tip="Crear nuevo"
-                    >
-                        <button class="btn btn-success">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 448 512"
-                                class="w-4 h-4"
-                            >
-                                <path
-                                    d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-                    <div
-                        class="tooltip tooltip-left font-bold transition transform btn-admin"
-                        data-tip="Eliminar seleccionados"
-                    >
-                        <button class="btn btn-error">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 448 512"
-                                class="w-4 h-4"
-                            >
-                                <path
-                                    d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-                </span>
-            </div>
-            <section
-                class="overflow-auto rounded border border-slate-700 h-[100%] justify-center relative grid place-items-center [&:has(tbody>tr)_span]:hidden"
-            >
-                <table
-                    class="table table-pin-rows table-pin-cols absolute h-[100%] w-[100%] left-0 top-0"
-                >
-                    <thead>
-                        <tr
-                            class="bg-primary text-white font-bold text-sm"
-                        ></tr>
-                    </thead>
-                    <tbody class="font-bold [&>tr]:h-[45px] [&>tr>td]:h-[45px]">
-                        <tr class="hover">
-                            <td class="text-center">Sin resultados</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <span
-                    class="loading loading-ring loading-lg absolute text-accent mt-[44.5px]"
-                ></span>
-            </section>
-            <div
-                id="pagination"
-                class="join mt-4 flex justify-center w-[100%] [&_input:first-child:nth-last-child(1)]:rounded"
-            ></div>
-        </main>
+
+        <object
+            id="main"
+            class="grow"
+            data="html/main.html"
+            type="text/html"
+        ></object>
 
         <object
             class="h-[65px]"
@@ -185,12 +102,15 @@
         ></object>
 
         <script src="js/util.js"></script>
-        <script src="model/tablemodel.js"></script>
-        <script src="model/pagination.js"></script>
-        <script src="view/tableview.js"></script>
-        <script src="controller/alertscontroller.js"></script>
-        <script src="controller/tablecontroller.js"></script>
         <script src="js/vars.js"></script>
+        <script src="js/init.js"></script>
+        <script src="model/ui/pagination.js"></script>
+        <script src="model/ui/alert.js"></script>
+        <script src="model/components/tablemodel.js"></script>
+        <script src="model/components/usermodel.js"></script>
+        <script src="view/tableview.js"></script>
+        <script src="controller/tablecontroller.js"></script>
+        <script src="controller/usercontrolller.js"></script>
         <script src="js/renderer.js"></script>
     </body>
 </html>

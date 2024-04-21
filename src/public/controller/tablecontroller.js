@@ -13,8 +13,8 @@ class TableController {
         model.addHeaderListener(this.onHeaderUpdate)
         model.addDataListener(this.onDataUpdate)
         pagination.addListener(this.onPaginationUpdate)
-        document.querySelector(filterCode).oninput = this.onFilterCode
-        document.querySelector(filterName).oninput = this.onFilterName
+        filterCode.oninput = this.onFilterCode
+        filterName.oninput = this.onFilterName
     }
 
     init() {

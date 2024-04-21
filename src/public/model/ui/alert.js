@@ -1,4 +1,4 @@
-class AlertController {
+class Alert {
     constructor(container) {
         this.container = container
     }

@@ -1,15 +1,14 @@
 class Pagination {
-    constructor(selector, pageSizeSelector, maxSteps = 9) {
-        const $selector = document.querySelector(pageSizeSelector)
-        this.$pagination = document.querySelector(selector)
-        this.pageSize = +$selector.value
+    constructor(pagination, pageSizeSelector, maxSteps = 9) {
+        this.$pagination = pagination
+        this.pageSize = +pageSizeSelector.value
         this.maxSteps = maxSteps
         this.offsetSize = 0
         this.listeners = []
         this.steps = 0
         this.page = 1
 
-        $selector.onchange = this.updatePageSize
+        pageSizeSelector.onchange = this.updatePageSize
     }
 
     buildPagination(total) {
