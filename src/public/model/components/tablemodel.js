@@ -15,7 +15,7 @@ class TableModel {
         const headers = this.getHeadersFromObject(data[0])
         this.data = data
         this.setHeaders(headers)
-        // this.notifyDataUpdate(null, null)
+        this.notifyDataUpdate(null, null)
     }
 
     getHeadersFromObject(obj) {

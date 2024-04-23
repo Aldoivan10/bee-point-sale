@@ -9,11 +9,23 @@ function initTable() {
         $filterCode,
         $filterName,
         {
-            6: (val) => {
+            "Precio de venta": (val) => {
                 return val.toLocaleString("es-MX", {
                     style: "currency",
                     currency: "MXN",
                 })
+            },
+            "Precio de compra": (val) => {
+                return val.toLocaleString("es-MX", {
+                    style: "currency",
+                    currency: "MXN",
+                })
+            },
+            Ganancia: (val) => {
+                return val.toLocaleString("es-MX", { style: "percent" })
+            },
+            Descuento: (val) => {
+                return val.toLocaleString("es-MX", { style: "percent" })
             },
         }
     ).init()

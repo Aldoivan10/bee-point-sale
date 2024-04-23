@@ -2,7 +2,7 @@ class TableController {
     constructor(view, model, pagination, filterCode, filterName, mapper) {
         this.$view = view
         this.$model = model
-        this.$mapper = mapper
+        this.mapper = mapper
         this.$pagination = pagination
 
         this.filterCode = null
@@ -78,14 +78,41 @@ class TableController {
         if (added) {
         } else if (removed) {
         }
-        if (!this.$mapper) this.$view.buildBody(rows)
-        else
-            this.$view.buildBody(
-                rows.map((el) => {
-                    return el.map((val, i) => {
-                        return this.$mapper[i] ? this.$mapper[i](val) : val
-                    })
-                })
-            )
+        if (!this.mapper) this.$view.buildBody(rows)
+        else {
+            const mappedRows = rows.reduce((rows, row) => {
+                const keys = Object.keys(row)
+                const base = keys.reduce((acc, key) => {
+                    if (key === "unidades") return acc
+                    return { ...acc, [key]: row[key] }
+                }, {})
+                const units = row.unidades
+                const accRows = []
+                for (const unit of units) {
+                    const keys = Object.keys(unit)
+                    const obj = {}
+                    for (const key of keys) {
+                        const func = this.mapper[key]
+                        if (func) {
+                            obj[key] = func(unit[key])
+                            continue
+                        }
+                        obj[key] = unit[key]
+                    }
+                    accRows.push({ ...base, ...obj })
+                }
+
+                return rows.concat(accRows)
+            }, [])
+
+            const bodyRows = mappedRows.reduce((rows, obj) => {
+                const row = []
+                for (const header of this.$model.headers) row.push(obj[header])
+                rows.push(row)
+                return rows
+            }, [])
+
+            this.$view.buildBody(bodyRows)
+        }
     }
 }

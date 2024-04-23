@@ -97,6 +97,7 @@ class Product extends Scheme {
                     codigos[key] = codigo[key]
                     return codigos
                 }, {}) // Buscamos los codigos
+                productObj["Nombre"] = product.Nombre
                 productObj["unidades"] = product.unidades // Obtenemos las unidades
                 rows.push(productObj) // Agregamos el producto
                 return rows
