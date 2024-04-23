@@ -12,8 +12,17 @@ class TableModel {
     }
 
     setData(data) {
+        const headers = this.getHeadersFromObject(data[0])
         this.data = data
-        this.notifyDataUpdate(null, null)
+        this.setHeaders(headers)
+        // this.notifyDataUpdate(null, null)
+    }
+
+    getHeadersFromObject(obj) {
+        let keys = Object.keys(obj)
+        const other = Object.keys(obj.unidades[0])
+        keys = keys.slice(0, keys.length - 1)
+        return keys.concat(other)
     }
 
     removeHeader(header) {

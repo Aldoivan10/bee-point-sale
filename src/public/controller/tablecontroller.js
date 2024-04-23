@@ -18,18 +18,9 @@ class TableController {
     }
 
     init() {
-        this._getHeaders()
         this._getData(this.$pagination.size(), this.$pagination.offset())
         this._buildPagination(this.filterCode, this.filterName)
         return this
-    }
-
-    async _getHeaders() {
-        const codes = await window.codes.get()
-        const headers = codes
-            .map((code) => code["nombre"])
-            .concat(["Nombre", "Cantidad", "Unidad", "Precio"])
-        this.$model.setHeaders(headers)
     }
 
     async _getData(pageSize, offset, filterCode = null, filterName = null) {

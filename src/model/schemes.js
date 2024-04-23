@@ -54,7 +54,7 @@ class Product extends Scheme {
                     'unidades',
                     (
                         SELECT 
-                            JSON_GROUP_ARRAY(JSON_OBJECT('Unidad', U.nombre, 'Cantidad', PU.cantidad, 'Descuento', PU.descuento, 'Ganancia', PU.ganancia, 'Precio de compra', PU.precio_compra, 'Precio de venta', PU.precio_venta))
+                            JSON_GROUP_ARRAY(JSON_OBJECT('Unidad', U.nombre, 'Cantidad', PU.cantidad, 'Precio de venta', PU.precio_venta, 'Descuento', PU.descuento, 'Ganancia', PU.ganancia, 'Precio de compra', PU.precio_compra))
                         FROM
                             Producto_Unidad PU
                         INNER JOIN 
@@ -104,7 +104,6 @@ class Product extends Scheme {
             return rows
         })
     }
-
     async total(filterCode, filterName) {
         const sql = `
         SELECT
