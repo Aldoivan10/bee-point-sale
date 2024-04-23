@@ -17,15 +17,19 @@ class Product extends Scheme {
                         SELECT 
                             JSON_GROUP_ARRAY
                             (
-                                CASE
-                                    WHEN LENGTH('${filterCode}') > 0 AND INSTR(UPPER(PC.codigo), UPPER('${filterCode}')) > 0 THEN
-                                        SUBSTR(COALESCE(PC.codigo, ''), 0, INSTR(UPPER(PC.codigo), UPPER('${filterCode}'))) || 
-                                        '<mark>' || SUBSTR(COALESCE(PC.codigo, ''), INSTR(UPPER(PC.codigo), UPPER('${filterCode}')), LENGTH('${filterCode}')) || 
-                                        '</mark>' || SUBSTR(COALESCE(PC.codigo, ''), INSTR(UPPER(PC.codigo), UPPER('${filterCode}')) + LENGTH('${filterCode}'))
-                                    ELSE
-                                        COALESCE(PC.codigo, '')
-                                        
-                                END              
+                                JSON_OBJECT
+                                (
+                                    C.nombre,
+                                    CASE
+                                        WHEN LENGTH('${filterCode}') > 0 AND INSTR(UPPER(PC.codigo), UPPER('${filterCode}')) > 0 THEN
+                                            SUBSTR(COALESCE(PC.codigo, ''), 0, INSTR(UPPER(PC.codigo), UPPER('${filterCode}'))) || 
+                                            '<mark>' || SUBSTR(COALESCE(PC.codigo, ''), INSTR(UPPER(PC.codigo), UPPER('${filterCode}')), LENGTH('${filterCode}')) || 
+                                            '</mark>' || SUBSTR(COALESCE(PC.codigo, ''), INSTR(UPPER(PC.codigo), UPPER('${filterCode}')) + LENGTH('${filterCode}'))
+                                        ELSE
+                                            COALESCE(PC.codigo, '')
+                                            
+                                    END  
+                                )            
                             )
                         FROM
                             Producto_Codigo PC
@@ -88,19 +92,13 @@ class Product extends Scheme {
         return await this.db.fetch(query, [], (data) => {
             const jsonRows = data.map((row) => JSON.parse(row["producto"]))
             const rows = jsonRows.reduce((rows, product) => {
-                const row = product.codigos
-                const units = product.unidades.reduce((acc, val) => {
-                    acc.push([val.cantidad, val.unidad, val.precio_venta])
-                    return acc
-                }, [])
-                row.push(product.nombre)
-                row.push(units[0])
-                rows.push(row.flat())
-                for (const unit of units.slice(1)) {
-                    const otherRow = Array.form("".repeat(row.length))
-                    otherRow.push(unit)
-                    rows.push(otherRow.flat())
-                }
+                const productObj = product.codigos.reduce((codigos, codigo) => {
+                    const key = Object.keys(codigo)[0]
+                    codigos[key] = codigo[key]
+                    return codigos
+                }, {}) // Buscamos los codigos
+                productObj["unidades"] = product.unidades // Obtenemos las unidades
+                rows.push(productObj) // Agregamos el producto
                 return rows
             }, [])
             return rows

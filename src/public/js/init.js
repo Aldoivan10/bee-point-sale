@@ -2,7 +2,7 @@ function initTable() {
     const { $table, $filterName, $filterCode, $pagination, $pageSizeSelector } =
         tableVars()
 
-    const tblController = new TableController(
+    new TableController(
         new TableView($table),
         new TableModel(),
         new Pagination($pagination, $pageSizeSelector),
@@ -17,11 +17,9 @@ function initTable() {
             },
         }
     ).init()
-
-    return { tblController }
 }
 
-function initAdmin(tblController) {
+function initAdmin() {
     const {
         $name,
         $btnSendUser,
@@ -35,7 +33,7 @@ function initAdmin(tblController) {
         $btnLogout,
         $mainBody,
     } = adminVars()
-    const userController = new UserController(
+    new UserController(
         new UserModel(),
         new UserView(
             $name,

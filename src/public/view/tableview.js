@@ -5,9 +5,21 @@ class TableView {
     }
 
     buildHeader(headers) {
+        const fc = "Seleccionar"
         removeChilds(this.$header)
-        for (const header of headers) {
+        for (const header of [fc].concat(headers)) {
             const col = this._createtCol(header)
+            if (header === fc)
+                col.innerHTML = `
+                    <td>
+                        <div class="form-control">
+                            <label class="cursor-pointer label">
+                                <input type="checkbox" class="checkbox checkbox-secondary me-2 bg-secondary/25" />
+                                ${fc}
+                            </label>
+                        </div>
+                    </td>
+                `
             this.$header.appendChild(col)
         }
     }
@@ -36,6 +48,7 @@ class TableView {
 
     addRow(row) {
         const $row = document.createElement("tr")
+        $row.innerHTML = `<td><input type="checkbox" class="checkbox checkbox-sm checkbox-primary" /></td>`
         for (const column of row) {
             $row.innerHTML += `<td class="hover">${column}</td>`
         }
