@@ -42,7 +42,7 @@ class Product extends Scheme {
                         ORDER BY
                             C.nombre
                     ),
-                    'nombre',
+                    'Nombre',
                     CASE
                         WHEN LENGTH('${filterName}') > 0 AND INSTR(UPPER(P.nombre), UPPER('${filterName}')) > 0 THEN
                             SUBSTR(COALESCE(P.nombre, ''), 0, INSTR(UPPER(P.nombre), UPPER('${filterName}'))) || 
@@ -54,7 +54,7 @@ class Product extends Scheme {
                     'unidades',
                     (
                         SELECT 
-                            JSON_GROUP_ARRAY(JSON_OBJECT('unidad', U.nombre, 'cantidad', PU.cantidad, 'descuento', PU.descuento, 'ganancia', PU.ganancia, 'precio_compra', PU.precio_compra, 'precio_venta', PU.precio_venta))
+                            JSON_GROUP_ARRAY(JSON_OBJECT('Unidad', U.nombre, 'Cantidad', PU.cantidad, 'Descuento', PU.descuento, 'Ganancia', PU.ganancia, 'Precio de compra', PU.precio_compra, 'Precio de venta', PU.precio_venta))
                         FROM
                             Producto_Unidad PU
                         INNER JOIN 
