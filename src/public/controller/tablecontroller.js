@@ -103,6 +103,18 @@ class TableController {
             }, [])
 
             this.$view.buildBody(bodyRows)
+
+            const checksArr = this.$view.getChecks()
+            const checks = checksArr.slice(1)
+            const mainCheck = checksArr[0]
+            mainCheck.onchange = () => {
+                checks.forEach((el) => (el.checked = mainCheck.checked))
+            }
+
+            checks.forEach((el) => {
+                el.onchange = () =>
+                    (mainCheck.checked = checks.every((el) => el.checked))
+            })
         }
     }
 }

@@ -4,7 +4,8 @@ function tableVars() {
     const $filter = $main.getElementById("filter")
     const $pagination = $main.getElementById("productsPagination")
     const $pageSizeSelector = $main.getElementById("select-num-results")
-    return { $table, $filter, $pagination, $pageSizeSelector }
+    const $btnDelItem = $main.getElementById("btnDelItem")
+    return { $table, $filter, $pagination, $pageSizeSelector, $btnDelItem }
 }
 
 function adminVars() {
@@ -14,7 +15,6 @@ function adminVars() {
     const $headerBody = $header.querySelector("body")
     const $name = $header.getElementById("userName")
     const $btnAddItem = $main.getElementById("btnAddItem")
-    const $btnDelItem = $main.getElementById("btnDelItem")
 
     const $btnLogin = $header.getElementById("btnLogin")
     const $btnLogout = $header.getElementById("btnLogout")
@@ -33,7 +33,6 @@ function adminVars() {
         $inputPass,
         $alertContainer,
         $btnAddItem,
-        $btnDelItem,
         $headerBody,
         $btnLogout,
         $mainBody,

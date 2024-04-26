@@ -15,7 +15,9 @@
     <body
         class="overflow-hidden h-[100dvh] [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px] [&:not(.admin)_.btn-admin]:hidden [&:not(.admin)_tbody_td:nth-child(1)]:hidden [&:not(.admin)_thead_td:nth-child(1)]:hidden [&:not(.admin)_td:nth-child(n+9)]:hidden"
     >
-        <main class="flex-grow flex flex-col p-4 h-[100%]">
+        <main
+            class="flex-grow flex flex-col p-4 h-[100%] [&:has(input[type=checkbox]:checked)_.btn-error]:bg-opacity-100 [&:has(input[type=checkbox]:checked)_.btn-error]:pointer-events-auto"
+        >
             <div class="pb-6 flex gap-6 justify-between">
                 <span class="flex gap-6">
                     <input
@@ -62,7 +64,9 @@
                         class="tooltip tooltip-left font-bold transition transform btn-admin"
                         data-tip="Eliminar seleccionados"
                     >
-                        <button class="btn btn-error">
+                        <button
+                            class="btn btn-error bg-opacity-50 pointer-events-none"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 448 512"

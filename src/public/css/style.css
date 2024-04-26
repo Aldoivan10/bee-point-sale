@@ -3248,14 +3248,6 @@ input.tab:checked + .tab-content,
   bottom: var(--tooltip-offset);
 }
 
-.tooltip-bottom:before {
-  transform: translateX(-50%);
-  top: var(--tooltip-offset);
-  left: 50%;
-  right: auto;
-  bottom: auto;
-}
-
 .tooltip-left:before {
   transform: translateY(-50%);
   top: 50%;
@@ -3462,15 +3454,6 @@ input.tab:checked + .tab-content,
   bottom: var(--tooltip-tail-offset);
 }
 
-.tooltip-bottom:after {
-  transform: translateX(-50%);
-  border-color: transparent transparent var(--tooltip-color) transparent;
-  top: var(--tooltip-tail-offset);
-  left: 50%;
-  right: auto;
-  bottom: auto;
-}
-
 .tooltip-left:after {
   transform: translateY(-50%);
   border-color: transparent transparent transparent var(--tooltip-color);
@@ -3478,6 +3461,10 @@ input.tab:checked + .tab-content,
   left: auto;
   right: calc(var(--tooltip-tail-offset) + 0.0625rem);
   bottom: auto;
+}
+
+.pointer-events-none {
+  pointer-events: none;
 }
 
 .absolute {
@@ -3569,10 +3556,6 @@ input.tab:checked + .tab-content,
   height: 65px;
 }
 
-.h-6 {
-  height: 1.5rem;
-}
-
 .w-4 {
   width: 1rem;
 }
@@ -3591,10 +3574,6 @@ input.tab:checked + .tab-content,
 
 .w-full {
   width: 100%;
-}
-
-.w-6 {
-  width: 1.5rem;
 }
 
 .min-w-\[100dvw\] {
@@ -3633,10 +3612,6 @@ input.tab:checked + .tab-content,
   flex-direction: column;
 }
 
-.place-content-center {
-  place-content: center;
-}
-
 .place-items-center {
   place-items: center;
 }
@@ -3661,12 +3636,12 @@ input.tab:checked + .tab-content,
   gap: 0.75rem;
 }
 
-.gap-6 {
-  gap: 1.5rem;
-}
-
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
 }
 
 .overflow-auto {
@@ -3732,6 +3707,10 @@ input.tab:checked + .tab-content,
   background-color: var(--fallback-s,oklch(var(--s)/0.25));
 }
 
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
+}
+
 .fill-current {
   fill: currentColor;
 }
@@ -3757,16 +3736,12 @@ input.tab:checked + .tab-content,
   padding-bottom: 1.5rem;
 }
 
-.pt-2 {
-  padding-top: 0.5rem;
-}
-
-.ps-1 {
-  padding-inline-start: 0.25rem;
-}
-
 .ps-\[1px\] {
   padding-inline-start: 1px;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
 }
 
 .text-center {
@@ -3839,180 +3814,6 @@ input.tab:checked + .tab-content,
   transition-duration: 150ms;
 }
 
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-disabled:has(:checked) .btn-error {
-  pointer-events: none;
-}
-
-@media (hover: hover) {
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-disabled:has(:checked) .btn-error:hover {
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-disabled:has(:checked) .btn-error.btn {
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
-}
-
-.\[\&\:has\(input\)_\.btn-error\]\:btn-disabled:has(input) .btn-error {
-  pointer-events: none;
-}
-
-@media (hover: hover) {
-  .\[\&\:has\(input\)_\.btn-error\]\:btn-disabled:has(input) .btn-error:hover {
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-}
-
-.\[\&\:has\(input\)_\.btn-error\]\:btn-disabled:has(input) .btn-error.btn {
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
-}
-
-.\[\&\:has\(input\:checked\)_\.btn-error\]\:btn-disabled:has(input:checked) .btn-error {
-  pointer-events: none;
-}
-
-@media (hover: hover) {
-  .\[\&\:has\(input\:checked\)_\.btn-error\]\:btn-disabled:has(input:checked) .btn-error:hover {
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-}
-
-.\[\&\:has\(input\:checked\)_\.btn-error\]\:btn-disabled:has(input:checked) .btn-error.btn {
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
-}
-
-.has-\[input\:checked\]\:\[\&_\#btnDelItem\>button\]\:btn-disabled #btnDelItem>button:has(input:checked) {
-  pointer-events: none;
-}
-
-@media (hover: hover) {
-  .has-\[input\:checked\]\:\[\&_\#btnDelItem\>button\]\:btn-disabled #btnDelItem>button:has(input:checked):hover {
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-}
-
-.has-\[input\:checked\]\:\[\&_\#btnDelItem\>button\]\:btn-disabled #btnDelItem>button:has(input:checked).btn {
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
-}
-
-.has-\[input\:not\(\:checked\)\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:not(:checked)) {
-  pointer-events: none;
-}
-
-.has-\[input\:checked\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:checked) {
-  pointer-events: none;
-}
-
-@media (hover: hover) {
-  .has-\[input\:not\(\:checked\)\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:not(:checked)):hover {
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-
-  .has-\[input\:checked\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:checked):hover {
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-}
-
-.has-\[input\:not\(\:checked\)\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:not(:checked)).btn {
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
-}
-
-.has-\[input\:checked\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:checked).btn {
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
-}
-
-.\[\&_\.btn-error\]\:btn-disabled .btn-error {
-  pointer-events: none;
-}
-
-@media (hover: hover) {
-  .\[\&_\.btn-error\]\:btn-disabled .btn-error:hover {
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-}
-
-.\[\&_\.btn-error\]\:btn-disabled .btn-error.btn {
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
-}
-
-.has-\[input\:checked\]\:\[\&_\.btn-error\]\:btn-disabled .btn-error:has(input:checked) {
-  pointer-events: none;
-}
-
-@media (hover: hover) {
-  .has-\[input\:checked\]\:\[\&_\.btn-error\]\:btn-disabled .btn-error:has(input:checked):hover {
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-}
-
-.has-\[input\:checked\]\:\[\&_\.btn-error\]\:btn-disabled .btn-error:has(input:checked).btn {
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
-}
-
 .hover\:border-primary-content:hover {
   --tw-border-opacity: 1;
   border-color: var(--fallback-pc,oklch(var(--pc)/var(--tw-border-opacity)));
@@ -4027,13 +3828,82 @@ input.tab:checked + .tab-content,
   fill: #fff;
 }
 
+.has-\[input\[type\=checkbox\]\:checked\]\:bg-white:has(input[type=checkbox]:checked) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.has-\[input\[type\=checkbox\]\:not\(\:checked\)\]\:bg-white:has(input[type=checkbox]:not(:checked)) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.has-\[input\:checked\]\:bg-white:has(input:checked) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.has-\[input\:is\(\:checked\)\]\:bg-white:has(input:is(:checked)) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.has-\[input\[type\=checkbox\]\:checked\]\:bg-opacity-50:has(input[type=checkbox]:checked) {
+  --tw-bg-opacity: 0.5;
+}
+
 .has-\[input\:focus\]\:fill-primary:has(input:focus) {
   fill: var(--fallback-p,oklch(var(--p)/1));
 }
 
-.\[\&\:has\(input\:checked\)\]\:bg-red-50:has(input:checked) {
+.\[\&\:has\(input\:checked\)_\.btn-error\]\:pointer-events-none:has(input:checked) .btn-error {
+  pointer-events: none;
+}
+
+.\[\&\:has\(input\:checked\)_\.btn-error\]\:pointer-events-auto:has(input:checked) .btn-error {
+  pointer-events: auto;
+}
+
+.\[\&\:has\(input\:checked\)_\.btn-error\]\:bg-opacity-100:has(input:checked) .btn-error {
   --tw-bg-opacity: 1;
-  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
+}
+
+.\[\&\:has\(input\:not\(\:checked\)\)_\.btn-error\]\:bg-opacity-50:has(input:not(:checked)) .btn-error {
+  --tw-bg-opacity: 0.5;
+}
+
+.\[\&\:has\(input\[type\=checkbox\]\:checked\)\]\:bg-opacity-50:has(input[type=checkbox]:checked) {
+  --tw-bg-opacity: 0.5;
+}
+
+.\[\&\:has\(input\[type\=checkbox\]\:checked\)_\.btn-error\]\:pointer-events-auto:has(input[type=checkbox]:checked) .btn-error {
+  pointer-events: auto;
+}
+
+.\[\&\:has\(input\[type\=checkbox\]\:checked\)_\.btn-error\]\:bg-white:has(input[type=checkbox]:checked) .btn-error {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.\[\&\:has\(input\[type\=checkbox\]\:checked\)_\.btn-error\]\:bg-opacity-100:has(input[type=checkbox]:checked) .btn-error {
+  --tw-bg-opacity: 1;
+}
+
+.\[\&\:has\(input\[type\=checkbox\]\:not\(\:checked\)\)_\.btn-error\]\:pointer-events-none:has(input[type=checkbox]:not(:checked)) .btn-error {
+  pointer-events: none;
+}
+
+.\[\&\:has\(input\[type\=checkbox\]\:not\(\:checked\)\)_\.btn-error\]\:bg-white:has(input[type=checkbox]:not(:checked)) .btn-error {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.\[\&\:has\(input\[type\=checkbox\]\:not\(\:checked\)\)_\.btn-error\]\:bg-opacity-10:has(input[type=checkbox]:not(:checked)) .btn-error {
+  --tw-bg-opacity: 0.1;
+}
+
+.\[\&\:has\(input\[type\=checkbox\]\:not\(\:checked\)\)_\.btn-error\]\:bg-opacity-50:has(input[type=checkbox]:not(:checked)) .btn-error {
+  --tw-bg-opacity: 0.5;
 }
 
 .\[\&\:has\(tbody\>tr\)_span\]\:hidden:has(tbody>tr) span {
@@ -4056,14 +3926,6 @@ input.tab:checked + .tab-content,
   display: none;
 }
 
-.\[\&\:not\(\.admin\)_td\:nth-child\(n\+7\)\]\:hidden:not(.admin) td:nth-child(n+7) {
-  display: none;
-}
-
-.\[\&\:not\(\.admin\)_td\:nth-child\(n\+8\)\]\:hidden:not(.admin) td:nth-child(n+8) {
-  display: none;
-}
-
 .\[\&\:not\(\.admin\)_td\:nth-child\(n\+9\)\]\:hidden:not(.admin) td:nth-child(n+9) {
   display: none;
 }
@@ -4080,8 +3942,61 @@ input.tab:checked + .tab-content,
   height: 45px;
 }
 
+.has-\[input\[type\=checkbox\]\:checked\]\:\[\&_\#btnDelItem\>button\]\:pointer-events-none #btnDelItem>button:has(input[type=checkbox]:checked) {
+  pointer-events: none;
+}
+
+.has-\[input\[type\=checkbox\]\:checked\]\:\[\&_\#btnDelItem\>button\]\:bg-white #btnDelItem>button:has(input[type=checkbox]:checked) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.has-\[input\[type\=checkbox\]\:not\(\:checked\)\]\:\[\&_\#btnDelItem\>button\]\:bg-white #btnDelItem>button:has(input[type=checkbox]:not(:checked)) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .\[\&_\*\]\:box-border * {
   box-sizing: border-box;
+}
+
+.\[\&_\.btn-error\]\:pointer-events-none .btn-error {
+  pointer-events: none;
+}
+
+.\[\&_\.btn-error\]\:bg-white .btn-error {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.\[\&_\.btn-error\]\:bg-opacity-50 .btn-error {
+  --tw-bg-opacity: 0.5;
+}
+
+.\[\&_\.btn-error\]\:bg-opacity-100 .btn-error {
+  --tw-bg-opacity: 1;
+}
+
+.has-\[input\[type\=checkbox\]\:not\(\:checked\)\]\:\[\&_\.btn-error\]\:bg-white .btn-error:has(input[type=checkbox]:not(:checked)) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.has-\[input\[type\=checkbox\]\:checked\]\:\[\&_\.btn-error\]\:bg-white .btn-error:has(input[type=checkbox]:checked) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.has-\[input\:checked\]\:\[\&_\.btn-error\]\:bg-opacity-100 .btn-error:has(input:checked) {
+  --tw-bg-opacity: 1;
+}
+
+.has-\[input\[type\=checkbox\]\:checked\]\:\[\&_\.btn-error\]\:bg-opacity-100 .btn-error:has(input[type=checkbox]:checked) {
+  --tw-bg-opacity: 1;
+}
+
+.has-\[input\[type\=checkbox\]\:checked\]\:\[\&_\.btn-error\]\:bg-opacity-50 .btn-error:has(input[type=checkbox]:checked) {
+  --tw-bg-opacity: 0.5;
 }
 
 .\[\&_input\:first-child\:nth-last-child\(1\)\]\:rounded input:first-child:nth-last-child(1) {
@@ -4101,40 +4016,8 @@ input.tab:checked + .tab-content,
   padding-right: 2px;
 }
 
-.\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/50 tr:nth-child(even) {
-  background-color: rgb(100 116 139 / 0.5);
-}
-
-.\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/20 tr:nth-child(even) {
-  background-color: rgb(100 116 139 / 0.2);
-}
-
-.\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/5 tr:nth-child(even) {
-  background-color: rgb(100 116 139 / 0.05);
-}
-
 .\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/10 tr:nth-child(even) {
   background-color: rgb(100 116 139 / 0.1);
-}
-
-.\[\&_tr\:nth-child\(even\)\]\:bg-slate-50\/10 tr:nth-child(even) {
-  background-color: rgb(248 250 252 / 0.1);
-}
-
-.\[\&_tr\:nth-child\(even\)\]\:bg-slate-700\/10 tr:nth-child(even) {
-  background-color: rgb(51 65 85 / 0.1);
-}
-
-.\[\&_tr\:nth-child\(odd\)\]\:bg-slate-500\/25 tr:nth-child(odd) {
-  background-color: rgb(100 116 139 / 0.25);
-}
-
-.\[\&_tr\:nth-child\(odd\)\]\:bg-slate-500\/5 tr:nth-child(odd) {
-  background-color: rgb(100 116 139 / 0.05);
-}
-
-.\[\&_tr\:nth-child\(odd\)\]\:bg-slate-800\/5 tr:nth-child(odd) {
-  background-color: rgb(30 41 59 / 0.05);
 }
 
 .\[\&_tr\:nth-child\(odd\)\]\:bg-slate-900\/5 tr:nth-child(odd) {

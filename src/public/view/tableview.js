@@ -24,6 +24,14 @@ class TableView {
         }
     }
 
+    getChecks() {
+        const checks = [
+            this.$header.querySelector("input[type=checkbox]"),
+            ...this.$body.querySelectorAll("input[type=checkbox]"),
+        ]
+        return checks
+    }
+
     buildBody(rows) {
         if (rows.length > 0)
             for (const row of rows) {

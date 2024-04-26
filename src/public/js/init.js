@@ -38,7 +38,6 @@ function initAdmin() {
         $inputPass,
         $alertContainer,
         $btnAddItem,
-        $btnDelItem,
         $headerBody,
         $btnLogout,
         $mainBody,
@@ -52,7 +51,6 @@ function initAdmin() {
             $inputPass,
             $btnSendUser,
             $btnAddItem,
-            $btnDelItem,
             $headerBody,
             $mainBody
         ),

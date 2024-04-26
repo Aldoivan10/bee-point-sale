@@ -6,7 +6,6 @@ class UserView {
         inputPass,
         btnSendUser,
         btnAddItem,
-        btnDelItem,
         headerBody,
         mainBody
     ) {
@@ -15,7 +14,6 @@ class UserView {
         this.$inputPass = inputPass
         this.$inputUser = inputUser
         this.$btnAddItem = btnAddItem
-        this.$btnDelItem = btnDelItem
         this.$btnSendUser = btnSendUser
         this.$headerBody = headerBody
         this.$mainBody = mainBody
