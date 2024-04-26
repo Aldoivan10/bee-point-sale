@@ -23,6 +23,8 @@ class Product extends Scheme {
             SELECT
                 json_object
                 (
+                    'id',
+                    P.id_producto,
                     'codigos',
                     (
                         SELECT 
@@ -73,6 +75,8 @@ class Product extends Scheme {
                 P.nombre LIKE '%${filter}%' 
             OR
                 PC.codigo LIKE '%${filter}%'
+            GROUP BY
+                P.id_producto
             ORDER BY
                 P.id_producto
             LIMIT ${pageSize}
@@ -91,6 +95,7 @@ class Product extends Scheme {
                     )
                     return codigos
                 }, {}) // Buscamos los codigos
+                productObj["id"] = product.id
                 productObj["Nombre"] = this.encloseStr(
                     product.Nombre,
                     filter,

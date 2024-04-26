@@ -73,7 +73,7 @@ class TableController {
             const mappedRows = rows.reduce((rows, row) => {
                 const keys = Object.keys(row)
                 const base = keys.reduce((acc, key) => {
-                    if (key === "unidades") return acc
+                    if (key === "unidades" || key === "id") return acc
                     return { ...acc, [key]: row[key] }
                 }, {})
                 const units = row.unidades
@@ -89,6 +89,7 @@ class TableController {
                         }
                         obj[key] = unit[key]
                     }
+                    obj["id"] = row["id"]
                     accRows.push({ ...base, ...obj })
                 }
 
@@ -96,7 +97,7 @@ class TableController {
             }, [])
 
             const bodyRows = mappedRows.reduce((rows, obj) => {
-                const row = []
+                const row = [obj["id"]]
                 for (const header of this.$model.headers) row.push(obj[header])
                 rows.push(row)
                 return rows

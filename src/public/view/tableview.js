@@ -56,9 +56,10 @@ class TableView {
 
     addRow(row) {
         const $row = document.createElement("tr")
+        $row.id = row[0]
         $row.classList.add("hover")
         $row.innerHTML = `<td><input type="checkbox" class="checkbox checkbox-sm checkbox-primary" /></td>`
-        for (const column of row)
+        for (const column of row.slice(1))
             $row.innerHTML += `<td class="hover">${column}</td>`
         this.$body.appendChild($row)
     }

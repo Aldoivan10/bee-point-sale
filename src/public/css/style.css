@@ -3828,82 +3828,16 @@ input.tab:checked + .tab-content,
   fill: #fff;
 }
 
-.has-\[input\[type\=checkbox\]\:checked\]\:bg-white:has(input[type=checkbox]:checked) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.has-\[input\[type\=checkbox\]\:not\(\:checked\)\]\:bg-white:has(input[type=checkbox]:not(:checked)) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.has-\[input\:checked\]\:bg-white:has(input:checked) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.has-\[input\:is\(\:checked\)\]\:bg-white:has(input:is(:checked)) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.has-\[input\[type\=checkbox\]\:checked\]\:bg-opacity-50:has(input[type=checkbox]:checked) {
-  --tw-bg-opacity: 0.5;
-}
-
 .has-\[input\:focus\]\:fill-primary:has(input:focus) {
   fill: var(--fallback-p,oklch(var(--p)/1));
-}
-
-.\[\&\:has\(input\:checked\)_\.btn-error\]\:pointer-events-none:has(input:checked) .btn-error {
-  pointer-events: none;
-}
-
-.\[\&\:has\(input\:checked\)_\.btn-error\]\:pointer-events-auto:has(input:checked) .btn-error {
-  pointer-events: auto;
-}
-
-.\[\&\:has\(input\:checked\)_\.btn-error\]\:bg-opacity-100:has(input:checked) .btn-error {
-  --tw-bg-opacity: 1;
-}
-
-.\[\&\:has\(input\:not\(\:checked\)\)_\.btn-error\]\:bg-opacity-50:has(input:not(:checked)) .btn-error {
-  --tw-bg-opacity: 0.5;
-}
-
-.\[\&\:has\(input\[type\=checkbox\]\:checked\)\]\:bg-opacity-50:has(input[type=checkbox]:checked) {
-  --tw-bg-opacity: 0.5;
 }
 
 .\[\&\:has\(input\[type\=checkbox\]\:checked\)_\.btn-error\]\:pointer-events-auto:has(input[type=checkbox]:checked) .btn-error {
   pointer-events: auto;
 }
 
-.\[\&\:has\(input\[type\=checkbox\]\:checked\)_\.btn-error\]\:bg-white:has(input[type=checkbox]:checked) .btn-error {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .\[\&\:has\(input\[type\=checkbox\]\:checked\)_\.btn-error\]\:bg-opacity-100:has(input[type=checkbox]:checked) .btn-error {
   --tw-bg-opacity: 1;
-}
-
-.\[\&\:has\(input\[type\=checkbox\]\:not\(\:checked\)\)_\.btn-error\]\:pointer-events-none:has(input[type=checkbox]:not(:checked)) .btn-error {
-  pointer-events: none;
-}
-
-.\[\&\:has\(input\[type\=checkbox\]\:not\(\:checked\)\)_\.btn-error\]\:bg-white:has(input[type=checkbox]:not(:checked)) .btn-error {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.\[\&\:has\(input\[type\=checkbox\]\:not\(\:checked\)\)_\.btn-error\]\:bg-opacity-10:has(input[type=checkbox]:not(:checked)) .btn-error {
-  --tw-bg-opacity: 0.1;
-}
-
-.\[\&\:has\(input\[type\=checkbox\]\:not\(\:checked\)\)_\.btn-error\]\:bg-opacity-50:has(input[type=checkbox]:not(:checked)) .btn-error {
-  --tw-bg-opacity: 0.5;
 }
 
 .\[\&\:has\(tbody\>tr\)_span\]\:hidden:has(tbody>tr) span {
@@ -3942,61 +3876,8 @@ input.tab:checked + .tab-content,
   height: 45px;
 }
 
-.has-\[input\[type\=checkbox\]\:checked\]\:\[\&_\#btnDelItem\>button\]\:pointer-events-none #btnDelItem>button:has(input[type=checkbox]:checked) {
-  pointer-events: none;
-}
-
-.has-\[input\[type\=checkbox\]\:checked\]\:\[\&_\#btnDelItem\>button\]\:bg-white #btnDelItem>button:has(input[type=checkbox]:checked) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.has-\[input\[type\=checkbox\]\:not\(\:checked\)\]\:\[\&_\#btnDelItem\>button\]\:bg-white #btnDelItem>button:has(input[type=checkbox]:not(:checked)) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .\[\&_\*\]\:box-border * {
   box-sizing: border-box;
-}
-
-.\[\&_\.btn-error\]\:pointer-events-none .btn-error {
-  pointer-events: none;
-}
-
-.\[\&_\.btn-error\]\:bg-white .btn-error {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.\[\&_\.btn-error\]\:bg-opacity-50 .btn-error {
-  --tw-bg-opacity: 0.5;
-}
-
-.\[\&_\.btn-error\]\:bg-opacity-100 .btn-error {
-  --tw-bg-opacity: 1;
-}
-
-.has-\[input\[type\=checkbox\]\:not\(\:checked\)\]\:\[\&_\.btn-error\]\:bg-white .btn-error:has(input[type=checkbox]:not(:checked)) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.has-\[input\[type\=checkbox\]\:checked\]\:\[\&_\.btn-error\]\:bg-white .btn-error:has(input[type=checkbox]:checked) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.has-\[input\:checked\]\:\[\&_\.btn-error\]\:bg-opacity-100 .btn-error:has(input:checked) {
-  --tw-bg-opacity: 1;
-}
-
-.has-\[input\[type\=checkbox\]\:checked\]\:\[\&_\.btn-error\]\:bg-opacity-100 .btn-error:has(input[type=checkbox]:checked) {
-  --tw-bg-opacity: 1;
-}
-
-.has-\[input\[type\=checkbox\]\:checked\]\:\[\&_\.btn-error\]\:bg-opacity-50 .btn-error:has(input[type=checkbox]:checked) {
-  --tw-bg-opacity: 0.5;
 }
 
 .\[\&_input\:first-child\:nth-last-child\(1\)\]\:rounded input:first-child:nth-last-child(1) {
