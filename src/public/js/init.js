@@ -1,13 +1,11 @@
 function initTable() {
-    const { $table, $filterName, $filterCode, $pagination, $pageSizeSelector } =
-        tableVars()
+    const { $table, $filter, $pagination, $pageSizeSelector } = tableVars()
 
     new TableController(
         new TableView($table),
         new TableModel(),
         new Pagination($pagination, $pageSizeSelector),
-        $filterCode,
-        $filterName,
+        $filter,
         {
             "Precio de venta": (val) => {
                 return val.toLocaleString("es-MX", {

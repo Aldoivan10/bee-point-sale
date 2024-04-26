@@ -2,12 +2,23 @@ class Scheme {
     constructor(db) {
         this.db = db
     }
+
+    encloseStr(str, find, init, end) {
+        if (!str || !find) return str
+        const regex = new RegExp(find, "i")
+        const index = str.search(regex)
+        if (index === -1) return str
+        const length = find.length
+        return `${str.slice(0, index)}${init}${str.slice(
+            index,
+            index + length
+        )}${end}${str.slice(index + length)}`
+    }
 }
 
 class Product extends Scheme {
-    async all(pageSize, offset, filterCode, filterName) {
-        filterCode = filterCode ? filterCode : ""
-        filterName = filterName ? filterName : ""
+    async all(pageSize, offset, filter) {
+        filter = filter ? filter : ""
         const query = `
             SELECT
                 json_object
@@ -20,15 +31,7 @@ class Product extends Scheme {
                                 JSON_OBJECT
                                 (
                                     C.nombre,
-                                    CASE
-                                        WHEN LENGTH('${filterCode}') > 0 AND INSTR(UPPER(PC.codigo), UPPER('${filterCode}')) > 0 THEN
-                                            SUBSTR(COALESCE(PC.codigo, ''), 0, INSTR(UPPER(PC.codigo), UPPER('${filterCode}'))) || 
-                                            '<mark>' || SUBSTR(COALESCE(PC.codigo, ''), INSTR(UPPER(PC.codigo), UPPER('${filterCode}')), LENGTH('${filterCode}')) || 
-                                            '</mark>' || SUBSTR(COALESCE(PC.codigo, ''), INSTR(UPPER(PC.codigo), UPPER('${filterCode}')) + LENGTH('${filterCode}'))
-                                        ELSE
-                                            COALESCE(PC.codigo, '')
-                                            
-                                    END  
+                                    COALESCE(PC.codigo, '')
                                 )            
                             )
                         FROM
@@ -43,14 +46,7 @@ class Product extends Scheme {
                             C.nombre
                     ),
                     'Nombre',
-                    CASE
-                        WHEN LENGTH('${filterName}') > 0 AND INSTR(UPPER(P.nombre), UPPER('${filterName}')) > 0 THEN
-                            SUBSTR(COALESCE(P.nombre, ''), 0, INSTR(UPPER(P.nombre), UPPER('${filterName}'))) || 
-                            '<mark>' || SUBSTR(COALESCE(P.nombre, ''), INSTR(UPPER(P.nombre), UPPER('${filterName}')), LENGTH('${filterName}')) || 
-                            '</mark>' || SUBSTR(COALESCE(P.nombre, ''), INSTR(UPPER(P.nombre), UPPER('${filterName}')) + LENGTH('${filterName}'))
-                        ELSE
-                            P.nombre
-                    END,
+                    P.nombre,
                     'unidades',
                     (
                         SELECT 
@@ -64,7 +60,7 @@ class Product extends Scheme {
                         WHERE
                             PU.id_producto = P.id_producto
                         ORDER BY
-                            U.id_unidad
+                        U.id_unidad
                     )
                 ) producto
             FROM 
@@ -73,19 +69,12 @@ class Product extends Scheme {
                 Producto_Codigo PC
             ON
                 PC.id_producto = P.id_producto
-            AND
-                PC.id_producto 
-            IN 
-            (
-                SELECT
-                    PC.id_producto
-                FROM
-                    Producto_Codigo PC
-                WHERE
-                    PC.codigo LIKE '%${filterCode}%'
-            )
             WHERE
-                P.nombre LIKE '%${filterName}%' 
+                P.nombre LIKE '%${filter}%' 
+            OR
+                PC.codigo LIKE '%${filter}%'
+            ORDER BY
+                P.id_producto
             LIMIT ${pageSize}
             OFFSET ${offset}
         `
@@ -94,10 +83,20 @@ class Product extends Scheme {
             const rows = jsonRows.reduce((rows, product) => {
                 const productObj = product.codigos.reduce((codigos, codigo) => {
                     const key = Object.keys(codigo)[0]
-                    codigos[key] = codigo[key]
+                    codigos[key] = this.encloseStr(
+                        codigo[key],
+                        filter,
+                        "<mark>",
+                        "</mark>"
+                    )
                     return codigos
                 }, {}) // Buscamos los codigos
-                productObj["Nombre"] = product.Nombre
+                productObj["Nombre"] = this.encloseStr(
+                    product.Nombre,
+                    filter,
+                    "<mark>",
+                    "</mark>"
+                )
                 productObj["unidades"] = product.unidades // Obtenemos las unidades
                 rows.push(productObj) // Agregamos el producto
                 return rows
@@ -105,7 +104,7 @@ class Product extends Scheme {
             return rows
         })
     }
-    async total(filterCode, filterName) {
+    async total(filter) {
         const sql = `
         SELECT
             COUNT(DISTINCT PC.id_producto) total
@@ -115,10 +114,10 @@ class Product extends Scheme {
             Producto_Codigo PC
         ON
             PC.id_producto = P.id_producto
-        AND
-            PC.codigo LIKE '%${filterCode ? filterCode : ""}%'
         WHERE
-            P.nombre LIKE '%${filterName ? filterName : ""}%' 
+            P.nombre LIKE '%${filter ? filter : ""}%' 
+        OR
+            PC.codigo LIKE '%${filter ? filter : ""}%'
         `
         return await this.db.fetch(sql, [], (rows) => rows[0]["total"])
     }

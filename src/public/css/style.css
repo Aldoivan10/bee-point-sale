@@ -888,11 +888,6 @@ html {
     border-color: var(--fallback-s,oklch(var(--s)/var(--tw-border-opacity)));
   }
 
-  .checkbox-accent:hover {
-    --tw-border-opacity: 1;
-    border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
-  }
-
   .label a:hover {
     --tw-text-opacity: 1;
     color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
@@ -1863,6 +1858,10 @@ input.tab:checked + .tab-content,
     border-color: var(--btn-color, var(--fallback-b2));
   }
 
+  .btn-primary {
+    --btn-color: var(--fallback-p);
+  }
+
   .btn-success {
     --btn-color: var(--fallback-su);
   }
@@ -1915,7 +1914,17 @@ input.tab:checked + .tab-content,
   outline-offset: 2px;
 }
 
+.btn-primary {
+  --tw-text-opacity: 1;
+  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
+  outline-color: var(--fallback-p,oklch(var(--p)/1));
+}
+
 @supports (color: oklch(0% 0 0)) {
+  .btn-primary {
+    --btn-color: var(--p);
+  }
+
   .btn-success {
     --btn-color: var(--su);
   }
@@ -2173,27 +2182,6 @@ input.tab:checked + .tab-content,
   color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
 }
 
-.checkbox-accent {
-  --chkbg: var(--fallback-a,oklch(var(--a)/1));
-  --chkfg: var(--fallback-ac,oklch(var(--ac)/1));
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
-}
-
-.checkbox-accent:focus-visible {
-  outline-color: var(--fallback-a,oklch(var(--a)/1));
-}
-
-.checkbox-accent:checked,
-    .checkbox-accent[aria-checked="true"] {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-a,oklch(var(--a)/var(--tw-bg-opacity)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
-}
-
 .checkbox:disabled {
   cursor: not-allowed;
   border-color: transparent;
@@ -2222,13 +2210,6 @@ input.tab:checked + .tab-content,
   --tw-scale-x: 1;
   --tw-scale-y: 1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.label-text {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
 }
 
 .input input {
@@ -3267,6 +3248,14 @@ input.tab:checked + .tab-content,
   bottom: var(--tooltip-offset);
 }
 
+.tooltip-bottom:before {
+  transform: translateX(-50%);
+  top: var(--tooltip-offset);
+  left: 50%;
+  right: auto;
+  bottom: auto;
+}
+
 .tooltip-left:before {
   transform: translateY(-50%);
   top: 50%;
@@ -3473,6 +3462,15 @@ input.tab:checked + .tab-content,
   bottom: var(--tooltip-tail-offset);
 }
 
+.tooltip-bottom:after {
+  transform: translateX(-50%);
+  border-color: transparent transparent var(--tooltip-color) transparent;
+  top: var(--tooltip-tail-offset);
+  left: 50%;
+  right: auto;
+  bottom: auto;
+}
+
 .tooltip-left:after {
   transform: translateY(-50%);
   border-color: transparent transparent transparent var(--tooltip-color);
@@ -3571,6 +3569,10 @@ input.tab:checked + .tab-content,
   height: 65px;
 }
 
+.h-6 {
+  height: 1.5rem;
+}
+
 .w-4 {
   width: 1rem;
 }
@@ -3589,6 +3591,10 @@ input.tab:checked + .tab-content,
 
 .w-full {
   width: 100%;
+}
+
+.w-6 {
+  width: 1.5rem;
 }
 
 .min-w-\[100dvw\] {
@@ -3627,6 +3633,10 @@ input.tab:checked + .tab-content,
   flex-direction: column;
 }
 
+.place-content-center {
+  place-content: center;
+}
+
 .place-items-center {
   place-items: center;
 }
@@ -3653,6 +3663,10 @@ input.tab:checked + .tab-content,
 
 .gap-6 {
   gap: 1.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
 }
 
 .overflow-auto {
@@ -3714,37 +3728,6 @@ input.tab:checked + .tab-content,
   background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
 }
 
-.bg-secondary {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-s,oklch(var(--s)/var(--tw-bg-opacity)));
-}
-
-.bg-secondary\/0 {
-  background-color: var(--fallback-s,oklch(var(--s)/0));
-}
-
-.bg-slate-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
-}
-
-.bg-slate-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
-}
-
-.bg-slate-600\/0 {
-  background-color: rgb(71 85 105 / 0);
-}
-
-.bg-slate-600\/50 {
-  background-color: rgb(71 85 105 / 0.5);
-}
-
-.bg-secondary\/50 {
-  background-color: var(--fallback-s,oklch(var(--s)/0.5));
-}
-
 .bg-secondary\/25 {
   background-color: var(--fallback-s,oklch(var(--s)/0.25));
 }
@@ -3778,6 +3761,14 @@ input.tab:checked + .tab-content,
   padding-top: 0.5rem;
 }
 
+.ps-1 {
+  padding-inline-start: 0.25rem;
+}
+
+.ps-\[1px\] {
+  padding-inline-start: 1px;
+}
+
 .text-center {
   text-align: center;
 }
@@ -3794,6 +3785,11 @@ input.tab:checked + .tab-content,
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -3843,6 +3839,180 @@ input.tab:checked + .tab-content,
   transition-duration: 150ms;
 }
 
+.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-disabled:has(:checked) .btn-error {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-disabled:has(:checked) .btn-error:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-disabled:has(:checked) .btn-error.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.\[\&\:has\(input\)_\.btn-error\]\:btn-disabled:has(input) .btn-error {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .\[\&\:has\(input\)_\.btn-error\]\:btn-disabled:has(input) .btn-error:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.\[\&\:has\(input\)_\.btn-error\]\:btn-disabled:has(input) .btn-error.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.\[\&\:has\(input\:checked\)_\.btn-error\]\:btn-disabled:has(input:checked) .btn-error {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .\[\&\:has\(input\:checked\)_\.btn-error\]\:btn-disabled:has(input:checked) .btn-error:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.\[\&\:has\(input\:checked\)_\.btn-error\]\:btn-disabled:has(input:checked) .btn-error.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.has-\[input\:checked\]\:\[\&_\#btnDelItem\>button\]\:btn-disabled #btnDelItem>button:has(input:checked) {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .has-\[input\:checked\]\:\[\&_\#btnDelItem\>button\]\:btn-disabled #btnDelItem>button:has(input:checked):hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.has-\[input\:checked\]\:\[\&_\#btnDelItem\>button\]\:btn-disabled #btnDelItem>button:has(input:checked).btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.has-\[input\:not\(\:checked\)\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:not(:checked)) {
+  pointer-events: none;
+}
+
+.has-\[input\:checked\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:checked) {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .has-\[input\:not\(\:checked\)\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:not(:checked)):hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+
+  .has-\[input\:checked\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:checked):hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.has-\[input\:not\(\:checked\)\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:not(:checked)).btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.has-\[input\:checked\]\:\[\&_\#btnDelItem\]\:btn-disabled #btnDelItem:has(input:checked).btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.\[\&_\.btn-error\]\:btn-disabled .btn-error {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .\[\&_\.btn-error\]\:btn-disabled .btn-error:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.\[\&_\.btn-error\]\:btn-disabled .btn-error.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.has-\[input\:checked\]\:\[\&_\.btn-error\]\:btn-disabled .btn-error:has(input:checked) {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .has-\[input\:checked\]\:\[\&_\.btn-error\]\:btn-disabled .btn-error:has(input:checked):hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.has-\[input\:checked\]\:\[\&_\.btn-error\]\:btn-disabled .btn-error:has(input:checked).btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
 .hover\:border-primary-content:hover {
   --tw-border-opacity: 1;
   border-color: var(--fallback-pc,oklch(var(--pc)/var(--tw-border-opacity)));
@@ -3859,6 +4029,11 @@ input.tab:checked + .tab-content,
 
 .has-\[input\:focus\]\:fill-primary:has(input:focus) {
   fill: var(--fallback-p,oklch(var(--p)/1));
+}
+
+.\[\&\:has\(input\:checked\)\]\:bg-red-50:has(input:checked) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
 }
 
 .\[\&\:has\(tbody\>tr\)_span\]\:hidden:has(tbody>tr) span {
@@ -3878,6 +4053,18 @@ input.tab:checked + .tab-content,
 }
 
 .\[\&\:not\(\.admin\)_tbody_td\:nth-child\(1\)\]\:hidden:not(.admin) tbody td:nth-child(1) {
+  display: none;
+}
+
+.\[\&\:not\(\.admin\)_td\:nth-child\(n\+7\)\]\:hidden:not(.admin) td:nth-child(n+7) {
+  display: none;
+}
+
+.\[\&\:not\(\.admin\)_td\:nth-child\(n\+8\)\]\:hidden:not(.admin) td:nth-child(n+8) {
+  display: none;
+}
+
+.\[\&\:not\(\.admin\)_td\:nth-child\(n\+9\)\]\:hidden:not(.admin) td:nth-child(n+9) {
   display: none;
 }
 
@@ -3912,4 +4099,44 @@ input.tab:checked + .tab-content,
 .\[\&_mark\]\:px-\[2px\] mark {
   padding-left: 2px;
   padding-right: 2px;
+}
+
+.\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/50 tr:nth-child(even) {
+  background-color: rgb(100 116 139 / 0.5);
+}
+
+.\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/20 tr:nth-child(even) {
+  background-color: rgb(100 116 139 / 0.2);
+}
+
+.\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/5 tr:nth-child(even) {
+  background-color: rgb(100 116 139 / 0.05);
+}
+
+.\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/10 tr:nth-child(even) {
+  background-color: rgb(100 116 139 / 0.1);
+}
+
+.\[\&_tr\:nth-child\(even\)\]\:bg-slate-50\/10 tr:nth-child(even) {
+  background-color: rgb(248 250 252 / 0.1);
+}
+
+.\[\&_tr\:nth-child\(even\)\]\:bg-slate-700\/10 tr:nth-child(even) {
+  background-color: rgb(51 65 85 / 0.1);
+}
+
+.\[\&_tr\:nth-child\(odd\)\]\:bg-slate-500\/25 tr:nth-child(odd) {
+  background-color: rgb(100 116 139 / 0.25);
+}
+
+.\[\&_tr\:nth-child\(odd\)\]\:bg-slate-500\/5 tr:nth-child(odd) {
+  background-color: rgb(100 116 139 / 0.05);
+}
+
+.\[\&_tr\:nth-child\(odd\)\]\:bg-slate-800\/5 tr:nth-child(odd) {
+  background-color: rgb(30 41 59 / 0.05);
+}
+
+.\[\&_tr\:nth-child\(odd\)\]\:bg-slate-900\/5 tr:nth-child(odd) {
+  background-color: rgb(15 23 42 / 0.05);
 }

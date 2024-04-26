@@ -13,21 +13,15 @@
         <title>Main</title>
     </head>
     <body
-        class="overflow-hidden h-[100dvh] [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px] [&:not(.admin)_.btn-admin]:hidden [&:not(.admin)_tbody_td:nth-child(1)]:hidden [&:not(.admin)_thead_td:nth-child(1)]:hidden"
+        class="overflow-hidden h-[100dvh] [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px] [&:not(.admin)_.btn-admin]:hidden [&:not(.admin)_tbody_td:nth-child(1)]:hidden [&:not(.admin)_thead_td:nth-child(1)]:hidden [&:not(.admin)_td:nth-child(n+9)]:hidden"
     >
         <main class="flex-grow flex flex-col p-4 h-[100%]">
             <div class="pb-6 flex gap-6 justify-between">
                 <span class="flex gap-6">
                     <input
-                        id="filterCode"
+                        id="filter"
                         type="text"
-                        placeholder="Buscar código..."
-                        class="input input-bordered input-primary w-full max-w-xs"
-                    />
-                    <input
-                        id="filterName"
-                        type="text"
-                        placeholder="Buscar producto..."
+                        placeholder="Buscar..."
                         class="input input-bordered input-primary w-full max-w-xs"
                     />
                 </span>
@@ -48,7 +42,7 @@
                     </div>
                     <div
                         id="btnAddItem"
-                        class="tooltip font-bold transition transform btn-admin"
+                        class="tooltip tooltip-left font-bold transition transform btn-admin"
                         data-tip="Crear nuevo"
                     >
                         <button class="btn btn-success">
@@ -94,7 +88,9 @@
                             class="bg-primary text-white font-bold text-sm"
                         ></tr>
                     </thead>
-                    <tbody class="font-bold [&>tr]:h-[45px] [&>tr>td]:h-[45px]">
+                    <tbody
+                        class="font-bold [&>tr]:h-[45px] [&>tr>td]:h-[45px] [&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
+                    >
                         <tr class="hover">
                             <td class="text-center">Sin resultados</td>
                         </tr>

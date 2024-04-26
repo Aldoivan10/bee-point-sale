@@ -81,6 +81,91 @@
             <div class="toast-login toast toast-bottom toast-end z-20"></div>
         </dialog>
 
+        <dialog
+            id="modalProduct"
+            class="modal"
+        >
+            <div class="modal-box">
+                <h3 class="font-bold text-2xl my-2">Agregar producto</h3>
+                <div class="py-4 flex gap-4 flex-col">
+                    <label
+                        class="input input-bordered flex items-center gap-2 input-primary fill-current has-[input:focus]:fill-primary"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                            class="w-4 h-4 opacity-70 transition-colors"
+                        >
+                            <path
+                                d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+                            />
+                        </svg>
+                        <input
+                            type="text"
+                            placeholder="Nombre"
+                            class="grow"
+                            required
+                        />
+                    </label>
+                    <span
+                        id="codesContainer"
+                        class="flex flex-col gap-4"
+                    >
+                    </span>
+                    <div class="flex justify-between">
+                        <h3 class="font-bold text-xl my-2">Tipo</h3>
+                        <div class="flex gap-2">
+                            <button
+                                class="btn btn-circle btn-outline grid place-items-center btn-primary btn-sm"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"
+                                    class="h-4 w-4 ps-[1px]"
+                                    fill="currentColor"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+                                    />
+                                </svg>
+                            </button>
+                            <button
+                                class="btn btn-circle btn-outline grid place-items-center btn-sm"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"
+                                    class="h-4 w-4 ps-[1px]"
+                                    fill="currentColor"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="unitsContainer"></div>
+                    </div>
+                </div>
+                <div class="modal-action m-0">
+                    <form method="dialog">
+                        <button
+                            id="btnAddProduct"
+                            class="btn btn-outline btn-success"
+                        >
+                            Aceptar
+                        </button>
+                        <button class="btn btn-outline btn-error">
+                            Cancelar
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="toast-login toast toast-bottom toast-end z-20"></div>
+        </dialog>
+
         <object
             id="header"
             class="h-[65px]"

@@ -1,11 +1,10 @@
 function tableVars() {
     const $main = document.getElementById("main").contentDocument
     const $table = $main.getElementById("tableProducts")
-    const $filterName = $main.getElementById("filterName")
-    const $filterCode = $main.getElementById("filterCode")
+    const $filter = $main.getElementById("filter")
     const $pagination = $main.getElementById("productsPagination")
     const $pageSizeSelector = $main.getElementById("select-num-results")
-    return { $table, $filterName, $filterCode, $pagination, $pageSizeSelector }
+    return { $table, $filter, $pagination, $pageSizeSelector }
 }
 
 function adminVars() {

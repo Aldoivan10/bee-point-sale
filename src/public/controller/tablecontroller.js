@@ -1,50 +1,41 @@
 class TableController {
-    constructor(view, model, pagination, filterCode, filterName, mapper) {
+    constructor(view, model, pagination, filter, mapper) {
         this.$view = view
         this.$model = model
         this.mapper = mapper
         this.$pagination = pagination
 
-        this.filterCode = null
-        this.filterName = null
+        this.filter = null
         this.filterTimer = null
         this.filterWaitingTime = 500
 
         model.addHeaderListener(this.onHeaderUpdate)
         model.addDataListener(this.onDataUpdate)
         pagination.addListener(this.onPaginationUpdate)
-        filterCode.oninput = this.onFilterCode
-        filterName.oninput = this.onFilterName
+        filter.oninput = this.onFilter
     }
 
     init() {
         this._getData(this.$pagination.size(), this.$pagination.offset())
-        this._buildPagination(this.filterCode, this.filterName)
+        this._buildPagination(this.filter)
         return this
     }
 
-    async _getData(pageSize, offset, filterCode = null, filterName = null) {
+    async _getData(pageSize, offset, filter = null) {
         this.$view.cleanRows()
-        window.products
-            .get(pageSize, offset, filterCode, filterName)
-            .then((data) => {
-                this.$model.setData(data)
-            })
+        window.products.get(pageSize, offset, filter).then((data) => {
+            this.$model.setData(data)
+        })
     }
 
-    async _buildPagination(filterCode = null, filterName = null) {
-        window.products.total(filterCode, filterName).then((total) => {
+    async _buildPagination(filter = null) {
+        window.products.total(filter).then((total) => {
             this.$pagination.buildPagination(total)
         })
     }
 
-    onFilterCode = (evt) => {
-        this.filterCode = evt.target.value.toLowerCase()
-        this.initFilterTimer()
-    }
-
-    onFilterName = (evt) => {
-        this.filterName = evt.target.value.toLowerCase()
+    onFilter = (evt) => {
+        this.filter = evt.target.value.toLowerCase()
         this.initFilterTimer()
     }
 
@@ -57,15 +48,14 @@ class TableController {
             this._getData(
                 this.$pagination.size(),
                 this.$pagination.offset(),
-                this.filterCode,
-                this.filterName
+                this.filter
             )
-            this._buildPagination(this.filterCode, this.filterName)
+            this._buildPagination(this.filter)
         }, this.filterWaitingTime)
     }
 
     onPaginationUpdate = (pageSize, offset) =>
-        this._getData(pageSize, offset, this.filterCode, this.filterName)
+        this._getData(pageSize, offset, this.filter)
 
     onHeaderUpdate = (headers, added, removed) => {
         if (added) {

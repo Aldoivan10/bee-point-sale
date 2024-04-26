@@ -25,14 +25,13 @@ const createWindow = async () => {
 app.whenReady().then(() => {
     ipcMain.handle(
         "fetchProducts",
-        async (_, pageSize, offset, filterCode, filterName) =>
-            await productScheme.all(pageSize, offset, filterCode, filterName)
+        async (_, pageSize, offset, filter) =>
+            await productScheme.all(pageSize, offset, filter)
     )
     ipcMain.handle("fetchCodes", async () => await productScheme.codes())
     ipcMain.handle(
         "fetchTotalProducts",
-        async (_, filterCode, filterName) =>
-            await productScheme.total(filterCode, filterName)
+        async (_, filter) => await productScheme.total(filter)
     )
     ipcMain.handle(
         "fetchUser",
