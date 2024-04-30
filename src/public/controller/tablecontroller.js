@@ -1,5 +1,5 @@
 class TableController {
-    constructor(view, model, pagination, filter, mapper) {
+    constructor(view, model, pagination, filter, btnDelItem, mapper) {
         this.$view = view
         this.$model = model
         this.mapper = mapper
@@ -13,6 +13,7 @@ class TableController {
         model.addDataListener(this.onDataUpdate)
         pagination.addListener(this.onPaginationUpdate)
         filter.oninput = this.onFilter
+        btnDelItem.onclick = this.onItemDelete
     }
 
     init() {
@@ -117,5 +118,10 @@ class TableController {
                     (mainCheck.checked = checks.every((el) => el.checked))
             })
         }
+    }
+
+    onItemDelete = () => {
+        const rows = this.$view.getCheckedRows()
+        console.log(rows)
     }
 }

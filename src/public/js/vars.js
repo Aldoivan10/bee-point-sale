@@ -4,7 +4,7 @@ function tableVars() {
     const $filter = $main.getElementById("filter")
     const $pagination = $main.getElementById("productsPagination")
     const $pageSizeSelector = $main.getElementById("select-num-results")
-    const $btnDelItem = $main.getElementById("btnDelItem")
+    const $btnDelItem = $main.querySelector("#btnDelItem>button")
     return { $table, $filter, $pagination, $pageSizeSelector, $btnDelItem }
 }
 
@@ -14,7 +14,6 @@ function adminVars() {
 
     const $headerBody = $header.querySelector("body")
     const $name = $header.getElementById("userName")
-    const $btnAddItem = $main.getElementById("btnAddItem")
 
     const $btnLogin = $header.getElementById("btnLogin")
     const $btnLogout = $header.getElementById("btnLogout")
@@ -32,9 +31,17 @@ function adminVars() {
         $inputUser,
         $inputPass,
         $alertContainer,
-        $btnAddItem,
         $headerBody,
         $btnLogout,
         $mainBody,
     }
+}
+
+function productVars() {
+    const $main = document.getElementById("main").contentDocument
+    const $name = modalProduct.querySelector("input[placeholder=Nombre]")
+    const $codes = modalProduct.querySelector("#codesContainer")
+    const $btnAddItem = $main.getElementById("btnAddItem")
+
+    return { $name, $codes, $btnAddItem }
 }

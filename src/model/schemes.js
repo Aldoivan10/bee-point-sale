@@ -128,7 +128,12 @@ class Product extends Scheme {
     }
 
     async codes() {
-        const sql = "SELECT nombre FROM codigo ORDER BY nombre"
+        const sql = "SELECT * FROM codigo ORDER BY nombre"
+        return await this.db.fetch(sql, [], (rows) => rows)
+    }
+
+    async units() {
+        const sql = "SELECT * FROM Unidad"
         return await this.db.fetch(sql, [], (rows) => rows)
     }
 

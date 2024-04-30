@@ -1,11 +1,13 @@
 function initTable() {
-    const { $table, $filter, $pagination, $pageSizeSelector } = tableVars()
+    const { $table, $filter, $pagination, $pageSizeSelector, $btnDelItem } =
+        tableVars()
 
     new TableController(
         new TableView($table),
         new TableModel(),
         new Pagination($pagination, $pageSizeSelector),
         $filter,
+        $btnDelItem,
         {
             "Precio de venta": (val) => {
                 return val.toLocaleString("es-MX", {
@@ -37,7 +39,6 @@ function initAdmin() {
         $inputUser,
         $inputPass,
         $alertContainer,
-        $btnAddItem,
         $headerBody,
         $btnLogout,
         $mainBody,
@@ -50,13 +51,23 @@ function initAdmin() {
             $inputUser,
             $inputPass,
             $btnSendUser,
-            $btnAddItem,
             $headerBody,
             $mainBody
         ),
         $btnLogin,
         $btnLogout,
         $alertContainer,
-        modalUser
+        modalLogin
+    )
+}
+
+function initProduct() {
+    const { $name, $codes, $btnAddItem } = productVars()
+
+    new ProductController(
+        new ProductView($name, $codes),
+        new ProductModel(),
+        $btnAddItem,
+        modalProduct
     )
 }

@@ -20,7 +20,7 @@
         class="flex flex-col h-[100dvh] min-w-[100dvw] overflow-hidden [&_*]:box-border"
     >
         <dialog
-            id="modalUser"
+            id="modalLogin"
             class="modal"
         >
             <div class="modal-box">
@@ -181,6 +181,7 @@
         ></object>
 
         <object
+            id="footer"
             class="h-[65px]"
             data="html/footer.html"
             type="text/html"
@@ -193,10 +194,13 @@
         <script src="model/ui/alert.js"></script>
         <script src="model/components/tablemodel.js"></script>
         <script src="model/components/usermodel.js"></script>
+        <script src="model/components/productmodel.js"></script>
         <script src="view/tableview.js"></script>
         <script src="view/userview.js"></script>
+        <script src="view/productview.js"></script>
         <script src="controller/tablecontroller.js"></script>
         <script src="controller/usercontrolller.js"></script>
+        <script src="controller/productcontroller.js"></script>
         <script src="js/renderer.js"></script>
     </body>
 </html>

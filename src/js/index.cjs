@@ -22,13 +22,14 @@ const createWindow = async () => {
     win.loadFile("src/public/index.html")
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
     ipcMain.handle(
         "fetchProducts",
         async (_, pageSize, offset, filter) =>
             await productScheme.all(pageSize, offset, filter)
     )
     ipcMain.handle("fetchCodes", async () => await productScheme.codes())
+    ipcMain.handle("fetchUnits", async () => await productScheme.units())
     ipcMain.handle(
         "fetchTotalProducts",
         async (_, filter) => await productScheme.total(filter)

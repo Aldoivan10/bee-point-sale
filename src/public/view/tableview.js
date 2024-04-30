@@ -24,12 +24,20 @@ class TableView {
         }
     }
 
-    getChecks() {
+    getChecks(checked = false) {
+        if (checked)
+            return this.$body.querySelectorAll("input[type=checkbox]:checked")
         const checks = [
             this.$header.querySelector("input[type=checkbox]"),
             ...this.$body.querySelectorAll("input[type=checkbox]"),
         ]
         return checks
+    }
+
+    getCheckedRows() {
+        return this.$body.querySelectorAll(
+            "tr:has(input[type=checkbox]:checked)"
+        )
     }
 
     buildBody(rows) {

@@ -5,16 +5,16 @@ class UserController {
         btnLogin,
         btnLogout,
         alertContainer,
-        modalUser
+        modalLogin
     ) {
         this.alert = new Alert(alertContainer)
-        this.$modalUser = modalUser
+        this.$modalLogin = modalLogin
         this.userModel = userModel
         this.userView = userView
 
         this.userModel.addUserListener(this.onUserChange)
         this.userView.addLoginListener(this.tryLogin)
-        btnLogin.onclick = () => modalUser.showModal()
+        btnLogin.onclick = () => modalLogin.showModal()
         btnLogout.onclick = () => userModel.logout()
         userModel.check()
     }
@@ -25,7 +25,7 @@ class UserController {
             const userDB = await window.users.get(user, pass)
             if (userDB) {
                 user = JSON.parse(JSON.parse(userDB))
-                this.$modalUser.close()
+                this.$modalLogin.close()
                 this.userView.clearForm()
                 this.userModel.login(user["nombre"], user["rol"])
             } else this.alert.info("Usuario o contraseña incorrecto(s)", 2000)
