@@ -127,16 +127,6 @@ class Product extends Scheme {
         return await this.db.fetch(sql, [], (rows) => rows[0]["total"])
     }
 
-    async codes() {
-        const sql = "SELECT * FROM codigo ORDER BY nombre"
-        return await this.db.fetch(sql, [], (rows) => rows)
-    }
-
-    async units() {
-        const sql = "SELECT * FROM Unidad"
-        return await this.db.fetch(sql, [], (rows) => rows)
-    }
-
     async get(id) {}
 
     async delete(id) {}
@@ -180,4 +170,30 @@ class User extends Scheme {
     }
 }
 
-module.exports = { Product, User }
+class Code extends Scheme {
+    async all() {
+        const sql = "SELECT * FROM codigo ORDER BY nombre"
+        return await this.db.fetch(sql, [], (rows) => rows)
+    }
+
+    async create(code) {}
+
+    async delete(id) {}
+
+    async update(id, code) {}
+}
+
+class Unit extends Scheme {
+    async all() {
+        const sql = "SELECT * FROM Unidad"
+        return await this.db.fetch(sql, [], (rows) => rows)
+    }
+
+    async create(units) {}
+
+    async delete(id) {}
+
+    async update(id, unit) {}
+}
+
+module.exports = { Product, User, Code, Unit }
