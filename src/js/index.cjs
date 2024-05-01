@@ -1,12 +1,15 @@
-const { app, BrowserWindow, ipcMain, globalShortcut } = require("electron")
+const { app, BrowserWindow, ipcMain } = require("electron")
 const path = require("node:path")
 const DB = require("../model/db.js")
-const { Product, User } = require("../model/schemes.js")
+const { Product, User, Unit, Code } = require("../model/schemes.js")
 
 const db = new DB()
 db.init("src/ferreteria.sqlite")
+
 const productScheme = new Product(db)
 const userScheme = new User(db)
+const unitScheme = new Unit(db)
+const codeScheme = new Code(db)
 
 const createWindow = async () => {
     const win = new BrowserWindow({
@@ -28,8 +31,8 @@ app.whenReady().then(async () => {
         async (_, pageSize, offset, filter) =>
             await productScheme.all(pageSize, offset, filter)
     )
-    ipcMain.handle("fetchCodes", async () => await productScheme.codes())
-    ipcMain.handle("fetchUnits", async () => await productScheme.units())
+    ipcMain.handle("fetchCodes", async () => await codeScheme.all())
+    ipcMain.handle("fetchUnits", async () => await unitScheme.all())
     ipcMain.handle(
         "fetchTotalProducts",
         async (_, filter) => await productScheme.total(filter)

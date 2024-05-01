@@ -185,7 +185,7 @@ class Code extends Scheme {
 
 class Unit extends Scheme {
     async all() {
-        const sql = "SELECT * FROM Unidad"
+        const sql = "SELECT id_unidad value, nombre text FROM Unidad"
         return await this.db.fetch(sql, [], (rows) => rows)
     }
 

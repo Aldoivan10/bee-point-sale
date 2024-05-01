@@ -62,12 +62,14 @@ function initAdmin() {
 }
 
 function initProduct() {
-    const { $name, $codes, $btnAddItem } = productVars()
+    const { $name, $codes, $btnAddItem, $btnAddUnit, $unitsContainer } =
+        productVars()
 
     new ProductController(
-        new ProductView($name, $codes),
+        new ProductView($name, $codes, $unitsContainer),
         new ProductModel(),
         $btnAddItem,
+        $btnAddUnit,
         modalProduct
     )
 }

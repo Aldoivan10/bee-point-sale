@@ -85,16 +85,15 @@
             id="modalProduct"
             class="modal"
         >
-            <div class="modal-box">
+            <div class="modal-box min-w-[50rem] flex flex-col">
                 <h3 class="font-bold text-2xl my-2">Agregar producto</h3>
-                <div class="py-4 flex gap-4 flex-col">
+                <div class="py-4 flex gap-4 flex-col overflow-y-auto grow px-2">
                     <label
-                        class="input input-bordered flex items-center gap-2 input-primary fill-current has-[input:focus]:fill-primary"
+                        class="input min-h-[48px] h-[48px] grow input-bordered flex items-center gap-2 input-primary fill-current has-[input:focus]:fill-primary [&>svg]:min-w-4 [&>svg]:min-h-4 [&>svg]:w-4 [&>svg]:h-4 [&>svg]:opacity-70 [&>svg]:transition-colors"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 448 512"
-                            class="w-4 h-4 opacity-70 transition-colors"
+                            viewBox="0 0 512 512"
                         >
                             <path
                                 d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
@@ -102,9 +101,8 @@
                         </svg>
                         <input
                             type="text"
-                            placeholder="Nombre"
                             class="grow"
-                            required
+                            placeholder="Nombre"
                         />
                     </label>
                     <span
@@ -112,44 +110,50 @@
                         class="flex flex-col gap-4"
                     >
                     </span>
-                    <div class="flex justify-between">
-                        <h3 class="font-bold text-xl my-2">Tipo</h3>
-                        <div class="flex gap-2">
-                            <button
-                                class="btn btn-circle btn-outline grid place-items-center btn-primary btn-sm"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 512 512"
-                                    class="h-4 w-4 ps-[1px]"
-                                    fill="currentColor"
-                                    stroke="currentColor"
+                    <div class="flex justify-between flex-col">
+                        <div class="flex justify-between">
+                            <h3 class="font-bold text-xl my-2">Tipo</h3>
+                            <div class="flex gap-2 items-center">
+                                <button
+                                    id="btnAddUnit"
+                                    class="btn btn-circle btn-outline grid place-items-center btn-primary btn-sm"
                                 >
-                                    <path
-                                        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
-                                    />
-                                </svg>
-                            </button>
-                            <button
-                                class="btn btn-circle btn-outline grid place-items-center btn-sm"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 512 512"
-                                    class="h-4 w-4 ps-[1px]"
-                                    fill="currentColor"
-                                    stroke="currentColor"
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 512 512"
+                                        class="h-4 w-4 ps-[1px]"
+                                        fill="currentColor"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+                                        />
+                                    </svg>
+                                </button>
+                                <button
+                                    class="btn btn-circle btn-outline grid place-items-center btn-sm"
                                 >
-                                    <path
-                                        d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
-                                    />
-                                </svg>
-                            </button>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 512 512"
+                                        class="h-4 w-4 ps-[1px]"
+                                        fill="currentColor"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                        <div id="unitsContainer"></div>
+                        <div
+                            id="unitsContainer"
+                            class="mt-2 flex flex-col gap-2 [&_div:nth-child(even)_label]:input-accent [&_div:nth-child(even)_select]:select-accent [&_div:nth-child(even)_label:has(input:focus)]:fill-accent"
+                        ></div>
                     </div>
                 </div>
-                <div class="modal-action m-0">
+                <div class="modal-action m-0 mt-2">
                     <form method="dialog">
                         <button
                             id="btnAddProduct"

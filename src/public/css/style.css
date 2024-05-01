@@ -1816,9 +1816,22 @@ input.tab:checked + .tab-content,
   color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
 }
 
+.badge-info {
+  border-color: transparent;
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-in,oklch(var(--in)/var(--tw-bg-opacity)));
+  --tw-text-opacity: 1;
+  color: var(--fallback-inc,oklch(var(--inc)/var(--tw-text-opacity)));
+}
+
 .badge-outline.badge-primary {
   --tw-text-opacity: 1;
   color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
+}
+
+.badge-outline.badge-info {
+  --tw-text-opacity: 1;
+  color: var(--fallback-in,oklch(var(--in)/var(--tw-text-opacity)));
 }
 
 .btm-nav > *:not(.active) {
@@ -3512,6 +3525,10 @@ input.tab:checked + .tab-content,
   margin-inline-end: 0.75rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -3552,8 +3569,16 @@ input.tab:checked + .tab-content,
   height: 100dvh;
 }
 
+.h-\[48px\] {
+  height: 48px;
+}
+
 .h-\[65px\] {
   height: 65px;
+}
+
+.min-h-\[48px\] {
+  min-height: 48px;
 }
 
 .w-4 {
@@ -3578,6 +3603,10 @@ input.tab:checked + .tab-content,
 
 .min-w-\[100dvw\] {
   min-width: 100dvw;
+}
+
+.min-w-\[50rem\] {
+  min-width: 50rem;
 }
 
 .min-w-\[65px\] {
@@ -3606,6 +3635,10 @@ input.tab:checked + .tab-content,
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -3656,6 +3689,10 @@ input.tab:checked + .tab-content,
   overflow: clip;
 }
 
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -3676,6 +3713,11 @@ input.tab:checked + .tab-content,
 .border-primary-content {
   --tw-border-opacity: 1;
   border-color: var(--fallback-pc,oklch(var(--pc)/var(--tw-border-opacity)));
+}
+
+.border-slate-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(71 85 105 / var(--tw-border-opacity));
 }
 
 .border-slate-700 {
@@ -3725,6 +3767,11 @@ input.tab:checked + .tab-content,
 
 .p-4 {
   padding: 1rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .py-4 {
@@ -3814,6 +3861,50 @@ input.tab:checked + .tab-content,
   transition-duration: 150ms;
 }
 
+.\[\&_div\:nth-child\(even\)_input\]\:input-accent div:nth-child(even) input {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+}
+
+.\[\&_div\:nth-child\(even\)_input\]\:input-accent div:nth-child(even) input:focus,.\[\&_div\:nth-child\(even\)_input\]\:input-accent div:nth-child(even) input:focus-within {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+  outline-color: var(--fallback-a,oklch(var(--a)/1));
+}
+
+.\[\&_div\:nth-child\(even\)_label\]\:input-accent div:nth-child(even) label {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+}
+
+.\[\&_div\:nth-child\(even\)_label\]\:input-accent div:nth-child(even) label:focus,.\[\&_div\:nth-child\(even\)_label\]\:input-accent div:nth-child(even) label:focus-within {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+  outline-color: var(--fallback-a,oklch(var(--a)/1));
+}
+
+.\[\&_div\:nth-child\(even\)_select\]\:input-accent div:nth-child(even) select {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+}
+
+.\[\&_div\:nth-child\(even\)_select\]\:input-accent div:nth-child(even) select:focus,.\[\&_div\:nth-child\(even\)_select\]\:input-accent div:nth-child(even) select:focus-within {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+  outline-color: var(--fallback-a,oklch(var(--a)/1));
+}
+
+.\[\&_div\:nth-child\(even\)_select\]\:select-accent div:nth-child(even) select {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+}
+
+.\[\&_div\:nth-child\(even\)_select\]\:select-accent div:nth-child(even) select:focus {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+  outline-color: var(--fallback-a,oklch(var(--a)/1));
+}
+
 .hover\:border-primary-content:hover {
   --tw-border-opacity: 1;
   border-color: var(--fallback-pc,oklch(var(--pc)/var(--tw-border-opacity)));
@@ -3872,8 +3963,16 @@ input.tab:checked + .tab-content,
   height: 1rem;
 }
 
+.\[\&\>svg\]\:min-h-4>svg {
+  min-height: 1rem;
+}
+
 .\[\&\>svg\]\:w-4>svg {
   width: 1rem;
+}
+
+.\[\&\>svg\]\:min-w-4>svg {
+  min-width: 1rem;
 }
 
 .\[\&\>svg\]\:opacity-70>svg {
@@ -3896,6 +3995,70 @@ input.tab:checked + .tab-content,
 
 .\[\&_\*\]\:box-border * {
   box-sizing: border-box;
+}
+
+.\[\&_div\:nth-child\(even\)\:has\(input\:focus\)\]\:fill-primary div:nth-child(even):has(input:focus) {
+  fill: var(--fallback-p,oklch(var(--p)/1));
+}
+
+.\[\&_div\:nth-child\(even\)\:has\(input\:focus\)\]\:fill-accent div:nth-child(even):has(input:focus) {
+  fill: var(--fallback-a,oklch(var(--a)/1));
+}
+
+.\[\&_div\:nth-child\(even\)\:has\(input\:focus\)\]\:fill-white div:nth-child(even):has(input:focus) {
+  fill: #fff;
+}
+
+.\[\&_div\:nth-child\(even\)\:has\(input\:focus\)_input\]\:bg-slate-500 div:nth-child(even):has(input:focus) input {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.\[\&_div\:nth-child\(even\)\:has\(input\:focus\)_input\]\:fill-accent div:nth-child(even):has(input:focus) input {
+  fill: var(--fallback-a,oklch(var(--a)/1));
+}
+
+.\[\&_div\:nth-child\(even\)\:has\(input\:focus\)_svg\]\:fill-accent div:nth-child(even):has(input:focus) svg {
+  fill: var(--fallback-a,oklch(var(--a)/1));
+}
+
+.\[\&_div\:nth-child\(even\)\]\:bg-slate-800 div:nth-child(even) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+
+.\[\&_div\:nth-child\(even\)\]\:bg-slate-700 div:nth-child(even) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.\[\&_div\:nth-child\(even\)\]\:bg-slate-800\/50 div:nth-child(even) {
+  background-color: rgb(30 41 59 / 0.5);
+}
+
+.\[\&_div\:nth-child\(even\)\]\:fill-accent div:nth-child(even) {
+  fill: var(--fallback-a,oklch(var(--a)/1));
+}
+
+.\[\&_div\:nth-child\(even\)_input\]\:bg-slate-500 div:nth-child(even) input {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.\[\&_div\:nth-child\(even\)_label\:has\(input\:focus\)\]\:fill-accent div:nth-child(even) label:has(input:focus) {
+  fill: var(--fallback-a,oklch(var(--a)/1));
+}
+
+.\[\&_div\:nth-child\(odd\)\]\:bg-slate-50\/20 div:nth-child(odd) {
+  background-color: rgb(248 250 252 / 0.2);
+}
+
+.\[\&_div\:nth-child\(odd\)\]\:bg-slate-50\/5 div:nth-child(odd) {
+  background-color: rgb(248 250 252 / 0.05);
+}
+
+.\[\&_div\:nth-child\(odd\)\]\:bg-slate-500\/5 div:nth-child(odd) {
+  background-color: rgb(100 116 139 / 0.05);
 }
 
 .\[\&_input\:first-child\:nth-last-child\(1\)\]\:rounded input:first-child:nth-last-child(1) {

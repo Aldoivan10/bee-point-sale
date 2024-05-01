@@ -10,6 +10,10 @@ contextBridge.exposeInMainWorld("codes", {
     get: () => ipcRenderer.invoke("fetchCodes"),
 })
 
+contextBridge.exposeInMainWorld("units", {
+    get: () => ipcRenderer.invoke("fetchUnits"),
+})
+
 contextBridge.exposeInMainWorld("users", {
     get: (user, pass) => ipcRenderer.invoke("fetchUser", user, pass),
 })
