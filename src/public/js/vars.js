@@ -42,8 +42,16 @@ function productVars() {
     const $name = modalProduct.querySelector("input[placeholder=Nombre]")
     const $codes = modalProduct.querySelector("#codesContainer")
     const $btnAddItem = $main.getElementById("btnAddItem")
+    const $btnDelUnit = document.getElementById("btnDeleteUnit")
     const $btnAddUnit = document.getElementById("btnAddUnit")
     const $unitsContainer = document.getElementById("unitsContainer")
 
-    return { $name, $codes, $btnAddItem, $btnAddUnit, $unitsContainer }
+    return {
+        $name,
+        $codes,
+        $btnAddItem,
+        $btnAddUnit,
+        $unitsContainer,
+        $btnDelUnit,
+    }
 }

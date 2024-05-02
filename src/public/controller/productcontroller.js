@@ -1,5 +1,5 @@
 class ProductController {
-    constructor(view, model, btnAddItem, btnAddUnit, modal) {
+    constructor(view, model, btnAddItem, btnAddUnit, btnDelUnit, modal) {
         this.$view = view
         this.$model = model
 
@@ -7,6 +7,7 @@ class ProductController {
             this._getCodes()
             modal.showModal()
         }
+        btnDelUnit.onclick = () => view.removeProductUnit()
         modal.onclose = () => view.clear()
         btnAddUnit.onclick = this._addUnit
     }
