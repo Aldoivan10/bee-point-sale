@@ -34,7 +34,8 @@ class ProductController {
             buyPrice + (buyPrice * profit) / 100 - (buyPrice * descount) / 100
         const fixedPrice = +price.toFixed(2)
         const round = Math.round(fixedPrice)
-        $price.value =
+        $price.value = (
             fixedPrice >= round ? Math.ceil(fixedPrice * 2) / 2 : round
+        ).toFixed(2)
     }
 }

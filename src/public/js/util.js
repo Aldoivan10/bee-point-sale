@@ -12,6 +12,7 @@ const input = (options) => {
     $input.type = options.type ? options.type : "text"
     $input.placeholder = options.placeholder ? options.placeholder : ""
     $input.className = "grow w-[100%]"
+
     if (options.id) $input.id = options.id
     if (options.value) $input.value = options.value
     if (options.min) $input.min = options.min
@@ -19,6 +20,8 @@ const input = (options) => {
     if (options.step) $input.min = options.step
     if (options.icon) $lbl.appendChild(svg(options.icon))
     if (options.disabled) $input.disabled = true
+    if (options.type && options.type === "number")
+        $input.onblur = () => ($input.value = parseInt($input.value).toFixed(2))
     $lbl.appendChild($input)
     if (options.badge) {
         const $badge = document.createElement("span")
