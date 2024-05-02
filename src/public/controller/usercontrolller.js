@@ -1,13 +1,6 @@
 class UserController {
-    constructor(
-        userModel,
-        userView,
-        btnLogin,
-        btnLogout,
-        alertContainer,
-        modalLogin
-    ) {
-        this.alert = new Alert(alertContainer)
+    constructor(userModel, userView, btnLogin, btnLogout, modalLogin) {
+        this.alert = new Alert(modalLogin)
         this.$modalLogin = modalLogin
         this.userModel = userModel
         this.userView = userView

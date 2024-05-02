@@ -38,7 +38,6 @@ function initAdmin() {
         $btnLogin,
         $inputUser,
         $inputPass,
-        $alertContainer,
         $headerBody,
         $btnLogout,
         $mainBody,
@@ -56,27 +55,19 @@ function initAdmin() {
         ),
         $btnLogin,
         $btnLogout,
-        $alertContainer,
         modalLogin
     )
 }
 
 function initProduct() {
-    const {
-        $name,
-        $codes,
-        $btnAddItem,
-        $btnAddUnit,
-        $unitsContainer,
-        $btnDelUnit,
-    } = productVars()
+    const { $name, $codes, $btnAddItem, $btnAddUnit, $unitsContainer } =
+        productVars()
 
     new ProductController(
         new ProductView($name, $codes, $unitsContainer),
         new ProductModel(),
         $btnAddItem,
         $btnAddUnit,
-        $btnDelUnit,
         modalProduct
     )
 }

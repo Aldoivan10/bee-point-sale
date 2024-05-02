@@ -14,6 +14,7 @@ const input = (options) => {
     $input.className = "grow w-[100%]"
 
     if (options.id) $input.id = options.id
+    if (options.name) $input.name = options.name
     if (options.value) $input.value = options.value
     if (options.min) $input.min = options.min
     if (options.max) $input.max = options.max
@@ -40,13 +41,16 @@ const svg = (path) => {
     $svg.appendChild($path)
     $svg.setAttribute("viewBox", "0 0 512 512")
     $svg.setAttribute("xmlns", uri)
+    $svg.setAttribute("fill", "currentColor")
+    $svg.setAttribute("stroke", "currentColor")
     return $svg
 }
 
-const select = (id, placeholder, options) => {
+const select = (id, placeholder, options, name) => {
     const $select = document.createElement("select")
     const $placeholder = document.createElement("option")
     if (id) $select.id = id
+    if (name) $select.name = name
     $select.className = "select select-primary w-full"
     $placeholder.textContent = placeholder
     $placeholder.disabled = true
@@ -59,4 +63,22 @@ const select = (id, placeholder, options) => {
         $select.appendChild($opt)
     }
     return $select
+}
+
+const button = (options) => {
+    const $btn = document.createElement("button")
+    $btn.className = `btn grid place-items-center [&_svg]:h-4 [&_svg]:w-4 ${
+        options.class ? options.class : ""
+    }`
+    if (options.icon) $btn.appendChild(svg(options.icon))
+    if (options.text) $btn.textContent = options.text
+    return options.tip ? tooltip($btn, options.tip) : $btn
+}
+
+const tooltip = (el, tip) => {
+    const $tooltip = document.createElement("div")
+    $tooltip.className = `tooltip ${tip.class ? tip.class : ""}`
+    $tooltip.dataset.tip = tip.text
+    $tooltip.appendChild(el)
+    return $tooltip
 }

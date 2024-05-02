@@ -20,7 +20,6 @@ function adminVars() {
     const $btnSendUser = document.getElementById("btnSendUser")
     const $inputUser = document.querySelector("input[placeholder=Usuario]")
     const $inputPass = document.querySelector("input[placeholder=Contraseña]")
-    const $alertContainer = document.querySelector(".toast-login")
 
     const $mainBody = $main.querySelector("body")
 
@@ -30,7 +29,6 @@ function adminVars() {
         $btnLogin,
         $inputUser,
         $inputPass,
-        $alertContainer,
         $headerBody,
         $btnLogout,
         $mainBody,
@@ -42,7 +40,6 @@ function productVars() {
     const $name = modalProduct.querySelector("input[placeholder=Nombre]")
     const $codes = modalProduct.querySelector("#codesContainer")
     const $btnAddItem = $main.getElementById("btnAddItem")
-    const $btnDelUnit = document.getElementById("btnDeleteUnit")
     const $btnAddUnit = document.getElementById("btnAddUnit")
     const $unitsContainer = document.getElementById("unitsContainer")
 
@@ -52,6 +49,5 @@ function productVars() {
         $btnAddItem,
         $btnAddUnit,
         $unitsContainer,
-        $btnDelUnit,
     }
 }

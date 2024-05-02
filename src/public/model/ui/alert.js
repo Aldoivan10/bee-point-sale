@@ -1,6 +1,8 @@
 class Alert {
     constructor(container) {
-        this.container = container
+        this.toast = document.createElement("div")
+        this.toast.className = "toast toast-bottom toast-end z-20"
+        container.appendChild(this.toast)
     }
 
     success(msg, timer = 0) {
@@ -62,6 +64,6 @@ class Alert {
             alert.appendChild(btn)
             btn.onclick = () => alert.remove()
         }
-        this.container.appendChild(alert)
+        this.toast.appendChild(alert)
     }
 }

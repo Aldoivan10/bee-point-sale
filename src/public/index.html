@@ -78,14 +78,15 @@
                     </form>
                 </div>
             </div>
-            <div class="toast-login toast toast-bottom toast-end z-20"></div>
         </dialog>
 
         <dialog
             id="modalProduct"
             class="modal"
         >
-            <div class="modal-box min-w-[50rem] flex flex-col">
+            <div
+                class="modal-box min-w-[50rem] flex flex-col [&:not(:has(#unitsContainer>div))_#btnAddProduct]:btn-disabled"
+            >
                 <h3 class="font-bold text-2xl my-2">Agregar producto</h3>
                 <div class="py-4 flex gap-4 flex-col overflow-y-auto grow px-2">
                     <label
@@ -130,27 +131,11 @@
                                         />
                                     </svg>
                                 </button>
-                                <button
-                                    id="btnDeleteUnit"
-                                    class="btn btn-circle btn-outline grid place-items-center btn-sm"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 512 512"
-                                        class="h-4 w-4 ps-[1px]"
-                                        fill="currentColor"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
-                                        />
-                                    </svg>
-                                </button>
                             </div>
                         </div>
                         <div
                             id="unitsContainer"
-                            class="mt-2 flex flex-col gap-2 [&_div:nth-child(even)_label]:input-accent [&_div:nth-child(even)_select]:select-accent [&_div:nth-child(even)_label:has(input:focus)]:fill-accent"
+                            class="mt-2 pe-3 flex flex-col gap-2 [&_div:nth-child(even)_label]:input-accent [&_div:nth-child(even)_select]:select-accent [&_div:nth-child(even)_label:has(input:focus)]:fill-accent"
                         ></div>
                     </div>
                 </div>
@@ -168,7 +153,6 @@
                     </form>
                 </div>
             </div>
-            <div class="toast-login toast toast-bottom toast-end z-20"></div>
         </dialog>
 
         <object

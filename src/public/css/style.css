@@ -1875,6 +1875,10 @@ input.tab:checked + .tab-content,
     --btn-color: var(--fallback-p);
   }
 
+  .btn-neutral {
+    --btn-color: var(--fallback-n);
+  }
+
   .btn-success {
     --btn-color: var(--fallback-su);
   }
@@ -1885,6 +1889,19 @@ input.tab:checked + .tab-content,
 }
 
 @supports (color: color-mix(in oklab, black, black)) {
+  .btn-active {
+    background-color: color-mix(
+          in oklab,
+          oklch(var(--btn-color, var(--b3)) / var(--tw-bg-opacity, 1)) 90%,
+          black
+        );
+    border-color: color-mix(
+          in oklab,
+          oklch(var(--btn-color, var(--b3)) / var(--tw-border-opacity, 1)) 90%,
+          black
+        );
+  }
+
   .btn-outline.btn-primary.btn-active {
     background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
     border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
@@ -1938,6 +1955,10 @@ input.tab:checked + .tab-content,
     --btn-color: var(--p);
   }
 
+  .btn-neutral {
+    --btn-color: var(--n);
+  }
+
   .btn-success {
     --btn-color: var(--su);
   }
@@ -1945,6 +1966,12 @@ input.tab:checked + .tab-content,
   .btn-error {
     --btn-color: var(--er);
   }
+}
+
+.btn-neutral {
+  --tw-text-opacity: 1;
+  color: var(--fallback-nc,oklch(var(--nc)/var(--tw-text-opacity)));
+  outline-color: var(--fallback-n,oklch(var(--n)/1));
 }
 
 .btn-success {
@@ -1985,6 +2012,12 @@ input.tab:checked + .tab-content,
 .btn-ghost.btn-active {
   border-color: transparent;
   background-color: var(--fallback-bc,oklch(var(--bc)/0.2));
+}
+
+.btn-link.btn-active {
+  border-color: transparent;
+  background-color: transparent;
+  text-decoration-line: underline;
 }
 
 .btn-outline {
@@ -2937,6 +2970,49 @@ input.tab:checked + .tab-content,
   }
 }
 
+.glass,
+  .glass.btn-active {
+  border: none;
+  -webkit-backdrop-filter: blur(var(--glass-blur, 40px));
+          backdrop-filter: blur(var(--glass-blur, 40px));
+  background-color: transparent;
+  background-image: linear-gradient(
+        135deg,
+        rgb(255 255 255 / var(--glass-opacity, 30%)) 0%,
+        rgb(0 0 0 / 0%) 100%
+      ),
+      linear-gradient(
+        var(--glass-reflex-degree, 100deg),
+        rgb(255 255 255 / var(--glass-reflex-opacity, 10%)) 25%,
+        rgb(0 0 0 / 0%) 25%
+      );
+  box-shadow: 0 0 0 1px rgb(255 255 255 / var(--glass-border-opacity, 10%)) inset,
+      0 0 0 2px rgb(0 0 0 / 5%);
+  text-shadow: 0 1px rgb(0 0 0 / var(--glass-text-shadow-opacity, 5%));
+}
+
+@media (hover: hover) {
+  .glass.btn-active {
+    border: none;
+    -webkit-backdrop-filter: blur(var(--glass-blur, 40px));
+            backdrop-filter: blur(var(--glass-blur, 40px));
+    background-color: transparent;
+    background-image: linear-gradient(
+          135deg,
+          rgb(255 255 255 / var(--glass-opacity, 30%)) 0%,
+          rgb(0 0 0 / 0%) 100%
+        ),
+        linear-gradient(
+          var(--glass-reflex-degree, 100deg),
+          rgb(255 255 255 / var(--glass-reflex-opacity, 10%)) 25%,
+          rgb(0 0 0 / 0%) 25%
+        );
+    box-shadow: 0 0 0 1px rgb(255 255 255 / var(--glass-border-opacity, 10%)) inset,
+        0 0 0 2px rgb(0 0 0 / 5%);
+    text-shadow: 0 1px rgb(0 0 0 / var(--glass-text-shadow-opacity, 5%));
+  }
+}
+
 .badge-xs {
   height: 0.75rem;
   font-size: 0.75rem;
@@ -2959,6 +3035,14 @@ input.tab:checked + .tab-content,
 
 .btm-nav-lg > *:where(.active) {
   border-top-width: 4px;
+}
+
+.btn-xs {
+  height: 1.5rem;
+  min-height: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.75rem;
 }
 
 .btn-sm {
@@ -3791,6 +3875,14 @@ input.tab:checked + .tab-content,
   padding-top: 0.5rem;
 }
 
+.pe-2 {
+  padding-inline-end: 0.5rem;
+}
+
+.pe-3 {
+  padding-inline-end: 0.75rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -3859,6 +3951,28 @@ input.tab:checked + .tab-content,
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\#btnAddProduct\]\:btn-disabled:not(:has(#unitsContainer>div)) #btnAddProduct {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\#btnAddProduct\]\:btn-disabled:not(:has(#unitsContainer>div)) #btnAddProduct:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\#btnAddProduct\]\:btn-disabled:not(:has(#unitsContainer>div)) #btnAddProduct.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
 }
 
 .\[\&_div\:nth-child\(even\)_input\]\:input-accent div:nth-child(even) input {
@@ -3959,6 +4073,10 @@ input.tab:checked + .tab-content,
   display: none;
 }
 
+.\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\#btnAddProduct\]\:box-border:not(:has(#unitsContainer>div)) #btnAddProduct {
+  box-sizing: border-box;
+}
+
 .\[\&\>svg\]\:h-4>svg {
   height: 1rem;
 }
@@ -3995,6 +4113,80 @@ input.tab:checked + .tab-content,
 
 .\[\&_\*\]\:box-border * {
   box-sizing: border-box;
+}
+
+.\[\&_\.tooltip\]\:absolute .tooltip {
+  position: absolute;
+}
+
+.\[\&_\.tooltip\]\:right-\[-12px\] .tooltip {
+  right: -12px;
+}
+
+.\[\&_\.tooltip\]\:top-\[-12px\] .tooltip {
+  top: -12px;
+}
+
+.\[\&_button\]\:absolute button {
+  position: absolute;
+}
+
+.\[\&_button\]\:top-0 button {
+  top: 0px;
+}
+
+.\[\&_button\]\:right-0 button {
+  right: 0px;
+}
+
+.\[\&_button\]\:right-\[-10px\] button {
+  right: -10px;
+}
+
+.\[\&_button\]\:left-0 button {
+  left: 0px;
+}
+
+.\[\&_button\]\:right-\[-50\%\] button {
+  right: -50%;
+}
+
+.\[\&_button\]\:right-\[-12px\] button {
+  right: -12px;
+}
+
+.\[\&_button\]\:top-\[-12px\] button {
+  top: -12px;
+}
+
+.\[\&_button\]\:translate-x-2 button {
+  --tw-translate-x: 0.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.\[\&_button\]\:translate-x-\[-50\%\] button {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.\[\&_button\]\:translate-x-\[10px\] button {
+  --tw-translate-x: 10px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.\[\&_button\]\:translate-x-\[-10px\] button {
+  --tw-translate-x: -10px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.\[\&_button\]\:translate-y-\[-50\%\] button {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.\[\&_button\]\:bg-white button {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .\[\&_div\:nth-child\(even\)\:has\(input\:focus\)\]\:fill-primary div:nth-child(even):has(input:focus) {
@@ -4076,6 +4268,30 @@ input.tab:checked + .tab-content,
 .\[\&_mark\]\:px-\[2px\] mark {
   padding-left: 2px;
   padding-right: 2px;
+}
+
+.\[\&_svg\]\:h-4 svg {
+  height: 1rem;
+}
+
+.\[\&_svg\]\:h-2 svg {
+  height: 0.5rem;
+}
+
+.\[\&_svg\]\:min-h-2 svg {
+  min-height: 0.5rem;
+}
+
+.\[\&_svg\]\:w-4 svg {
+  width: 1rem;
+}
+
+.\[\&_svg\]\:w-2 svg {
+  width: 0.5rem;
+}
+
+.\[\&_svg\]\:min-w-2 svg {
+  min-width: 0.5rem;
 }
 
 .\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/10 tr:nth-child(even) {
