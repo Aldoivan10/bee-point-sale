@@ -133,7 +133,65 @@ class Product extends Scheme {
 
     async update(id, ...args) {}
 
-    async create(product) {}
+    async create(product) {
+        const insertProduct = `
+        INSERT INTO
+            Producto
+        VALUES
+        (
+            (
+                WITH cte AS
+                (
+                    SELECT id_producto FROM producto
+                    UNION ALL 
+                    SELECT 0
+                )
+                SELECT MIN(id_producto) + 1
+                FROM cte
+                WHERE NOT EXISTS
+                (
+                    SELECT * 
+                    FROM producto 
+                    WHERE producto.id_producto = cte.id_producto + 1
+                )
+            ),
+            ?
+        ) RETURNING id_producto`
+        let res = await this.db.insert(
+            insertProduct,
+            [product["name"]],
+            (res) => res
+        )
+        const id = res.lastID
+        const codes = product["codes"]
+        const insertCodes = `
+            INSERT INTO
+                Producto_Codigo
+            VALUES
+            (?, ?, ?)
+        `
+        for (const key of Object.keys(codes)) {
+            await this.db.insert(insertCodes, [key, id, codes[key]])
+        }
+        const insertUnits = `
+            INSERT INTO 
+                Producto_Unidad
+            VALUES
+            (?,?,?,?,?,?,?)
+        `
+        const units = product["units"]
+        for (const unit of units) {
+            await this.db.insert(insertUnits, [
+                id,
+                unit["unidad"],
+                unit["cantidad"],
+                +unit["descuento"] / 100,
+                +unit["ganancia"] / 100,
+                unit["compra"],
+                unit["venta"],
+            ])
+        }
+    }
 }
 
 class User extends Scheme {

@@ -97,7 +97,11 @@ class ProductView {
         const codes = Array.from(this.$codes.querySelectorAll("input"))
         const units = Array.from(
             this.$units.querySelectorAll("div:not(.tooltip)")
-        ).map((div) => Array.from(div.querySelectorAll("input")))
+        ).map((div) => {
+            const arr = Array.from(div.querySelectorAll("input"))
+            arr.push(div.querySelector("select"))
+            return arr
+        })
         return { name, codes, units }
     }
 

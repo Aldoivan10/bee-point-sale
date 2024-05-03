@@ -42,23 +42,25 @@ class ProductController {
         ).toFixed(2)
     }
 
-    saveProduct = (evt) => {
+    saveProduct = async (evt) => {
         evt.preventDefault()
         const { name, codes, units } = this.$view.getElements()
         if (!name.value) this.alert.error("El producto debe llevar un nombre")
         else {
             const mappedCodes = codes.reduce((acc, el) => {
                 if (!el.value) return acc
-                acc.push({ [el.id]: el.value })
-                return acc
-            }, [])
-            if (mappedCodes.length == 0)
+                return { ...acc, [el.id]: el.value }
+            }, {})
+            if (Object.keys(mappedCodes).length == 0)
                 this.alert.error(
                     "Debe haber al menos un código de identificación"
                 )
             else {
                 const isCompleteUnits = units.every((inputs) =>
-                    inputs.every((el) => !!el.value)
+                    inputs.every((el) => {
+                        if (el.tagName === "SELECT") return !isNaN(el.value)
+                        return !!el.value
+                    })
                 )
                 if (!isCompleteUnits)
                     this.alert.warning("Complete los campos faltantes")
@@ -70,6 +72,12 @@ class ProductController {
                         acc.push(unitObj)
                         return acc
                     }, [])
+
+                    const res = await window.products.create({
+                        name: name.value,
+                        units: mappedUnits,
+                        codes: mappedCodes,
+                    })
                 }
             }
         }

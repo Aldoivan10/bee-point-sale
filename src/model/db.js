@@ -30,4 +30,13 @@ module.exports = class DB {
             })
         })
     }
+
+    async insert(sql, params = [], action = () => {}, error = () => {}) {
+        return new Promise((resolve, reject) => {
+            this.db.run(sql, params, function (err) {
+                if (err) reject(error(err))
+                resolve(action(this))
+            })
+        })
+    }
 }

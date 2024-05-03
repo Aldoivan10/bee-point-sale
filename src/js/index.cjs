@@ -31,6 +31,10 @@ app.whenReady().then(async () => {
         async (_, pageSize, offset, filter) =>
             await productScheme.all(pageSize, offset, filter)
     )
+    ipcMain.handle(
+        "createProduct",
+        async (_, product) => await productScheme.create(product)
+    )
     ipcMain.handle("fetchCodes", async () => await codeScheme.all())
     ipcMain.handle("fetchUnits", async () => await unitScheme.all())
     ipcMain.handle(

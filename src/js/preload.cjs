@@ -4,6 +4,7 @@ contextBridge.exposeInMainWorld("products", {
     get: (pageSize, offset, filter) =>
         ipcRenderer.invoke("fetchProducts", pageSize, offset, filter),
     total: (filter) => ipcRenderer.invoke("fetchTotalProducts", filter),
+    create: (product) => ipcRenderer.invoke("createProduct", product),
 })
 
 contextBridge.exposeInMainWorld("codes", {
