@@ -78,7 +78,7 @@ class Product extends Scheme {
             GROUP BY
                 P.id_producto
             ORDER BY
-                P.id_producto
+                P.nombre
             LIMIT ${pageSize}
             OFFSET ${offset}
         `
