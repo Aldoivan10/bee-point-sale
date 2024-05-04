@@ -8,6 +8,7 @@ function initTable() {
         new Pagination($pagination, $pageSizeSelector),
         $filter,
         $btnDelItem,
+        modalConfirm,
         {
             "Precio de venta": (val) => {
                 return val.toLocaleString("es-MX", {
@@ -60,8 +61,14 @@ function initAdmin() {
 }
 
 function initProduct() {
-    const { $name, $codes, $btnAddItem, $btnAddUnit, $unitsContainer } =
-        productVars()
+    const {
+        $name,
+        $codes,
+        $btnAddItem,
+        $btnAddUnit,
+        $unitsContainer,
+        $btnDeleteUnits,
+    } = productVars()
 
     new ProductController(
         new ProductView($name, $codes, $unitsContainer),

@@ -1,5 +1,13 @@
 class TableController {
-    constructor(view, model, pagination, filter, btnDelItem, mapper) {
+    constructor(
+        view,
+        model,
+        pagination,
+        filter,
+        btnDelItem,
+        modalConfirm,
+        mapper
+    ) {
         this.$view = view
         this.$model = model
         this.mapper = mapper
@@ -121,7 +129,13 @@ class TableController {
     }
 
     onItemDelete = () => {
-        const rows = this.$view.getCheckedRows()
-        console.log(rows)
+        confirmDialog(
+            "Eliminar productos",
+            "¿Desea eliminar los productos seleccionados?. Ya no podrán ser recuperados.",
+            () => {
+                const rows = this.$view.getCheckedRows()
+                console.log(rows)
+            }
+        )
     }
 }

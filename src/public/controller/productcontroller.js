@@ -78,6 +78,14 @@ class ProductController {
                         units: mappedUnits,
                         codes: mappedCodes,
                     })
+                    if (res.status === "success") {
+                        this.alert.success(res.msg)
+                        this.$view.clear()
+                        this._getCodes()
+                    } else {
+                        console.log(res)
+                        this.alert.error(res.msg)
+                    }
                 }
             }
         }

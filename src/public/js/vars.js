@@ -4,7 +4,7 @@ function tableVars() {
     const $filter = $main.getElementById("filter")
     const $pagination = $main.getElementById("productsPagination")
     const $pageSizeSelector = $main.getElementById("select-num-results")
-    const $btnDelItem = $main.querySelector("#btnDelItem>button")
+    const $btnDelItem = $main.getElementById("btnDeleteUnits")
     return { $table, $filter, $pagination, $pageSizeSelector, $btnDelItem }
 }
 

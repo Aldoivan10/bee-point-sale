@@ -13,6 +13,7 @@ class ProductView {
                 id: code.id_codigo,
                 placeholder: code.nombre,
                 icon: path,
+                maxLength: 32,
             })
             this.$codes.appendChild(inputCode)
         }

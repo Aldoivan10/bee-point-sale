@@ -4,6 +4,14 @@ const removeChilds = (element) => {
     }
 }
 
+const confirmDialog = (title, text, onAccept, onCancel = () => {}) => {
+    modalConfirm.querySelector("h3").textContent = title
+    modalConfirm.querySelector("p").textContent = text
+    modalConfirm.querySelector(".btn-success").onclick = onAccept
+    modalConfirm.querySelector(".btn-error").onclick = onCancel
+    modalConfirm.showModal()
+}
+
 const input = (options) => {
     const $lbl = document.createElement("label")
     const $input = document.createElement("input")
@@ -19,10 +27,12 @@ const input = (options) => {
     if (options.min) $input.min = options.min
     if (options.max) $input.max = options.max
     if (options.step) $input.min = options.step
+    if (options.maxLength) $input.maxLength = options.maxLength
     if (options.icon) $lbl.appendChild(svg(options.icon))
     if (options.disabled) $input.disabled = true
     if (options.type && options.type === "number")
         $input.onblur = () => ($input.value = parseInt($input.value).toFixed(2))
+
     $lbl.appendChild($input)
     if (options.badge) {
         const $badge = document.createElement("span")

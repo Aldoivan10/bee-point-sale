@@ -3,6 +3,18 @@ class Scheme {
         this.db = db
     }
 
+    error(msg, data = null) {
+        return this.msg("error", msg, data)
+    }
+
+    ok(msg, data = null) {
+        return this.msg("success", msg, data)
+    }
+
+    msg(status, msg, data = null) {
+        return { status: status, msg: msg, data: data }
+    }
+
     encloseStr(str, find, init, end) {
         if (!str || !find) return str
         const regex = new RegExp(find, "i")
@@ -134,62 +146,71 @@ class Product extends Scheme {
     async update(id, ...args) {}
 
     async create(product) {
-        const insertProduct = `
-        INSERT INTO
-            Producto
-        VALUES
-        (
+        try {
+            const insertProduct = `
+            INSERT INTO
+                Producto
+            VALUES
             (
-                WITH cte AS
                 (
-                    SELECT id_producto FROM producto
-                    UNION ALL 
-                    SELECT 0
-                )
-                SELECT MIN(id_producto) + 1
-                FROM cte
-                WHERE NOT EXISTS
-                (
-                    SELECT * 
-                    FROM producto 
-                    WHERE producto.id_producto = cte.id_producto + 1
-                )
-            ),
-            ?
-        ) RETURNING id_producto`
-        let res = await this.db.insert(
-            insertProduct,
-            [product["name"]],
-            (res) => res
-        )
-        const id = res.lastID
-        const codes = product["codes"]
-        const insertCodes = `
+                    WITH cte AS
+                    (
+                        SELECT id_producto FROM producto
+                        UNION ALL 
+                        SELECT 0
+                    )
+                    SELECT MIN(id_producto) + 1
+                    FROM cte
+                    WHERE NOT EXISTS
+                    (
+                        SELECT * 
+                        FROM producto 
+                        WHERE producto.id_producto = cte.id_producto + 1
+                    )
+                ),
+                ?
+            ) RETURNING id_producto`
+            let res = await this.db.insert(
+                insertProduct,
+                [product["name"]],
+                (res) => res
+            )
+            const id = res.lastID
+            const codes = product["codes"]
+            const insertCodes = `
             INSERT INTO
                 Producto_Codigo
             VALUES
             (?, ?, ?)
         `
-        for (const key of Object.keys(codes)) {
-            await this.db.insert(insertCodes, [key, id, codes[key]])
-        }
-        const insertUnits = `
+            for (const key of Object.keys(codes)) {
+                await this.db.insert(insertCodes, [key, id, codes[key]])
+            }
+            const insertUnits = `
             INSERT INTO 
                 Producto_Unidad
             VALUES
             (?,?,?,?,?,?,?)
         `
-        const units = product["units"]
-        for (const unit of units) {
-            await this.db.insert(insertUnits, [
-                id,
-                unit["unidad"],
-                unit["cantidad"],
-                +unit["descuento"] / 100,
-                +unit["ganancia"] / 100,
-                unit["compra"],
-                unit["venta"],
-            ])
+            const units = product["units"]
+            for (const unit of units) {
+                await this.db.insert(insertUnits, [
+                    id,
+                    unit["unidad"],
+                    unit["cantidad"],
+                    +unit["descuento"] / 100,
+                    +unit["ganancia"] / 100,
+                    unit["compra"],
+                    unit["venta"],
+                ])
+            }
+
+            return this.ok("El producto ha sido creado")
+        } catch (err) {
+            return this.error(
+                "No se ha podido crear el producto. Intentelo más tarde",
+                err
+            )
         }
     }
 }

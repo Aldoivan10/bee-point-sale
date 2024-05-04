@@ -8,7 +8,7 @@
         />
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self'; img-src 'self' data:"
+            content="default-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' data:"
         />
         <link
             rel="stylesheet"
@@ -19,6 +19,7 @@
     <body
         class="flex flex-col h-[100dvh] min-w-[100dvw] overflow-hidden [&_*]:box-border"
     >
+        <!-- LOGIN (TOP) -->
         <dialog
             id="modalLogin"
             class="modal"
@@ -79,7 +80,8 @@
                 </div>
             </div>
         </dialog>
-
+        <!-- LOGIN (BOTTOM) -->
+        <!-- PRODUCT (TOP) -->
         <dialog
             id="modalProduct"
             class="modal"
@@ -103,6 +105,7 @@
                         <input
                             type="text"
                             class="grow"
+                            maxlength="512"
                             placeholder="Nombre"
                         />
                     </label>
@@ -147,13 +150,34 @@
                         >
                             Aceptar
                         </button>
-                        <button class="btn btn-outline btn-error">
+                        <button
+                            onclick="location.reload()"
+                            class="btn btn-outline btn-error"
+                        >
                             Cancelar
                         </button>
                     </form>
                 </div>
             </div>
         </dialog>
+        <!-- PRODUCT (BOTTOM) -->
+        <!-- CONFIRM (TOP) -->
+        <dialog
+            id="modalConfirm"
+            class="modal"
+        >
+            <div class="modal-box">
+                <h3 class="font-bold text-lg"></h3>
+                <p class="py-4"></p>
+                <div class="modal-action m-0">
+                    <form method="dialog">
+                        <button class="btn btn-success btn-sm">Aceptar</button>
+                        <button class="btn btn-error btn-sm">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+        <!-- CONFIRM (BOTTOM) -->
 
         <object
             id="header"
