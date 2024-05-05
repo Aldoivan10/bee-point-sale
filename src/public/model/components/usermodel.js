@@ -10,14 +10,14 @@ class UserModel {
     }
 
     login(name, type) {
-        localStorage.setItem("user", name)
-        localStorage.setItem("type", type)
+        saveVal("user", name)
+        saveVal("type", type)
         this.notify(name, type)
     }
 
     logout() {
-        localStorage.removeItem("user")
-        localStorage.removeItem("type")
+        delVal("user")
+        delVal("type")
         this.notify("", "")
     }
 

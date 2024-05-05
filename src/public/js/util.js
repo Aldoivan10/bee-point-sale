@@ -12,6 +12,18 @@ const confirmDialog = (title, text, onAccept, onCancel = () => {}) => {
     modalConfirm.showModal()
 }
 
+const saveVal = (key, val) => {
+    localStorage.setItem(key, val)
+}
+
+const getVal = (key) => {
+    localStorage.getItem(key)
+}
+
+const delVal = (key) => {
+    localStorage.removeItem(key)
+}
+
 const input = (options) => {
     const $lbl = document.createElement("label")
     const $input = document.createElement("input")

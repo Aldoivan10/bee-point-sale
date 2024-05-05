@@ -3609,6 +3609,10 @@ input.tab:checked + .tab-content,
   width: 100%;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .min-w-\[100dvw\] {
   min-width: 100dvw;
 }
@@ -3627,6 +3631,10 @@ input.tab:checked + .tab-content,
 
 .max-w-xs {
   max-width: 20rem;
+}
+
+.max-w-\[100\%\] {
+  max-width: 100%;
 }
 
 .flex-grow {
@@ -3940,6 +3948,25 @@ input.tab:checked + .tab-content,
   fill: var(--fallback-p,oklch(var(--p)/1));
 }
 
+.\[\&\:\:-webkit-scrollbar-corner\]\:rounded-br::-webkit-scrollbar-corner {
+  border-bottom-right-radius: 0.25rem;
+}
+
+.\[\&\:\:-webkit-scrollbar-corner\]\:bg-white::-webkit-scrollbar-corner {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.\[\&\:\:-webkit-scrollbar-corner\]\:bg-slate-800::-webkit-scrollbar-corner {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+
+.\[\&\:\:-webkit-scrollbar-corner\]\:bg-slate-900::-webkit-scrollbar-corner {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
+
 .\[\&\:has\(input\[type\=checkbox\]\:checked\)_\.btn-error\]\:pointer-events-auto:has(input[type=checkbox]:checked) .btn-error {
   pointer-events: auto;
 }
@@ -3952,23 +3979,12 @@ input.tab:checked + .tab-content,
   display: none;
 }
 
+.\[\&\:is\(\.active\)\]\:text-primary:is(.active) {
+  --tw-text-opacity: 1;
+  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
+}
+
 .\[\&\:is\(\.admin\)_\.btn-login\]\:hidden:is(.admin) .btn-login {
-  display: none;
-}
-
-.\[\&\:is\(\.admin\)_tbody_td\:nth-child\(5\)\]\:hidden:is(.admin) tbody td:nth-child(5) {
-  display: none;
-}
-
-.\[\&\:is\(\.admin\)_tbody_td\:nth-child\(6\)\]\:hidden:is(.admin) tbody td:nth-child(6) {
-  display: none;
-}
-
-.\[\&\:is\(\.admin\)_thead_td\:nth-child\(5\)\]\:hidden:is(.admin) thead td:nth-child(5) {
-  display: none;
-}
-
-.\[\&\:is\(\.admin\)_thead_td\:nth-child\(6\)\]\:hidden:is(.admin) thead td:nth-child(6) {
   display: none;
 }
 
@@ -3980,15 +3996,7 @@ input.tab:checked + .tab-content,
   display: none;
 }
 
-.\[\&\:not\(\.admin\)_body_td\:nth-child\(5\)\]\:hidden:not(.admin) body td:nth-child(5) {
-  display: none;
-}
-
 .\[\&\:not\(\.admin\)_tbody_td\:nth-child\(1\)\]\:hidden:not(.admin) tbody td:nth-child(1) {
-  display: none;
-}
-
-.\[\&\:not\(\.admin\)_tbody_td\:nth-child\(5\)\]\:hidden:not(.admin) tbody td:nth-child(5) {
   display: none;
 }
 
@@ -3997,10 +4005,6 @@ input.tab:checked + .tab-content,
 }
 
 .\[\&\:not\(\.admin\)_thead_td\:nth-child\(1\)\]\:hidden:not(.admin) thead td:nth-child(1) {
-  display: none;
-}
-
-.\[\&\:not\(\.admin\)_thead_td\:nth-child\(5\)\]\:hidden:not(.admin) thead td:nth-child(5) {
   display: none;
 }
 
@@ -4052,6 +4056,16 @@ input.tab:checked + .tab-content,
 
 .\[\&_\.tooltip\]\:top-\[-12px\] .tooltip {
   top: -12px;
+}
+
+.\[\&_\:\:-webkit-scrollbar-corner\]\:bg-white ::-webkit-scrollbar-corner {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.\[\&_div\:is\(\.active\)\]\:text-primary div:is(.active) {
+  --tw-text-opacity: 1;
+  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
 }
 
 .\[\&_div\:nth-child\(even\)_label\:has\(input\:focus\)\]\:fill-accent div:nth-child(even) label:has(input:focus) {

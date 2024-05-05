@@ -23,6 +23,7 @@ const createWindow = async () => {
     })
     /* CARGAR PAGINCA */
     win.loadFile("src/public/index.html")
+    win.menuBarVisible = false
 }
 
 app.whenReady().then(async () => {
