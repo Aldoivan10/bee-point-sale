@@ -35,6 +35,10 @@ app.whenReady().then(async () => {
         "createProduct",
         async (_, product) => await productScheme.create(product)
     )
+    ipcMain.handle(
+        "deleteProducts",
+        async (_, ids) => await productScheme.delete(ids)
+    )
     ipcMain.handle("fetchCodes", async () => await codeScheme.all())
     ipcMain.handle("fetchUnits", async () => await unitScheme.all())
     ipcMain.handle(

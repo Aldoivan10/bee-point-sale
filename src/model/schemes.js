@@ -64,7 +64,7 @@ class Product extends Scheme {
                     'unidades',
                     (
                         SELECT 
-                            JSON_GROUP_ARRAY(JSON_OBJECT('Unidad', U.nombre, 'Cantidad', PU.cantidad, 'Precio de venta', PU.precio_venta, 'Descuento', PU.descuento, 'Ganancia', PU.ganancia, 'Precio de compra', PU.precio_compra))
+                            JSON_GROUP_ARRAY(JSON_OBJECT('id_unidad', U.id_unidad, 'Unidad', U.nombre, 'Cantidad', PU.cantidad, 'Precio de venta', PU.precio_venta, 'Descuento', PU.descuento, 'Ganancia', PU.ganancia, 'Precio de compra', PU.precio_compra))
                         FROM
                             Producto_Unidad PU
                         INNER JOIN 
@@ -121,6 +121,7 @@ class Product extends Scheme {
             return rows
         })
     }
+
     async total(filter) {
         const sql = `
         SELECT
@@ -141,7 +142,18 @@ class Product extends Scheme {
 
     async get(id) {}
 
-    async delete(id) {}
+    async delete(arr_ids) {
+        try {
+            const sql =
+                "DELETE FROM Producto_Unidad WHERE id_producto = ? AND id_unidad = ?"
+            for (const ids of arr_ids) {
+                await this.db.query(sql, ids)
+            }
+            return this.ok("Registros eliminados")
+        } catch (err) {
+            return this.error("No se pudo eliminar el producto", err)
+        }
+    }
 
     async update(id, ...args) {}
 

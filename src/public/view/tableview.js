@@ -35,8 +35,8 @@ class TableView {
     }
 
     getCheckedRows() {
-        return this.$body.querySelectorAll(
-            "tr:has(input[type=checkbox]:checked)"
+        return Array.from(
+            this.$body.querySelectorAll("tr:has(input[type=checkbox]:checked)")
         )
     }
 

@@ -1,4 +1,4 @@
-function initTable() {
+function initTable(mainAlerts) {
     const { $table, $filter, $pagination, $pageSizeSelector, $btnDelItem } =
         tableVars()
 
@@ -8,7 +8,7 @@ function initTable() {
         new Pagination($pagination, $pageSizeSelector),
         $filter,
         $btnDelItem,
-        modalConfirm,
+        mainAlerts,
         {
             "Precio de venta": (val) => {
                 return val.toLocaleString("es-MX", {

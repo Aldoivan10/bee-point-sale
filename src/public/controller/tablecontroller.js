@@ -5,7 +5,7 @@ class TableController {
         pagination,
         filter,
         btnDelItem,
-        modalConfirm,
+        mainAlerts,
         mapper
     ) {
         this.$view = view
@@ -16,6 +16,8 @@ class TableController {
         this.filter = null
         this.filterTimer = null
         this.filterWaitingTime = 500
+
+        this.mainAlerts = mainAlerts
 
         model.addHeaderListener(this.onHeaderUpdate)
         model.addDataListener(this.onDataUpdate)
@@ -132,9 +134,23 @@ class TableController {
         confirmDialog(
             "Eliminar productos",
             "¿Desea eliminar los productos seleccionados?. Ya no podrán ser recuperados.",
-            () => {
+            async () => {
                 const rows = this.$view.getCheckedRows()
-                console.log(rows)
+                const ids = rows.map((row) =>
+                    Array.from(
+                        row.querySelectorAll(
+                            ":where(td:nth-child(5), td:nth-child(7))"
+                        )
+                    ).map((td) => +td.textContent)
+                )
+                const res = await window.products.delete(ids)
+                if (res.status === "success") {
+                    this.mainAlerts.success(res.msg)
+                    this.init()
+                } else {
+                    mainAlerts.error(res.msg)
+                    console.log(res.data)
+                }
             }
         )
     }
