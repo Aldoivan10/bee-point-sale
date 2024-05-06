@@ -1,7 +1,7 @@
-const { app, BrowserWindow, ipcMain } = require("electron")
+const { app, BrowserWindow, ipcMain, globalShortcut } = require("electron")
+const { Product, User, Unit, Code } = require("../model/schemes.js")
 const path = require("node:path")
 const DB = require("../model/db.js")
-const { Product, User, Unit, Code } = require("../model/schemes.js")
 
 const db = new DB()
 db.init("src/ferreteria.sqlite")
@@ -24,6 +24,16 @@ const createWindow = async () => {
     /* CARGAR PAGINCA */
     win.loadFile("src/public/index.html")
     win.menuBarVisible = false
+
+    app.on("browser-window-focus", () => {
+        globalShortcut.register("CommandOrControl+T", () => {
+            win.webContents.send("add-tab")
+        })
+    })
+
+    app.on("browser-window-blur", function () {
+        globalShortcut.unregister("CommandOrControl+T")
+    })
 }
 
 app.whenReady().then(async () => {

@@ -104,3 +104,11 @@ const tooltip = (el, tip) => {
     $tooltip.appendChild(el)
     return $tooltip
 }
+
+const tab = (text) => {
+    const $tab = document.createElement("li")
+    $tab.role = "tab"
+    $tab.textContent = text
+    $tab.className = "tab min-w-[65px] max-w-[65px]"
+    return $tab
+}

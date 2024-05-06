@@ -19,3 +19,7 @@ contextBridge.exposeInMainWorld("units", {
 contextBridge.exposeInMainWorld("users", {
     get: (user, pass) => ipcRenderer.invoke("fetchUser", user, pass),
 })
+
+contextBridge.exposeInMainWorld("api", {
+    onAddTab: (callback) => ipcRenderer.on("add-tab", (_event) => callback()),
+})

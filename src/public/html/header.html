@@ -16,7 +16,7 @@
         class="max-h[64px] overflow-hidden [&:is(.admin)_.btn-login]:hidden [&:not(.admin)_.btn-logout]:hidden"
     >
         <header class="navbar bg-base-200 flex max-w-[100%] w-[100%]">
-            <div class="navbar-start w-auto">
+            <div class="navbar-start grow">
                 <div class="dropdown z-10">
                     <div
                         tabindex="0"
@@ -48,84 +48,32 @@
                     </ul>
                 </div>
                 <div
-                    role="tablist"
-                    class="tabs tabs-lifted overflow-clip"
+                    class="flex gap-2 w-[100%] [&:not(:has(.overflowing))_.btn]:hidden"
                 >
+                    <button
+                        class="btn btn-neutral min-h-[32px] h-[32px] w-[32px]"
+                    >
+                        <
+                    </button>
                     <ul
                         role="tablist"
-                        class="tabs tabs-bordered"
+                        class="flex tabs tabs-bordered overflow-clip grow w-0 [&_.tab-active]:rounded-t [&_.tab-active]:bg-primary/10 [&_.tab]:p-0 [&_.tab-active]:text-primary [&_.tab-active]:!border-primary [&_.tab-active]:font-bold"
                     >
                         <li
                             role="tab"
-                            class="tab min-w-[65px]"
+                            class="tab-active tab min-w-[65px] max-w-[65px]"
                         >
-                            Tab 1
-                        </li>
-                        <li
-                            id="tab"
-                            role="tab"
-                            class="tab tab-active min-w-[65px]"
-                        >
-                            Tab 2
-                        </li>
-                        <li
-                            role="tab"
-                            class="tab min-w-[65px]"
-                        >
-                            Tab 1
-                        </li>
-                        <li
-                            role="tab"
-                            class="tab min-w-[65px]"
-                        >
-                            Tab 1
-                        </li>
-                        <li
-                            role="tab"
-                            class="tab min-w-[65px]"
-                        >
-                            Tab 1
-                        </li>
-                        <li
-                            role="tab"
-                            class="tab min-w-[65px]"
-                        >
-                            Tab 1
-                        </li>
-                        <li
-                            role="tab"
-                            class="tab min-w-[65px]"
-                        >
-                            Tab 1
-                        </li>
-                        <li
-                            role="tab"
-                            class="tab min-w-[65px]"
-                        >
-                            Tab 1
-                        </li>
-                        <li
-                            role="tab"
-                            class="tab min-w-[65px]"
-                        >
-                            Tab 1
-                        </li>
-                        <li
-                            role="tab"
-                            class="tab min-w-[65px]"
-                        >
-                            Tab 1
-                        </li>
-                        <li
-                            role="tab"
-                            class="tab min-w-[65px]"
-                        >
-                            Tab 1
+                            Tab 100
                         </li>
                     </ul>
+                    <button
+                        class="btn btn-neutral min-h-[32px] h-[32px] w-[32px]"
+                    >
+                        >
+                    </button>
                 </div>
             </div>
-            <div class="navbar-end w-auto grow">
+            <div class="navbar-end w-[initial] ps-8">
                 <span
                     id="userName"
                     class="text-primary me-2 font-bold"
