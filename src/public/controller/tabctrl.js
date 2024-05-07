@@ -14,6 +14,7 @@ class TabController {
         const $tab = this.addTab(num)
         this.checkOverflow()
         this.addContent(num)
+        $tab.querySelector("button").onclick = () => this.deleteTab($tab)
         $tab.click()
     }
 
@@ -22,14 +23,16 @@ class TabController {
             ? tab
             : this.$tabs.querySelector(".tab-active:not(:nth-child(1))")
         if ($tab) {
-            const childs = this.$tabs.children
-            const silbingIndex = Array.from(childs).findIndex(
-                (el) => el.dataset.content == $tab.dataset.content
-            )
-            const $silbing = childs[silbingIndex - 1]
+            if (Array.from($tab.classList).includes("tab-active")) {
+                const childs = this.$tabs.children
+                const silbingIndex = Array.from(childs).findIndex(
+                    (el) => el.dataset.content == $tab.dataset.content
+                )
+                const $silbing = childs[silbingIndex - 1]
+                this.getContent($silbing).classList.remove("hidden")
+                $silbing.classList.add("tab-active")
+            }
             this.getContent($tab).remove()
-            this.getContent($silbing).classList.remove("hidden")
-            $silbing.classList.add("tab-active")
             $tab.remove()
         }
     }
@@ -52,7 +55,10 @@ class TabController {
         const childs = this.$tabs.children
         let num = 0
         if (childs.length === 0) num = 1
-        else num = ++childs[childs.length - 1].textContent.split(" ")[1]
+        else
+            num = ++childs[childs.length - 1]
+                .querySelector("span")
+                .textContent.split(" ")[1]
         return num
     }
 

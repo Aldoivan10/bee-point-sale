@@ -92,6 +92,7 @@ const button = (options) => {
     $btn.className = `btn grid place-items-center [&_svg]:h-4 [&_svg]:w-4 ${
         options.class ? options.class : ""
     }`
+    $btn.type = options.type ? options.type : "button"
     if (options.icon) $btn.appendChild(svg(options.icon))
     if (options.text) $btn.textContent = options.text
     return options.tip ? tooltip($btn, options.tip) : $btn
@@ -107,9 +108,28 @@ const tooltip = (el, tip) => {
 
 const tab = (text) => {
     const $tab = document.createElement("li")
+    const $spanClose = document.createElement("span")
+    const $text = document.createElement("span")
+    const $close = button({
+        class: "btn-ghost font-bold btn-tab-close btn-xs btn-circle [&_span]:translate-y-[-2px] z-10",
+    })
     $tab.role = "tab"
-    $tab.textContent = text
-    $tab.className = "tab min-w-[65px] max-w-[65px]"
+    $tab.className = "tab min-w-[65px] flex gap-2 pe-2 ps-3"
+    $text.className = "grow"
+    $text.textContent = text
+    $spanClose.textContent = "x"
+    $tab.appendChild($text)
+    $close.appendChild($spanClose)
+    $tab.appendChild($close)
+    $text.onclick = (evt) => {
+        evt.preventDefault()
+        evt.stopPropagation()
+        $tab.click()
+    }
+    $close.addEventListener("click", (evt) => {
+        evt.preventDefault()
+        evt.stopPropagation()
+    })
     return $tab
 }
 
