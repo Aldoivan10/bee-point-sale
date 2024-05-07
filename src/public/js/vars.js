@@ -51,3 +51,10 @@ function productVars() {
         $unitsContainer,
     }
 }
+
+function tabVars() {
+    const $headerDoc = $header.contentDocument
+    const $tabs = $headerDoc.getElementById("$tabs")
+
+    return { $tabs, $tabsContent }
+}

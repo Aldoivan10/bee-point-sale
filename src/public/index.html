@@ -21,7 +21,7 @@
     >
         <!-- LOGIN (TOP) -->
         <dialog
-            id="modalLogin"
+            id="$login"
             class="modal"
         >
             <div class="modal-box">
@@ -83,7 +83,7 @@
         <!-- LOGIN (BOTTOM) -->
         <!-- PRODUCT (TOP) -->
         <dialog
-            id="modalProduct"
+            id="$product"
             class="modal"
         >
             <div
@@ -163,7 +163,7 @@
         <!-- PRODUCT (BOTTOM) -->
         <!-- CONFIRM (TOP) -->
         <dialog
-            id="modalConfirm"
+            id="$confirm"
             class="modal"
         >
             <div class="modal-box">
@@ -180,41 +180,19 @@
         <!-- CONFIRM (BOTTOM) -->
 
         <object
-            id="header"
+            id="$header"
             class="h-[65px]"
             data="html/header.html"
             type="text/html"
         ></object>
 
-        <object
-            id="main"
-            class="grow"
-            data="html/main.html"
-            type="text/html"
-        ></object>
+        <div
+            id="$tabsContent"
+            class="flex grow flex-col"
+        ></div>
 
-        <!-- <object
-            id="footer"
-            class="h-[65px]"
-            data="html/footer.html"
-            type="text/html"
-        ></object> -->
-
-        <script src="js/mousetrap.min.js"></script>
         <script src="js/util.js"></script>
         <script src="js/vars.js"></script>
-        <script src="js/init.js"></script>
-        <script src="model/ui/pagination.js"></script>
-        <script src="model/ui/alert.js"></script>
-        <script src="model/components/tablemodel.js"></script>
-        <script src="model/components/usermodel.js"></script>
-        <script src="model/components/productmodel.js"></script>
-        <script src="view/tableview.js"></script>
-        <script src="view/userview.js"></script>
-        <script src="view/productview.js"></script>
-        <script src="controller/tablecontroller.js"></script>
-        <script src="controller/usercontrolller.js"></script>
-        <script src="controller/productcontroller.js"></script>
         <script src="controller/tabctrl.js"></script>
         <script src="js/renderer.js"></script>
     </body>

@@ -112,3 +112,11 @@ const tab = (text) => {
     $tab.className = "tab min-w-[65px] max-w-[65px]"
     return $tab
 }
+
+const object = (path, id, type = "text/html") => {
+    const $object = document.createElement("object")
+    $object.data = path
+    $object.type = type
+    if (id) $object.id = id
+    return $object
+}

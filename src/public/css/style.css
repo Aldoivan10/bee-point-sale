@@ -3502,10 +3502,6 @@ input.tab:checked + .tab-content,
   pointer-events: none;
 }
 
-.fixed {
-  position: fixed;
-}
-
 .absolute {
   position: absolute;
 }
@@ -3567,26 +3563,6 @@ input.tab:checked + .tab-content,
   margin-top: 44.5px;
 }
 
-.ms-5 {
-  margin-inline-start: 1.25rem;
-}
-
-.ms-10 {
-  margin-inline-start: 2.5rem;
-}
-
-.ms-11 {
-  margin-inline-start: 2.75rem;
-}
-
-.ms-12 {
-  margin-inline-start: 3rem;
-}
-
-.ms-\[40px\] {
-  margin-inline-start: 40px;
-}
-
 .flex {
   display: flex;
 }
@@ -3611,36 +3587,40 @@ input.tab:checked + .tab-content,
   height: 1.25rem;
 }
 
-.h-\[100\%\] {
-  height: 100%;
-}
-
 .h-\[100dvh\] {
   height: 100dvh;
-}
-
-.h-\[48px\] {
-  height: 48px;
-}
-
-.h-\[65px\] {
-  height: 65px;
 }
 
 .h-\[32px\] {
   height: 32px;
 }
 
-.max-h-\[32px\] {
-  max-height: 32px;
+.h-\[48px\] {
+  height: 48px;
+}
+
+.h-\[64px\] {
+  height: 64px;
+}
+
+.h-\[65px\] {
+  height: 65px;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.min-h-\[32px\] {
+  min-height: 32px;
 }
 
 .min-h-\[48px\] {
   min-height: 48px;
 }
 
-.min-h-\[32px\] {
-  min-height: 32px;
+.w-0 {
+  width: 0px;
 }
 
 .w-4 {
@@ -3659,32 +3639,16 @@ input.tab:checked + .tab-content,
   width: 100%;
 }
 
-.w-full {
-  width: 100%;
-}
-
-.w-auto {
-  width: auto;
+.w-\[32px\] {
+  width: 32px;
 }
 
 .w-\[initial\] {
   width: initial;
 }
 
-.w-\[32px\] {
-  width: 32px;
-}
-
-.w-0 {
-  width: 0px;
-}
-
-.w-\[50\%\] {
-  width: 50%;
-}
-
-.w-10 {
-  width: 2.5rem;
+.w-full {
+  width: 100%;
 }
 
 .min-w-\[100dvw\] {
@@ -3699,14 +3663,6 @@ input.tab:checked + .tab-content,
   min-width: 65px;
 }
 
-.max-w-\[10rem\] {
-  max-width: 10rem;
-}
-
-.max-w-xs {
-  max-width: 20rem;
-}
-
 .max-w-\[100\%\] {
   max-width: 100%;
 }
@@ -3715,8 +3671,8 @@ input.tab:checked + .tab-content,
   max-width: 65px;
 }
 
-.flex-grow {
-  flex-grow: 1;
+.max-w-xs {
+  max-width: 20rem;
 }
 
 .grow {
@@ -3819,15 +3775,6 @@ input.tab:checked + .tab-content,
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
 }
 
-.border-\[initial\] {
-  border-color: initial;
-}
-
-.border-red-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(248 113 113 / var(--tw-border-opacity));
-}
-
 .bg-base-100 {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
@@ -3882,11 +3829,6 @@ input.tab:checked + .tab-content,
   padding-bottom: 1rem;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 .pb-6 {
   padding-bottom: 1.5rem;
 }
@@ -3895,20 +3837,16 @@ input.tab:checked + .tab-content,
   padding-inline-end: 0.75rem;
 }
 
+.ps-8 {
+  padding-inline-start: 2rem;
+}
+
 .ps-\[1px\] {
   padding-inline-start: 1px;
 }
 
 .pt-2 {
   padding-top: 0.5rem;
-}
-
-.ps-8 {
-  padding-inline-start: 2rem;
-}
-
-.pe-5 {
-  padding-inline-end: 1.25rem;
 }
 
 .text-center {
@@ -4052,19 +3990,9 @@ input.tab:checked + .tab-content,
   border-bottom-right-radius: 0.25rem;
 }
 
-.\[\&\:\:-webkit-scrollbar-corner\]\:bg-white::-webkit-scrollbar-corner {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .\[\&\:\:-webkit-scrollbar-corner\]\:bg-slate-800::-webkit-scrollbar-corner {
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
-}
-
-.\[\&\:\:-webkit-scrollbar-corner\]\:bg-slate-900::-webkit-scrollbar-corner {
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
 
 .\[\&\:has\(input\[type\=checkbox\]\:checked\)_\.btn-error\]\:pointer-events-auto:has(input[type=checkbox]:checked) .btn-error {
@@ -4077,11 +4005,6 @@ input.tab:checked + .tab-content,
 
 .\[\&\:has\(tbody\>tr\)_span\]\:hidden:has(tbody>tr) span {
   display: none;
-}
-
-.\[\&\:is\(\.active\)\]\:text-primary:is(.active) {
-  --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
 }
 
 .\[\&\:is\(\.admin\)_\.btn-login\]\:hidden:is(.admin) .btn-login {
@@ -4150,44 +4073,14 @@ input.tab:checked + .tab-content,
   box-sizing: border-box;
 }
 
-.has-\[\.overflowing\]\:\[\&_\.btn\]\:block .btn:has(.overflowing) {
-  display: block;
-}
-
-.has-\[\.overflowing\]\:\[\&_\.btn\]\:hidden .btn:has(.overflowing) {
-  display: none;
-}
-
-.has-\[\:not\(\.overflowing\)\]\:\[\&_\.btn\]\:hidden .btn:has(:not(.overflowing)) {
-  display: none;
-}
-
-.\[\&_\.tab-active\]\:rounded .tab-active {
-  border-radius: 0.25rem;
-}
-
 .\[\&_\.tab-active\]\:rounded-t .tab-active {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
 
-.\[\&_\.tab-active\]\:border-secondary .tab-active {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-s,oklch(var(--s)/var(--tw-border-opacity)));
-}
-
-.\[\&_\.tab-active\]\:\!border-secondary .tab-active {
-  --tw-border-opacity: 1 !important;
-  border-color: var(--fallback-s,oklch(var(--s)/var(--tw-border-opacity))) !important;
-}
-
 .\[\&_\.tab-active\]\:\!border-primary .tab-active {
   --tw-border-opacity: 1 !important;
   border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity))) !important;
-}
-
-.\[\&_\.tab-active\]\:bg-primary\/20 .tab-active {
-  background-color: var(--fallback-p,oklch(var(--p)/0.2));
 }
 
 .\[\&_\.tab-active\]\:bg-primary\/10 .tab-active {
@@ -4198,34 +4091,9 @@ input.tab:checked + .tab-content,
   font-weight: 700;
 }
 
-.\[\&_\.tab-active\]\:text-white .tab-active {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.\[\&_\.tab-active\]\:text-accent .tab-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity)));
-}
-
-.\[\&_\.tab-active\]\:text-secondary .tab-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity)));
-}
-
 .\[\&_\.tab-active\]\:text-primary .tab-active {
   --tw-text-opacity: 1;
   color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
-}
-
-.\[\&_\.tab\:is\(\.tab-active\)\]\:border-secondary .tab:is(.tab-active) {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-s,oklch(var(--s)/var(--tw-border-opacity)));
-}
-
-.\[\&_\.tab\]\:border-secondary .tab {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-s,oklch(var(--s)/var(--tw-border-opacity)));
 }
 
 .\[\&_\.tab\]\:p-0 .tab {
@@ -4242,11 +4110,6 @@ input.tab:checked + .tab-content,
 
 .\[\&_\.tooltip\]\:top-\[-12px\] .tooltip {
   top: -12px;
-}
-
-.\[\&_\:\:-webkit-scrollbar-corner\]\:bg-white ::-webkit-scrollbar-corner {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .\[\&_div\:is\(\.active\)\]\:text-primary div:is(.active) {

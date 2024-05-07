@@ -22,4 +22,5 @@ contextBridge.exposeInMainWorld("users", {
 
 contextBridge.exposeInMainWorld("api", {
     onAddTab: (callback) => ipcRenderer.on("add-tab", (_event) => callback()),
+    onDelTab: (callback) => ipcRenderer.on("del-tab", (_event) => callback()),
 })

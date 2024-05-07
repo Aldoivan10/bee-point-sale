@@ -29,6 +29,9 @@ const createWindow = async () => {
         globalShortcut.register("CommandOrControl+T", () => {
             win.webContents.send("add-tab")
         })
+        globalShortcut.register("CommandOrControl+shift+T", () => {
+            win.webContents.send("del-tab")
+        })
     })
 
     app.on("browser-window-blur", function () {
