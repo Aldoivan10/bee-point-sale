@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+    lang="en"
+    style="scrollbar-gutter: auto"
+>
     <head>
         <meta charset="UTF-8" />
         <meta
@@ -17,6 +20,7 @@
         <title>Punto de venta</title>
     </head>
     <body
+        id="$indexBody"
         class="flex flex-col h-[100dvh] min-w-[100dvw] overflow-hidden [&_*]:box-border"
     >
         <!-- LOGIN (TOP) -->
@@ -40,6 +44,7 @@
                             />
                         </svg>
                         <input
+                            id="$user"
                             type="text"
                             placeholder="Usuario"
                             class="grow"
@@ -59,6 +64,7 @@
                             />
                         </svg>
                         <input
+                            id="$pass"
                             type="password"
                             class="grow"
                             placeholder="Contraseña"
@@ -68,7 +74,7 @@
                 <div class="modal-action m-0">
                     <form method="dialog">
                         <button
-                            id="btnSendUser"
+                            id="$sendUser"
                             class="btn btn-outline btn-success"
                         >
                             Aceptar

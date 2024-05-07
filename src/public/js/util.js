@@ -1,10 +1,10 @@
-const removeChilds = (element) => {
+function removeChilds(element) {
     while (element.firstChild) {
         element.removeChild(element.firstChild)
     }
 }
 
-const confirmDialog = (title, text, onAccept, onCancel = () => {}) => {
+function confirmDialog(title, text, onAccept, onCancel = () => {}) {
     modalConfirm.querySelector("h3").textContent = title
     modalConfirm.querySelector("p").textContent = text
     modalConfirm.querySelector(".btn-success").onclick = onAccept
@@ -12,19 +12,19 @@ const confirmDialog = (title, text, onAccept, onCancel = () => {}) => {
     modalConfirm.showModal()
 }
 
-const saveVal = (key, val) => {
+function setVal(key, val) {
     localStorage.setItem(key, val)
 }
 
-const getVal = (key) => {
-    localStorage.getItem(key)
+function getVal(key) {
+    return localStorage.getItem(key)
 }
 
-const delVal = (key) => {
+function delVal(key) {
     localStorage.removeItem(key)
 }
 
-const input = (options) => {
+function input(options) {
     const $lbl = document.createElement("label")
     const $input = document.createElement("input")
     $lbl.className =
@@ -55,7 +55,7 @@ const input = (options) => {
     return $lbl
 }
 
-const svg = (path) => {
+function svg(path) {
     const uri = "http://www.w3.org/2000/svg"
     const $svg = document.createElementNS(uri, "svg")
     const $path = document.createElementNS(uri, "path")
@@ -68,7 +68,7 @@ const svg = (path) => {
     return $svg
 }
 
-const select = (id, placeholder, options, name) => {
+function select(id, placeholder, options, name) {
     const $select = document.createElement("select")
     const $placeholder = document.createElement("option")
     if (id) $select.id = id
@@ -87,7 +87,7 @@ const select = (id, placeholder, options, name) => {
     return $select
 }
 
-const button = (options) => {
+function button(options) {
     const $btn = document.createElement("button")
     $btn.className = `btn grid place-items-center [&_svg]:h-4 [&_svg]:w-4 ${
         options.class ? options.class : ""
@@ -98,7 +98,7 @@ const button = (options) => {
     return options.tip ? tooltip($btn, options.tip) : $btn
 }
 
-const tooltip = (el, tip) => {
+function tooltip(el, tip) {
     const $tooltip = document.createElement("div")
     $tooltip.className = `tooltip ${tip.class ? tip.class : ""}`
     $tooltip.dataset.tip = tip.text
@@ -106,7 +106,7 @@ const tooltip = (el, tip) => {
     return $tooltip
 }
 
-const tab = (text) => {
+function tab(text) {
     const $tab = document.createElement("li")
     const $spanClose = document.createElement("span")
     const $text = document.createElement("span")
@@ -114,7 +114,7 @@ const tab = (text) => {
         class: "btn-ghost font-bold btn-tab-close btn-xs btn-circle [&_span]:translate-y-[-2px] z-10",
     })
     $tab.role = "tab"
-    $tab.className = "tab min-w-[65px] flex gap-2 pe-2 ps-3"
+    $tab.className = "tab min-w-[120px] flex gap-2 pe-2 ps-3"
     $text.className = "grow"
     $text.textContent = text
     $spanClose.textContent = "x"
@@ -133,7 +133,7 @@ const tab = (text) => {
     return $tab
 }
 
-const object = (path, id, type = "text/html") => {
+function object(path, id, type = "text/html") {
     const $object = document.createElement("object")
     $object.data = path
     $object.type = type

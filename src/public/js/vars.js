@@ -9,11 +9,11 @@ function tableVars() {
 }
 
 function adminVars() {
-    const $header = document.getElementById("header").contentDocument
-    const $main = document.getElementById("main").contentDocument
+    const $headerDoc = $header.contentDocument
+    const $mainDoc = $main.contentDocument
 
     const $headerBody = $header.querySelector("body")
-    const $name = $header.getElementById("userName")
+    const $name = $headerDoc.getElementById("userName")
 
     const $btnLogin = $header.getElementById("btnLogin")
     const $btnLogout = $header.getElementById("btnLogout")
@@ -55,6 +55,8 @@ function productVars() {
 function tabVars() {
     const $headerDoc = $header.contentDocument
     const $tabs = $headerDoc.getElementById("$tabs")
+    const $btnPrevTab = $headerDoc.getElementById("$btnPrevTab")
+    const $btnNextTab = $headerDoc.getElementById("$btnNextTab")
 
-    return { $tabs, $tabsContent }
+    return { $tabs, $tabsContent, $btnPrevTab, $btnNextTab }
 }

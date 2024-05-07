@@ -1,7 +1,9 @@
 class TabController {
-    constructor($tabs, $container) {
+    constructor($tabs, $container, $btnPrevTab, $btnNextTab) {
         this.$tabs = $tabs
         this.$container = $container
+        $btnPrevTab.onclick = () => (this.$tabs.scrollLeft -= 120)
+        $btnNextTab.onclick = () => (this.$tabs.scrollLeft += 120)
     }
 
     init() {
@@ -15,6 +17,7 @@ class TabController {
         this.checkOverflow()
         this.addContent(num)
         $tab.querySelector("button").onclick = () => this.deleteTab($tab)
+        this.$tabs.scrollLeft += 120
         $tab.click()
     }
 
@@ -31,6 +34,7 @@ class TabController {
                 const $silbing = childs[silbingIndex - 1]
                 this.getContent($silbing).classList.remove("hidden")
                 $silbing.classList.add("tab-active")
+                this.$tabs.scrollLeft = $silbing.offsetLeft
             }
             this.getContent($tab).remove()
             $tab.remove()

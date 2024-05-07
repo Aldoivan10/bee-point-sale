@@ -13,6 +13,7 @@
         <title>Header</title>
     </head>
     <body
+        id="$headerBody"
         class="max-h[64px] overflow-hidden [&:is(.admin)_.btn-login]:hidden [&:not(.admin)_.btn-logout]:hidden"
     >
         <header class="navbar bg-base-200 flex max-w-[100%] w-[100%]">
@@ -51,6 +52,7 @@
                     class="flex gap-2 w-[100%] [&:not(:has(.overflowing))_.btn:not(.btn-tab-close)]:hidden [&_li:nth-child(1)_button]:hidden"
                 >
                     <button
+                        id="$btnPrevTab"
                         class="btn btn-neutral min-h-[32px] h-[32px] w-[32px] font-bold"
                     >
                         <
@@ -58,9 +60,10 @@
                     <ul
                         id="$tabs"
                         role="tablist"
-                        class="flex tabs tabs-bordered overflow-clip grow w-0 [&_.tab-active]:rounded-t [&_.tab-active]:bg-primary/10 [&_.tab-active]:text-primary [&_.tab-active]:!border-primary [&_.tab-active]:font-bold"
+                        class="flex tabs tabs-bordered overflow-hidden scroll-smooth grow w-0 [&_.tab-active]:rounded-t [&_.tab-active]:bg-primary/10 [&_.tab-active]:text-primary [&_.tab-active]:!border-primary [&_.tab-active]:font-bold"
                     ></ul>
                     <button
+                        id="$btnNextTab"
                         class="btn btn-neutral min-h-[32px] h-[32px] w-[32px] font-bold"
                     >
                         >
@@ -69,7 +72,7 @@
             </div>
             <div class="navbar-end w-[initial] ps-8">
                 <span
-                    id="userName"
+                    id="$name"
                     class="text-primary me-2 font-bold"
                 >
                 </span>
@@ -101,8 +104,8 @@
                     data-tip="Identificarse"
                 >
                     <button
-                        id="btnLogin"
                         class="btn btn-ghost btn-circle text-sm"
+                        onclick="window.parent.$login.showModal()"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -121,10 +124,7 @@
                     class="tooltip tooltip-left btn-logout"
                     data-tip="Salir"
                 >
-                    <button
-                        id="btnLogout"
-                        class="btn btn-ghost btn-circle text-sm"
-                    >
+                    <button class="btn btn-ghost btn-circle text-sm">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
@@ -140,5 +140,10 @@
                 </div>
             </div>
         </header>
+        <script src="../controller/userctrl.js"></script>
+        <script src="../model/ui/alert.js"></script>
+        <script src="../model/components/usermodel.js"></script>
+        <script src="../view/userview.js"></script>
+        <script src="../controller/sections/headerctrl.js"></script>
     </body>
 </html>

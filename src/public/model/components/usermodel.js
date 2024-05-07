@@ -1,23 +1,26 @@
 class UserModel {
     constructor() {
+        this.get = window.parent.getVal
+        this.del = window.parent.delVal
+        this.set = window.parent.setVal
         this.userListeners = []
     }
 
     check() {
-        const userName = localStorage.getItem("user")
-        if (userName) this.login(userName, localStorage.getItem("type"))
+        const userName = this.get("user")
+        if (userName) this.login(userName, this.get("type"))
         return this
     }
 
     login(name, type) {
-        saveVal("user", name)
-        saveVal("type", type)
+        this.set("user", name)
+        this.set("type", type)
         this.notify(name, type)
     }
 
     logout() {
-        delVal("user")
-        delVal("type")
+        this.del("user")
+        this.del("type")
         this.notify("", "")
     }
 

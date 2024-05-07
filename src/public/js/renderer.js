@@ -1,6 +1,11 @@
 function initTabs() {
-    const { $tabs, $tabsContent } = tabVars()
-    const tabCtrl = new TabController($tabs, $tabsContent).init()
+    const { $tabs, $tabsContent, $btnPrevTab, $btnNextTab } = tabVars()
+    const tabCtrl = new TabController(
+        $tabs,
+        $tabsContent,
+        $btnPrevTab,
+        $btnNextTab
+    ).init()
 
     window.api.onAddTab(() => tabCtrl.appendTab())
     window.api.onDelTab(() => tabCtrl.deleteTab())

@@ -97,7 +97,7 @@
                 class="overflow-auto rounded border border-slate-700 h-full justify-center relative grid place-items-center [&:has(tbody>tr)_span]:hidden [&::-webkit-scrollbar-corner]:bg-slate-800 [&::-webkit-scrollbar-corner]:rounded-br"
             >
                 <table
-                    id="tableProducts"
+                    id="$tblProducts"
                     class="table table-pin-rows table-pin-cols absolute h-full w-full left-0 top-0 [&_thead_td:nth-child(5)]:hidden [&_tbody_td:nth-child(5)]:hidden [&_thead_td:nth-child(7)]:hidden [&_tbody_td:nth-child(7)]:hidden"
                 >
                     <thead>
@@ -127,17 +127,21 @@
             data="footer.html"
             type="text/html"
         ></object>
-        <!-- <script
-            src="../js/util.js"
-            defer
+        <script
+            src="../model/components/tablemodel.js"
+            refer
         ></script>
         <script
-            src="../controller/tabctrl.js"
-            defer
+            src="../view/tableview.js"
+            refer
         ></script>
         <script
-            src="../controller/menuctrl.js"
-            defer
-        ></script> -->
+            src="../controller/tablectrl.js"
+            refer
+        ></script>
+        <script
+            src="../controller/sections/mainctrl.js"
+            refer
+        ></script>
     </body>
 </html>

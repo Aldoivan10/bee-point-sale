@@ -1,41 +1,35 @@
 class UserView {
-    constructor(
-        name,
-        btnLogin,
-        inputUser,
-        inputPass,
-        btnSendUser,
-        headerBody,
-        mainBody
-    ) {
-        this.$name = name
-        this.$btnLogin = btnLogin
-        this.$inputPass = inputPass
-        this.$inputUser = inputUser
-        this.$btnSendUser = btnSendUser
-        this.$headerBody = headerBody
-        this.$mainBody = mainBody
+    constructor($name, $headerBody, $indexBody, $pass, $user, $sendUser) {
+        this.class = "admin"
+
+        this.$name = $name
+        this.$pass = $pass
+        this.$user = $user
+        this.$sendUser = $sendUser
+        this.$indexBody = $indexBody
+        this.$headerBody = $headerBody
+
         this.loginListeners = []
 
-        inputUser.onkeypress = this.onFormComplete
-        inputPass.onkeypress = this.onFormComplete
-        btnSendUser.onclick = (evt) => {
+        $pass.onkeypress = this.onFormComplete
+        $user.onkeypress = this.onFormComplete
+        $sendUser.onclick = (evt) => {
             evt.preventDefault()
             this.notify()
         }
     }
 
     login(name, type) {
-        if (type === "admin") {
-            this.$headerBody.classList.add("admin")
-            this.$mainBody.classList.add("admin")
+        if (type === this.class) {
+            this.$headerBody.classList.add(this.class)
+            this.$indexBody.classList.add(this.class)
         }
         this.setName(name)
     }
 
     logout() {
-        this.$headerBody.classList.remove("admin")
-        this.$mainBody.classList.remove("admin")
+        this.$headerBody.classList.remove(this.class)
+        this.$indexBody.classList.remove(this.class)
         this.setName("")
     }
 
@@ -44,13 +38,13 @@ class UserView {
     }
 
     getUser() {
-        const user = this.$inputUser.value
-        const pass = this.$inputPass.value
+        const user = this.$user.value
+        const pass = this.$pass.value
         return { user, pass }
     }
 
     onFormComplete = (evt) => {
-        if (evt.code === "Enter") this.$btnSendUser.click()
+        if (evt.code === "Enter") this.$sendUser.click()
     }
 
     addLoginListener(listener) {
@@ -58,8 +52,8 @@ class UserView {
     }
 
     clearForm() {
-        this.$inputPass.value = ""
-        this.$inputUser.value = ""
+        this.$pass.value = ""
+        this.$user.value = ""
     }
 
     notify() {

@@ -3615,6 +3615,10 @@ input.tab:checked + .tab-content,
   height: 100%;
 }
 
+.h-\[10dvh\] {
+  height: 10dvh;
+}
+
 .min-h-\[32px\] {
   min-height: 32px;
 }
@@ -3665,6 +3669,14 @@ input.tab:checked + .tab-content,
 
 .min-w-\[65px\] {
   min-width: 65px;
+}
+
+.min-w-\[90px\] {
+  min-width: 90px;
+}
+
+.min-w-\[120px\] {
+  min-width: 120px;
 }
 
 .max-w-\[100\%\] {
@@ -3745,6 +3757,10 @@ input.tab:checked + .tab-content,
 
 .overflow-y-auto {
   overflow-y: auto;
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
 }
 
 .rounded {
