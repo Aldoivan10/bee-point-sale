@@ -5,11 +5,11 @@ function removeChilds(element) {
 }
 
 function confirmDialog(title, text, onAccept, onCancel = () => {}) {
-    modalConfirm.querySelector("h3").textContent = title
-    modalConfirm.querySelector("p").textContent = text
-    modalConfirm.querySelector(".btn-success").onclick = onAccept
-    modalConfirm.querySelector(".btn-error").onclick = onCancel
-    modalConfirm.showModal()
+    $confirm.querySelector("h3").textContent = title
+    $confirm.querySelector("p").textContent = text
+    $confirm.querySelector(".btn-success").onclick = onAccept
+    $confirm.querySelector(".btn-error").onclick = onCancel
+    $confirm.showModal()
 }
 
 function setVal(key, val) {

@@ -35,7 +35,7 @@ class Product extends Scheme {
             SELECT
                 json_object
                 (
-                    'id',
+                    'id_producto',
                     P.id_producto,
                     'codigos',
                     (
@@ -107,7 +107,7 @@ class Product extends Scheme {
                     )
                     return codigos
                 }, {}) // Buscamos los codigos
-                productObj["id"] = product.id
+                productObj["id_producto"] = product.id_producto
                 productObj["Nombre"] = this.encloseStr(
                     product.Nombre,
                     filter,

@@ -18,7 +18,7 @@ class TableController {
         this.filterWaitingTime = 500
 
         this.alerts = alerts
-        this.products = window.parent.products
+        this.api = window.parent.products
 
         model.addHeaderListener(this.onHeaderUpdate)
         model.addDataListener(this.onDataUpdate)
@@ -33,16 +33,20 @@ class TableController {
         return this
     }
 
+    setApi(api) {
+        this.api = api
+    }
+
     async _getData(pageSize, offset, filter = null) {
         this.view.cleanRows()
-        this.products.get(pageSize, offset, filter).then((data) => {
+        this.api.get(pageSize, offset, filter).then((data) => {
             this.model.setHeaders(data)
             this.model.setData(data)
         })
     }
 
     async _buildPagination(filter = null) {
-        this.products.total(filter).then((total) => {
+        this.api.total(filter).then((total) => {
             this.pagination.buildPagination(total)
         })
     }
@@ -107,26 +111,20 @@ class TableController {
     }
 
     onItemDelete = () => {
-        confirmDialog(
+        window.parent.confirmDialog(
             "Eliminar productos",
-            "¿Desea eliminar los productos seleccionados?. Ya no podrán ser recuperados.",
+            "¿Desea eliminar los elementos seleccionados?. Ya no podrán ser recuperados.",
             async () => {
-                const rows = this.view.getCheckedRows()
-                const ids = rows.map((row) =>
-                    Array.from(
-                        row.querySelectorAll(
-                            ":where(td:nth-child(5), td:nth-child(7))"
-                        )
-                    ).map((td) => +td.textContent)
-                )
-                const res = await this.products.delete(ids)
+                const ids = this.view.getCheckedIds(this.model.headers)
+                console.log(ids)
+                /* const res = await this.api.delete(ids)
                 if (res.status === "success") {
                     this.alerts.success(res.msg)
                     this.init()
                 } else {
                     alerts.error(res.msg)
                     console.log(res.data)
-                }
+                } */
             }
         )
     }

@@ -35,9 +35,18 @@ class TableView {
         return checks
     }
 
-    getCheckedRows() {
-        return Array.from(
+    getCheckedIds(headers) {
+        const checkedRows = Array.from(
             this.$body.querySelectorAll("tr:has(input[type=checkbox]:checked)")
+        )
+        const indexIds = headers.reduce((arr, val, i) => {
+            if (val.includes("id_")) arr.push(`td:nth-child(${i + 2})`)
+            return arr
+        }, [])
+        return checkedRows.map((row) =>
+            Array.from(
+                row.querySelectorAll(`:where(${indexIds.join(",")})`)
+            ).map((td) => +td.textContent)
         )
     }
 

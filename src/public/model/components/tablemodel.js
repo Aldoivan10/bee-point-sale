@@ -92,7 +92,7 @@ class ProductModel extends TableModel {
         const mappedRows = data.reduce((rows, row) => {
             const keys = Object.keys(row)
             const base = keys.reduce((acc, key) => {
-                if (key === "unidades" || key === "id") return acc
+                if (key === "unidades" || key === "id_producto") return acc
                 return { ...acc, [key]: row[key] }
             }, {})
             const units = row.unidades
@@ -103,19 +103,12 @@ class ProductModel extends TableModel {
                 for (const key of keys) {
                     obj[key] = unit[key]
                 }
-                obj["id"] = row["id"]
+                obj["id_producto"] = row["id_producto"]
                 accRows.push({ ...base, ...obj })
             }
 
             return rows.concat(accRows)
         }, [])
-        /* const bodyRows = mappedRows.reduce((rows, obj) => {
-            const row = [obj["id"]]
-            for (const header of this.headers) row.push(obj[header])
-            rows.push(row)
-            return rows
-        }, []) */
-
         super.setData(mappedRows)
     }
 }

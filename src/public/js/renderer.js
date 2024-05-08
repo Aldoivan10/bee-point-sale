@@ -12,9 +12,6 @@ function initTabs() {
 }
 
 window.addEventListener("load", () => {
-    initTabs()
     window.appAlert = new Alert(document.body)
-    /*  initAdmin() */
-    /* initTable(mainAlerts) */
-    /* initProduct() */
+    initTabs()
 })
