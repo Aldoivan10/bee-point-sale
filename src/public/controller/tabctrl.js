@@ -51,7 +51,11 @@ class TabController {
 
     addContent(num) {
         const $object = object("html/main.html", `tabContent${num}`)
+        const userType = getVal("type")
         $object.className = "grow"
+        $object.addEventListener("load", () => {
+            if (userType) $object.contentDocument.body.classList.add(userType)
+        })
         this.$container.appendChild($object)
     }
 

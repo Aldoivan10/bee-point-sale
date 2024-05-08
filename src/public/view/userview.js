@@ -1,5 +1,13 @@
 class UserView {
-    constructor($name, $headerBody, $indexBody, $pass, $user, $sendUser) {
+    constructor(
+        $name,
+        $headerBody,
+        $indexBody,
+        $tabsContent,
+        $pass,
+        $user,
+        $sendUser
+    ) {
         this.class = "admin"
 
         this.$name = $name
@@ -8,6 +16,7 @@ class UserView {
         this.$sendUser = $sendUser
         this.$indexBody = $indexBody
         this.$headerBody = $headerBody
+        this.$tabsContent = $tabsContent
 
         this.loginListeners = []
 
@@ -23,6 +32,7 @@ class UserView {
         if (type === this.class) {
             this.$headerBody.classList.add(this.class)
             this.$indexBody.classList.add(this.class)
+            this.toggleContent(true)
         }
         this.setName(name)
     }
@@ -30,7 +40,16 @@ class UserView {
     logout() {
         this.$headerBody.classList.remove(this.class)
         this.$indexBody.classList.remove(this.class)
+        this.toggleContent()
         this.setName("")
+    }
+
+    toggleContent(isAdmin = false) {
+        Array.from(this.$tabsContent.children).forEach((obj) => {
+            const body = obj.contentDocument.body
+            if (isAdmin) body.classList.add(this.class)
+            else body.classList.remove(this.class)
+        })
     }
 
     setName(name) {

@@ -3,45 +3,47 @@ class TableController {
         view,
         model,
         pagination,
-        filter,
-        btnDelItem,
-        mainAlerts,
-        mapper
+        $filter,
+        $delItems,
+        alerts,
+        mapper = {}
     ) {
         this.view = view
         this.model = model
         this.mapper = mapper
-        this.$pagination = pagination
+        this.pagination = pagination
 
         this.filter = null
         this.filterTimer = null
         this.filterWaitingTime = 500
 
-        this.mainAlerts = mainAlerts
+        this.alerts = alerts
+        this.products = window.parent.products
 
-        /* model.addHeaderListener(this.onHeaderUpdate)
+        model.addHeaderListener(this.onHeaderUpdate)
         model.addDataListener(this.onDataUpdate)
         pagination.addListener(this.onPaginationUpdate)
-        filter.oninput = this.onFilter
-        btnDelItem.onclick = this.onItemDelete */
+        $filter.oninput = this.onFilter
+        $delItems.onclick = this.onItemDelete
     }
 
     init() {
-        this._getData(this.$pagination.size(), this.$pagination.offset())
+        this._getData(this.pagination.size(), this.pagination.offset())
         this._buildPagination(this.filter)
         return this
     }
 
     async _getData(pageSize, offset, filter = null) {
         this.view.cleanRows()
-        window.products.get(pageSize, offset, filter).then((data) => {
+        this.products.get(pageSize, offset, filter).then((data) => {
+            this.model.setHeaders(data)
             this.model.setData(data)
         })
     }
 
     async _buildPagination(filter = null) {
-        window.products.total(filter).then((total) => {
-            this.$pagination.buildPagination(total)
+        this.products.total(filter).then((total) => {
+            this.pagination.buildPagination(total)
         })
     }
 
@@ -57,8 +59,8 @@ class TableController {
         }
         this.filterTimer = setTimeout(() => {
             this._getData(
-                this.$pagination.size(),
-                this.$pagination.offset(),
+                this.pagination.size(),
+                this.pagination.offset(),
                 this.filter
             )
             this._buildPagination(this.filter)
@@ -79,55 +81,29 @@ class TableController {
         if (added) {
         } else if (removed) {
         }
-        if (!this.mapper) this.view.buildBody(rows)
-        else {
-            const mappedRows = rows.reduce((rows, row) => {
-                const keys = Object.keys(row)
-                const base = keys.reduce((acc, key) => {
-                    if (key === "unidades" || key === "id") return acc
-                    return { ...acc, [key]: row[key] }
-                }, {})
-                const units = row.unidades
-                const accRows = []
-                for (const unit of units) {
-                    const keys = Object.keys(unit)
-                    const obj = {}
-                    for (const key of keys) {
-                        const func = this.mapper[key]
-                        if (func) {
-                            obj[key] = func(unit[key])
-                            continue
-                        }
-                        obj[key] = unit[key]
-                    }
-                    obj["id"] = row["id"]
-                    accRows.push({ ...base, ...obj })
+
+        const mapKeys = Object.keys(this.mapper)
+        if (mapKeys.length > 0) {
+            for (const row of rows) {
+                for (const key of mapKeys) {
+                    row[key] = this.mapper[key](row[key])
                 }
-
-                return rows.concat(accRows)
-            }, [])
-
-            const bodyRows = mappedRows.reduce((rows, obj) => {
-                const row = [obj["id"]]
-                for (const header of this.model.headers) row.push(obj[header])
-                rows.push(row)
-                return rows
-            }, [])
-
-            this.view.buildBody(bodyRows)
-
-            const checksArr = this.view.getChecks()
-            const checks = checksArr.slice(1)
-            const mainCheck = checksArr[0]
-            mainCheck.onchange = () => {
-                checks.forEach((el) => (el.checked = mainCheck.checked))
             }
-
-            checks.forEach((el) => {
-                el.onchange = () =>
-                    (mainCheck.checked = checks.every((el) => el.checked))
-            })
         }
+
+        this.view.buildBody(rows, this.model.headers)
+
+        const checksArr = this.view.getChecks()
+        const checks = checksArr.slice(1)
+        const mainCheck = checksArr[0]
+        mainCheck.onchange = () => {
+            checks.forEach((el) => (el.checked = mainCheck.checked))
+        }
+
+        checks.forEach((el) => {
+            el.onchange = () =>
+                (mainCheck.checked = checks.every((el) => el.checked))
+        })
     }
 
     onItemDelete = () => {
@@ -143,12 +119,12 @@ class TableController {
                         )
                     ).map((td) => +td.textContent)
                 )
-                const res = await window.products.delete(ids)
+                const res = await this.products.delete(ids)
                 if (res.status === "success") {
-                    this.mainAlerts.success(res.msg)
+                    this.alerts.success(res.msg)
                     this.init()
                 } else {
-                    mainAlerts.error(res.msg)
+                    alerts.error(res.msg)
                     console.log(res.data)
                 }
             }

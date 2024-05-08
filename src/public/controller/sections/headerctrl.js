@@ -5,6 +5,7 @@ const userView = new UserView(
     $name,
     $headerBody,
     $index.$indexBody,
+    $index.$tabsContent,
     $index.$pass,
     $index.$user,
     $index.$sendUser

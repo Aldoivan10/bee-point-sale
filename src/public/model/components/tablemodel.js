@@ -1,9 +1,10 @@
 class TableModel {
-    constructor() {
+    constructor(headerBuilder) {
         this.data = []
         this.headers = []
         this.dataListeners = []
         this.headerListeners = []
+        this.headerBuilder = headerBuilder
     }
 
     setHeaders(headers) {
@@ -12,17 +13,8 @@ class TableModel {
     }
 
     setData(data) {
-        const headers = this.getHeadersFromObject(data[0])
         this.data = data
-        this.setHeaders(headers)
         this.notifyDataUpdate(null, null)
-    }
-
-    getHeadersFromObject(obj) {
-        let keys = Object.keys(obj)
-        const other = Object.keys(obj.unidades[0])
-        keys = keys.slice(0, keys.length - 1)
-        return keys.concat(other)
     }
 
     removeHeader(header) {
@@ -84,5 +76,46 @@ class TableModel {
         arr = arrsplice(index, 1)
         notifier(arr, null, removed)
         return arr
+    }
+}
+
+class ProductModel extends TableModel {
+    setHeaders(data) {
+        const obj = data[0]
+        let keys = Object.keys(obj)
+        const other = Object.keys(obj.unidades[0])
+        keys = keys.slice(0, keys.length - 1)
+        super.setHeaders(keys.concat(other))
+    }
+
+    setData(data) {
+        const mappedRows = data.reduce((rows, row) => {
+            const keys = Object.keys(row)
+            const base = keys.reduce((acc, key) => {
+                if (key === "unidades" || key === "id") return acc
+                return { ...acc, [key]: row[key] }
+            }, {})
+            const units = row.unidades
+            const accRows = []
+            for (const unit of units) {
+                const keys = Object.keys(unit)
+                const obj = {}
+                for (const key of keys) {
+                    obj[key] = unit[key]
+                }
+                obj["id"] = row["id"]
+                accRows.push({ ...base, ...obj })
+            }
+
+            return rows.concat(accRows)
+        }, [])
+        /* const bodyRows = mappedRows.reduce((rows, obj) => {
+            const row = [obj["id"]]
+            for (const header of this.headers) row.push(obj[header])
+            rows.push(row)
+            return rows
+        }, []) */
+
+        super.setData(mappedRows)
     }
 }

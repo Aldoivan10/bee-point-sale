@@ -1,6 +1,7 @@
 class UserController {
     constructor(model, view, $Login) {
         this.alert = new Alert($Login)
+        this.users = window.parent.users
         this.$Login = $Login
         this.model = model
         this.view = view
@@ -14,7 +15,7 @@ class UserController {
     tryLogin = async ({ user, pass }) => {
         if (!user || !pass) this.alert.info("Complete los campos", 2000)
         else {
-            const userDB = await window.users.get(user, pass)
+            const userDB = await this.users.get(user, pass)
             if (userDB) {
                 user = JSON.parse(JSON.parse(userDB))
                 this.$Login.close()

@@ -32,7 +32,7 @@
                             />
                         </svg>
                         <input
-                            id="filter"
+                            id="$filter"
                             type="text"
                             placeholder="Buscar..."
                             class="grow"
@@ -44,7 +44,7 @@
                     <div class="flex items-center gap-3">
                         <label for="select-num-results">Mostrar:</label>
                         <select
-                            id="select-num-results"
+                            id="$pageSize"
                             class="select select-primary w-full max-w-xs"
                         >
                             <option>25</option>
@@ -56,7 +56,7 @@
                         </select>
                     </div>
                     <div
-                        id="btnAddItem"
+                        id="$addItem"
                         class="tooltip tooltip-left font-bold transition transform btn-admin"
                         data-tip="Crear nuevo"
                     >
@@ -77,7 +77,7 @@
                         data-tip="Eliminar seleccionados"
                     >
                         <button
-                            id="btnDeleteUnits"
+                            id="$delItems"
                             class="btn btn-error bg-opacity-50 pointer-events-none"
                         >
                             <svg
@@ -118,7 +118,7 @@
                 ></span>
             </section>
             <div
-                id="productsPagination"
+                id="$productsPagination"
                 class="join mt-4 flex justify-center w-[100%] [&_input:first-child:nth-last-child(1)]:rounded"
             ></div>
         </main>
@@ -129,6 +129,10 @@
         ></object>
         <script
             src="../model/components/tablemodel.js"
+            refer
+        ></script>
+        <script
+            src="../model/ui/pagination.js"
             refer
         ></script>
         <script

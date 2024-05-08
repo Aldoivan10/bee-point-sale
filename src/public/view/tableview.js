@@ -1,12 +1,13 @@
 class TableView {
-    constructor(table) {
-        this.$header = table.querySelector("thead > tr")
-        this.$body = table.querySelector("tbody")
+    constructor($table) {
+        this.$header = $table.querySelector("thead > tr")
+        this.$body = $table.querySelector("tbody")
+        this.removeChilds = window.parent.removeChilds
     }
 
     buildHeader(headers) {
         const fc = "Seleccionar"
-        removeChilds(this.$header)
+        this.removeChilds(this.$header)
         for (const header of [fc].concat(headers)) {
             const col = this._createtCol(header)
             if (header === fc)
@@ -40,10 +41,10 @@ class TableView {
         )
     }
 
-    buildBody(rows) {
+    buildBody(rows, headers) {
         if (rows.length > 0)
             for (const row of rows) {
-                this.addRow(row)
+                this.addRow(row, headers)
             }
         else this.setEmpty()
     }
@@ -59,16 +60,15 @@ class TableView {
     }
 
     cleanRows() {
-        removeChilds(this.$body)
+        this.removeChilds(this.$body)
     }
 
-    addRow(row) {
+    addRow(row, keys) {
         const $row = document.createElement("tr")
-        $row.id = row[0]
         $row.classList.add("hover")
         $row.innerHTML = `<td><input type="checkbox" class="checkbox checkbox-sm checkbox-primary" /></td>`
-        for (const column of row.slice(1))
-            $row.innerHTML += `<td class="hover">${column}</td>`
+        for (const key of keys)
+            $row.innerHTML += `<td class="hover">${row[key]}</td>`
         this.$body.appendChild($row)
     }
 

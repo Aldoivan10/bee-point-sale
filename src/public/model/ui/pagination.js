@@ -1,18 +1,19 @@
 class Pagination {
-    constructor(pagination, pageSizeSelector, maxSteps = 9) {
-        this.$pagination = pagination
-        this.pageSize = +pageSizeSelector.value
+    constructor($pagination, $pageSize, maxSteps = 9) {
+        this.$pagination = $pagination
+        this.pageSize = +$pageSize.value
         this.maxSteps = maxSteps
         this.offsetSize = 0
         this.listeners = []
         this.steps = 0
         this.page = 1
 
-        pageSizeSelector.onchange = this.updatePageSize
+        $pageSize.onchange = this.updatePageSize
+        this.removeChilds = window.parent.removeChilds
     }
 
     buildPagination(total) {
-        removeChilds(this.$pagination)
+        this.removeChilds(this.$pagination)
         this.steps = Math.ceil(total / this.pageSize)
         const numButtons =
             this.steps < this.maxSteps ? this.steps : this.maxSteps

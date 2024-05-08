@@ -13,8 +13,7 @@ function initTabs() {
 
 window.addEventListener("load", () => {
     initTabs()
-
-    /* const mainAlerts = new Alert(document.body) */
+    window.appAlert = new Alert(document.body)
     /*  initAdmin() */
     /* initTable(mainAlerts) */
     /* initProduct() */

@@ -8,33 +8,6 @@ function tableVars() {
     return { $table, $filter, $pagination, $pageSizeSelector, $btnDelItem }
 }
 
-function adminVars() {
-    const $headerDoc = $header.contentDocument
-    const $mainDoc = $main.contentDocument
-
-    const $headerBody = $header.querySelector("body")
-    const $name = $headerDoc.getElementById("userName")
-
-    const $btnLogin = $header.getElementById("btnLogin")
-    const $btnLogout = $header.getElementById("btnLogout")
-    const $btnSendUser = document.getElementById("btnSendUser")
-    const $inputUser = document.querySelector("input[placeholder=Usuario]")
-    const $inputPass = document.querySelector("input[placeholder=Contraseña]")
-
-    const $mainBody = $main.querySelector("body")
-
-    return {
-        $name,
-        $btnSendUser,
-        $btnLogin,
-        $inputUser,
-        $inputPass,
-        $headerBody,
-        $btnLogout,
-        $mainBody,
-    }
-}
-
 function productVars() {
     const $main = document.getElementById("main").contentDocument
     const $name = modalProduct.querySelector("input[placeholder=Nombre]")
