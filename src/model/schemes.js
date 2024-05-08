@@ -287,4 +287,139 @@ class Unit extends Scheme {
     async update(id, unit) {}
 }
 
-module.exports = { Product, User, Code, Unit }
+class Client extends Scheme {
+    async all(pageSize, offset, filter) {
+        filter = filter ? filter : ""
+        const query = `
+            SELECT 
+                id_cliente, 
+                COALESCE(RFC, 'S/D') RFC, 
+                nombre AS Nombre,
+                COALESCE(direccion, 'S/D') AS Dirección,
+                COALESCE(domicilio, 'S/D') AS Domicilio,
+                codigo_postal AS CP,
+                COALESCE(telefono, 'S/N') AS Télefono,
+                cat AS Cat,
+                COALESCE(correo, 'S/D') AS Correo
+            FROM 
+                cliente
+            WHERE
+                nombre LIKE '%${filter}%' 
+            ORDER BY
+                nombre
+            LIMIT ?
+            OFFSET ?
+        `
+        return await this.db.fetch(query, [pageSize, offset], (rows) => {
+            const markedRows = rows.map((row) => {
+                row.Nombre = this.encloseStr(
+                    row.Nombre,
+                    filter,
+                    "<mark>",
+                    "</mark>"
+                )
+                return row
+            })
+            return markedRows
+        })
+    }
+
+    async total(filter) {
+        const sql = `
+        SELECT
+            COUNT(id_cliente) total
+        FROM
+            cliente
+        WHERE
+            nombre LIKE '%${filter ? filter : ""}%' 
+        `
+        return await this.db.fetch(sql, [], (rows) => rows[0]["total"])
+    }
+
+    async get(id) {}
+
+    async delete(arr_ids) {
+        try {
+            const sql = "DELETE FROM cliente WHERE id_cliente = ?"
+            for (const ids of arr_ids) {
+                await this.db.query(sql, ids)
+            }
+            return this.ok("Registros eliminados")
+        } catch (err) {
+            return this.error("No se pudo eliminar el producto", err)
+        }
+    }
+
+    async update(id, ...args) {}
+
+    async create(product) {
+        try {
+            const insertProduct = `
+            INSERT INTO
+                Producto
+            VALUES
+            (
+                (
+                    WITH cte AS
+                    (
+                        SELECT id_producto FROM producto
+                        UNION ALL 
+                        SELECT 0
+                    )
+                    SELECT MIN(id_producto) + 1
+                    FROM cte
+                    WHERE NOT EXISTS
+                    (
+                        SELECT * 
+                        FROM producto 
+                        WHERE producto.id_producto = cte.id_producto + 1
+                    )
+                ),
+                ?
+            ) RETURNING id_producto`
+            let res = await this.db.insert(
+                insertProduct,
+                [product["name"]],
+                (res) => res
+            )
+            const id = res.lastID
+            const codes = product["codes"]
+            const insertCodes = `
+            INSERT INTO
+                Producto_Codigo
+            VALUES
+            (?, ?, ?)
+        `
+            for (const key of Object.keys(codes)) {
+                await this.db.insert(insertCodes, [key, id, codes[key]])
+            }
+            const insertUnits = `
+            INSERT INTO 
+                Producto_Unidad
+            VALUES
+            (?,?,?,?,?,?,?)
+        `
+            const units = product["units"]
+            for (const unit of units) {
+                await this.db.insert(insertUnits, [
+                    id,
+                    unit["unidad"],
+                    unit["cantidad"],
+                    +unit["descuento"] / 100,
+                    +unit["ganancia"] / 100,
+                    unit["compra"],
+                    unit["venta"],
+                ])
+            }
+
+            return this.ok("El producto ha sido creado")
+        } catch (err) {
+            return this.error(
+                "No se ha podido crear el producto. Intentelo más tarde",
+                err
+            )
+        }
+    }
+}
+
+module.exports = { Product, User, Code, Unit, Client }

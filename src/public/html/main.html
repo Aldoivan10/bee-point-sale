@@ -97,7 +97,7 @@
                 class="overflow-auto rounded border border-slate-700 h-full justify-center relative grid place-items-center [&:has(tbody>tr)_span]:hidden [&::-webkit-scrollbar-corner]:bg-slate-800 [&::-webkit-scrollbar-corner]:rounded-br"
             >
                 <table
-                    id="$tblProducts"
+                    id="$table"
                     class="table table-pin-rows table-pin-cols absolute h-full w-full left-0 top-0 [&_thead_td:nth-child(5)]:hidden [&_tbody_td:nth-child(5)]:hidden [&_thead_td:nth-child(7)]:hidden [&_tbody_td:nth-child(7)]:hidden"
                 >
                     <thead>
@@ -118,11 +118,12 @@
                 ></span>
             </section>
             <div
-                id="$productsPagination"
+                id="$pagination"
                 class="join mt-4 flex justify-center w-[100%] [&_input:first-child:nth-last-child(1)]:rounded"
             ></div>
         </main>
         <object
+            id="$footer"
             class="h-[64px] w-full"
             data="footer.html"
             type="text/html"
@@ -141,6 +142,10 @@
         ></script>
         <script
             src="../controller/tablectrl.js"
+            refer
+        ></script>
+        <script
+            src="../model/ui/menu.js"
             refer
         ></script>
         <script

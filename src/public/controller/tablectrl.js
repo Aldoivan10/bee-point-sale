@@ -12,6 +12,7 @@ class TableController {
         this.model = model
         this.mapper = mapper
         this.pagination = pagination
+        this.$filter = $filter
 
         this.filter = null
         this.filterTimer = null
@@ -20,8 +21,6 @@ class TableController {
         this.alerts = alerts
         this.api = window.parent.products
 
-        model.addHeaderListener(this.onHeaderUpdate)
-        model.addDataListener(this.onDataUpdate)
         pagination.addListener(this.onPaginationUpdate)
         $filter.oninput = this.onFilter
         $delItems.onclick = this.onItemDelete
@@ -33,8 +32,15 @@ class TableController {
         return this
     }
 
-    setApi(api) {
+    swap(api, model, mapper) {
         this.api = api
+        this.model = model
+        this.mapper = mapper
+        if (this.$filter.value) this.$filter.value = ""
+        else {
+            this._getData(this.pagination.size(), this.pagination.offset())
+            this._buildPagination(this.filter)
+        }
     }
 
     async _getData(pageSize, offset, filter = null) {

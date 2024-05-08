@@ -8,7 +8,8 @@ class TableModel {
     }
 
     setHeaders(headers) {
-        this.headers = headers
+        this.headers =
+            typeof headers[0] === "string" ? headers : Object.keys(headers[0])
         this.notifyHeaderUpdate(null, null)
     }
 

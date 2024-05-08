@@ -1,5 +1,5 @@
 const { app, BrowserWindow, ipcMain, globalShortcut } = require("electron")
-const { Product, User, Unit, Code } = require("../model/schemes.js")
+const { Product, User, Unit, Code, Client } = require("../model/schemes.js")
 const path = require("node:path")
 const DB = require("../model/db.js")
 
@@ -10,6 +10,7 @@ const productScheme = new Product(db)
 const userScheme = new User(db)
 const unitScheme = new Unit(db)
 const codeScheme = new Code(db)
+const clientScheme = new Client(db)
 
 const createWindow = async () => {
     const win = new BrowserWindow({
@@ -40,6 +41,7 @@ const createWindow = async () => {
 }
 
 app.whenReady().then(async () => {
+    /* PRODUCTS*/
     ipcMain.handle(
         "fetchProducts",
         async (_, pageSize, offset, filter) =>
@@ -53,15 +55,28 @@ app.whenReady().then(async () => {
         "deleteProducts",
         async (_, ids) => await productScheme.delete(ids)
     )
-    ipcMain.handle("fetchCodes", async () => await codeScheme.all())
-    ipcMain.handle("fetchUnits", async () => await unitScheme.all())
     ipcMain.handle(
         "fetchTotalProducts",
         async (_, filter) => await productScheme.total(filter)
     )
+    /* CODES */
+    ipcMain.handle("fetchCodes", async () => await codeScheme.all())
+    /* UNITS */
+    ipcMain.handle("fetchUnits", async () => await unitScheme.all())
+    /* USER */
     ipcMain.handle(
         "fetchUser",
         async (_, user, pass) => await userScheme.get(user, pass)
+    )
+    /* CLIENTS */
+    ipcMain.handle(
+        "fetchClients",
+        async (_, pageSize, offset, filter) =>
+            await clientScheme.all(pageSize, offset, filter)
+    )
+    ipcMain.handle(
+        "fetchTotalClients",
+        async (_, filter) => await clientScheme.total(filter)
     )
 
     /* globalShortcut.unregister("F5")
