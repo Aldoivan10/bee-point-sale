@@ -117,14 +117,14 @@ class TableController {
             async () => {
                 const ids = this.view.getCheckedIds(this.model.headers)
                 console.log(ids)
-                /* const res = await this.api.delete(ids)
+                const res = await this.api.delete(ids)
                 if (res.status === "success") {
                     this.alerts.success(res.msg)
                     this.init()
                 } else {
                     alerts.error(res.msg)
                     console.log(res.data)
-                } */
+                }
             }
         )
     }
