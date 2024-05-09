@@ -1,8 +1,21 @@
 class TableView {
     constructor($table) {
+        this.$table = $table
         this.$header = $table.querySelector("thead > tr")
         this.$body = $table.querySelector("tbody")
         this.removeChilds = window.parent.removeChilds
+
+        this.currentClass = ""
+    }
+
+    setClass(className) {
+        if (this.currentClass) this.$table.classList.remove(this.currentClass)
+        this.$table.classList.add(className)
+        this.currentClass = className
+    }
+
+    getClass() {
+        return this.currentClass
     }
 
     buildHeader(headers) {

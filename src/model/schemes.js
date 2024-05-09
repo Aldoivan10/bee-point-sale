@@ -91,10 +91,10 @@ class Product extends Scheme {
                 P.id_producto
             ORDER BY
                 P.nombre
-            LIMIT ${pageSize}
-            OFFSET ${offset}
+            LIMIT ?
+            OFFSET ?
         `
-        return await this.db.fetch(query, [], (data) => {
+        return await this.db.fetch(query, [pageSize, offset], (data) => {
             const jsonRows = data.map((row) => JSON.parse(row["producto"]))
             const rows = jsonRows.reduce((rows, product) => {
                 const productObj = product.codigos.reduce((codigos, codigo) => {
@@ -292,21 +292,26 @@ class Client extends Scheme {
         filter = filter ? filter : ""
         const query = `
             SELECT 
-                id_cliente, 
-                COALESCE(RFC, 'S/D') RFC, 
-                nombre AS Nombre,
-                COALESCE(direccion, 'S/D') AS Dirección,
-                COALESCE(domicilio, 'S/D') AS Domicilio,
-                codigo_postal AS CP,
-                COALESCE(telefono, 'S/N') AS Télefono,
-                cat AS Cat,
-                COALESCE(correo, 'S/D') AS Correo
+                E.id_entidad, 
+                COALESCE(E.RFC, 'S/D') RFC, 
+                E.nombre AS Nombre,
+                COALESCE(E.direccion, 'S/D') AS Dirección,
+                COALESCE(E.domicilio, 'S/D') AS Domicilio,
+                E.codigo_postal AS 'Código Postal',
+                COALESCE(E.telefono, 'S/N') AS Télefono,
+                TE.nombre AS Tipo,
+                COALESCE(E.correo, 'S/D') AS Correo
             FROM 
-                cliente
+                Entidad E
+            INNER JOIN
+                Tipo_Entidad TE
+            ON
+                TE.id_tipo_entidad = E.id_tipo_entidad
             WHERE
-                nombre LIKE '%${filter}%' 
+                E.nombre LIKE '%${filter}%' 
             ORDER BY
-                nombre
+                TE.id_tipo_entidad,
+                E.nombre
             LIMIT ?
             OFFSET ?
         `
@@ -327,9 +332,9 @@ class Client extends Scheme {
     async total(filter) {
         const sql = `
         SELECT
-            COUNT(id_cliente) total
+            COUNT(id_entidad) total
         FROM
-            cliente
+            Entidad
         WHERE
             nombre LIKE '%${filter ? filter : ""}%' 
         `

@@ -13,7 +13,7 @@
         <title>Main</title>
     </head>
     <body
-        class="flex flex-col overflow-hidden h-[100dvh] [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px] [&:not(.admin)_.btn-admin]:hidden [&:not(.admin)_tbody_td:nth-child(1)]:hidden [&:not(.admin)_thead_td:nth-child(1)]:hidden [&:not(.admin)_td:nth-child(n+9)]:hidden"
+        class="flex flex-col overflow-hidden h-[100dvh] [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px] [&:not(.admin)_.btn-admin]:hidden [&:not(.admin)_td:nth-child(1)]:hidden [&:not(.admin)_.productos_td:nth-child(n+11)]:hidden"
     >
         <main
             class="grow flex flex-col p-4 [&:has(input[type=checkbox]:checked)_.btn-error]:bg-opacity-100 [&:has(input[type=checkbox]:checked)_.btn-error]:pointer-events-auto"
@@ -98,7 +98,7 @@
             >
                 <table
                     id="$table"
-                    class="table table-pin-rows table-pin-cols absolute h-full w-full left-0 top-0 [&_thead_td:nth-child(5)]:hidden [&_tbody_td:nth-child(5)]:hidden [&_thead_td:nth-child(7)]:hidden [&_tbody_td:nth-child(7)]:hidden"
+                    class="table table-pin-rows table-pin-cols absolute h-full w-full left-0 top-0 [&:is(.productos)_td:nth-child(5)]:hidden [&:is(.productos)_td:nth-child(7)]:hidden [&:is(.clientes)_td:nth-child(2)]:hidden"
                 >
                     <thead>
                         <tr

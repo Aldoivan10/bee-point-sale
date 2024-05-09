@@ -140,3 +140,12 @@ function object(path, id, type = "text/html") {
     if (id) $object.id = id
     return $object
 }
+
+function onlyNumbers(evt) {
+    if (evt.inputType === "insertText") {
+        const $input = evt.target
+        const numRegex = /^[0-9]+$/
+        const val = evt.data
+        if (!numRegex.test(val)) $input.value = $input.value.slice(0, -1)
+    }
+}

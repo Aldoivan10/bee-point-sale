@@ -47,8 +47,7 @@ $footer.addEventListener("load", () => {
     const menu = new Menu($menu)
     menu.addListenerOpt((opt) => {
         const option = menuOptions[opt]
-        tableCtrl.swap(option[0], option[1], option[2])
+        tableCtrl.swap(option[0], option[1], option[2], opt.toLowerCase())
     })
+    menu.click()
 })
-
-tableCtrl.init()

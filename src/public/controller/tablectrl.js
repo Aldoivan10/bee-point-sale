@@ -32,7 +32,8 @@ class TableController {
         return this
     }
 
-    swap(api, model, mapper) {
+    swap(api, model, mapper, opt) {
+        if (this.view.getClass() === opt) return
         this.api = api
         this.model = model
         this.mapper = mapper
@@ -41,6 +42,7 @@ class TableController {
             this._getData(this.pagination.size(), this.pagination.offset())
             this._buildPagination(this.filter)
         }
+        this.view.setClass(opt)
     }
 
     async _getData(pageSize, offset, filter = null) {

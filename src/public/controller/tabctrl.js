@@ -13,9 +13,11 @@ class TabController {
 
     appendTab() {
         const num = this.getNum()
-        const $tab = this.addTab(num)
+        const content = `tabContent${num}`
+        const tabName = `Tab ${num}`
+        const $tab = this.addTab(tabName, content)
         this.checkOverflow()
-        this.addContent(num)
+        this.addContent(content)
         $tab.querySelector("button").onclick = () => this.deleteTab($tab)
         this.$tabs.scrollLeft += 120
         $tab.click()
@@ -41,16 +43,16 @@ class TabController {
         }
     }
 
-    addTab(num) {
-        const $tab = tab(`Tab ${num}`)
+    addTab(tabName, content) {
+        const $tab = tab(tabName)
         this.$tabs.appendChild($tab)
         $tab.onclick = this.onClick
-        $tab.dataset.content = `tabContent${num}`
+        $tab.dataset.content = content
         return $tab
     }
 
-    addContent(num) {
-        const $object = object("html/main.html", `tabContent${num}`)
+    addContent(content) {
+        const $object = object("html/main.html", content)
         const userType = getVal("type")
         $object.className = "grow"
         $object.addEventListener("load", () => {

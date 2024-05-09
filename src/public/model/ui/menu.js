@@ -5,6 +5,10 @@ class Menu {
         this.$buttons.forEach((btn) => (btn.onclick = this.onOptionClick))
     }
 
+    click(index = 0) {
+        this.$buttons[index].click()
+    }
+
     onOptionClick = (evt) => {
         const $opt = evt.target
         this.$buttons.forEach((div) => div.classList.remove("active"))
