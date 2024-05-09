@@ -93,7 +93,7 @@
             class="modal"
         >
             <div
-                class="modal-box min-w-[50rem] flex flex-col [&:not(:has(#unitsContainer>div))_#btnAddProduct]:btn-disabled"
+                class="modal-box min-w-[50rem] flex flex-col [&:not(:has(#unitsContainer>div))_.btn-success]:btn-disabled"
             >
                 <h3 class="font-bold text-2xl my-2">Agregar producto</h3>
                 <div class="py-4 flex gap-4 flex-col overflow-y-auto grow px-2">
@@ -109,6 +109,7 @@
                             />
                         </svg>
                         <input
+                            id="name"
                             type="text"
                             class="grow"
                             maxlength="512"
@@ -125,7 +126,7 @@
                             <h3 class="font-bold text-xl my-2">Tipo</h3>
                             <div class="flex gap-2 items-center">
                                 <button
-                                    id="btnAddUnit"
+                                    onclick="productController.addUnit()"
                                     class="btn btn-circle btn-outline grid place-items-center btn-primary btn-sm"
                                 >
                                     <svg
@@ -151,15 +152,12 @@
                 <div class="modal-action m-0 mt-2">
                     <form method="dialog">
                         <button
-                            id="btnAddProduct"
+                            onclick="productController.saveProduct(event)"
                             class="btn btn-outline btn-success"
                         >
                             Aceptar
                         </button>
-                        <button
-                            onclick="location.reload()"
-                            class="btn btn-outline btn-error"
-                        >
+                        <button class="btn btn-outline btn-error">
                             Cancelar
                         </button>
                     </form>
@@ -171,7 +169,6 @@
         <dialog
             id="$client"
             class="modal"
-            open
         >
             <div class="modal-box">
                 <h3 class="font-bold text-2xl my-2">Agregar cliente</h3>
@@ -357,10 +354,37 @@
             class="flex grow flex-col"
         ></div>
 
-        <script src="js/util.js"></script>
-        <script src="js/vars.js"></script>
-        <script src="controller/tabctrl.js"></script>
-        <script src="model/ui/alert.js"></script>
-        <script src="js/renderer.js"></script>
+        <script
+            src="js/util.js"
+            refer
+        ></script>
+        <script
+            src="js/observer.js"
+            refer
+        ></script>
+        <script
+            src="controller/tabctrl.js"
+            refer
+        ></script>
+        <script
+            src="model/ui/alert.js"
+            refer
+        ></script>
+        <script
+            src="model/components/productmodel.js"
+            refer
+        ></script>
+        <script
+            src="controller/productcontroller.js"
+            refer
+        ></script>
+        <script
+            src="view/productview.js"
+            refer
+        ></script>
+        <script
+            src="js/renderer.js"
+            refer
+        ></script>
     </body>
 </html>

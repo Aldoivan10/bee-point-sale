@@ -1,27 +1,24 @@
 class ProductController {
-    constructor(view, model, btnAddItem, btnAddUnit, modal) {
-        this.$view = view
-        this.$model = model
-        this.alert = new Alert(modal)
+    constructor(view, model, $modal) {
+        this.view = view
+        this.model = model
+        this.listeners = {}
+        this.alert = new Alert($modal)
 
-        btnAddItem.onclick = () => {
-            this._getCodes()
-            modal.showModal()
-        }
-        modal.onclose = () => view.clear()
-        modal.querySelector("#btnAddProduct").onclick = this.saveProduct
-        btnAddUnit.onclick = this._addUnit
+        const observer = new DialogObserver($modal)
+        observer.onShow(this.getCodes)
+        observer.onClose(this.view.clear)
     }
 
-    async _getCodes() {
+    getCodes = async () => {
         const codes = await window.codes.get()
-        this.$view.setCodes(codes)
+        this.view.setCodes(codes)
     }
 
-    _addUnit = async () => {
+    addUnit = async () => {
         const units = await window.units.get()
         const { buy, profit, descount, sell, close, $container } =
-            this.$view.addProductUnit(units)
+            this.view.addProductUnit(units)
 
         const updatePrice = () =>
             this.setPrice(sell, +buy.value, +profit.value, +descount.value)
@@ -44,7 +41,7 @@ class ProductController {
 
     saveProduct = async (evt) => {
         evt.preventDefault()
-        const { name, codes, units } = this.$view.getElements()
+        const { name, codes, units } = this.view.getElements()
         if (!name.value) this.alert.error("El producto debe llevar un nombre")
         else {
             const mappedCodes = codes.reduce((acc, el) => {
@@ -80,7 +77,7 @@ class ProductController {
                     })
                     if (res.status === "success") {
                         this.alert.success(res.msg)
-                        this.$view.clear()
+                        this.view.clear()
                         this._getCodes()
                     } else {
                         console.log(res)
@@ -89,5 +86,17 @@ class ProductController {
                 }
             }
         }
+    }
+
+    addProductListener = (key, listener) => {
+        this.listeners[key] = listener
+    }
+
+    removeProductListener = (key) => {
+        delete this.listeners[key]
+    }
+
+    notify() {
+        Object.values(this.listeners).forEach((listener) => listener())
     }
 }

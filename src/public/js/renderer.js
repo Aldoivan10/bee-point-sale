@@ -1,5 +1,11 @@
-function initTabs() {
-    const { $tabs, $tabsContent, $btnPrevTab, $btnNextTab } = tabVars()
+window.appAlert = new Alert(document.body)
+
+$header.onload = (evt) => {
+    const $header = evt.target.contentDocument
+    const $tabs = $header.getElementById("$tabs")
+    const $btnPrevTab = $header.getElementById("$btnPrevTab")
+    const $btnNextTab = $header.getElementById("$btnNextTab")
+
     const tabCtrl = new TabController(
         $tabs,
         $tabsContent,
@@ -11,7 +17,12 @@ function initTabs() {
     window.api.onDelTab(() => tabCtrl.deleteTab())
 }
 
-window.addEventListener("load", () => {
-    window.appAlert = new Alert(document.body)
-    initTabs()
-})
+const productView = new ProductView($product)
+const productModel = new ProductModel()
+const productController = new ProductController(
+    productView,
+    productModel,
+    $product
+)
+
+window.addProductListener = productController.addProductListener

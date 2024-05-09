@@ -1,5 +1,32 @@
+class Menu {
+    constructor($menu) {
+        this.$buttons = Array.from($menu.children)
+        this.listeners = []
+        this.$buttons.forEach((btn) => (btn.onclick = this.onOptionClick))
+    }
+
+    click(index = 0) {
+        this.$buttons[index].click()
+    }
+
+    onOptionClick = (evt) => {
+        const $opt = evt.target
+        this.$buttons.forEach((div) => div.classList.remove("active"))
+        $opt.classList.add("active")
+        this.notify($opt.dataset.tip)
+    }
+
+    addListenerOpt(listener) {
+        this.listeners.push(listener)
+    }
+
+    notify(opt) {
+        this.listeners.forEach((listener) => listener(opt))
+    }
+}
+
 class MenuOptions {
-    constructor() {
+    constructor(productModal, clientModal) {
         this.options = {
             Productos: {
                 api: window.parent.products,
@@ -25,17 +52,20 @@ class MenuOptions {
                     },
                 },
                 class: "productos",
+                modal: productModal,
             },
             Clientes: {
                 api: window.parent.clients,
                 model: new TableModel(),
                 mapper: {},
                 class: "clientes",
+                modal: clientModal,
             },
         }
     }
 
     setTableController(ctrl, opt = "Productos") {
+        this.ctrl = ctrl
         for (const key of Object.keys(this.options)) {
             const opt = this.options[key]
             opt.model.addHeaderListener(ctrl.onHeaderUpdate)
@@ -48,5 +78,15 @@ class MenuOptions {
 
     getOption(opt) {
         return this.options[opt]
+    }
+
+    changeOption(opt) {
+        const option = this.options[opt]
+        this.ctrl.setConfig(
+            option.api,
+            option.model,
+            option.mapper,
+            option.class
+        )
     }
 }

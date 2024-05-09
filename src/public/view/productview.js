@@ -1,8 +1,8 @@
 class ProductView {
-    constructor(name, codes, units) {
-        this.$name = name
-        this.$codes = codes
-        this.$units = units
+    constructor($modal) {
+        this.$name = $modal.querySelector("#name")
+        this.$codes = $modal.querySelector("#codesContainer")
+        this.$units = $modal.querySelector("#unitsContainer")
     }
 
     setCodes(codes) {
@@ -106,7 +106,7 @@ class ProductView {
         return { name, codes, units }
     }
 
-    clear() {
+    clear = () => {
         this.$name.value = ""
         removeChilds(this.$codes)
         removeChilds(this.$units)

@@ -16,8 +16,8 @@ class TableController {
         $delItems.onclick = this.onItemDelete
     }
 
-    setConfig(api, model, mapper, opt) {
-        if (this.view.getClass() === opt) return
+    setConfig(api, model, mapper, className) {
+        if (this.view.getClass() === className) return
         this.api = api
         this.model = model
         this.mapper = mapper
@@ -26,7 +26,7 @@ class TableController {
             this.getData(this.pagination.size(), this.pagination.offset())
             this.buildPagination(this.filter)
         }
-        this.view.setClass(opt)
+        this.view.setClass(className)
     }
 
     async getData(pageSize, offset, filter = null) {

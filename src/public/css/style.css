@@ -1661,48 +1661,6 @@ html {
   min-width: 4rem;
 }
 
-.swap {
-  position: relative;
-  display: inline-grid;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  place-content: center;
-  cursor: pointer;
-}
-
-.swap > * {
-  grid-column-start: 1;
-  grid-row-start: 1;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  transition-property: transform, opacity;
-}
-
-.swap input {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-
-.swap .swap-on,
-.swap .swap-indeterminate,
-.swap input:indeterminate ~ .swap-on {
-  opacity: 0;
-}
-
-.swap input:checked ~ .swap-off,
-.swap-active .swap-off,
-.swap input:indeterminate ~ .swap-off {
-  opacity: 0;
-}
-
-.swap input:checked ~ .swap-on,
-.swap-active .swap-on,
-.swap input:indeterminate ~ .swap-indeterminate {
-  opacity: 1;
-}
-
 .tabs {
   display: grid;
   align-items: flex-end;
@@ -3572,26 +3530,6 @@ input.tab:checked + .tab-content,
   z-index: 1;
 }
 
-.col-span-6 {
-  grid-column: span 6 / span 6;
-}
-
-.col-span-4 {
-  grid-column: span 4 / span 4;
-}
-
-.col-span-8 {
-  grid-column: span 8 / span 8;
-}
-
-.col-span-5 {
-  grid-column: span 5 / span 5;
-}
-
-.col-span-7 {
-  grid-column: span 7 / span 7;
-}
-
 .m-0 {
   margin: 0px;
 }
@@ -3745,16 +3683,12 @@ input.tab:checked + .tab-content,
   cursor: pointer;
 }
 
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.grid-cols-12 {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -3998,12 +3932,12 @@ input.tab:checked + .tab-content,
   transition-duration: 150ms;
 }
 
-.\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\#btnAddProduct\]\:btn-disabled:not(:has(#unitsContainer>div)) #btnAddProduct {
+.\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\.btn-success\]\:btn-disabled:not(:has(#unitsContainer>div)) .btn-success {
   pointer-events: none;
 }
 
 @media (hover: hover) {
-  .\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\#btnAddProduct\]\:btn-disabled:not(:has(#unitsContainer>div)) #btnAddProduct:hover {
+  .\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\.btn-success\]\:btn-disabled:not(:has(#unitsContainer>div)) .btn-success:hover {
     --tw-border-opacity: 0;
     background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
     --tw-bg-opacity: 0.2;
@@ -4012,7 +3946,7 @@ input.tab:checked + .tab-content,
   }
 }
 
-.\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\#btnAddProduct\]\:btn-disabled:not(:has(#unitsContainer>div)) #btnAddProduct.btn {
+.\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\.btn-success\]\:btn-disabled:not(:has(#unitsContainer>div)) .btn-success.btn {
   --tw-border-opacity: 0;
   background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
   --tw-bg-opacity: 0.2;
@@ -4089,19 +4023,11 @@ input.tab:checked + .tab-content,
   display: none;
 }
 
-.\[\&\:is\(\.clientes\)_td\:nth-child\(7\)\]\:hidden:is(.clientes) td:nth-child(7) {
-  display: none;
-}
-
 .\[\&\:is\(\.productos\)_td\:nth-child\(5\)\]\:hidden:is(.productos) td:nth-child(5) {
   display: none;
 }
 
 .\[\&\:is\(\.productos\)_td\:nth-child\(7\)\]\:hidden:is(.productos) td:nth-child(7) {
-  display: none;
-}
-
-.\[\&\:is\(\.productos_\)_td\:nth-child\(5\)\]\:hidden:is(.productos ) td:nth-child(5) {
   display: none;
 }
 
@@ -4113,31 +4039,11 @@ input.tab:checked + .tab-content,
   display: none;
 }
 
-.\[\&\:not\(\.admin\)_\.productos_td\:nth-child\(n\+10\)\]\:hidden:not(.admin) .productos td:nth-child(n+10) {
-  display: none;
-}
-
 .\[\&\:not\(\.admin\)_\.productos_td\:nth-child\(n\+11\)\]\:hidden:not(.admin) .productos td:nth-child(n+11) {
   display: none;
 }
 
-.\[\&\:not\(\.admin\)_\.productos_td\:nth-child\(n\+9\)\]\:hidden:not(.admin) .productos td:nth-child(n+9) {
-  display: none;
-}
-
-.\[\&\:not\(\.admin\)_tbody_td\:nth-child\(1\)\]\:hidden:not(.admin) tbody td:nth-child(1) {
-  display: none;
-}
-
 .\[\&\:not\(\.admin\)_td\:nth-child\(1\)\]\:hidden:not(.admin) td:nth-child(1) {
-  display: none;
-}
-
-.\[\&\:not\(\.admin\)_td\:nth-child\(n\+9\)\]\:hidden:not(.admin) td:nth-child(n+9) {
-  display: none;
-}
-
-.\[\&\:not\(\.admin\)_thead_td\:nth-child\(1\)\]\:hidden:not(.admin) thead td:nth-child(1) {
   display: none;
 }
 
@@ -4181,19 +4087,6 @@ input.tab:checked + .tab-content,
 
 .\[\&_\*\]\:box-border * {
   box-sizing: border-box;
-}
-
-.\[\&_\.productos\]\:bg-red-400 .productos {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-
-.\[\&_\.productos_td\:nth-child\(5\)\]\:hidden .productos td:nth-child(5) {
-  display: none;
-}
-
-.\[\&_\.productos_td\:nth-child\(7\)\]\:hidden .productos td:nth-child(7) {
-  display: none;
 }
 
 .\[\&_\.tab-active\]\:rounded-t .tab-active {
@@ -4288,22 +4181,6 @@ input.tab:checked + .tab-content,
 
 .\[\&_svg\]\:min-w-2 svg {
   min-width: 0.5rem;
-}
-
-.\[\&_tbody_td\:nth-child\(5\)\]\:hidden tbody td:nth-child(5) {
-  display: none;
-}
-
-.\[\&_tbody_td\:nth-child\(7\)\]\:hidden tbody td:nth-child(7) {
-  display: none;
-}
-
-.\[\&_thead_td\:nth-child\(5\)\]\:hidden thead td:nth-child(5) {
-  display: none;
-}
-
-.\[\&_thead_td\:nth-child\(7\)\]\:hidden thead td:nth-child(7) {
-  display: none;
 }
 
 .\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/10 tr:nth-child(even) {

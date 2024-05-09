@@ -5,7 +5,12 @@ const tableCtrl = new TableController(
     $filter,
     $delItems
 )
-const menuOpt = new MenuOptions().setTableController(tableCtrl)
+const menuOpt = new MenuOptions(
+    window.parent.$product,
+    window.parent.$client
+).setTableController(tableCtrl)
+let $modal = window.parent.$product
+
 $footer.addEventListener("load", () => {
     const $menu = $footer.contentDocument.getElementById("$menu")
     const menu = new Menu($menu)
@@ -17,6 +22,7 @@ $footer.addEventListener("load", () => {
             option.mapper,
             option.class
         )
+        $modal = option.modal
     })
     menu.click()
 })
