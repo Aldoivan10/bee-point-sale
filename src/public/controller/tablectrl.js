@@ -1,18 +1,8 @@
 class TableController {
-    constructor(
-        view,
-        model,
-        pagination,
-        $filter,
-        $delItems,
-        alerts,
-        mapper = {}
-    ) {
-        this.view = view
-        this.model = model
-        this.mapper = mapper
+    constructor(view, pagination, alerts, $filter, $delItems) {
         this.pagination = pagination
         this.$filter = $filter
+        this.view = view
 
         this.filter = null
         this.filterTimer = null
@@ -26,26 +16,20 @@ class TableController {
         $delItems.onclick = this.onItemDelete
     }
 
-    init() {
-        this._getData(this.pagination.size(), this.pagination.offset())
-        this._buildPagination(this.filter)
-        return this
-    }
-
-    swap(api, model, mapper, opt) {
+    setConfig(api, model, mapper, opt) {
         if (this.view.getClass() === opt) return
         this.api = api
         this.model = model
         this.mapper = mapper
         if (this.$filter.value) this.$filter.value = ""
         else {
-            this._getData(this.pagination.size(), this.pagination.offset())
-            this._buildPagination(this.filter)
+            this.getData(this.pagination.size(), this.pagination.offset())
+            this.buildPagination(this.filter)
         }
         this.view.setClass(opt)
     }
 
-    async _getData(pageSize, offset, filter = null) {
+    async getData(pageSize, offset, filter = null) {
         this.view.cleanRows()
         this.api.get(pageSize, offset, filter).then((data) => {
             this.model.setHeaders(data)
@@ -53,7 +37,7 @@ class TableController {
         })
     }
 
-    async _buildPagination(filter = null) {
+    async buildPagination(filter = null) {
         this.api.total(filter).then((total) => {
             this.pagination.buildPagination(total)
         })
@@ -70,17 +54,17 @@ class TableController {
             this.filterTimer = null
         }
         this.filterTimer = setTimeout(() => {
-            this._getData(
+            this.getData(
                 this.pagination.size(),
                 this.pagination.offset(),
                 this.filter
             )
-            this._buildPagination(this.filter)
+            this.buildPagination(this.filter)
         }, this.filterWaitingTime)
     }
 
     onPaginationUpdate = (pageSize, offset) =>
-        this._getData(pageSize, offset, this.filter)
+        this.getData(pageSize, offset, this.filter)
 
     onHeaderUpdate = (headers, added, removed) => {
         if (added) {
