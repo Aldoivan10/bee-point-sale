@@ -1,5 +1,5 @@
 window.appAlert = new Alert(document.body)
-
+window.funcs = []
 $header.onload = (evt) => {
     const $header = evt.target.contentDocument
     const $tabs = $header.getElementById("$tabs")
@@ -15,6 +15,8 @@ $header.onload = (evt) => {
 
     window.api.onAddTab(() => tabCtrl.appendTab())
     window.api.onDelTab(() => tabCtrl.deleteTab())
+
+    console.log("Header loaded")
 }
 
 const productView = new ProductView($product)
@@ -25,4 +27,4 @@ const productController = new ProductController(
     $product
 )
 
-window.addProductListener = productController.addProductListener
+window.addProductListener = productController.addListener

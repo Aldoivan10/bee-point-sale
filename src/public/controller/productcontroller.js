@@ -1,8 +1,9 @@
-class ProductController {
+class ProductController extends Listener {
     constructor(view, model, $modal) {
+        super()
         this.view = view
         this.model = model
-        this.listeners = {}
+        this.listeners = []
         this.alert = new Alert($modal)
 
         const observer = new DialogObserver($modal)
@@ -78,7 +79,8 @@ class ProductController {
                     if (res.status === "success") {
                         this.alert.success(res.msg)
                         this.view.clear()
-                        this._getCodes()
+                        this.getCodes()
+                        this.notify("main", "productos")
                     } else {
                         console.log(res)
                         this.alert.error(res.msg)
@@ -86,17 +88,5 @@ class ProductController {
                 }
             }
         }
-    }
-
-    addProductListener = (key, listener) => {
-        this.listeners[key] = listener
-    }
-
-    removeProductListener = (key) => {
-        delete this.listeners[key]
-    }
-
-    notify() {
-        Object.values(this.listeners).forEach((listener) => listener())
     }
 }

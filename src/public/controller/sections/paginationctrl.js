@@ -1,5 +1,6 @@
-class Pagination {
+class Pagination extends Listener {
     constructor($pagination, $pageSize, maxSteps = 9) {
+        super()
         this.$pagination = $pagination
         this.pageSize = +$pageSize.value
         this.maxSteps = maxSteps
@@ -84,7 +85,7 @@ class Pagination {
         this.offsetSize = (newPage - 1) * this.pageSize
         this.page = newPage
         this.updatePagination(newPage, this.steps, this.maxSteps)
-        this.notify()
+        this.notify("main", this.size(), this.offset())
     }
 
     updatePageSize = (evt) => {
@@ -92,7 +93,7 @@ class Pagination {
         if (newSize === this.pageSize) return
         this.pageSize = newSize
         this.buildPagination(this.total)
-        this.notify()
+        this.notify("main", this.size(), this.offset())
     }
 
     reset() {
@@ -113,9 +114,5 @@ class Pagination {
 
     addListener(action) {
         this.listeners.push(action)
-    }
-
-    notify() {
-        for (const action of this.listeners) action(this.size(), this.offset())
     }
 }

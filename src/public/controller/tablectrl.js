@@ -16,16 +16,18 @@ class TableController {
         $delItems.onclick = this.onItemDelete
     }
 
+    build() {
+        this.getData(this.pagination.size(), this.pagination.offset())
+        this.buildPagination(this.filter)
+    }
+
     setConfig(api, model, mapper, className) {
         if (this.view.getClass() === className) return
         this.api = api
         this.model = model
         this.mapper = mapper
         if (this.$filter.value) this.$filter.value = ""
-        else {
-            this.getData(this.pagination.size(), this.pagination.offset())
-            this.buildPagination(this.filter)
-        }
+        else this.build()
         this.view.setClass(className)
     }
 
@@ -66,18 +68,11 @@ class TableController {
     onPaginationUpdate = (pageSize, offset) =>
         this.getData(pageSize, offset, this.filter)
 
-    onHeaderUpdate = (headers, added, removed) => {
-        if (added) {
-        } else if (removed) {
-        }
+    onHeaderUpdate = (headers) => {
         this.view.buildHeader(headers)
     }
 
-    onDataUpdate = (rows, added, removed) => {
-        if (added) {
-        } else if (removed) {
-        }
-
+    onDataUpdate = (rows) => {
         const mapKeys = Object.keys(this.mapper)
         if (mapKeys.length > 0) {
             for (const row of rows) {
@@ -112,12 +107,16 @@ class TableController {
                 const res = await this.api.delete(ids)
                 if (res.status === "success") {
                     this.alerts.success(res.msg)
-                    this.init()
+                    this.this.build()
                 } else {
                     alerts.error(res.msg)
                     console.log(res.data)
                 }
             }
         )
+    }
+
+    update(className) {
+        if (className === this.view.getClass()) this.build()
     }
 }

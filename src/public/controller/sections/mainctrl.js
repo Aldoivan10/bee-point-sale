@@ -1,3 +1,5 @@
+const updater = (className) => tableCtrl.update(className)
+
 const tableCtrl = new TableController(
     new TableView($table),
     new Pagination($pagination, $pageSize),
@@ -5,16 +7,17 @@ const tableCtrl = new TableController(
     $filter,
     $delItems
 )
+
 const menuOpt = new MenuOptions(
     window.parent.$product,
     window.parent.$client
 ).setTableController(tableCtrl)
 let $modal = window.parent.$product
 
-$footer.addEventListener("load", () => {
+$footer.onload = () => {
     const $menu = $footer.contentDocument.getElementById("$menu")
     const menu = new Menu($menu)
-    menu.addListenerOpt((opt) => {
+    menu.addListener((opt) => {
         const option = menuOpt.getOption(opt)
         tableCtrl.setConfig(
             option.api,
@@ -25,4 +28,4 @@ $footer.addEventListener("load", () => {
         $modal = option.modal
     })
     menu.click()
-})
+}

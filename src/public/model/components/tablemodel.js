@@ -10,12 +10,12 @@ class TableModel {
     setHeaders(headers) {
         this.headers =
             typeof headers[0] === "string" ? headers : Object.keys(headers[0])
-        this.notifyHeaderUpdate(null, null)
+        this.notifyHeaderUpdate()
     }
 
     setData(data) {
         this.data = data
-        this.notifyDataUpdate(null, null)
+        this.notifyDataUpdate()
     }
 
     removeHeader(header) {
@@ -40,16 +40,12 @@ class TableModel {
         this.notifyDataUpdate(row, null)
     }
 
-    notifyHeaderUpdate(added, removed) {
-        this.headerListeners.forEach((listener) =>
-            listener(this.headers, added, removed)
-        )
+    notifyHeaderUpdate() {
+        this.headerListeners.forEach((listener) => listener(this.headers))
     }
 
-    notifyDataUpdate(added, removed) {
-        this.dataListeners.forEach((listener) =>
-            listener(this.data, added, removed)
-        )
+    notifyDataUpdate() {
+        this.dataListeners.forEach((listener) => listener(this.data))
     }
 
     addHeaderListener(listener) {
