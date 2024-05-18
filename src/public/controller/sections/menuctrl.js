@@ -1,9 +1,7 @@
 class Menu extends Listener {
     constructor($menu) {
         super()
-        console.log("Menu???")
         this.$buttons = Array.from($menu.children)
-        this.listeners = []
         this.$buttons.forEach((btn) => (btn.onclick = this.onOptionClick))
     }
 

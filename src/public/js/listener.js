@@ -1,13 +1,11 @@
 class Listener {
     constructor(...keys) {
-        console.log("??????????")
         this.listeners = {}
-        if (!keys) keys = ["main"]
+        if (keys.length === 0) keys = ["main"]
         for (const key of keys) this.listeners[key] = []
     }
 
     addListener(listener, key = "main") {
-        console.log(this.listeners)
         this.listeners[key].push(listener)
     }
 

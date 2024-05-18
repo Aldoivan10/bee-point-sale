@@ -15,8 +15,6 @@ $header.onload = (evt) => {
 
     window.api.onAddTab(() => tabCtrl.appendTab())
     window.api.onDelTab(() => tabCtrl.deleteTab())
-
-    console.log("Header loaded")
 }
 
 const productView = new ProductView($product)
