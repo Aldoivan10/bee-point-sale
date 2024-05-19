@@ -1,5 +1,6 @@
-class ProductModel {
+class ProductModel extends Listener {
     constructor() {
+        super("codes", "units")
         this.name = ""
         this.codes = []
         this.units = []
@@ -8,30 +9,14 @@ class ProductModel {
         this.unitsListeners = []
     }
 
-    addCodesListeners(listener) {
-        this.codesListeners.push(listener)
-    }
-
-    addUnitsListeners(listener) {
-        this.unitsListeners.push(listener)
-    }
-
-    notifyCodes() {
-        this.codesListeners.forEach((listener) => listener(this.codes))
-    }
-
-    notifyUnits() {
-        this.unitsListeners.forEach((listener) => listener(this.units))
-    }
-
     setCodes(codes) {
         this.codes = codes
-        this.notifyCodes()
+        this.notify("codes", codes)
     }
 
     setUnits(units) {
         this.units = units
-        this.notifyUnits()
+        this.notify("units", units)
     }
 
     reset() {

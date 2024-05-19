@@ -65,8 +65,7 @@ class TableController {
         }, this.filterWaitingTime)
     }
 
-    onPaginationUpdate = (pageSize, offset) =>
-        this.getData(pageSize, offset, this.filter)
+    onPaginationUpdate = (args) => this.getData(args[0], args[1], this.filter)
 
     onHeaderUpdate = (headers) => {
         this.view.buildHeader(headers)

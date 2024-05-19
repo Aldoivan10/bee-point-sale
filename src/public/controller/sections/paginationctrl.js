@@ -5,7 +5,6 @@ class Pagination extends Listener {
         this.pageSize = +$pageSize.value
         this.maxSteps = maxSteps
         this.offsetSize = 0
-        this.listeners = []
         this.steps = 0
         this.page = 1
 
@@ -110,9 +109,5 @@ class Pagination extends Listener {
 
     size() {
         return this.pageSize
-    }
-
-    addListener(action) {
-        this.listeners.push(action)
     }
 }

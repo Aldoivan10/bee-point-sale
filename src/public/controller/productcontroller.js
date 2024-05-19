@@ -3,7 +3,6 @@ class ProductController extends Listener {
         super()
         this.view = view
         this.model = model
-        this.listeners = []
         this.alert = new Alert($modal)
 
         const observer = new DialogObserver($modal)
