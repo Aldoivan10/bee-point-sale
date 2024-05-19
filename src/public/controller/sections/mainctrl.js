@@ -29,3 +29,5 @@ $footer.onload = () => {
     })
     menu.click()
 }
+
+window.parent.api.onDataUpdated(updater)

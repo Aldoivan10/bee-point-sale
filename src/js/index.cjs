@@ -35,47 +35,51 @@ const createWindow = async () => {
         })
     })
 
-    app.on("browser-window-blur", function () {
+    app.on("browser-window-blur", () => {
         globalShortcut.unregister("CommandOrControl+T")
+    })
+
+    productScheme.onUpdated(() => {
+        win.webContents.send("data-updated", "productos")
     })
 }
 
 app.whenReady().then(async () => {
     /* PRODUCTS*/
     ipcMain.handle(
-        "fetchProducts",
+        "fetch-products",
         async (_, pageSize, offset, filter) =>
             await productScheme.all(pageSize, offset, filter)
     )
     ipcMain.handle(
-        "createProduct",
+        "create-product",
         async (_, product) => await productScheme.create(product)
     )
     ipcMain.handle(
-        "deleteProducts",
+        "delete-products",
         async (_, ids) => await productScheme.delete(ids)
     )
     ipcMain.handle(
-        "fetchTotalProducts",
+        "fetch-total-products",
         async (_, filter) => await productScheme.total(filter)
     )
     /* CODES */
-    ipcMain.handle("fetchCodes", async () => await codeScheme.all())
+    ipcMain.handle("fetch-codes", async () => await codeScheme.all())
     /* UNITS */
-    ipcMain.handle("fetchUnits", async () => await unitScheme.all())
+    ipcMain.handle("fetch-units", async () => await unitScheme.all())
     /* USER */
     ipcMain.handle(
-        "fetchUser",
+        "fetch-user",
         async (_, user, pass) => await userScheme.get(user, pass)
     )
     /* CLIENTS */
     ipcMain.handle(
-        "fetchClients",
+        "fetch-clients",
         async (_, pageSize, offset, filter) =>
             await clientScheme.all(pageSize, offset, filter)
     )
     ipcMain.handle(
-        "fetchTotalClients",
+        "fetch-total-clients",
         async (_, filter) => await clientScheme.total(filter)
     )
 

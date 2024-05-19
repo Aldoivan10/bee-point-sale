@@ -102,11 +102,9 @@ class TableController {
             "¿Desea eliminar los elementos seleccionados?. Ya no podrán ser recuperados.",
             async () => {
                 const ids = this.view.getCheckedIds(this.model.headers)
-                console.log(ids)
                 const res = await this.api.delete(ids)
                 if (res.status === "success") {
                     this.alerts.success(res.msg)
-                    this.this.build()
                 } else {
                     alerts.error(res.msg)
                     console.log(res.data)
@@ -116,6 +114,9 @@ class TableController {
     }
 
     update(className) {
-        if (className === this.view.getClass()) this.build()
+        if (className === this.view.getClass()) {
+            this.pagination.reset()
+            this.build()
+        }
     }
 }

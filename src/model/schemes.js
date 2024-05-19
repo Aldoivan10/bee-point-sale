@@ -1,6 +1,7 @@
 class Scheme {
     constructor(db) {
         this.db = db
+        this.listener = () => {}
     }
 
     error(msg, data = null) {
@@ -8,6 +9,7 @@ class Scheme {
     }
 
     ok(msg, data = null) {
+        this.listener()
         return this.msg("success", msg, data)
     }
 
@@ -25,6 +27,10 @@ class Scheme {
             index,
             index + length
         )}${end}${str.slice(index + length)}`
+    }
+
+    onUpdated(action) {
+        this.listener = action
     }
 }
 
