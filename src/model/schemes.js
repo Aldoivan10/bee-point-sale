@@ -433,4 +433,21 @@ class Client extends Scheme {
     }
 }
 
-module.exports = { Product, User, Code, Unit, Client }
+class KeyBoard extends Scheme {
+    async keys() {
+        const query = `
+            SELECT
+                combinacion,
+                funcion
+            FROM
+                Teclado
+        `
+        return await this.db.fetch(query, [], (rows) =>
+            rows.reduce((obj, row) => {
+                return { ...obj, [row["combinacion"]]: row["funcion"] }
+            }, {})
+        )
+    }
+}
+
+module.exports = { Product, User, Code, Unit, Client, KeyBoard }

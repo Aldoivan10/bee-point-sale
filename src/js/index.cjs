@@ -1,5 +1,12 @@
 const { app, BrowserWindow, ipcMain, globalShortcut } = require("electron")
-const { Product, User, Unit, Code, Client } = require("../model/schemes.js")
+const {
+    Product,
+    User,
+    Unit,
+    Code,
+    Client,
+    KeyBoard,
+} = require("../model/schemes.js")
 const path = require("node:path")
 const DB = require("../model/db.js")
 
@@ -11,6 +18,7 @@ const userScheme = new User(db)
 const unitScheme = new Unit(db)
 const codeScheme = new Code(db)
 const clientScheme = new Client(db)
+const keyBoard = new KeyBoard(db)
 
 const createWindow = async () => {
     const win = new BrowserWindow({
@@ -22,23 +30,35 @@ const createWindow = async () => {
             preload: path.join(__dirname, "preload.cjs"),
         },
     })
-    /* CARGAR PAGINCA */
+
+    /* CARGAR PAGINA */
     win.loadFile("src/public/index.html")
     win.menuBarVisible = false
 
+    /* LOAD KEYS SHORTCUTS */
+    const keys = await keyBoard.keys()
+
+    for (const key of Object.keys(keys)) {
+        globalShortcut.register(key, () => {
+            win.webContents.send(keys[key])
+        })
+    }
+
     app.on("browser-window-focus", () => {
-        globalShortcut.register("CommandOrControl+T", () => {
-            win.webContents.send("add-tab")
-        })
-        globalShortcut.register("CommandOrControl+shift+T", () => {
-            win.webContents.send("del-tab")
-        })
+        for (const key of Object.keys(keys)) {
+            globalShortcut.register(key, () => {
+                win.webContents.send(keys[key])
+            })
+        }
     })
 
     app.on("browser-window-blur", () => {
-        globalShortcut.unregister("CommandOrControl+T")
+        for (const key of Object.keys(keys)) {
+            globalShortcut.unregister(key)
+        }
     })
 
+    /* DATA UPDATED */
     productScheme.onUpdated(() => {
         win.webContents.send("data-updated", "productos")
     })
