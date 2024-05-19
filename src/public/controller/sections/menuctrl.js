@@ -6,7 +6,9 @@ class Menu extends Listener {
     }
 
     click(index = 0) {
-        this.$buttons[index].click()
+        if (typeof index === "string")
+            this.$buttons.find((btn) => btn.dataset.tip === index).click()
+        else this.$buttons[index].click()
     }
 
     onOptionClick = (evt) => {

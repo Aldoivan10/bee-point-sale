@@ -17,6 +17,23 @@ let $modal = window.parent.$product
 $footer.onload = () => {
     const $menu = $footer.contentDocument.getElementById("$menu")
     const menu = new Menu($menu)
+
+    const changeView = (view) => {
+        const objects = window.parent.document.querySelectorAll("object")
+        for (const obj of objects) {
+            if (obj.contentWindow === window) {
+                if (obj.classList.contains("hidden")) return
+                break
+            }
+        }
+        menu.click(view)
+    }
+    const api = window.parent.api
+
+    api.onDataUpdated(updater)
+    api.onClientsView(changeView)
+    api.onProductsView(changeView)
+
     menu.addListener((opt) => {
         const option = menuOpt.getOption(opt)
         tableCtrl.setConfig(
@@ -29,5 +46,3 @@ $footer.onload = () => {
     })
     menu.click()
 }
-
-window.parent.api.onDataUpdated(updater)

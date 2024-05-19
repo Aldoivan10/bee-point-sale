@@ -29,6 +29,10 @@ contextBridge.exposeInMainWorld("clients", {
 contextBridge.exposeInMainWorld("api", {
     onAddTab: (callback) => ipcRenderer.on("add-tab", (_event) => callback()),
     onDelTab: (callback) => ipcRenderer.on("del-tab", (_event) => callback()),
+    onClientsView: (callback) =>
+        ipcRenderer.on("clients-view", (_event) => callback("Clientes")),
+    onProductsView: (callback) =>
+        ipcRenderer.on("products-view", (_event) => callback("Productos")),
     onDataUpdated: (callback) =>
         ipcRenderer.on("data-updated", (_event, className) =>
             callback(className)
