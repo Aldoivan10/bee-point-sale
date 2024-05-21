@@ -65,6 +65,8 @@ const createWindow = async () => {
 }
 
 app.whenReady().then(async () => {
+    ipcMain.handle("key-map", async () => await keyBoard.keys())
+
     /* PRODUCTS*/
     ipcMain.handle(
         "fetch-products",

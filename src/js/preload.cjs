@@ -37,4 +37,5 @@ contextBridge.exposeInMainWorld("api", {
         ipcRenderer.on("data-updated", (_event, className) =>
             callback(className)
         ),
+    getkeyMap: () => ipcRenderer.invoke("key-map"),
 })

@@ -1,11 +1,14 @@
 class Menu extends Listener {
-    constructor($menu) {
+    constructor() {
         super()
-        this.$buttons = Array.from($menu.children)
+    }
+
+    setButtons = (arrChilds) => {
+        this.$buttons = Array.from(arrChilds)
         this.$buttons.forEach((btn) => (btn.onclick = this.onOptionClick))
     }
 
-    click(index = 0) {
+    click = (index = 0) => {
         if (typeof index === "string")
             this.$buttons.find((btn) => btn.dataset.tip === index).click()
         else this.$buttons[index].click()

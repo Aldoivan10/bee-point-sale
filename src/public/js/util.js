@@ -61,7 +61,7 @@ function svg(path) {
     const $path = document.createElementNS(uri, "path")
     $path.setAttribute("d", path)
     $svg.appendChild($path)
-    $svg.setAttribute("viewBox", "0 0 512 512")
+    $svg.setAttribute("viewBox", "0 0 640 640")
     $svg.setAttribute("xmlns", uri)
     $svg.setAttribute("fill", "currentColor")
     $svg.setAttribute("stroke", "currentColor")
@@ -148,4 +148,23 @@ function onlyNumbers(evt) {
         const val = evt.data
         if (!numRegex.test(val)) $input.value = $input.value.slice(0, -1)
     }
+}
+
+function menuBtn(tip, keyCombination, path) {
+    const $div = document.createElement("div")
+    const $button = document.createElement("button")
+    const $icon = svg(path)
+
+    $div.className =
+        "tooltip tooltip-extend-accent font-bold flex border-primary align-middle bg-base-300"
+    $div.dataset.tip = tip
+    $button.className =
+        "font-bold pt-2 flex items-center flex-col h-full w-full pointer-events-none"
+    $icon.classList.add("h-5", "w-5", "fill-current")
+    $button.appendChild($icon)
+    $button.innerHTML += `${tip} (${keyCombination})`
+
+    $div.appendChild($button)
+
+    return $div
 }

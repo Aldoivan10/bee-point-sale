@@ -15,8 +15,7 @@ const menuOpt = new MenuOptions(
 let $modal = window.parent.$product
 
 $footer.onload = () => {
-    const $menu = $footer.contentDocument.getElementById("$menu")
-    const menu = new Menu($menu)
+    const menu = new Menu()
 
     const changeView = (view) => {
         const objects = window.parent.document.querySelectorAll("object")
@@ -44,5 +43,5 @@ $footer.onload = () => {
         )
         $modal = option.modal
     })
-    menu.click()
+    $footer.ownerDocument.defaultView.menu = menu
 }
