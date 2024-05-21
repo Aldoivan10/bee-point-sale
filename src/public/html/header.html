@@ -18,35 +18,24 @@
     >
         <header class="navbar bg-base-200 flex max-w-[100%] w-[100%]">
             <div class="navbar-start grow">
-                <div class="dropdown z-10">
-                    <div
-                        tabindex="0"
-                        role="button"
-                        class="btn btn-ghost btn-circle me-3"
+                <div
+                    class="tooltip tooltip-right font-bold"
+                    data-tip="Menú"
+                >
+                    <button
+                        class="btn btn-neutral btn-active me-2"
+                        onclick="window.parent.$drawer.click()"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
+                            viewBox="0 0 448 512"
+                            class="h-5 w-5 fill-current"
                         >
                             <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h7"
+                                d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
                             />
                         </svg>
-                    </div>
-                    <ul
-                        tabindex="0"
-                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-                    >
-                        <li><a>Homepage</a></li>
-                        <li><a>Portfolio</a></li>
-                        <li><a>About</a></li>
-                    </ul>
+                    </button>
                 </div>
                 <div
                     class="flex gap-2 w-[100%] [&:not(:has(.overflowing))_.btn:not(.btn-tab-close)]:hidden [&_li:nth-child(1)_button]:hidden"
