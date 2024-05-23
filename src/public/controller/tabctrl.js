@@ -43,6 +43,14 @@ class TabController {
         }
     }
 
+    clear() {
+        const $tabs = this.$tabs.querySelectorAll(".tab")
+        $tabs.forEach((tab) => {
+            this.getContent(tab).remove()
+            tab.remove()
+        })
+    }
+
     addTab(tabName, content) {
         const $tab = tab(tabName)
         this.$tabs.appendChild($tab)
