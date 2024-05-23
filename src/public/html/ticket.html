@@ -12,72 +12,91 @@
         />
         <title>Print</title>
     </head>
-    <body class="grid place-items-center h-[100dvh]">
-        <main class="h-[80%] text-[0.35rem] flex gap-2">
-            <section class="flex flex-col gap-2 p-2">
-                <label class="input input-bordered flex items-center gap-2">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16"
-                        fill="currentColor"
-                        class="w-4 h-4 opacity-70"
-                    >
-                        <path
-                            fill-rule="evenodd"
-                            d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
-                            clip-rule="evenodd"
-                        />
-                    </svg>
-                    <input
-                        type="text"
-                        class="grow"
-                        value="password"
+    <body class="h-[calc(100dvh-96px)] flex gap-2 m-4 [&_*]:box-border">
+        <aside class="flex flex-col gap-2 p-2">
+            <label class="input input-bordered flex items-center gap-2">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    class="w-4 h-4 opacity-70"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                        clip-rule="evenodd"
                     />
-                </label>
-            </section>
+                </svg>
+                <input
+                    type="text"
+                    class="grow"
+                    value="password"
+                />
+            </label>
+        </aside>
+        <main
+            class="grow p-4 flex items-center flex-col ticket [&_*]:text-[2.2cqw]"
+        >
             <section
-                class="flex flex-col gap-2 p-1 px-2 bg-white w-[151.18px] h-[100%] relative before:content-[''] before:w-full before:h-1 before:absolute before:left-0 before:bottom-full after:content-[''] after:w-full after:h-1 after:absolute after:left-0 after:top-full after:rotate-180"
+                class="grow flex flex-col gap-2 p-1 px-2 bg-white w-[151.18px] relative before:content-[''] before:w-full before:h-1 before:absolute before:left-0 before:bottom-full after:content-[''] after:w-full after:h-1 after:absolute after:left-0 after:top-full after:rotate-180"
             >
-                <header class="text-black flex flex-col gap-1">
-                    <div class="flex gap-2 items-center justify-center">
-                        <img
-                            src="https://images.sftcdn.net/images/t_app-icon-s/p/2db71cbb-f5e9-486f-88ec-b493248aa2bf/4188246360/chrome-dino-dino-icon.png"
-                            class="w-[15%] grayscale [&[src='']]:hidden"
-                            alt="logo"
-                        />
+                <header class="text-black flex flex-col gap-1 w-full">
+                    <div
+                        class="flex gap-1 items-center justify-center w-full aspect-video"
+                    >
+                        <div
+                            class="has-[img[src='']]:hidden relative w-[15cqw] aspect-square"
+                        >
+                            <img
+                                src="https://play-lh.googleusercontent.com/iiIJq5JmLFYNI1bVz4IBHyoXs508JcEzHhOgau69bnveF9Wat51-ax9LMPVOlneKwqg=w240-h480-rw"
+                                class="h-full w-full grayscale absolute top-0 left-0 object-fill"
+                                alt="logo"
+                            />
+                        </div>
                         <h3
-                            class="text-pretty text-center font-bold max-w-[50%] h-full flex items-center"
+                            class="text-pretty text-center font-bold h-full flex items-center"
                         >
                             Título demasiado largo para caber
                         </h3>
                     </div>
-                    <p class="text-center [&:is(:empty)]:hidden">
-                        Alguna descripción extra
+                    <p class="text-center [&:is(:empty)]:hidde">
+                        Alguna descripción extra que puede contener multiples
+                        renglones
                     </p>
                 </header>
-                <main class="grow text-black">
-                    <table>
-                        <tr>
-                            <th class="text-start">Company</th>
-                            <th class="text-start">Contact</th>
-                            <th class="text-start">Country</th>
-                        </tr>
-                        <tr>
-                            <td>Alfreds Futterkiste</td>
-                            <td class="text-justify">
-                                Maria Anders Lorem ipsum dolor sit amet
-                                consectetur adipisicing elit. Velit facilis rem
-                            </td>
-                            <td>Germany</td>
-                        </tr>
-                        <tr>
-                            <td>Centro comercial Moctezuma</td>
-                            <td>Francisco Chang</td>
-                            <td>Mexico</td>
-                        </tr>
+                <main class="grow text-black relative">
+                    <table class="absolute w-full top-0 left-0">
+                        <thead>
+                            <tr>
+                                <th class="text-start">#</th>
+                                <th class="text-start">Art.</th>
+                                <th class="text-start">Pre. Unit.</th>
+                                <th class="text-start">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td class="text-justify">
+                                    ABRAZADERA COPPER&BRASS L-10
+                                </td>
+                                <td>100.00</td>
+                                <td>100.00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th
+                                    class="font-bold"
+                                    colspan="100%"
+                                >
+                                    Total: 100.0
+                                </th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </main>
-                <footer class="min-h-3 text-center text-black">
+                <footer class="min-h-3 text-center text-black hidden">
                     <p>
                         Texto final para probar el tamaño que puede adquirir el
                         texto
@@ -86,6 +105,11 @@
             </section>
         </main>
         <style>
+            @font-face {
+                font-family: Ticket;
+                src: url(../assets/Ticketing.ttf);
+            }
+
             section::before,
             section::after {
                 background: radial-gradient(
@@ -95,6 +119,11 @@
                         #fbfbfb 50%,
                         #fbfbfb 100%
                     ) -8px -10px / 14px 14px repeat-x;
+            }
+
+            .ticket {
+                container-type: inline-size;
+                font-family: Ticket;
             }
         </style>
     </body>

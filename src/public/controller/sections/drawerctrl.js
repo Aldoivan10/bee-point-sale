@@ -46,7 +46,10 @@ class Drawer {
                 Object.entries(keyMap).find(([_, val]) => val === key)[0],
                 this.options[key].path,
                 focusOptionEvent,
-                () => this.onViewChange(this.options[key].view)
+                (evt) => {
+                    if (!evt.target.classList.contains("tab-active"))
+                        this.onViewChange(this.options[key].view)
+                }
             )
             this.$drawerMenu.appendChild(opt)
         }
@@ -93,8 +96,8 @@ class Drawer {
 
         $btn.appendChild($svg)
         $btn.innerHTML += `${text} (${keyCombination})`
-        $btn.addEventListener("click", focusEvent)
         $btn.addEventListener("click", action)
+        $btn.addEventListener("click", focusEvent)
 
         $li.appendChild($btn)
 
@@ -102,7 +105,15 @@ class Drawer {
     }
 
     onViewChange = (view) => {
-        if (view) this.tabCtrl.clear()
-        else this.tabCtrl.init()
+        if (view) {
+            this.tabCtrl.clear()
+            removeChilds(this.$drawerContent)
+            const $obj = object(`html/${view}`)
+
+            this.$drawerContent.appendChild($obj)
+        } else {
+            removeChilds(this.$drawerContent)
+            this.tabCtrl.init()
+        }
     }
 }
