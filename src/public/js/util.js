@@ -168,3 +168,5 @@ function menuBtn(tip, keyCombination, path) {
 
     return $div
 }
+
+function drawerBtn(text, keyCombination, path) {}

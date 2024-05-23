@@ -1,5 +1,5 @@
 window.appAlert = new Alert(document.body)
-window.funcs = []
+
 $header.onload = (evt) => {
     const $header = evt.target.contentDocument
     const $tabs = $header.getElementById("$tabs")
@@ -8,7 +8,7 @@ $header.onload = (evt) => {
 
     const tabCtrl = new TabController(
         $tabs,
-        $tabsContent,
+        $drawerContent,
         $btnPrevTab,
         $btnNextTab
     ).init()

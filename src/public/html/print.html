@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <link
+            rel="stylesheet"
+            href="../css/style.css"
+        />
+        <title>Print</title>
+    </head>
+    <body class="grid place-items-center h-[100dvh]">
+        <main class="h-[80%] text-[0.35rem] flex gap-2">
+            <section class="flex flex-col gap-2 p-2">
+                <label class="input input-bordered flex items-center gap-2">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        class="w-4 h-4 opacity-70"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                            clip-rule="evenodd"
+                        />
+                    </svg>
+                    <input
+                        type="text"
+                        class="grow"
+                        value="password"
+                    />
+                </label>
+            </section>
+            <section
+                class="flex flex-col gap-2 p-1 px-2 bg-white w-[151.18px] h-[100%] relative before:content-[''] before:w-full before:h-1 before:absolute before:left-0 before:bottom-full after:content-[''] after:w-full after:h-1 after:absolute after:left-0 after:top-full after:rotate-180"
+            >
+                <header class="text-black flex flex-col gap-1">
+                    <div class="flex gap-2 items-center justify-center">
+                        <img
+                            src="https://images.sftcdn.net/images/t_app-icon-s/p/2db71cbb-f5e9-486f-88ec-b493248aa2bf/4188246360/chrome-dino-dino-icon.png"
+                            class="w-[15%] grayscale [&[src='']]:hidden"
+                            alt="logo"
+                        />
+                        <h3
+                            class="text-pretty text-center font-bold max-w-[50%] h-full flex items-center"
+                        >
+                            Título demasiado largo para caber
+                        </h3>
+                    </div>
+                    <p class="text-center [&:is(:empty)]:hidden">
+                        Alguna descripción extra
+                    </p>
+                </header>
+                <main class="grow text-black">
+                    <table>
+                        <tr>
+                            <th class="text-start">Company</th>
+                            <th class="text-start">Contact</th>
+                            <th class="text-start">Country</th>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td class="text-justify">
+                                Maria Anders Lorem ipsum dolor sit amet
+                                consectetur adipisicing elit. Velit facilis rem
+                            </td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Centro comercial Moctezuma</td>
+                            <td>Francisco Chang</td>
+                            <td>Mexico</td>
+                        </tr>
+                    </table>
+                </main>
+                <footer class="min-h-3 text-center text-black">
+                    <p>
+                        Texto final para probar el tamaño que puede adquirir el
+                        texto
+                    </p>
+                </footer>
+            </section>
+        </main>
+        <style>
+            section::before,
+            section::after {
+                background: radial-gradient(
+                        circle,
+                        transparent,
+                        transparent 45%,
+                        #fbfbfb 50%,
+                        #fbfbfb 100%
+                    ) -8px -10px / 14px 14px repeat-x;
+            }
+        </style>
+    </body>
+</html>
