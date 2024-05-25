@@ -14,132 +14,82 @@
     </head>
     <body class="h-[calc(100dvh-96px)] m-4">
         <main
-            class="p-4 rounded bg-black/20 h-full flex flex-col gap-2 [&_table]:rounded-none"
+            class="p-4 rounded bg-black/20 h-full flex flex-col gap-2 [&_table]:rounded-none [&_.form-control]:flex-row"
         >
-            <section class="flex flex-col gap-2 p-2 rounded">
-                <h2 class="font-bold text-xl">Usuarios</h2>
-                <div
-                    class="max-h-32 min-h-[10rem] overflow-y-auto rounded bg-neutral/10 bg-striped"
-                >
-                    <div class="rounded border border-slate-700">
-                        <table
-                            id="$tblUsuarios"
-                            class="table table-xs table-pin-rows table-pin-cols table-zebra bg-neutral"
+            <section
+                class="flex flex-col gap-2 p-2 rounded [&:not(:has(:checked))_.btn-error]:btn-outline [&:not(:has(:checked))_.btn-error]:pointer-events-none"
+            >
+                <div class="flex gap-2 items-center justify-between">
+                    <h2 class="font-bold text-xl">Usuarios</h2>
+                    <span>
+                        <div
+                            class="tooltip"
+                            data-tip="Agregar"
                         >
-                            <thead>
-                                <tr
-                                    class="bg-primary text-white font-bold"
-                                ></tr>
-                            </thead>
-                            <tbody
-                                class="[&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
-                            ></tbody>
-                        </table>
+                            <button class="btn btn-success btn-sm h-[42px]">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 448 512"
+                                    class="fill-current w-4"
+                                >
+                                    <path
+                                        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div
+                            class="tooltip"
+                            data-tip="Eliminar"
+                        >
+                            <button class="btn btn-sm btn-error h-[42px]">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 448 512"
+                                    class="fill-current w-4"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 448 512"
+                                    >
+                                        <path
+                                            d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
+                                        />
+                                    </svg>
+                                </svg>
+                            </button>
+                        </div>
+                    </span>
+                </div>
+                <div
+                    class="max-h-32 min-h-[10rem] overflow-y-auto rounded bg-striped grid place-items-center p-4 bg-base-100/50"
+                >
+                    <div
+                        class="rounded overflow-hidden border border-slate-700 w-full h-full bg-base-200 flex flex-col"
+                    >
+                        <div class="overflow-y-auto h-0 grow">
+                            <table
+                                id="$tblUsuarios"
+                                class="table table-xs table-pin-rows table-pin-cols table-zebra bg-neutral"
+                            >
+                                <thead>
+                                    <tr
+                                        class="bg-primary text-white font-bold"
+                                    ></tr>
+                                </thead>
+                                <tbody
+                                    class="[&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
+                                ></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </section>
-            <section
-                class="flex flex-col gap-2 p-2 bg-neutral/10 bg-striped rounded"
-            >
-                <h2 class="font-bold text-xl">Unidades</h2>
-                <div
-                    class="overflow-auto max-h-32 rounded border border-slate-700"
-                >
-                    <table
-                        class="table table-xs table-pin-rows table-pin-cols table-zebra bg-neutral"
-                    >
-                        <thead>
-                            <tr class="bg-primary text-white font-bold">
-                                <td>#</td>
-                                <td>Nombre</td>
-                            </tr>
-                        </thead>
-                        <tbody
-                            class="[&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
-                        >
-                            <tr>
-                                <td>Aldo Ivan Palma Castillo</td>
-                                <td>Vendedor</td>
-                            </tr>
-                            <tr>
-                                <td>Aldo Ivan Palma Castillo</td>
-                                <td>Vendedor</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-            <section
-                class="flex flex-col gap-2 p-2 bg-neutral/10 bg-striped rounded"
-            >
-                <h2 class="font-bold text-xl">Códigos</h2>
-                <div
-                    class="overflow-auto max-h-32 border border-slate-700 rounded"
-                >
-                    <table
-                        class="table table-xs table-pin-rows table-pin-cols table-zebra bg-neutral"
-                    >
-                        <thead>
-                            <tr class="bg-primary text-white font-bold">
-                                <td>#</td>
-                                <td>Nombre</td>
-                            </tr>
-                        </thead>
-                        <tbody
-                            class="[&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
-                        >
-                            <tr>
-                                <td>1</td>
-                                <td>Código interno</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Código del proveedor</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Código del producto</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-            <section
-                class="flex flex-col gap-2 p-2 bg-neutral/10 bg-striped rounded"
-            >
-                <h2 class="font-bold text-xl">Departamentos</h2>
-                <div
-                    class="overflow-auto max-h-32 border border-slate-700 rounded"
-                >
-                    <table
-                        class="table table-xs table-pin-rows table-pin-cols table-zebra bg-neutral"
-                    >
-                        <thead>
-                            <tr class="bg-primary text-white font-bold">
-                                <td>#</td>
-                                <td>Nombre</td>
-                            </tr>
-                        </thead>
-                        <tbody
-                            class="[&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
-                        >
-                            <tr>
-                                <td>1</td>
-                                <td>Código interno</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Código del proveedor</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Código del producto</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
         </main>
+        <script
+            src="../js/util.js"
+            defer
+        ></script>
         <script
             src="../view/tableview.js"
             defer
@@ -178,6 +128,7 @@
                     );
                     background-size: 3em 3em;
                     opacity: 0.02;
+                    border-radius: inherit;
                 }
             }
         </style>
