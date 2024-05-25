@@ -1,10 +1,9 @@
 class TableModel {
-    constructor(headerBuilder) {
+    constructor() {
         this.data = []
         this.headers = []
         this.dataListeners = []
         this.headerListeners = []
-        this.headerBuilder = headerBuilder
     }
 
     setHeaders(headers) {

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <link
+            rel="stylesheet"
+            href="../css/style.css"
+        />
+        <title>Catalogs</title>
+    </head>
+    <body class="h-[calc(100dvh-96px)] m-4">
+        <main
+            class="p-4 rounded bg-black/20 h-full flex flex-col gap-2 [&_table]:rounded-none"
+        >
+            <section class="flex flex-col gap-2 p-2 rounded">
+                <h2 class="font-bold text-xl">Usuarios</h2>
+                <div
+                    class="max-h-32 min-h-[10rem] overflow-y-auto rounded bg-neutral/10 bg-striped"
+                >
+                    <div class="rounded border border-slate-700">
+                        <table
+                            id="$tblUsuarios"
+                            class="table table-xs table-pin-rows table-pin-cols table-zebra bg-neutral"
+                        >
+                            <thead>
+                                <tr
+                                    class="bg-primary text-white font-bold"
+                                ></tr>
+                            </thead>
+                            <tbody
+                                class="[&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
+                            ></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section
+                class="flex flex-col gap-2 p-2 bg-neutral/10 bg-striped rounded"
+            >
+                <h2 class="font-bold text-xl">Unidades</h2>
+                <div
+                    class="overflow-auto max-h-32 rounded border border-slate-700"
+                >
+                    <table
+                        class="table table-xs table-pin-rows table-pin-cols table-zebra bg-neutral"
+                    >
+                        <thead>
+                            <tr class="bg-primary text-white font-bold">
+                                <td>#</td>
+                                <td>Nombre</td>
+                            </tr>
+                        </thead>
+                        <tbody
+                            class="[&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
+                        >
+                            <tr>
+                                <td>Aldo Ivan Palma Castillo</td>
+                                <td>Vendedor</td>
+                            </tr>
+                            <tr>
+                                <td>Aldo Ivan Palma Castillo</td>
+                                <td>Vendedor</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section
+                class="flex flex-col gap-2 p-2 bg-neutral/10 bg-striped rounded"
+            >
+                <h2 class="font-bold text-xl">Códigos</h2>
+                <div
+                    class="overflow-auto max-h-32 border border-slate-700 rounded"
+                >
+                    <table
+                        class="table table-xs table-pin-rows table-pin-cols table-zebra bg-neutral"
+                    >
+                        <thead>
+                            <tr class="bg-primary text-white font-bold">
+                                <td>#</td>
+                                <td>Nombre</td>
+                            </tr>
+                        </thead>
+                        <tbody
+                            class="[&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
+                        >
+                            <tr>
+                                <td>1</td>
+                                <td>Código interno</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Código del proveedor</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Código del producto</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section
+                class="flex flex-col gap-2 p-2 bg-neutral/10 bg-striped rounded"
+            >
+                <h2 class="font-bold text-xl">Departamentos</h2>
+                <div
+                    class="overflow-auto max-h-32 border border-slate-700 rounded"
+                >
+                    <table
+                        class="table table-xs table-pin-rows table-pin-cols table-zebra bg-neutral"
+                    >
+                        <thead>
+                            <tr class="bg-primary text-white font-bold">
+                                <td>#</td>
+                                <td>Nombre</td>
+                            </tr>
+                        </thead>
+                        <tbody
+                            class="[&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
+                        >
+                            <tr>
+                                <td>1</td>
+                                <td>Código interno</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Código del proveedor</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Código del producto</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        <script
+            src="../view/tableview.js"
+            defer
+        ></script>
+        <script
+            src="../model/components/tablemodel.js"
+            defer
+        ></script>
+        <script
+            src="../controller/tablectrl.js"
+            defer
+        ></script>
+        <script
+            src="../controller/catalogsctrl.js"
+            defer
+        ></script>
+        <style>
+            .bg-striped {
+                overflow: hidden;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    background: repeating-linear-gradient(
+                        45deg,
+                        white 0,
+                        white 10%,
+                        transparent 0,
+                        transparent 50%
+                    );
+                    background-size: 3em 3em;
+                    opacity: 0.02;
+                }
+            }
+        </style>
+    </body>
+</html>

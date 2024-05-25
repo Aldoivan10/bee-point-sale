@@ -94,6 +94,7 @@ app.whenReady().then(async () => {
         "fetch-user",
         async (_, user, pass) => await userScheme.get(user, pass)
     )
+    ipcMain.handle("fetch-users", async () => await userScheme.all())
     /* CLIENTS */
     ipcMain.handle(
         "fetch-clients",

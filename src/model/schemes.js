@@ -234,6 +234,29 @@ class Product extends Scheme {
 }
 
 class User extends Scheme {
+    async all() {
+        const sql = `
+            SELECT
+                U.nombre Nombre,
+                U.usuario Usuario,
+                U.contrasenia AS 'Contraseña',
+                R.nombre Rol
+            FROM
+                Usuario U
+            INNER JOIN
+                Rol R
+            ON 
+                R.id_rol = U.id_rol
+        `
+        return await this.db.fetch(sql, [], (rows) => rows)
+    }
+
+    async create(user) {}
+
+    async update(user) {}
+
+    async delete(id) {}
+
     async get(user, pass) {
         const sql = `
             SELECT

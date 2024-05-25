@@ -12,9 +12,15 @@
         />
         <title>Print</title>
     </head>
-    <body class="h-[calc(100dvh-96px)] flex gap-2 m-4 [&_*]:box-border">
-        <aside class="flex flex-col gap-2 p-2">
-            <label class="input input-bordered flex items-center gap-2">
+    <body
+        class="h-[calc(100dvh-96px)] flex gap-2 m-4 [&_*]:box-border [&_.ticket_*]:text-[x-small]"
+    >
+        <aside
+            class="flex flex-col gap-2 p-4 bg-black/30 rounded before:rounded"
+        >
+            <label
+                class="input input-bordered input-primary flex items-center gap-2"
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"
@@ -35,21 +41,21 @@
             </label>
         </aside>
         <main
-            class="grow p-4 flex items-center flex-col ticket [&_*]:text-[2.2cqw]"
+            class="grow p-4 flex items-center flex-col ticket bg-black/20 rounded relative"
         >
             <section
                 class="grow flex flex-col gap-2 p-1 px-2 bg-white w-[151.18px] relative before:content-[''] before:w-full before:h-1 before:absolute before:left-0 before:bottom-full after:content-[''] after:w-full after:h-1 after:absolute after:left-0 after:top-full after:rotate-180"
             >
                 <header class="text-black flex flex-col gap-1 w-full">
                     <div
-                        class="flex gap-1 items-center justify-center w-full aspect-video"
+                        class="flex gap-1 items-center justify-center w-full py-2"
                     >
                         <div
-                            class="has-[img[src='']]:hidden relative w-[15cqw] aspect-square"
+                            class="has-[img[src='']]:hidden relative min-w-[35px] max-w-[35px] min-h-[35px] max-h-[35px]"
                         >
                             <img
                                 src="https://play-lh.googleusercontent.com/iiIJq5JmLFYNI1bVz4IBHyoXs508JcEzHhOgau69bnveF9Wat51-ax9LMPVOlneKwqg=w240-h480-rw"
-                                class="h-full w-full grayscale absolute top-0 left-0 object-fill"
+                                class="h-full w-full grayscale absolute top-0 left-0 object-fill aspect-square"
                                 alt="logo"
                             />
                         </div>
@@ -59,7 +65,7 @@
                             Título demasiado largo para caber
                         </h3>
                     </div>
-                    <p class="text-center [&:is(:empty)]:hidde">
+                    <p class="text-center [&:is(:empty)]:hidden">
                         Alguna descripción extra que puede contener multiples
                         renglones
                     </p>
@@ -96,7 +102,9 @@
                         </tfoot>
                     </table>
                 </main>
-                <footer class="min-h-3 text-center text-black hidden">
+                <footer
+                    class="min-h-3 text-center text-black has-[p:empty]:hidden"
+                >
                     <p>
                         Texto final para probar el tamaño que puede adquirir el
                         texto
@@ -121,8 +129,44 @@
                     ) -8px -10px / 14px 14px repeat-x;
             }
 
+            aside {
+                position: relative;
+                overflow: hidden;
+
+                &::before {
+                    content: "";
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                }
+            }
+
+            main {
+                overflow: hidden;
+                &::before {
+                    content: "";
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    background: repeating-linear-gradient(
+                        45deg,
+                        white 0,
+                        white 10%,
+                        transparent 0,
+                        transparent 50%
+                    );
+                    background-size: 3em 3em;
+                    opacity: 0.01;
+                }
+            }
+
             .ticket {
-                container-type: inline-size;
                 font-family: Ticket;
             }
         </style>

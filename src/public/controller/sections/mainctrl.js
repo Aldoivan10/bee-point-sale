@@ -1,6 +1,6 @@
 const updater = (className) => tableCtrl.update(className)
 
-const tableCtrl = new TableController(
+const tableCtrl = new PaginedTableController(
     new TableView($table),
     new Pagination($pagination, $pageSize),
     window.parent.appAlert,
@@ -11,7 +11,7 @@ const tableCtrl = new TableController(
 const menuOpt = new MenuOptions(
     window.parent.$product,
     window.parent.$client
-).setTableController(tableCtrl)
+).setPaginedTableController(tableCtrl)
 let $modal = window.parent.$product
 
 $footer.onload = () => {

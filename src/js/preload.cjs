@@ -17,7 +17,8 @@ contextBridge.exposeInMainWorld("units", {
 })
 
 contextBridge.exposeInMainWorld("users", {
-    get: (user, pass) => ipcRenderer.invoke("fetch-user", user, pass),
+    get: () => ipcRenderer.invoke("fetch-users"),
+    find: (user, pass) => ipcRenderer.invoke("fetch-user", user, pass),
 })
 
 contextBridge.exposeInMainWorld("clients", {

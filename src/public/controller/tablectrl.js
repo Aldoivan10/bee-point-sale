@@ -1,19 +1,80 @@
 class TableController {
+    constructor(view, api, alerts, $delItems, model = null) {
+        this.api = api
+        this.view = view
+        this.model = model
+        this.alerts = alerts
+        $delItems.onclick = this.onItemDelete
+    }
+
+    init() {
+        this.model.addHeaderListener(this.onHeaderUpdate)
+        this.model.addDataListener(this.onDataUpdate)
+        return this
+    }
+
+    async getData() {
+        this.view.cleanRows()
+        this.api.get().then((data) => {
+            this.model.setHeaders(data)
+            this.model.setData(data)
+        })
+    }
+
+    onItemDelete = () => {
+        window.parent.confirmDialog(
+            "Eliminar productos",
+            "¿Desea eliminar los elementos seleccionados?. Ya no podrán ser recuperados.",
+            async () => {
+                const ids = this.view.getCheckedIds(this.model.headers)
+                const res = await this.api.delete(ids)
+                if (res.status === "success") {
+                    this.alerts.success(res.msg)
+                } else {
+                    alerts.error(res.msg)
+                    console.log(res.data)
+                }
+            }
+        )
+    }
+
+    update() {
+        this.getData()
+    }
+
+    onHeaderUpdate = (headers) => {
+        this.view.buildHeader(headers)
+    }
+
+    onDataUpdate = (rows) => {
+        this.view.buildBody(rows, this.model.headers)
+
+        const checksArr = this.view.getChecks()
+        const checks = checksArr.slice(1)
+        const mainCheck = checksArr[0]
+        mainCheck.onchange = () => {
+            checks.forEach((el) => (el.checked = mainCheck.checked))
+        }
+
+        checks.forEach((el) => {
+            el.onchange = () =>
+                (mainCheck.checked = checks.every((el) => el.checked))
+        })
+    }
+}
+
+class PaginedTableController extends TableController {
     constructor(view, pagination, alerts, $filter, $delItems) {
+        super(view, window.parent.products, alerts, $delItems)
         this.pagination = pagination
         this.$filter = $filter
-        this.view = view
 
         this.filter = null
         this.filterTimer = null
         this.filterWaitingTime = 500
 
-        this.alerts = alerts
-        this.api = window.parent.products
-
         pagination.addListener(this.onPaginationUpdate)
         $filter.oninput = this.onFilter
-        $delItems.onclick = this.onItemDelete
     }
 
     build() {
@@ -67,10 +128,6 @@ class TableController {
 
     onPaginationUpdate = (args) => this.getData(args[0], args[1], this.filter)
 
-    onHeaderUpdate = (headers) => {
-        this.view.buildHeader(headers)
-    }
-
     onDataUpdate = (rows) => {
         const mapKeys = Object.keys(this.mapper)
         if (mapKeys.length > 0) {
@@ -80,7 +137,6 @@ class TableController {
                 }
             }
         }
-
         this.view.buildBody(rows, this.model.headers)
 
         const checksArr = this.view.getChecks()
@@ -94,23 +150,6 @@ class TableController {
             el.onchange = () =>
                 (mainCheck.checked = checks.every((el) => el.checked))
         })
-    }
-
-    onItemDelete = () => {
-        window.parent.confirmDialog(
-            "Eliminar productos",
-            "¿Desea eliminar los elementos seleccionados?. Ya no podrán ser recuperados.",
-            async () => {
-                const ids = this.view.getCheckedIds(this.model.headers)
-                const res = await this.api.delete(ids)
-                if (res.status === "success") {
-                    this.alerts.success(res.msg)
-                } else {
-                    alerts.error(res.msg)
-                    console.log(res.data)
-                }
-            }
-        )
     }
 
     update(className) {

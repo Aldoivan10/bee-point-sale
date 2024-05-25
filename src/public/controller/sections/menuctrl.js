@@ -61,7 +61,7 @@ class MenuOptions {
         }
     }
 
-    setTableController(ctrl, opt = "Productos") {
+    setPaginedTableController(ctrl, opt = "Productos") {
         this.ctrl = ctrl
         for (const key of Object.keys(this.options)) {
             const opt = this.options[key]
