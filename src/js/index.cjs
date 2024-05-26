@@ -6,6 +6,7 @@ const {
     Code,
     Client,
     KeyBoard,
+    Departament,
 } = require("../model/schemes.js")
 const path = require("node:path")
 const DB = require("../model/db.js")
@@ -19,6 +20,7 @@ const unitScheme = new Unit(db)
 const codeScheme = new Code(db)
 const clientScheme = new Client(db)
 const keyBoard = new KeyBoard(db)
+const departamentScheme = new Departament(db)
 
 const createWindow = async () => {
     const win = new BrowserWindow({
@@ -104,6 +106,11 @@ app.whenReady().then(async () => {
     ipcMain.handle(
         "fetch-total-clients",
         async (_, filter) => await clientScheme.total(filter)
+    )
+    /* DEPARTAMENTS */
+    ipcMain.handle(
+        "fetch-departaments",
+        async () => await departamentScheme.all()
     )
 
     /* globalShortcut.unregister("F5")

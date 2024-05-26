@@ -303,6 +303,19 @@ class Code extends Scheme {
     async update(id, code) {}
 }
 
+class Departament extends Scheme {
+    async all() {
+        const sql = "SELECT * FROM Departamento"
+        return await this.db.fetch(sql, [], (rows) => rows)
+    }
+
+    async create(code) {}
+
+    async delete(id) {}
+
+    async update(id, code) {}
+}
+
 class Unit extends Scheme {
     async all() {
         const sql = "SELECT id_unidad value, nombre text FROM Unidad"
@@ -473,4 +486,4 @@ class KeyBoard extends Scheme {
     }
 }
 
-module.exports = { Product, User, Code, Unit, Client, KeyBoard }
+module.exports = { Product, User, Code, Unit, Client, KeyBoard, Departament }

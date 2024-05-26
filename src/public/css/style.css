@@ -3754,6 +3754,10 @@ html:has(.drawer-toggle:checked) {
   aspect-ratio: 1 / 1;
 }
 
+.h-0 {
+  height: 0px;
+}
+
 .h-4 {
   height: 1rem;
 }
@@ -3778,6 +3782,10 @@ html:has(.drawer-toggle:checked) {
   height: 32px;
 }
 
+.h-\[42px\] {
+  height: 42px;
+}
+
 .h-\[48px\] {
   height: 48px;
 }
@@ -3798,24 +3806,16 @@ html:has(.drawer-toggle:checked) {
   height: 100%;
 }
 
-.h-0 {
-  height: 0px;
-}
-
-.h-6 {
-  height: 1.5rem;
-}
-
-.h-\[42px\] {
-  height: 42px;
-}
-
 .max-h-32 {
   max-height: 8rem;
 }
 
 .max-h-\[35px\] {
   max-height: 35px;
+}
+
+.max-h-48 {
+  max-height: 12rem;
 }
 
 .min-h-3 {
@@ -3840,6 +3840,18 @@ html:has(.drawer-toggle:checked) {
 
 .min-h-full {
   min-height: 100%;
+}
+
+.min-h-\[20rem\] {
+  min-height: 20rem;
+}
+
+.min-h-\[12rem\] {
+  min-height: 12rem;
+}
+
+.min-h-\[15rem\] {
+  min-height: 15rem;
 }
 
 .\!w-\[3\.5rem\] {
@@ -3884,10 +3896,6 @@ html:has(.drawer-toggle:checked) {
 
 .w-full {
   width: 100%;
-}
-
-.w-6 {
-  width: 1.5rem;
 }
 
 .min-w-\[100dvw\] {
@@ -4010,10 +4018,6 @@ html:has(.drawer-toggle:checked) {
   place-items: center;
 }
 
-.content-between {
-  align-content: space-between;
-}
-
 .items-center {
   align-items: center;
 }
@@ -4063,6 +4067,10 @@ html:has(.drawer-toggle:checked) {
   overflow-y: auto;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
 .scroll-smooth {
   scroll-behavior: smooth;
 }
@@ -4108,6 +4116,10 @@ html:has(.drawer-toggle:checked) {
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
 }
 
+.bg-base-100\/50 {
+  background-color: var(--fallback-b1,oklch(var(--b1)/0.5));
+}
+
 .bg-base-200 {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
@@ -4135,10 +4147,6 @@ html:has(.drawer-toggle:checked) {
   background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
 }
 
-.bg-neutral\/10 {
-  background-color: var(--fallback-n,oklch(var(--n)/0.1));
-}
-
 .bg-primary {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
@@ -4151,41 +4159,6 @@ html:has(.drawer-toggle:checked) {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-slate-500\/10 {
-  background-color: rgb(100 116 139 / 0.1);
-}
-
-.bg-slate-900\/5 {
-  background-color: rgb(15 23 42 / 0.05);
-}
-
-.bg-slate-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
-}
-
-.bg-slate-950 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(2 6 23 / var(--tw-bg-opacity));
-}
-
-.bg-base-100 {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
-}
-
-.bg-base-200\/50 {
-  background-color: var(--fallback-b2,oklch(var(--b2)/0.5));
-}
-
-.bg-base-300\/50 {
-  background-color: var(--fallback-b3,oklch(var(--b3)/0.5));
-}
-
-.bg-base-100\/50 {
-  background-color: var(--fallback-b1,oklch(var(--b1)/0.5));
 }
 
 .bg-opacity-50 {
@@ -4227,10 +4200,6 @@ html:has(.drawer-toggle:checked) {
 
 .p-4 {
   padding: 1rem;
-}
-
-.p-\[0\.3rem\] {
-  padding: 0.3rem;
 }
 
 .px-2 {
@@ -4279,6 +4248,18 @@ html:has(.drawer-toggle:checked) {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pt-0 {
+  padding-top: 0px;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .text-center {
@@ -4375,341 +4356,6 @@ html:has(.drawer-toggle:checked) {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-square:has(:checked) .btn-error {
-  height: 3rem;
-  width: 3rem;
-  padding: 0px;
-}
-
-@media (hover: hover) {
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error:hover {
-    --tw-border-opacity: 1;
-    border-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-border-opacity)));
-    --tw-bg-opacity: 1;
-    background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
-    --tw-text-opacity: 1;
-    color: var(--fallback-b1,oklch(var(--b1)/var(--tw-text-opacity)));
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-primary:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-primary:hover {
-      background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-primary:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-primary:hover {
-      background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-secondary:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-secondary:hover {
-      background-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-secondary:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-secondary:hover {
-      background-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-accent:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-accent:hover {
-      background-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-accent:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-accent:hover {
-      background-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-success:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-suc,oklch(var(--suc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-success:hover {
-      background-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-success:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-suc,oklch(var(--suc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-success:hover {
-      background-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-info:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-inc,oklch(var(--inc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-info:hover {
-      background-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-info:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-inc,oklch(var(--inc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-info:hover {
-      background-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-warning:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-warning:hover {
-      background-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-warning:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-warning:hover {
-      background-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-error:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-error:hover {
-      background-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
-    }
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-error:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-error:hover {
-      background-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
-    }
-  }
-}
-
-@supports (color: color-mix(in oklab, black, black)) {
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-primary.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-secondary.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-accent.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-success.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-info.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-warning.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
-  }
-
-  .\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-error.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
-  }
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error {
-  border-color: currentColor;
-  background-color: transparent;
-  --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-shadow: 0 0 #0000;
-  --tw-shadow-colored: 0 0 #0000;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-active {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-border-opacity)));
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-b1,oklch(var(--b1)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-primary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-primary.btn-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-secondary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-secondary.btn-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-accent {
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-accent.btn-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-success {
-  --tw-text-opacity: 1;
-  color: var(--fallback-su,oklch(var(--su)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-success.btn-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-suc,oklch(var(--suc)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-info {
-  --tw-text-opacity: 1;
-  color: var(--fallback-in,oklch(var(--in)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-info.btn-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-inc,oklch(var(--inc)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-warning {
-  --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-warning.btn-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-error {
-  --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-outline:has(:checked) .btn-error.btn-error.btn-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity)));
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-square:has(:checked) .btn-error:where(.btn-xs) {
-  height: 1.5rem;
-  width: 1.5rem;
-  padding: 0px;
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-square:has(:checked) .btn-error:where(.btn-sm) {
-  height: 2rem;
-  width: 2rem;
-  padding: 0px;
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-square:has(:checked) .btn-error:where(.btn-md) {
-  height: 3rem;
-  width: 3rem;
-  padding: 0px;
-}
-
-.\[\&\:has\(\:checked\)_\.btn-error\]\:btn-square:has(:checked) .btn-error:where(.btn-lg) {
-  height: 4rem;
-  width: 4rem;
-  padding: 0px;
 }
 
 .\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\.btn-success\]\:btn-disabled:not(:has(#unitsContainer>div)) .btn-success {
@@ -5309,10 +4955,6 @@ html:has(.drawer-toggle:checked) {
   box-sizing: border-box;
 }
 
-.\[\&_\.form-control\]\:flex-initial .form-control {
-  flex: 0 1 auto;
-}
-
 .\[\&_\.form-control\]\:flex-row .form-control {
   flex-direction: row;
 }
@@ -5468,10 +5110,6 @@ html:has(.drawer-toggle:checked) {
 
 .\[\&_svg\]\:min-w-2 svg {
   min-width: 0.5rem;
-}
-
-.\[\&_svg\]\:fill-current svg {
-  fill: currentColor;
 }
 
 .\[\&_table\]\:rounded-none table {

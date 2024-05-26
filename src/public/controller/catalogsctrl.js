@@ -1,10 +1,19 @@
 const parent = window.parent
-const tblUserCtrl = new TableController(
-    new TableView($tblUsuarios),
-    parent.users,
-    parent.appAlert,
-    document.createElement("button"),
-    new TableModel()
-).init()
+const sections = [
+    { el: $users, api: parent.users },
+    { el: $codes, api: parent.codes },
+    { el: $departaments, api: parent.departaments },
+]
 
-tblUserCtrl.getData()
+for (const section of sections) {
+    const el = section.el
+    const ctrl = new TableController(
+        new TableView(el.querySelector("table")),
+        section.api,
+        parent.appAlert,
+        el.querySelector(".btn-error"),
+        new TableModel()
+    ).init()
+
+    ctrl.getData()
+}

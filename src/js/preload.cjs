@@ -27,6 +27,10 @@ contextBridge.exposeInMainWorld("clients", {
     total: (filter) => ipcRenderer.invoke("fetch-total-clients", filter),
 })
 
+contextBridge.exposeInMainWorld("departaments", {
+    get: () => ipcRenderer.invoke("fetch-departaments"),
+})
+
 contextBridge.exposeInMainWorld("api", {
     onAddTab: (callback) => ipcRenderer.on("add-tab", (_event) => callback()),
     onDelTab: (callback) => ipcRenderer.on("del-tab", (_event) => callback()),
