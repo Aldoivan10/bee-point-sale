@@ -54,8 +54,10 @@ class Drawer {
             this.$drawerMenu.appendChild(opt)
         }
 
-        this.initProductView($header)
+        this.productController = this.initProductView($header)
         this.$drawerMenu.querySelector("button").click()
+
+        return this
     }
 
     initProductView($header) {
@@ -82,6 +84,8 @@ class Drawer {
         window.api.onDelTab(() => tabCtrl.deleteTab())
 
         window.addProductListener = productController.addListener
+
+        return productController
     }
 
     getOption(text, keyCombination, path, focusEvent, action) {

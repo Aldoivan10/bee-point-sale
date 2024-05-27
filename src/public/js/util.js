@@ -80,8 +80,8 @@ function select(id, placeholder, options, name) {
     $select.appendChild($placeholder)
     for (const opt of options) {
         const $opt = document.createElement("option")
-        $opt.textContent = opt.text
-        $opt.value = opt.value
+        $opt.textContent = opt.Nombre
+        $opt.value = opt.ID
         $select.appendChild($opt)
     }
     return $select

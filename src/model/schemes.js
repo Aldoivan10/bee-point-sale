@@ -292,7 +292,8 @@ class User extends Scheme {
 
 class Code extends Scheme {
     async all() {
-        const sql = "SELECT * FROM codigo ORDER BY nombre"
+        const sql =
+            "SELECT id_codigo ID, nombre Nombre FROM codigo ORDER BY nombre"
         return await this.db.fetch(sql, [], (rows) => rows)
     }
 
@@ -305,7 +306,7 @@ class Code extends Scheme {
 
 class Departament extends Scheme {
     async all() {
-        const sql = "SELECT * FROM Departamento"
+        const sql = "SELECT id_departamento ID, nombre Nombre FROM Departamento"
         return await this.db.fetch(sql, [], (rows) => rows)
     }
 
@@ -318,7 +319,7 @@ class Departament extends Scheme {
 
 class Unit extends Scheme {
     async all() {
-        const sql = "SELECT id_unidad value, nombre text FROM Unidad"
+        const sql = `SELECT id_unidad ID, nombre Nombre FROM Unidad`
         return await this.db.fetch(sql, [], (rows) => rows)
     }
 
