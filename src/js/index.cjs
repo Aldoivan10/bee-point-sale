@@ -89,8 +89,16 @@ app.whenReady().then(async () => {
     )
     /* CODES */
     ipcMain.handle("fetch-codes", async () => await codeScheme.all())
+    ipcMain.handle(
+        "create-code",
+        async (_, code) => await codeScheme.create(code)
+    )
     /* UNITS */
     ipcMain.handle("fetch-units", async () => await unitScheme.all())
+    ipcMain.handle(
+        "create-unit",
+        async (_, unit) => await codeScheme.create(unit)
+    )
     /* USER */
     ipcMain.handle(
         "fetch-user",
@@ -111,6 +119,10 @@ app.whenReady().then(async () => {
     ipcMain.handle(
         "fetch-departaments",
         async () => await departamentScheme.all()
+    )
+    ipcMain.handle(
+        "create-departament",
+        async (_, departament) => await codeScheme.create(departament)
     )
 
     /* globalShortcut.unregister("F5")

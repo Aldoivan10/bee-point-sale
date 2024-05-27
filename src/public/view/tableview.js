@@ -14,6 +14,14 @@ class TableView {
         this.currentClass = className
     }
 
+    hideColumns(...indexes) {
+        for (const i of indexes) {
+            this.$table
+                .querySelectorAll(`td:nth-child(${i})`)
+                .forEach((el) => el.classList.add("hidden"))
+        }
+    }
+
     getClass() {
         return this.currentClass
     }

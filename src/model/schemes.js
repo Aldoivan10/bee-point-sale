@@ -232,7 +232,6 @@ class Product extends Scheme {
         }
     }
 }
-
 class User extends Scheme {
     async all() {
         const sql = `
@@ -292,12 +291,37 @@ class User extends Scheme {
 
 class Code extends Scheme {
     async all() {
-        const sql =
-            "SELECT id_codigo ID, nombre Nombre FROM codigo ORDER BY nombre"
+        const sql = "SELECT id_codigo ID, nombre Nombre FROM codigo ORDER BY ID"
         return await this.db.fetch(sql, [], (rows) => rows)
     }
 
-    async create(code) {}
+    async create(code) {
+        const insert = `
+            INSERT INTO
+                Codigo
+            VALUES
+            (
+                (
+                    WITH cte AS
+                    (
+                        SELECT id_codigo FROM Codigo
+                        UNION ALL 
+                        SELECT 0
+                    )
+                    SELECT MIN(id_codigo) + 1
+                    FROM cte
+                    WHERE NOT EXISTS
+                    (
+                        SELECT * 
+                        FROM Codigo 
+                        WHERE Codigo.id_codigo = cte.id_codigo + 1
+                    )
+                ),
+                ?
+            ) `
+        await this.db.insert(insert, [code], (res) => res)
+        return this.ok("Código agregado")
+    }
 
     async delete(id) {}
 
@@ -310,7 +334,33 @@ class Departament extends Scheme {
         return await this.db.fetch(sql, [], (rows) => rows)
     }
 
-    async create(code) {}
+    async create(departament) {
+        const insert = `
+            INSERT INTO
+                Departamento
+            VALUES
+            (
+                (
+                    WITH cte AS
+                    (
+                        SELECT id_departamento FROM Departamento
+                        UNION ALL 
+                        SELECT 0
+                    )
+                    SELECT MIN(id_departamento) + 1
+                    FROM cte
+                    WHERE NOT EXISTS
+                    (
+                        SELECT * 
+                        FROM Departamento 
+                        WHERE Departamento.id_departamento = cte.id_departamento + 1
+                    )
+                ),
+                ?
+            ) `
+        await this.db.insert(insert, [departament], (res) => res)
+        return this.ok("Departamento agregado")
+    }
 
     async delete(id) {}
 
@@ -323,7 +373,33 @@ class Unit extends Scheme {
         return await this.db.fetch(sql, [], (rows) => rows)
     }
 
-    async create(units) {}
+    async create(unit) {
+        const insert = `
+            INSERT INTO
+                Unidad
+            VALUES
+            (
+                (
+                    WITH cte AS
+                    (
+                        SELECT id_unidad FROM Unidad
+                        UNION ALL 
+                        SELECT 0
+                    )
+                    SELECT MIN(id_unidad) + 1
+                    FROM cte
+                    WHERE NOT EXISTS
+                    (
+                        SELECT * 
+                        FROM Unidad 
+                        WHERE Unidad.id_unidad = cte.id_unidad + 1
+                    )
+                ),
+                ?
+            ) `
+        await this.db.insert(insert, [unit], (res) => res)
+        return this.ok("Unidad agregada")
+    }
 
     async delete(id) {}
 

@@ -10,10 +10,12 @@ contextBridge.exposeInMainWorld("products", {
 
 contextBridge.exposeInMainWorld("codes", {
     get: () => ipcRenderer.invoke("fetch-codes"),
+    create: (code) => ipcRenderer.invoke("create-code", code),
 })
 
 contextBridge.exposeInMainWorld("units", {
     get: () => ipcRenderer.invoke("fetch-units"),
+    create: (unit) => ipcRenderer.invoke("create-unit", unit),
 })
 
 contextBridge.exposeInMainWorld("users", {
@@ -29,6 +31,8 @@ contextBridge.exposeInMainWorld("clients", {
 
 contextBridge.exposeInMainWorld("departaments", {
     get: () => ipcRenderer.invoke("fetch-departaments"),
+    create: (departament) =>
+        ipcRenderer.invoke("create-departament", departament),
 })
 
 contextBridge.exposeInMainWorld("api", {

@@ -95,8 +95,9 @@ class PaginedTableController extends TableController {
     async getData(pageSize, offset, filter = null) {
         this.view.cleanRows()
         this.api.get(pageSize, offset, filter).then((data) => {
-            this.model.setHeaders(data)
+            const endOfCodes = this.model.setHeaders(data)
             this.model.setData(data)
+            this.view.hideColumns(endOfCodes, endOfCodes + 2)
         })
     }
 

@@ -79,9 +79,12 @@ class ProductModel extends TableModel {
     setHeaders(data) {
         const obj = data[0]
         let keys = Object.keys(obj)
+        let endOfCodes = 0
         const other = Object.keys(obj.unidades[0])
         keys = keys.slice(0, keys.length - 1)
+        endOfCodes = keys.length
         super.setHeaders(keys.concat(other))
+        return endOfCodes
     }
 
     setData(data) {

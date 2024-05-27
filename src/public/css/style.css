@@ -3806,24 +3806,24 @@ html:has(.drawer-toggle:checked) {
   height: 100%;
 }
 
-.max-h-32 {
-  max-height: 8rem;
+.max-h-48 {
+  max-height: 12rem;
 }
 
 .max-h-\[35px\] {
   max-height: 35px;
 }
 
-.max-h-48 {
-  max-height: 12rem;
-}
-
 .min-h-3 {
   min-height: 0.75rem;
 }
 
-.min-h-\[10rem\] {
-  min-height: 10rem;
+.min-h-\[15rem\] {
+  min-height: 15rem;
+}
+
+.min-h-\[20rem\] {
+  min-height: 20rem;
 }
 
 .min-h-\[32px\] {
@@ -3840,18 +3840,6 @@ html:has(.drawer-toggle:checked) {
 
 .min-h-full {
   min-height: 100%;
-}
-
-.min-h-\[20rem\] {
-  min-height: 20rem;
-}
-
-.min-h-\[12rem\] {
-  min-height: 12rem;
-}
-
-.min-h-\[15rem\] {
-  min-height: 15rem;
 }
 
 .\!w-\[3\.5rem\] {
@@ -4248,18 +4236,6 @@ html:has(.drawer-toggle:checked) {
 
 .pt-2 {
   padding-top: 0.5rem;
-}
-
-.pt-0 {
-  padding-top: 0px;
-}
-
-.pt-6 {
-  padding-top: 1.5rem;
-}
-
-.pt-4 {
-  padding-top: 1rem;
 }
 
 .text-center {
@@ -4833,7 +4809,7 @@ html:has(.drawer-toggle:checked) {
   display: none;
 }
 
-.\[\&\:is\(\.productos\)_td\:nth-child\(5\)\]\:hidden:is(.productos) td:nth-child(5) {
+.\[\&\:is\(\.productos\)_td\:nth-child\(6\)\]\:hidden:is(.productos) td:nth-child(6) {
   display: none;
 }
 
