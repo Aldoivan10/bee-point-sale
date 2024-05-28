@@ -11,28 +11,33 @@ contextBridge.exposeInMainWorld("products", {
 contextBridge.exposeInMainWorld("codes", {
     get: () => ipcRenderer.invoke("fetch-codes"),
     create: (code) => ipcRenderer.invoke("create-code", code),
+    delete: (ids) => ipcRenderer.invoke("delete-codes", ids),
 })
 
 contextBridge.exposeInMainWorld("units", {
     get: () => ipcRenderer.invoke("fetch-units"),
     create: (unit) => ipcRenderer.invoke("create-unit", unit),
+    delete: (ids) => ipcRenderer.invoke("delete-units", ids),
 })
 
 contextBridge.exposeInMainWorld("users", {
     get: () => ipcRenderer.invoke("fetch-users"),
     find: (user, pass) => ipcRenderer.invoke("fetch-user", user, pass),
+    delete: (ids) => ipcRenderer.invoke("delete-users", ids),
 })
 
 contextBridge.exposeInMainWorld("clients", {
     get: (pageSize, offset, filter) =>
         ipcRenderer.invoke("fetch-clients", pageSize, offset, filter),
     total: (filter) => ipcRenderer.invoke("fetch-total-clients", filter),
+    delete: (ids) => ipcRenderer.invoke("delete-clients", ids),
 })
 
 contextBridge.exposeInMainWorld("departaments", {
     get: () => ipcRenderer.invoke("fetch-departaments"),
     create: (departament) =>
         ipcRenderer.invoke("create-departament", departament),
+    delete: (ids) => ipcRenderer.invoke("delete-departaments", ids),
 })
 
 contextBridge.exposeInMainWorld("api", {
@@ -45,6 +50,10 @@ contextBridge.exposeInMainWorld("api", {
     onDataUpdated: (callback) =>
         ipcRenderer.on("data-updated", (_event, className) =>
             callback(className)
+        ),
+    onCatalogUpdated: (callback) =>
+        ipcRenderer.on("catalog-updated", (_event, catalog) =>
+            callback(catalog)
         ),
     getkeyMap: () => ipcRenderer.invoke("key-map"),
 })

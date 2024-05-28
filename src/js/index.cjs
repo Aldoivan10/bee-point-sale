@@ -61,9 +61,16 @@ const createWindow = async () => {
     })
 
     /* DATA UPDATED */
+    const catalogUpdated = (catalog) => {
+        return () => win.webContents.send("catalog-updated", catalog)
+    }
+
     productScheme.onUpdated(() => {
         win.webContents.send("data-updated", "productos")
     })
+    codeScheme.onUpdated(catalogUpdated("codes"))
+    unitScheme.onUpdated(catalogUpdated("units"))
+    departamentScheme.onUpdated(catalogUpdated("departaments"))
 }
 
 app.whenReady().then(async () => {
@@ -93,11 +100,19 @@ app.whenReady().then(async () => {
         "create-code",
         async (_, code) => await codeScheme.create(code)
     )
+    ipcMain.handle(
+        "delete-codes",
+        async (_, ids) => await codeScheme.delete(ids)
+    )
     /* UNITS */
     ipcMain.handle("fetch-units", async () => await unitScheme.all())
     ipcMain.handle(
         "create-unit",
-        async (_, unit) => await codeScheme.create(unit)
+        async (_, unit) => await unitScheme.create(unit)
+    )
+    ipcMain.handle(
+        "delete-units",
+        async (_, ids) => await unitScheme.delete(ids)
     )
     /* USER */
     ipcMain.handle(
@@ -115,6 +130,10 @@ app.whenReady().then(async () => {
         "fetch-total-clients",
         async (_, filter) => await clientScheme.total(filter)
     )
+    ipcMain.handle(
+        "delete-clients",
+        async (_, ids) => await clientScheme.delete(ids)
+    )
     /* DEPARTAMENTS */
     ipcMain.handle(
         "fetch-departaments",
@@ -122,7 +141,11 @@ app.whenReady().then(async () => {
     )
     ipcMain.handle(
         "create-departament",
-        async (_, departament) => await codeScheme.create(departament)
+        async (_, departament) => await departamentScheme.create(departament)
+    )
+    ipcMain.handle(
+        "delete-departaments",
+        async (_, ids) => await departamentScheme.delete(ids)
     )
 
     /* globalShortcut.unregister("F5")

@@ -15,10 +15,16 @@ function confirmDialog(title, text, onAccept, onCancel = () => {}) {
 function createDialog(title, onAccept, create = true, onCancel = () => {}) {
     const $btn = $create.querySelector(".btn:nth-child(2)")
     $create.querySelector("h3").textContent = title
-    $create.querySelector(".btn").onclick = onCancel
+    $create.querySelector(".btn").addEventListener("click", onCancel)
+    $create
+        .querySelector(".btn")
+        .addEventListener(
+            "click",
+            () => ($create.querySelector("input").value = "")
+        )
     $btn.classList.add(create ? "btn-success" : "btn-warning")
     $btn.textContent = create ? "Guardar" : "Editar"
-    $btn.onclick = () => onAccept($nameDialog.value)
+    $btn.onclick = () => onAccept($nameDialog.value, $create)
     $create.showModal()
 }
 

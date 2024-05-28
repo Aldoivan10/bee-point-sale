@@ -28,12 +28,7 @@ class TableController {
             async () => {
                 const ids = this.view.getCheckedIds(this.model.headers)
                 const res = await this.api.delete(ids)
-                if (res.status === "success") {
-                    this.alerts.success(res.msg)
-                } else {
-                    alerts.error(res.msg)
-                    console.log(res.data)
-                }
+                this.showAlert(res)
             }
         )
     }
@@ -60,6 +55,15 @@ class TableController {
             el.onchange = () =>
                 (mainCheck.checked = checks.every((el) => el.checked))
         })
+    }
+
+    showAlert(alert) {
+        if (alert.status === "success") {
+            this.alerts.success(alert.msg)
+        } else {
+            this.alerts.error(alert.msg)
+            console.log(alert.data)
+        }
     }
 }
 

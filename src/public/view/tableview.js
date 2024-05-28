@@ -62,7 +62,8 @@ class TableView {
             this.$body.querySelectorAll("tr:has(input[type=checkbox]:checked)")
         )
         const indexIds = headers.reduce((arr, val, i) => {
-            if (val.includes("id_")) arr.push(`td:nth-child(${i + 2})`)
+            if (val.includes("id_") || val === "ID")
+                arr.push(`td:nth-child(${i + 2})`)
             return arr
         }, [])
         return checkedRows.map((row) =>
@@ -73,9 +74,8 @@ class TableView {
     }
 
     buildBody(rows, headers) {
-        if (rows.length > 0) {
-            for (const row of rows) this.addRow(row, headers)
-        } else this.setEmpty()
+        if (rows.length > 0) for (const row of rows) this.addRow(row, headers)
+        else this.setEmpty()
     }
 
     setEmpty() {

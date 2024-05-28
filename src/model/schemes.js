@@ -254,7 +254,17 @@ class User extends Scheme {
 
     async update(user) {}
 
-    async delete(id) {}
+    async delete(arr_ids) {
+        try {
+            const sql = "DELETE FROM Usuario WHERE id_usuario = ?"
+            for (const ids of arr_ids) {
+                await this.db.query(sql, ids)
+            }
+            return this.ok("Registros eliminados")
+        } catch (err) {
+            return this.error("No se pudo eliminar los usuarios", err)
+        }
+    }
 
     async get(user, pass) {
         const sql = `
@@ -323,7 +333,17 @@ class Code extends Scheme {
         return this.ok("Código agregado")
     }
 
-    async delete(id) {}
+    async delete(arr_ids) {
+        try {
+            const sql = "DELETE FROM Codigo WHERE id_codigo = ?"
+            for (const ids of arr_ids) {
+                await this.db.query(sql, ids)
+            }
+            return this.ok("Registros eliminados")
+        } catch (err) {
+            return this.error("No se pudo eliminar los códigos", err)
+        }
+    }
 
     async update(id, code) {}
 }
@@ -362,7 +382,17 @@ class Departament extends Scheme {
         return this.ok("Departamento agregado")
     }
 
-    async delete(id) {}
+    async delete(arr_ids) {
+        try {
+            const sql = "DELETE FROM Departamento WHERE id_deparatamento = ?"
+            for (const ids of arr_ids) {
+                await this.db.query(sql, ids)
+            }
+            return this.ok("Registros eliminados")
+        } catch (err) {
+            return this.error("No se pudo eliminar los departamentos", err)
+        }
+    }
 
     async update(id, code) {}
 }
@@ -401,7 +431,17 @@ class Unit extends Scheme {
         return this.ok("Unidad agregada")
     }
 
-    async delete(id) {}
+    async delete(arr_ids) {
+        try {
+            const sql = "DELETE FROM Unidad WHERE id_unidad = ?"
+            for (const ids of arr_ids) {
+                await this.db.query(sql, ids)
+            }
+            return this.ok("Registros eliminados")
+        } catch (err) {
+            return this.error("No se pudo eliminar las unidades", err)
+        }
+    }
 
     async update(id, unit) {}
 }
@@ -464,13 +504,13 @@ class Client extends Scheme {
 
     async delete(arr_ids) {
         try {
-            const sql = "DELETE FROM cliente WHERE id_cliente = ?"
+            const sql = "DELETE FROM Cliente WHERE id_cliente = ?"
             for (const ids of arr_ids) {
                 await this.db.query(sql, ids)
             }
             return this.ok("Registros eliminados")
         } catch (err) {
-            return this.error("No se pudo eliminar el producto", err)
+            return this.error("No se pudo eliminar los clientes", err)
         }
     }
 

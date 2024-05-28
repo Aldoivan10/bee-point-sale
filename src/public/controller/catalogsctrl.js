@@ -1,14 +1,33 @@
 const parent = window.parent
+
 const sections = [
-    { el: $users, api: parent.users, titleDialog: "Crear usuario" },
-    { el: $codes, api: parent.codes, titleDialog: "Crear código" },
+    {
+        el: $users,
+        api: parent.users,
+        titleDialog: "Crear usuario",
+        name: "users",
+    },
+    {
+        el: $codes,
+        api: parent.codes,
+        titleDialog: "Crear código",
+        name: "codes",
+    },
     {
         el: $departaments,
         api: parent.departaments,
         titleDialog: "Crear departamento",
+        name: "departaments",
     },
-    { el: $units, api: parent.units, titleDialog: "Crear unidad" },
+    {
+        el: $units,
+        api: parent.units,
+        titleDialog: "Crear unidad",
+        name: "units",
+    },
 ]
+
+const controllers = {}
 
 for (const section of sections) {
     const el = section.el
@@ -20,10 +39,13 @@ for (const section of sections) {
         el.querySelector(".btn-error"),
         new TableModel()
     ).init()
+    controllers[section.name] = ctrl
     $btn.onclick = () =>
         window.parent.createDialog(section.titleDialog, async (txt) => {
             const response = await section.api.create(txt)
-            console.log(response)
+            ctrl.showAlert(response)
         })
     ctrl.getData()
 }
+
+parent.api.onCatalogUpdated((catalog) => controllers[catalog].update())
