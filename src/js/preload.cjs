@@ -38,6 +38,13 @@ contextBridge.exposeInMainWorld("clients", {
     edit: (obj) => ipcRenderer.invoke("edit-client", obj),
 })
 
+contextBridge.exposeInMainWorld("roles", {
+    get: () => ipcRenderer.invoke("fetch-roles"),
+    create: (rol) => ipcRenderer.invoke("create-rol", rol),
+    delete: (ids) => ipcRenderer.invoke("delete-roles", ids),
+    edit: (obj) => ipcRenderer.invoke("edit-rol", obj),
+})
+
 contextBridge.exposeInMainWorld("departaments", {
     get: () => ipcRenderer.invoke("fetch-departaments"),
     create: (departament) =>

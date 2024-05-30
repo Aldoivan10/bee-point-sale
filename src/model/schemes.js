@@ -483,6 +483,66 @@ class Unit extends Scheme {
     }
 }
 
+class Rol extends Scheme {
+    async all() {
+        const sql = `SELECT id_rol ID, nombre Nombre FROM Rol`
+        return await this.db.fetch(sql, [], (rows) => rows)
+    }
+
+    async create(rol) {
+        const insert = `
+            INSERT INTO
+                Rol
+            VALUES
+            (
+                (
+                    WITH cte AS
+                    (
+                        SELECT id_rol FROM Rol
+                        UNION ALL 
+                        SELECT 0
+                    )
+                    SELECT MIN(id_rol) + 1
+                    FROM cte
+                    WHERE NOT EXISTS
+                    (
+                        SELECT * 
+                        FROM Rol 
+                        WHERE Rol.id_rol = cte.id_rol + 1
+                    )
+                ),
+                ?
+            ) `
+        await this.db.insert(insert, [rol], (res) => res)
+        return this.ok("Rol agregado")
+    }
+
+    async delete(arr_ids) {
+        try {
+            const sql = "DELETE FROM Rol WHERE id_rol = ?"
+            for (const ids of arr_ids) {
+                await this.db.query(sql, ids)
+            }
+            return this.ok("Registros eliminados")
+        } catch (err) {
+            return this.error("No se pudo eliminar los roles", err)
+        }
+    }
+
+    async update(unit) {
+        const update = `
+            UPDATE
+                Rol
+            SET 
+                nombre = ?
+            WHERE 
+                id_rol = ?
+            `
+        await this.db.query(update, [unit.name, unit.id], (res) => res)
+        return this.ok("Rol editado")
+    }
+}
+
 class Client extends Scheme {
     async all(pageSize, offset, filter) {
         filter = filter ? filter : ""
@@ -640,4 +700,13 @@ class KeyBoard extends Scheme {
     }
 }
 
-module.exports = { Product, User, Code, Unit, Client, KeyBoard, Departament }
+module.exports = {
+    Product,
+    User,
+    Code,
+    Unit,
+    Client,
+    KeyBoard,
+    Departament,
+    Rol,
+}

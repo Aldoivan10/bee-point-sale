@@ -59,7 +59,6 @@ class TableController {
     }
 
     onEdit(listener) {
-        console.log(listener)
         this.view.addListener(listener)
     }
 

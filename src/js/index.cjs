@@ -4,6 +4,7 @@ const {
     User,
     Unit,
     Code,
+    Rol,
     Client,
     KeyBoard,
     Departament,
@@ -21,6 +22,7 @@ const codeScheme = new Code(db)
 const clientScheme = new Client(db)
 const keyBoard = new KeyBoard(db)
 const departamentScheme = new Departament(db)
+const rolScheme = new Rol(db)
 
 const createWindow = async () => {
     const win = new BrowserWindow({
@@ -71,6 +73,7 @@ const createWindow = async () => {
     codeScheme.onUpdated(catalogUpdated("codes"))
     unitScheme.onUpdated(catalogUpdated("units"))
     departamentScheme.onUpdated(catalogUpdated("departaments"))
+    rolScheme.onUpdated(catalogUpdated("roles"))
 }
 
 app.whenReady().then(async () => {
@@ -116,6 +119,14 @@ app.whenReady().then(async () => {
         async (_, ids) => await unitScheme.delete(ids)
     )
     ipcMain.handle("edit-unit", async (_, obj) => await unitScheme.update(obj))
+    /* ROL */
+    ipcMain.handle("fetch-roles", async () => await rolScheme.all())
+    ipcMain.handle("create-rol", async (_, rol) => await rolScheme.create(rol))
+    ipcMain.handle(
+        "delete-roles",
+        async (_, ids) => await rolScheme.delete(ids)
+    )
+    ipcMain.handle("edit-rol", async (_, obj) => await rolScheme.update(obj))
     /* USER */
     ipcMain.handle(
         "fetch-user",

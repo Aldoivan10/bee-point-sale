@@ -10,20 +10,26 @@ const sections = [
     {
         el: $codes,
         api: parent.codes,
-        title: " código",
+        title: "código",
         name: "codes",
     },
     {
         el: $departaments,
         api: parent.departaments,
-        title: " departamento",
+        title: "departamento",
         name: "departaments",
     },
     {
         el: $units,
         api: parent.units,
-        title: " unidad",
+        title: "unidad",
         name: "units",
+    },
+    {
+        el: $roles,
+        api: parent.roles,
+        title: "rol",
+        name: "roles",
     },
 ]
 

@@ -1,6 +1,6 @@
 class UserController {
     constructor(model, view, $Login) {
-        this.alert = new Alert($Login)
+        this.alert = window.parent.appAlert
         this.users = window.parent.users
         this.$Login = $Login
         this.model = model
@@ -13,7 +13,7 @@ class UserController {
     }
 
     tryLogin = async ({ user, pass }) => {
-        if (!user || !pass) this.alert.info("Complete los campos", 2000)
+        if (!user || !pass) this.alert.info("Complete los campos")
         else {
             const userDB = await this.users.find(user, pass)
             if (userDB) {

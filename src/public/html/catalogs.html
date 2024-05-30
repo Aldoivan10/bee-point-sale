@@ -87,6 +87,75 @@
                     </div>
                 </section>
                 <section
+                    id="$roles"
+                    class="flex flex-col gap-2 p-2 rounded [&:not(:has(:checked))_.btn-error]:btn-outline [&:not(:has(:checked))_.btn-error]:pointer-events-none"
+                >
+                    <div class="flex gap-2 items-center justify-between">
+                        <h2 class="font-bold text-xl">Roles</h2>
+                        <span>
+                            <div
+                                class="tooltip tooltip-left"
+                                data-tip="Agregar"
+                            >
+                                <button class="btn btn-success btn-sm h-[42px]">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 448 512"
+                                        class="fill-current w-4"
+                                    >
+                                        <path
+                                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div
+                                class="tooltip tooltip-left"
+                                data-tip="Eliminar"
+                            >
+                                <button class="btn btn-sm btn-error h-[42px]">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 448 512"
+                                        class="fill-current w-4"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 448 512"
+                                        >
+                                            <path
+                                                d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
+                                            />
+                                        </svg>
+                                    </svg>
+                                </button>
+                            </div>
+                        </span>
+                    </div>
+                    <div
+                        class="max-h-48 min-h-[15rem] rounded bg-striped grid place-items-center p-4 bg-base-100/50"
+                    >
+                        <div
+                            class="rounded overflow-hidden border border-slate-700 w-full h-full bg-base-200 flex flex-col"
+                        >
+                            <div class="overflow-y-auto h-0 grow">
+                                <table
+                                    class="table table-xs table-pin-rows table-pin-cols table-zebra bg-neutral"
+                                >
+                                    <thead>
+                                        <tr
+                                            class="bg-primary text-white font-bold"
+                                        ></tr>
+                                    </thead>
+                                    <tbody
+                                        class="[&_tr:nth-child(even)]:bg-slate-500/10 [&_tr:nth-child(odd)]:bg-slate-900/5"
+                                    ></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section
                     id="$codes"
                     class="flex flex-col gap-2 p-2 rounded [&:not(:has(:checked))_.btn-error]:btn-outline [&:not(:has(:checked))_.btn-error]:pointer-events-none"
                 >
