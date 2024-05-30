@@ -1,5 +1,6 @@
-class TableView {
+class TableView extends Listener {
     constructor($table) {
+        super()
         this.$table = $table
         this.$header = $table.querySelector("thead > tr")
         this.$body = $table.querySelector("tbody")
@@ -102,6 +103,7 @@ class TableView {
         $row.classList.add("hover")
         $row.innerHTML = `<td><input type="checkbox" class="checkbox checkbox-sm checkbox-primary" /></td>`
         $td.appendChild($edit)
+        $edit.onclick = () => this.notify("main", $row)
         for (const key of keys) {
             if (key === "Editar") $row.appendChild($td)
             else $row.innerHTML += `<td class="hover">${row[key]}</td>`

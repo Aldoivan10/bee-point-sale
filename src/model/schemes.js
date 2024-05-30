@@ -345,7 +345,18 @@ class Code extends Scheme {
         }
     }
 
-    async update(id, code) {}
+    async update(code) {
+        const update = `
+            UPDATE
+                Codigo
+            SET 
+                nombre = ?
+            WHERE 
+                id_codigo = ?
+            `
+        await this.db.query(update, [code.name, code.id], (res) => res)
+        return this.ok("Código editado")
+    }
 }
 
 class Departament extends Scheme {
@@ -355,7 +366,7 @@ class Departament extends Scheme {
     }
 
     async create(departament) {
-        const insert = `
+        const update = `
             INSERT INTO
                 Departamento
             VALUES
@@ -378,7 +389,7 @@ class Departament extends Scheme {
                 ),
                 ?
             ) `
-        await this.db.insert(insert, [departament], (res) => res)
+        await this.db.insert(update, [departament], (res) => res)
         return this.ok("Departamento agregado")
     }
 
@@ -394,7 +405,22 @@ class Departament extends Scheme {
         }
     }
 
-    async update(id, code) {}
+    async update(departament) {
+        const update = `
+            UPDATE
+                Departamento
+            SET 
+                nombre = ?
+            WHERE 
+                id_departamento = ?
+            `
+        await this.db.query(
+            update,
+            [departament.name, departament.id],
+            (res) => res
+        )
+        return this.ok("Departamento editado")
+    }
 }
 
 class Unit extends Scheme {
@@ -443,7 +469,18 @@ class Unit extends Scheme {
         }
     }
 
-    async update(id, unit) {}
+    async update(unit) {
+        const update = `
+            UPDATE
+                Unidad
+            SET 
+                nombre = ?
+            WHERE 
+                id_unidad = ?
+            `
+        await this.db.query(update, [unit.name, unit.id], (res) => res)
+        return this.ok("Unidad editada")
+    }
 }
 
 class Client extends Scheme {

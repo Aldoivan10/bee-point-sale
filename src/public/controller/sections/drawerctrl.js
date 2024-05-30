@@ -80,8 +80,8 @@ class Drawer {
             $btnNextTab
         )
 
-        window.api.onAddTab(() => tabCtrl.appendTab())
-        window.api.onDelTab(() => tabCtrl.deleteTab())
+        window.api.onAddTab(() => this.tabCtrl.appendTab())
+        window.api.onDelTab(() => this.tabCtrl.deleteTab())
 
         window.addProductListener = productController.addListener
 

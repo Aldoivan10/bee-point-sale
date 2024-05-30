@@ -6,24 +6,28 @@ contextBridge.exposeInMainWorld("products", {
     total: (filter) => ipcRenderer.invoke("fetch-total-products", filter),
     create: (product) => ipcRenderer.invoke("create-product", product),
     delete: (ids) => ipcRenderer.invoke("delete-products", ids),
+    edit: (obj) => ipcRenderer.invoke("edit-product", obj),
 })
 
 contextBridge.exposeInMainWorld("codes", {
     get: () => ipcRenderer.invoke("fetch-codes"),
     create: (code) => ipcRenderer.invoke("create-code", code),
     delete: (ids) => ipcRenderer.invoke("delete-codes", ids),
+    edit: (obj) => ipcRenderer.invoke("edit-code", obj),
 })
 
 contextBridge.exposeInMainWorld("units", {
     get: () => ipcRenderer.invoke("fetch-units"),
     create: (unit) => ipcRenderer.invoke("create-unit", unit),
     delete: (ids) => ipcRenderer.invoke("delete-units", ids),
+    edit: (obj) => ipcRenderer.invoke("edit-unit", obj),
 })
 
 contextBridge.exposeInMainWorld("users", {
     get: () => ipcRenderer.invoke("fetch-users"),
     find: (user, pass) => ipcRenderer.invoke("fetch-user", user, pass),
     delete: (ids) => ipcRenderer.invoke("delete-users", ids),
+    edit: (obj) => ipcRenderer.invoke("edit-user", obj),
 })
 
 contextBridge.exposeInMainWorld("clients", {
@@ -31,6 +35,7 @@ contextBridge.exposeInMainWorld("clients", {
         ipcRenderer.invoke("fetch-clients", pageSize, offset, filter),
     total: (filter) => ipcRenderer.invoke("fetch-total-clients", filter),
     delete: (ids) => ipcRenderer.invoke("delete-clients", ids),
+    edit: (obj) => ipcRenderer.invoke("edit-client", obj),
 })
 
 contextBridge.exposeInMainWorld("departaments", {
@@ -38,6 +43,7 @@ contextBridge.exposeInMainWorld("departaments", {
     create: (departament) =>
         ipcRenderer.invoke("create-departament", departament),
     delete: (ids) => ipcRenderer.invoke("delete-departaments", ids),
+    edit: (obj) => ipcRenderer.invoke("edit-departament", obj),
 })
 
 contextBridge.exposeInMainWorld("api", {

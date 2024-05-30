@@ -4,6 +4,7 @@ class TableController {
         this.view = view
         this.model = model
         this.alerts = alerts
+
         $delItems.onclick = this.onItemDelete
     }
 
@@ -55,6 +56,11 @@ class TableController {
             el.onchange = () =>
                 (mainCheck.checked = checks.every((el) => el.checked))
         })
+    }
+
+    onEdit(listener) {
+        console.log(listener)
+        this.view.addListener(listener)
     }
 
     showAlert(alert) {

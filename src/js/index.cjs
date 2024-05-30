@@ -104,6 +104,7 @@ app.whenReady().then(async () => {
         "delete-codes",
         async (_, ids) => await codeScheme.delete(ids)
     )
+    ipcMain.handle("edit-code", async (_, obj) => await codeScheme.update(obj))
     /* UNITS */
     ipcMain.handle("fetch-units", async () => await unitScheme.all())
     ipcMain.handle(
@@ -114,12 +115,14 @@ app.whenReady().then(async () => {
         "delete-units",
         async (_, ids) => await unitScheme.delete(ids)
     )
+    ipcMain.handle("edit-unit", async (_, obj) => await unitScheme.update(obj))
     /* USER */
     ipcMain.handle(
         "fetch-user",
         async (_, user, pass) => await userScheme.get(user, pass)
     )
     ipcMain.handle("fetch-users", async () => await userScheme.all())
+    ipcMain.handle("edit-user", async (_, obj) => await unitScheme.update(obj))
     /* CLIENTS */
     ipcMain.handle(
         "fetch-clients",
@@ -134,6 +137,10 @@ app.whenReady().then(async () => {
         "delete-clients",
         async (_, ids) => await clientScheme.delete(ids)
     )
+    ipcMain.handle(
+        "edit-client",
+        async (_, obj) => await clientScheme.update(obj)
+    )
     /* DEPARTAMENTS */
     ipcMain.handle(
         "fetch-departaments",
@@ -146,6 +153,10 @@ app.whenReady().then(async () => {
     ipcMain.handle(
         "delete-departaments",
         async (_, ids) => await departamentScheme.delete(ids)
+    )
+    ipcMain.handle(
+        "edit-departament",
+        async (_, obj) => await departamentScheme.update(obj)
     )
 
     /* globalShortcut.unregister("F5")

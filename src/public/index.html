@@ -341,7 +341,7 @@
             </div>
         </dialog>
         <!-- CONFIRM (BOTTOM) -->
-        <!-- CONFIRM (TOP) -->
+        <!-- CATALOG (TOP) -->
         <dialog
             id="$create"
             class="modal"
@@ -369,13 +369,18 @@
                 </label>
                 <div class="modal-action m-0">
                     <form method="dialog">
-                        <button class="btn btn-ghost btn-sm">Cancelar</button>
+                        <button
+                            onclick="$create.querySelector('input').value = ''"
+                            class="btn btn-ghost btn-sm"
+                        >
+                            Cancelar
+                        </button>
                     </form>
                     <button class="btn btn-sm">Aceptar</button>
                 </div>
             </div>
         </dialog>
-        <!-- CONFIRM (BOTTOM) -->
+        <!-- CATALOG (BOTTOM) -->
 
         <object
             id="$header"
