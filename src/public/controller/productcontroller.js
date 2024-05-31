@@ -4,24 +4,46 @@ class ProductController extends Listener {
         this.view = view
         this.model = model
         this.alert = new Alert($modal)
+        this.$modal = $modal
 
         const observer = new DialogObserver($modal)
-        observer.onShow(() => this.showModal())
         observer.onClose(this.view.clear)
     }
 
-    async showModal(obj) {
+    async showModal(obj = null) {
         const codes = await window.codes.get()
         this.view.setCodes(codes, obj)
+        if (obj) {
+            const units = obj.unidades
+            for (const unit of units) {
+                this.addUnit(unit)
+            }
+        }
+        this.$modal.showModal()
     }
 
-    addUnit = async () => {
+    addUnit = async (unit) => {
         const units = await window.units.get()
-        const { buy, profit, descount, sell, close, $container } =
-            this.view.addProductUnit(units)
+        const {
+            buy,
+            profit,
+            descount,
+            sell,
+            close,
+            $container,
+            $select,
+            $quantity,
+        } = this.view.addProductUnit(units)
 
         const updatePrice = () =>
             this.setPrice(sell, +buy.value, +profit.value, +descount.value)
+
+        if (unit) {
+            console.log(unit)
+            $select.value = unit.id_unidad
+            $quantity.value = unit.Cantidad
+            buy.value = unit["Precio de compra"]
+        }
 
         buy.oninput = updatePrice
         profit.oninput = updatePrice

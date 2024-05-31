@@ -1,5 +1,6 @@
 const updater = (className) => tableCtrl.update(className)
 const productApi = window.parent.products
+let ctrl = window.parent.productController
 
 const tableCtrl = new PaginedTableController(
     new TableView($table),
@@ -13,16 +14,14 @@ const tableCtrl = new PaginedTableController(
 tableCtrl.onEdit(async ($rows) => {
     const $row = $rows[0]
     const id = +$row.querySelector(".hidden").textContent
-    console.log(id)
-    const product = await productApi.find(id)
-    console.log(product)
+    const obj = await tableCtrl.api.find(id)
+    ctrl.showModal(obj)
 })
 
 const menuOpt = new MenuOptions(
-    window.parent.$product,
-    window.parent.$client
+    window.parent.productController,
+    window.parent.clientController
 ).setPaginedTableController(tableCtrl)
-let $modal = window.parent.$product
 
 $footer.onload = () => {
     const menu = new Menu()
@@ -51,7 +50,7 @@ $footer.onload = () => {
             option.mapper,
             option.class
         )
-        $modal = option.modal
+        ctrl = option.ctrl
     })
     $footer.ownerDocument.defaultView.menu = menu
 }

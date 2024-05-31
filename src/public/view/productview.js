@@ -91,7 +91,16 @@ class ProductView {
         const sell = $sell.querySelector("input")
         const close = $close.querySelector("button")
 
-        return { buy, profit, descount, sell, close, $container }
+        return {
+            buy,
+            profit,
+            descount,
+            sell,
+            close,
+            $container,
+            $select,
+            $quantity,
+        }
     }
 
     getElements() {

@@ -23,7 +23,7 @@ class Menu extends Listener {
 }
 
 class MenuOptions {
-    constructor(productModal, clientModal) {
+    constructor(productCtrl, clientCtrl) {
         this.options = {
             Productos: {
                 api: window.parent.products,
@@ -49,14 +49,14 @@ class MenuOptions {
                     },
                 },
                 class: "productos",
-                modal: productModal,
+                ctrl: productCtrl,
             },
             Clientes: {
                 api: window.parent.clients,
                 model: new TableModel(),
                 mapper: {},
                 class: "clientes",
-                modal: clientModal,
+                ctrl: clientCtrl,
             },
         }
     }
