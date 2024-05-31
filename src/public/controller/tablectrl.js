@@ -1,10 +1,10 @@
 class TableController {
-    constructor(view, api, alerts, $delItems, model = null) {
+    constructor(view, api, alerts, $delItems, model = null, appAlert = null) {
         this.api = api
         this.view = view
         this.model = model
         this.alerts = alerts
-
+        this.appAlert = appAlert
         $delItems.onclick = this.onItemDelete
     }
 
@@ -29,7 +29,7 @@ class TableController {
             async () => {
                 const ids = this.view.getCheckedIds(this.model.headers)
                 const res = await this.api.delete(ids)
-                this.showAlert(res)
+                this.showAlert(res, this.appAlert ? this.appAlert : this.alerts)
             }
         )
     }
@@ -62,19 +62,20 @@ class TableController {
         this.view.addListener(listener)
     }
 
-    showAlert(alert) {
-        if (alert.status === "success") {
-            this.alerts.success(alert.msg)
+    showAlert(alertObj, alerts) {
+        const alert = alerts ? alerts : this.alerts
+        if (alertObj.status === "success") {
+            alert.success(alertObj.msg)
         } else {
-            this.alerts.error(alert.msg)
-            console.log(alert.data)
+            alert.error(alertObj.msg)
+            console.log(alertObj.data)
         }
     }
 }
 
 class PaginedTableController extends TableController {
-    constructor(view, pagination, alerts, $filter, $delItems) {
-        super(view, window.parent.products, alerts, $delItems)
+    constructor(view, api, pagination, alerts, $filter, $delItems) {
+        super(view, api, alerts, $delItems)
         this.pagination = pagination
         this.$filter = $filter
 

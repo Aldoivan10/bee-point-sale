@@ -1,12 +1,22 @@
 const updater = (className) => tableCtrl.update(className)
+const productApi = window.parent.products
 
 const tableCtrl = new PaginedTableController(
     new TableView($table),
+    productApi,
     new Pagination($pagination, $pageSize),
     window.parent.appAlert,
     $filter,
     $delItems
 )
+
+tableCtrl.onEdit(async ($rows) => {
+    const $row = $rows[0]
+    const id = +$row.querySelector(".hidden").textContent
+    console.log(id)
+    const product = await productApi.find(id)
+    console.log(product)
+})
 
 const menuOpt = new MenuOptions(
     window.parent.$product,

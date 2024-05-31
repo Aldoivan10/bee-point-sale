@@ -6,13 +6,13 @@ class ProductController extends Listener {
         this.alert = new Alert($modal)
 
         const observer = new DialogObserver($modal)
-        observer.onShow(this.getCodes)
+        observer.onShow(() => this.showModal())
         observer.onClose(this.view.clear)
     }
 
-    getCodes = async () => {
+    async showModal(obj) {
         const codes = await window.codes.get()
-        this.view.setCodes(codes)
+        this.view.setCodes(codes, obj)
     }
 
     addUnit = async () => {

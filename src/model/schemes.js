@@ -146,7 +146,74 @@ class Product extends Scheme {
         return await this.db.fetch(sql, [], (rows) => rows[0]["total"])
     }
 
-    async get(id) {}
+    async get(id) {
+        const find = `
+            SELECT
+                json_object
+                (
+                    'codigos',
+                    (
+                        SELECT 
+                            JSON_GROUP_ARRAY
+                            (
+                                JSON_OBJECT
+                                (
+                                    C.nombre,
+                                    COALESCE(PC.codigo, '')
+                                )            
+                            )
+                        FROM
+                            Producto_Codigo PC
+                        RIGHT JOIN 
+                            Codigo C
+                        ON
+                            C.id_codigo = PC.id_codigo
+                        AND
+                            PC.id_producto = P.id_producto 
+                        ORDER BY
+                            C.nombre
+                    ),
+                    'Nombre',
+                    P.nombre,
+                    'unidades',
+                    (
+                        SELECT 
+                            JSON_GROUP_ARRAY(JSON_OBJECT('id_unidad', U.id_unidad, 'Unidad', U.nombre, 'Cantidad', PU.cantidad, 'Precio de venta', PU.precio_venta, 'Descuento', PU.descuento, 'Ganancia', PU.ganancia, 'Precio de compra', PU.precio_compra))
+                        FROM
+                            Producto_Unidad PU
+                        INNER JOIN 
+                            Unidad U
+                        ON
+                            U.id_unidad = PU.id_unidad
+                        WHERE
+                            PU.id_producto = P.id_producto
+                        ORDER BY
+                        U.id_unidad
+                    )
+                ) producto
+            FROM 
+                Producto P
+            INNER JOIN
+                Producto_Codigo PC
+            ON
+                PC.id_producto = P.id_producto
+            WHERE 
+                P.id_producto = ?
+            GROUP BY
+                P.id_producto
+        `
+        return await this.db.fetch(find, [id], (rows) => {
+            const product = JSON.parse(rows[0]["producto"])
+            const productObj = product.codigos.reduce((codigos, codigo) => {
+                const key = Object.keys(codigo)[0]
+                codigos[key] = codigo[key]
+                return codigos
+            }, {}) // Buscamos los codigo
+            productObj["Nombre"] = product.Nombre
+            productObj["unidades"] = product.unidades // Obtenemos las unidades
+            return productObj
+        })
+    }
 
     async delete(arr_ids) {
         try {

@@ -1,5 +1,6 @@
 const parent = window.parent
 const dialog = window.parent.createDialog
+const appAlert = parent.appAlert
 const sections = [
     {
         el: $users,
@@ -34,6 +35,7 @@ const sections = [
 ]
 
 const controllers = {}
+const createAlert = new Alert(window.parent.$create)
 
 for (const section of sections) {
     const el = section.el
@@ -42,9 +44,10 @@ for (const section of sections) {
     const ctrl = new TableController(
         new TableView(el.querySelector("table")),
         section.api,
-        parent.appAlert,
+        createAlert,
         el.querySelector(".btn-error"),
-        new TableModel()
+        new TableModel(),
+        appAlert
     ).init()
     controllers[section.name] = ctrl
 
@@ -54,8 +57,14 @@ for (const section of sections) {
             dialog({
                 title: `Crear ${title}`,
                 onAccept: async (txt) => {
-                    const response = await section.api.create(txt)
-                    ctrl.showAlert(response)
+                    if (txt) {
+                        const response = await section.api.create(txt)
+                        ctrl.showAlert(response)
+                    } else
+                        ctrl.showAlert({
+                            status: "error",
+                            msg: "Complete el campo",
+                        })
                 },
             })
         ctrl.onEdit(($rows) => {
@@ -65,11 +74,18 @@ for (const section of sections) {
                 edit: true,
                 value: $row.querySelector("td:nth-child(3)").textContent,
                 onAccept: async (txt) => {
-                    const response = await section.api.edit({
-                        id: +$row.querySelector("td:nth-child(2)").textContent,
-                        name: txt,
-                    })
-                    ctrl.showAlert(response)
+                    if (txt) {
+                        const response = await section.api.edit({
+                            id: +$row.querySelector("td:nth-child(2)")
+                                .textContent,
+                            name: txt,
+                        })
+                        ctrl.showAlert(response)
+                    } else
+                        ctrl.showAlert({
+                            status: "error",
+                            msg: "Complete el campo",
+                        })
                 },
             })
         })

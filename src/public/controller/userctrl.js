@@ -1,6 +1,6 @@
 class UserController {
     constructor(model, view, $Login) {
-        this.alert = window.parent.appAlert
+        this.alert = new Alert($Login)
         this.users = window.parent.users
         this.$Login = $Login
         this.model = model

@@ -3,6 +3,7 @@ const { contextBridge, ipcRenderer } = require("electron")
 contextBridge.exposeInMainWorld("products", {
     get: (pageSize, offset, filter) =>
         ipcRenderer.invoke("fetch-products", pageSize, offset, filter),
+    find: (id) => ipcRenderer.invoke("fetch-product", id),
     total: (filter) => ipcRenderer.invoke("fetch-total-products", filter),
     create: (product) => ipcRenderer.invoke("create-product", product),
     delete: (ids) => ipcRenderer.invoke("delete-products", ids),

@@ -86,6 +86,10 @@ app.whenReady().then(async () => {
             await productScheme.all(pageSize, offset, filter)
     )
     ipcMain.handle(
+        "fetch-product",
+        async (_, id) => await productScheme.get(id)
+    )
+    ipcMain.handle(
         "create-product",
         async (_, product) => await productScheme.create(product)
     )
