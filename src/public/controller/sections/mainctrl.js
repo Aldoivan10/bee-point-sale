@@ -15,7 +15,7 @@ tableCtrl.onEdit(async ($rows) => {
     const $row = $rows[0]
     const id = +$row.querySelector(".hidden").textContent
     const obj = await tableCtrl.api.find(id)
-    ctrl.showModal(obj)
+    ctrl.showModal(obj, id)
 })
 
 const menuOpt = new MenuOptions(

@@ -8,6 +8,7 @@ module.exports = class DB {
                 resolve(db)
             })
         })
+        this.query("PRAGMA foreign_keys = ON", [], () => {})
     }
 
     async fetch(sql, params = [], action = () => {}) {

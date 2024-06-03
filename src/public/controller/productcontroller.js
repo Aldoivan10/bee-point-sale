@@ -10,14 +10,25 @@ class ProductController extends Listener {
         observer.onClose(this.view.clear)
     }
 
-    async showModal(obj = null) {
+    async showModal(obj = null, id = null) {
         const codes = await window.codes.get()
+        const btn = this.$modal.querySelector(".modal-action .btn:nth-child(2)")
         this.view.setCodes(codes, obj)
         if (obj) {
             const units = obj.unidades
-            for (const unit of units) {
-                this.addUnit(unit)
-            }
+            this.view.setName(obj.Nombre)
+            for (const unit of units) this.addUnit(unit)
+        }
+        if (id) {
+            btn.classList.remove("btn-success")
+            btn.classList.add("btn-warning")
+            btn.textContent = "Editar"
+            btn.dataset.id = id
+        } else {
+            btn.classList.remove("btn-warning")
+            btn.classList.add("btn-success")
+            btn.textContent = "Guardar"
+            btn.removeAttribute("data-id")
         }
         this.$modal.showModal()
     }
@@ -32,17 +43,18 @@ class ProductController extends Listener {
             close,
             $container,
             $select,
-            $quantity,
+            quantity,
         } = this.view.addProductUnit(units)
 
         const updatePrice = () =>
             this.setPrice(sell, +buy.value, +profit.value, +descount.value)
 
         if (unit) {
-            console.log(unit)
             $select.value = unit.id_unidad
-            $quantity.value = unit.Cantidad
+            quantity.value = unit.Cantidad
             buy.value = unit["Precio de compra"]
+            sell.value = unit["Precio de venta"]
+            descount.value = unit.Descuento
         }
 
         buy.oninput = updatePrice
@@ -61,15 +73,25 @@ class ProductController extends Listener {
         ).toFixed(2)
     }
 
-    saveProduct = async (evt) => {
-        evt.preventDefault()
+    save = async (evt) => {
+        const id = evt.target.dataset.id
         const { name, codes, units } = this.view.getElements()
+
         if (!name.value) this.alert.error("El producto debe llevar un nombre")
         else {
+            if (id) {
+                const response = await window.products.delete([[id]])
+                if (response.status === "error") {
+                    console.log(res.data)
+                    this.alert.error("Error al actualizar")
+                    return
+                }
+            }
             const mappedCodes = codes.reduce((acc, el) => {
                 if (!el.value) return acc
                 return { ...acc, [el.id]: el.value }
             }, {})
+
             if (Object.keys(mappedCodes).length == 0)
                 this.alert.error(
                     "Debe haber al menos un código de identificación"
@@ -99,11 +121,21 @@ class ProductController extends Listener {
                     })
                     if (res.status === "success") {
                         this.alert.success(res.msg)
-                        this.view.clear()
-                        this.getCodes()
+                        if (!id) {
+                            this.view.clear()
+                            this.view.setCodes(
+                                codes.reduce((acc, input) => {
+                                    acc.push({
+                                        id: +input.id,
+                                        Nombre: input.placeholder,
+                                    })
+                                    return acc
+                                }, [])
+                            )
+                        }
                         this.notify("main", "productos")
                     } else {
-                        console.log(res)
+                        console.log(res.data)
                         this.alert.error(res.msg)
                     }
                 }

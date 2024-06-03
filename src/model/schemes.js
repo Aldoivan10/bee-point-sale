@@ -62,8 +62,6 @@ class Product extends Scheme {
                             C.id_codigo = PC.id_codigo
                         AND
                             PC.id_producto = P.id_producto 
-                        ORDER BY
-                            C.nombre
                     ),
                     'Nombre',
                     P.nombre,
@@ -113,7 +111,7 @@ class Product extends Scheme {
                     )
                     return codigos
                 }, {}) // Buscamos los codigos
-                productObj["id_producto"] = product.id_producto
+                productObj["ID"] = product.id_producto
                 productObj["Nombre"] = this.encloseStr(
                     product.Nombre,
                     filter,
@@ -217,8 +215,7 @@ class Product extends Scheme {
 
     async delete(arr_ids) {
         try {
-            const sql =
-                "DELETE FROM Producto_Unidad WHERE id_producto = ? AND id_unidad = ?"
+            const sql = "DELETE FROM Producto WHERE id_producto = ?"
             for (const ids of arr_ids) {
                 await this.db.query(sql, ids)
             }
@@ -227,9 +224,6 @@ class Product extends Scheme {
             return this.error("No se pudo eliminar el producto", err)
         }
     }
-
-    async update(id, ...args) {}
-
     async create(product) {
         try {
             const insertProduct = `
@@ -260,6 +254,7 @@ class Product extends Scheme {
                 [product["name"]],
                 (res) => res
             )
+
             const id = res.lastID
             const codes = product["codes"]
             const insertCodes = `

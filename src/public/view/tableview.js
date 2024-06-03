@@ -63,8 +63,7 @@ class TableView extends Listener {
             this.$body.querySelectorAll("tr:has(input[type=checkbox]:checked)")
         )
         const indexIds = headers.reduce((arr, val, i) => {
-            if (val.includes("id_") || val === "ID")
-                arr.push(`td:nth-child(${i + 2})`)
+            if (val === "ID") arr.push(`td:nth-child(${i + 2})`)
             return arr
         }, [])
         return checkedRows.map((row) =>
@@ -75,8 +74,17 @@ class TableView extends Listener {
     }
 
     buildBody(rows, headers) {
-        if (rows.length > 0) for (const row of rows) this.addRow(row, headers)
-        else this.setEmpty()
+        if (rows.length > 0) {
+            let currentID = -1
+            let addCheckBox = false
+            for (const row of rows) {
+                if (row["ID"] !== currentID) {
+                    currentID = row["ID"]
+                    addCheckBox = true
+                } else addCheckBox = false
+                this.addRow(row, headers, addCheckBox)
+            }
+        } else this.setEmpty()
     }
 
     setEmpty() {
@@ -93,7 +101,7 @@ class TableView extends Listener {
         this.removeChilds(this.$body)
     }
 
-    addRow(row, keys) {
+    addRow(row, keys, addCheckBox) {
         const $row = document.createElement("tr")
         const $edit = button({
             class: "btn-warning btn-sm",
@@ -101,11 +109,18 @@ class TableView extends Listener {
         })
         const $td = document.createElement("td")
         $row.classList.add("hover")
-        $row.innerHTML = `<td><input type="checkbox" class="checkbox checkbox-sm checkbox-primary" /></td>`
+        $row.innerHTML = `<td>${
+            addCheckBox
+                ? '<input type="checkbox" class="checkbox checkbox-sm checkbox-primary" />'
+                : ""
+        }</td>`
         $td.appendChild($edit)
         $edit.onclick = () => this.notify("main", $row)
         for (const key of keys) {
-            if (key === "Editar") $row.appendChild($td)
+            if (key === "Editar")
+                $row.appendChild(
+                    addCheckBox ? $td : document.createElement("td")
+                )
             else $row.innerHTML += `<td class="hover">${row[key]}</td>`
         }
         this.$body.appendChild($row)

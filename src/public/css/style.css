@@ -4356,6 +4356,28 @@ html:has(.drawer-toggle:checked) {
   --tw-text-opacity: 0.2;
 }
 
+.\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\.btn-warning\]\:btn-disabled:not(:has(#unitsContainer>div)) .btn-warning {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\.btn-warning\]\:btn-disabled:not(:has(#unitsContainer>div)) .btn-warning:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.\[\&\:not\(\:has\(\#unitsContainer\>div\)\)_\.btn-warning\]\:btn-disabled:not(:has(#unitsContainer>div)) .btn-warning.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
 @media (hover: hover) {
   .\[\&\:not\(\:has\(\:checked\)\)_\.btn-error\]\:btn-outline:not(:has(:checked)) .btn-error:hover {
     --tw-border-opacity: 1;
@@ -4806,14 +4828,6 @@ html:has(.drawer-toggle:checked) {
 }
 
 .\[\&\:is\(\.clientes\)_td\:nth-child\(2\)\]\:hidden:is(.clientes) td:nth-child(2) {
-  display: none;
-}
-
-.\[\&\:is\(\.productos\)_td\:nth-child\(6\)\]\:hidden:is(.productos) td:nth-child(6) {
-  display: none;
-}
-
-.\[\&\:is\(\.productos\)_td\:nth-child\(7\)\]\:hidden:is(.productos) td:nth-child(7) {
   display: none;
 }
 

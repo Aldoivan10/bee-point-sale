@@ -94,7 +94,7 @@
                 class="modal"
             >
                 <div
-                    class="modal-box min-w-[50rem] flex flex-col [&:not(:has(#unitsContainer>div))_.btn-success]:btn-disabled"
+                    class="modal-box min-w-[50rem] flex flex-col [&:not(:has(#unitsContainer>div))_.btn-success]:btn-disabled [&:not(:has(#unitsContainer>div))_.btn-warning]:btn-disabled"
                 >
                     <h3 class="font-bold text-2xl my-2">Agregar producto</h3>
                     <div
@@ -154,16 +154,14 @@
                     </div>
                     <div class="modal-action m-0 mt-2">
                         <form method="dialog">
-                            <button
-                                onclick="productController.saveProduct(event)"
-                                class="btn btn-outline btn-success"
-                            >
-                                Aceptar
-                            </button>
-                            <button class="btn btn-outline btn-error">
-                                Cancelar
-                            </button>
+                            <button class="btn btn-ghost">Cancelar</button>
                         </form>
+                        <button
+                            onclick="productController.save(event)"
+                            class="btn"
+                        >
+                            Guardar
+                        </button>
                     </div>
                 </div>
             </dialog>
