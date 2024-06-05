@@ -8,9 +8,11 @@ const {
     Client,
     KeyBoard,
     Departament,
+    Ticket,
 } = require("../model/schemes.js")
 const path = require("node:path")
 const DB = require("../model/db.js")
+const { timeEnd } = require("node:console")
 
 const db = new DB()
 db.init("src/ferreteria.sqlite")
@@ -23,6 +25,7 @@ const clientScheme = new Client(db)
 const keyBoard = new KeyBoard(db)
 const departamentScheme = new Departament(db)
 const rolScheme = new Rol(db)
+const ticketScheme = new Ticket(db)
 
 const createWindow = async () => {
     const win = new BrowserWindow({
@@ -173,7 +176,12 @@ app.whenReady().then(async () => {
         "edit-departament",
         async (_, obj) => await departamentScheme.update(obj)
     )
-
+    /* TICKET */
+    ipcMain.handle("fetch-ticket", async () => await ticketScheme.all())
+    ipcMain.handle(
+        "update-ticket",
+        async (_, ticket) => await ticketScheme.update(ticket)
+    )
     /* globalShortcut.unregister("F5")
     globalShortcut.unregister("CommandOrControl+R") */
 

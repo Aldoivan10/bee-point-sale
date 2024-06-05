@@ -762,6 +762,44 @@ class KeyBoard extends Scheme {
     }
 }
 
+class Ticket extends Scheme {
+    async all() {
+        const query = `
+            SELECT 
+                seccion,
+                valor
+            FROM 
+                Ticket
+        `
+        return await this.db.fetch(query, [], (rows) => {
+            const mappedRows = rows.reduce((obj, row) => {
+                return { ...obj, [row.seccion]: row["valor"] }
+            }, {})
+            return mappedRows
+        })
+    }
+
+    async update(ticket) {
+        const update = `
+            UPDATE 
+                Ticket 
+            SET
+                valor = ?
+            WHERE 
+                seccion = ?
+        `
+        for (const section of Object.keys(ticket)) {
+            await this.db.query(
+                update,
+                [ticket[section], section],
+                (res) => res
+            )
+        }
+
+        return this.ok("Ticket actualizado")
+    }
+}
+
 module.exports = {
     Product,
     User,
@@ -771,4 +809,5 @@ module.exports = {
     KeyBoard,
     Departament,
     Rol,
+    Ticket,
 }

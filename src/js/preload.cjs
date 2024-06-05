@@ -70,4 +70,6 @@ contextBridge.exposeInMainWorld("api", {
             callback(catalog)
         ),
     getkeyMap: () => ipcRenderer.invoke("key-map"),
+    ticket: () => ipcRenderer.invoke("fetch-ticket"),
+    updateTicket: (ticket) => ipcRenderer.invoke("update-ticket", ticket),
 })
