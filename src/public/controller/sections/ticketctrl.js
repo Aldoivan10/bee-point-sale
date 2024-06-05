@@ -19,18 +19,24 @@ function mapText(str) {
                 result: "<strong>$1</strong>",
                 regex: /\*(.+)\*/gi,
             },
-            P: {
-                result: "<p>$1</p>",
-                regex: /(^.+)[\n]/gi,
-            },
         }
-        let mappedText = str.replaceAll("\n", "</br>")
+        let mappedText = str
 
         for (const key of Object.keys(replacements)) {
             const regex = replacements[key].regex
             const result = replacements[key].result
             mappedText = mappedText.replace(regex, result)
         }
+
+        mappedText = mappedText
+            .split("\n")
+            .map((str) => {
+                if (str.includes("</p>") || str.includes("</strong>"))
+                    return str
+                return `<p>${str}</p>`
+            })
+            .join("")
+
         return mappedText
     }
     return ""
