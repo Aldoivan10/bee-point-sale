@@ -26,6 +26,48 @@ function createDialog(options) {
     $create.showModal()
 }
 
+function mapTicketText(str) {
+    if (str) {
+        const replacements = {
+            SC: {
+                result: '<strong class="center">$1</strong>',
+                regex: /-\*(.+)\*-/gi,
+            },
+            CS: {
+                result: '<strong class="center">$1</strong>',
+                regex: /\*-(.+)-\*/gi,
+            },
+            C: {
+                result: '<p class="center">$1</p>',
+                regex: /-(.+)-/gi,
+            },
+            S: {
+                result: "<strong>$1</strong>",
+                regex: /\*(.+)\*/gi,
+            },
+        }
+        let mappedText = str
+
+        for (const key of Object.keys(replacements)) {
+            const regex = replacements[key].regex
+            const result = replacements[key].result
+            mappedText = mappedText.replace(regex, result)
+        }
+
+        mappedText = mappedText
+            .split("\n")
+            .map((str) => {
+                if (str.includes("</p>") || str.includes("</strong>"))
+                    return str
+                return `<p>${str}</p>`
+            })
+            .join("")
+
+        return mappedText
+    }
+    return ""
+}
+
 function setVal(key, val) {
     localStorage.setItem(key, val)
 }

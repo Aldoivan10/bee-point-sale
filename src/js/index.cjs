@@ -12,7 +12,6 @@ const {
 } = require("../model/schemes.js")
 const path = require("node:path")
 const DB = require("../model/db.js")
-const { timeEnd } = require("node:console")
 
 const db = new DB()
 db.init("src/ferreteria.sqlite")

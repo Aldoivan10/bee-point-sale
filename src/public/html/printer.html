@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>Imprimir</title>
+        <link
+            rel="stylesheet"
+            href="../css/style.css"
+        />
+    </head>
+    <body>
+        <section
+            class="grow flex flex-col gap-2 p-1 px-2 bg-white w-[151.18px] max-w-[151.18px] [&_*]:!text-[70%]"
+        >
+            <header class="text-black flex flex-col gap-1 w-full">
+                <h3
+                    id="$header"
+                    class="h-full flex [&_.center]:text-center flex-col"
+                ></h3>
+            </header>
+            <main class="grow text-black">
+                <table class="w-full max-w-full top-0 left-0">
+                    <thead class="border-t-[1px] border-black border-dashed">
+                        <tr>
+                            <th class="text-start">#</th>
+                            <th class="text-start">Med</th>
+                            <th class="text-start">Descripciíon</th>
+                            <th class="text-start">Precio</th>
+                            <th class="text-start">Importe</th>
+                        </tr>
+                    </thead>
+                    <tbody
+                        class="[&_td]:align-middle [&_td]:text-center [&_td]:p-[2px] [&_*]:box-border border-y-[1px] border-black border-dashed [&_td:nth-child(3)]:text-justify"
+                    ></tbody>
+                    <tfoot class="border-b-[1px] border-black border-dashed">
+                        <tr>
+                            <th
+                                class="font-bold"
+                                colspan="100%"
+                            >
+                                <div class="flex justify-between">
+                                    <span>Total:</span>
+                                    <span if="$total">0.00</span>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th
+                                class="font-bold"
+                                colspan="100%"
+                            >
+                                <div class="flex justify-between">
+                                    <span>Efectivo:</span>
+                                    <span id="$payment">0.00</span>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th
+                                class="font-bold"
+                                colspan="100%"
+                            >
+                                <div class="flex justify-between">
+                                    <span>Cambio:</span>
+                                    <span id="$exchange">0.00</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </main>
+            <footer class="text-black">
+                <h3
+                    id="$footer"
+                    class="[&_.center]:text-center flex flex-col"
+                ></h3>
+            </footer>
+        </section>
+        <script
+            src="../js/util.js"
+            defer
+        ></script>
+        <script
+            src="../controller/sections/printer.js"
+            defer
+        ></script>
+    </body>
+</html>

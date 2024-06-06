@@ -69,18 +69,8 @@
                             </tr>
                         </thead>
                         <tbody
-                            class="[&_td]:align-middle [&_td]:text-center [&_td]:p-[2px] [&_*]:box-border border-y-[1px] border-black border-dashed"
-                        >
-                            <tr>
-                                <td>1</td>
-                                <td>PZA</td>
-                                <td class="text-justify">
-                                    ABRAZADERA COPPER&BRASS L-10
-                                </td>
-                                <td>8.00</td>
-                                <td>12.00</td>
-                            </tr>
-                        </tbody>
+                            class="[&_td]:align-middle [&_td]:text-center [&_td]:p-[2px] [&_*]:box-border border-y-[1px] border-black border-dashed [&_td:nth-child(3)]:text-justify"
+                        ></tbody>
                         <tfoot
                             class="border-b-[1px] border-black border-dashed [&_span]:!text-[100%]"
                         >
@@ -90,7 +80,8 @@
                                     colspan="100%"
                                 >
                                     <div class="flex justify-between">
-                                        <span>Total:</span> <span>100.0</span>
+                                        <span>Total:</span>
+                                        <span if="$total">0.00</span>
                                     </div>
                                 </th>
                             </tr>
@@ -101,7 +92,7 @@
                                 >
                                     <div class="flex justify-between">
                                         <span>Efectivo:</span>
-                                        <span>100.0</span>
+                                        <span id="$payment">0.00</span>
                                     </div>
                                 </th>
                             </tr>
@@ -111,7 +102,8 @@
                                     colspan="100%"
                                 >
                                     <div class="flex justify-between">
-                                        <span>Cambio:</span> <span>100.0</span>
+                                        <span>Cambio:</span>
+                                        <span id="$exchange">0.00</span>
                                     </div>
                                 </th>
                             </tr>
@@ -126,6 +118,10 @@
                 </footer>
             </section>
         </main>
+        <script
+            src="../js/util.js"
+            defer
+        ></script>
         <script
             src="../controller/sections/ticketctrl.js"
             defer

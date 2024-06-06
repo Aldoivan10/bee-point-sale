@@ -3613,23 +3613,11 @@ html:has(.drawer-toggle:checked) {
   line-height: 1rem;
 }
 
-.\!table-xs :not(thead):not(tfoot) tr {
-  font-size: 0.75rem !important;
-  line-height: 1rem !important;
-}
-
 .table-xs :where(th, td) {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-}
-
-.\!table-xs :where(th, td) {
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
 }
 
 .tooltip {
@@ -3878,10 +3866,6 @@ html:has(.drawer-toggle:checked) {
   max-height: 12rem;
 }
 
-.min-h-3 {
-  min-height: 0.75rem;
-}
-
 .min-h-\[15rem\] {
   min-height: 15rem;
 }
@@ -3934,6 +3918,10 @@ html:has(.drawer-toggle:checked) {
   width: 151.18px;
 }
 
+.w-\[30\%\] {
+  width: 30%;
+}
+
 .w-\[32px\] {
   width: 32px;
 }
@@ -3944,10 +3932,6 @@ html:has(.drawer-toggle:checked) {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[30\%\] {
-  width: 30%;
 }
 
 .min-w-\[100dvw\] {
@@ -3978,24 +3962,20 @@ html:has(.drawer-toggle:checked) {
   max-width: 100%;
 }
 
-.max-w-xs {
-  max-width: 20rem;
+.max-w-\[151\.18px\] {
+  max-width: 151.18px;
 }
 
 .max-w-full {
   max-width: 100%;
 }
 
+.max-w-xs {
+  max-width: 20rem;
+}
+
 .grow {
   flex-grow: 1;
-}
-
-.table-fixed {
-  table-layout: fixed;
-}
-
-.border-separate {
-  border-collapse: separate;
 }
 
 .translate-x-10 {
@@ -4131,10 +4111,6 @@ html:has(.drawer-toggle:checked) {
   scroll-behavior: smooth;
 }
 
-.text-pretty {
-  text-wrap: pretty;
-}
-
 .rounded {
   border-radius: 0.25rem;
 }
@@ -4148,22 +4124,9 @@ html:has(.drawer-toggle:checked) {
   border-width: 1px;
 }
 
-.border-y-2 {
-  border-top-width: 2px;
-  border-bottom-width: 2px;
-}
-
 .border-y-\[1px\] {
   border-top-width: 1px;
   border-bottom-width: 1px;
-}
-
-.border-t-2 {
-  border-top-width: 2px;
-}
-
-.border-b-2 {
-  border-bottom-width: 2px;
 }
 
 .border-b-\[1px\] {
@@ -4176,6 +4139,11 @@ html:has(.drawer-toggle:checked) {
 
 .border-dashed {
   border-style: dashed;
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .border-current {
@@ -4200,11 +4168,6 @@ html:has(.drawer-toggle:checked) {
 .border-slate-700 {
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
-}
-
-.border-black {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .bg-base-100\/50 {
@@ -4298,11 +4261,6 @@ html:has(.drawer-toggle:checked) {
   padding-right: 1rem;
 }
 
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -4338,10 +4296,6 @@ html:has(.drawer-toggle:checked) {
 
 .text-center {
   text-align: center;
-}
-
-.text-justify {
-  text-align: justify;
 }
 
 .text-start {
@@ -4883,24 +4837,8 @@ html:has(.drawer-toggle:checked) {
   fill: #fff;
 }
 
-.has-\[p\:empty\]\:hidden:has(p:empty) {
-  display: none;
-}
-
 .has-\[input\:focus\]\:fill-primary:has(input:focus) {
   fill: var(--fallback-p,oklch(var(--p)/1));
-}
-
-.\[\&\.center\]\:items-center.center {
-  align-items: center;
-}
-
-.\[\&\.center\]\:text-center.center {
-  text-align: center;
-}
-
-.\[\&\.center\]\:\!text-center.center {
-  text-align: center !important;
 }
 
 .\[\&\:\:-webkit-scrollbar-corner\]\:rounded-br::-webkit-scrollbar-corner {
@@ -4929,10 +4867,6 @@ html:has(.drawer-toggle:checked) {
 }
 
 .\[\&\:is\(\.clientes\)_td\:nth-child\(2\)\]\:hidden:is(.clientes) td:nth-child(2) {
-  display: none;
-}
-
-.\[\&\:is\(\:empty\)\]\:hidden:is(:empty) {
   display: none;
 }
 
@@ -5042,24 +4976,8 @@ html:has(.drawer-toggle:checked) {
   margin-top: 0.5rem;
 }
 
-.\[\&\]\:text-\[90\%\] {
-  font-size: 90%;
-}
-
-.\[\&\]\:text-\[60\%\] {
-  font-size: 60%;
-}
-
-.\[\&\]\:\!text-\[60\%\] {
-  font-size: 60% !important;
-}
-
 .\[\&\]\:\!text-\[70\%\] {
   font-size: 70% !important;
-}
-
-.\[\&\]\:\!text-\[100\%\] {
-  font-size: 100% !important;
 }
 
 .\[\&_\*\:\:-webkit-scrollbar-corner\]\:rounded-br *::-webkit-scrollbar-corner {
@@ -5075,12 +4993,16 @@ html:has(.drawer-toggle:checked) {
   box-sizing: border-box;
 }
 
-.\[\&_\.center\]\:items-center .center {
-  align-items: center;
+.\[\&_\*\]\:\!text-\[50\%\] * {
+  font-size: 50% !important;
 }
 
-.\[\&_\.center\]\:\!text-center .center {
-  text-align: center !important;
+.\[\&_\*\]\:\!text-\[55\%\] * {
+  font-size: 55% !important;
+}
+
+.\[\&_\*\]\:\!text-\[70\%\] * {
+  font-size: 70% !important;
 }
 
 .\[\&_\.center\]\:text-center .center {
@@ -5123,10 +5045,6 @@ html:has(.drawer-toggle:checked) {
   color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
 }
 
-.\[\&_\.ticket_\*\]\:text-\[x-small\] .ticket * {
-  font-size: x-small;
-}
-
 .\[\&_\.ticket_\*\]\:text-\[90\%\] .ticket * {
   font-size: 90%;
 }
@@ -5143,10 +5061,6 @@ html:has(.drawer-toggle:checked) {
   top: -12px;
 }
 
-.\[\&_\]\:text-\[90\%\] {
-  font-size: 90%;
-}
-
 .\[\&_button\]\:grow button {
   flex-grow: 1;
 }
@@ -5158,10 +5072,6 @@ html:has(.drawer-toggle:checked) {
 
 .\[\&_div\:nth-child\(even\)_label\:has\(input\:focus\)\]\:fill-accent div:nth-child(even) label:has(input:focus) {
   fill: var(--fallback-a,oklch(var(--a)/1));
-}
-
-.\[\&_div\]\:\!text-\[100\%\] div {
-  font-size: 100% !important;
 }
 
 .\[\&_input\:first-child\:nth-last-child\(1\)\]\:rounded input:first-child:nth-last-child(1) {
@@ -5227,14 +5137,6 @@ html:has(.drawer-toggle:checked) {
   height: 100dvh;
 }
 
-.\[\&_p\]\:\!text-\[80\%\] p {
-  font-size: 80% !important;
-}
-
-.\[\&_p\]\:\!text-\[95\%\] p {
-  font-size: 95% !important;
-}
-
 .\[\&_span\]\:h-\[10px\] span {
   height: 10px;
 }
@@ -5276,8 +5178,8 @@ html:has(.drawer-toggle:checked) {
   border-radius: 0px;
 }
 
-.\[\&_td\]\:p-1 td {
-  padding: 0.25rem;
+.\[\&_td\:nth-child\(3\)\]\:text-justify td:nth-child(3) {
+  text-align: justify;
 }
 
 .\[\&_td\]\:p-\[2px\] td {
@@ -5292,28 +5194,8 @@ html:has(.drawer-toggle:checked) {
   vertical-align: middle;
 }
 
-.\[\&_td\]\:text-\[1em\] td {
-  font-size: 1em;
-}
-
-.\[\&_td\]\:text-\[0\.5em\] td {
-  font-size: 0.5em;
-}
-
-.\[\&_td\]\:text-\[0\.2em\] td {
-  font-size: 0.2em;
-}
-
-.\[\&_td\]\:\!text-\[0\.2em\] td {
-  font-size: 0.2em !important;
-}
-
 .\[\&_textarea\]\:grow textarea {
   flex-grow: 1;
-}
-
-.\[\&_th\]\:\!text-\[100\%\] th {
-  font-size: 100% !important;
 }
 
 .\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/10 tr:nth-child(even) {
@@ -5326,8 +5208,4 @@ html:has(.drawer-toggle:checked) {
 
 .\[\&_ul\]\:flex ul {
   display: flex;
-}
-
-.\[\&div\]\:\!text-\[100\%\]div {
-  font-size: 100% !important;
 }
