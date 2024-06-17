@@ -750,13 +750,22 @@ class KeyBoard extends Scheme {
         const query = `
             SELECT
                 combinacion,
-                funcion
+                funcion,
+                vista,
+                admin
             FROM
                 Teclado
         `
         return await this.db.fetch(query, [], (rows) =>
             rows.reduce((obj, row) => {
-                return { ...obj, [row["combinacion"]]: row["funcion"] }
+                return {
+                    ...obj,
+                    [row["combinacion"]]: {
+                        func: row["funcion"],
+                        view: row["vista"],
+                        admin: row["admin"],
+                    },
+                }
             }, {})
         )
     }

@@ -43,10 +43,13 @@ const createWindow = async () => {
 
     /* LOAD KEYS SHORTCUTS */
     const keys = await keyBoard.keys()
-
     for (const key of Object.keys(keys)) {
         globalShortcut.register(key, () => {
-            win.webContents.send(keys[key])
+            const map = keys[key]
+            console.log(map.func, map.func.includes("view"))
+            if (map.func.includes("view"))
+                win.webContents.send("change-view", map.view, map.admin)
+            else win.webContents.send(map.func)
         })
     }
 

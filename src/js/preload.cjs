@@ -57,11 +57,15 @@ contextBridge.exposeInMainWorld("departaments", {
 contextBridge.exposeInMainWorld("api", {
     onAddTab: (callback) => ipcRenderer.on("add-tab", (_event) => callback()),
     onDelTab: (callback) => ipcRenderer.on("del-tab", (_event) => callback()),
-    onClientsView: (callback) =>
+    /* onClientsView: (callback) =>
         ipcRenderer.on("clients-view", (_event) => callback("Clientes", true)),
     onProductsView: (callback) =>
         ipcRenderer.on("products-view", (_event) =>
             callback("Productos", false)
+        ), */
+    onChangeView: (callback) =>
+        ipcRenderer.on("change-view", (_event, view, admin) =>
+            callback(view, admin)
         ),
     onDataUpdated: (callback) =>
         ipcRenderer.on("data-updated", (_event, className) =>

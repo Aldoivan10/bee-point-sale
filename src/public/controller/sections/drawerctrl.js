@@ -43,7 +43,7 @@ class Drawer {
         for (const key of Object.keys(this.options)) {
             const opt = this.getOption(
                 this.options[key].text,
-                Object.entries(keyMap).find(([_, val]) => val === key)[0],
+                Object.entries(keyMap).find(([_, val]) => val.func === key)[0],
                 this.options[key].path,
                 focusOptionEvent,
                 (evt) => {

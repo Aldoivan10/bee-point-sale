@@ -16,7 +16,7 @@ function castKeyMap(keyMap) {
     }
     const keys = Object.keys(keyMap)
     return Object.values(keyMap).reduce((mapped, key, index) => {
-        const keyObj = map[key]
+        const keyObj = map[key.func]
         if (keyObj)
             return {
                 ...mapped,
@@ -28,6 +28,7 @@ function castKeyMap(keyMap) {
         return mapped
     }, {})
 }
+
 window.onload = async () => {
     const keyMap = await window.parent.parent.api.getkeyMap()
     const castedKeyMap = castKeyMap(keyMap)

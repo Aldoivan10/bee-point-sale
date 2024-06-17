@@ -4870,10 +4870,6 @@ html:has(.drawer-toggle:checked) {
   display: none;
 }
 
-.\[\&\:is\(\.admin\)_footer_div\:nth-child\(2\)\]\:hidden:is(.admin) footer div:nth-child(2) {
-  display: none;
-}
-
 .\[\&\:is\(\.clientes\)_td\:nth-child\(2\)\]\:hidden:is(.clientes) td:nth-child(2) {
   display: none;
 }
@@ -4895,6 +4891,18 @@ html:has(.drawer-toggle:checked) {
 }
 
 .\[\&\:not\(\.admin\)_td\:nth-child\(1\)\]\:hidden:not(.admin) td:nth-child(1) {
+  display: none;
+}
+
+.\[\&\:not\(\.admin\)_ul_li\:nth-child\(2\)\]\:hidden:not(.admin) ul li:nth-child(2) {
+  display: none;
+}
+
+.\[\&\:not\(\.admin\)_ul_li\:nth-child\(3\)\]\:hidden:not(.admin) ul li:nth-child(3) {
+  display: none;
+}
+
+.\[\&\:not\(\.admin\)_ul_li\:nth-child\(5\)\]\:hidden:not(.admin) ul li:nth-child(5) {
   display: none;
 }
 

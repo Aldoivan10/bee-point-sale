@@ -28,6 +28,7 @@ $footer.onload = () => {
     const doc = $footer.ownerDocument
 
     const changeView = (view, admin) => {
+        console.log(view)
         const objects = window.parent.document.querySelectorAll("object")
         for (const obj of objects) {
             if (obj.contentWindow === window) {
@@ -41,8 +42,7 @@ $footer.onload = () => {
     const api = window.parent.api
 
     api.onDataUpdated(updater)
-    api.onClientsView(changeView)
-    api.onProductsView(changeView)
+    api.onChangeView(changeView)
 
     menu.addListener((opt) => {
         const option = menuOpt.getOption(opt)
