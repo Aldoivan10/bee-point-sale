@@ -25,6 +25,7 @@
     },
     "homepage": "https://github.com/Aldoivan10/bee-point-sale#readme",
     "dependencies": {
+        "node-printer": "^1.0.4",
         "sqlite3": "^5.1.7"
     },
     "devDependencies": {

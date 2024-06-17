@@ -25,8 +25,9 @@ const menuOpt = new MenuOptions(
 
 $footer.onload = () => {
     const menu = new Menu()
+    const doc = $footer.ownerDocument
 
-    const changeView = (view) => {
+    const changeView = (view, admin) => {
         const objects = window.parent.document.querySelectorAll("object")
         for (const obj of objects) {
             if (obj.contentWindow === window) {
@@ -34,7 +35,8 @@ $footer.onload = () => {
                 break
             }
         }
-        menu.click(view)
+        if (admin && menu.admin) menu.click(view)
+        else if (!admin) menu.click(view)
     }
     const api = window.parent.api
 
@@ -52,5 +54,20 @@ $footer.onload = () => {
         )
         ctrl = option.ctrl
     })
-    $footer.ownerDocument.defaultView.menu = menu
+    doc.defaultView.menu = menu
+
+    const classObserver = new MutationObserver((mutations) => {
+        const body = mutations[0].target
+        if (body.classList.contains("admin")) {
+            $footer.contentDocument.body.classList.add("admin")
+            menu.setAdmin()
+        } else {
+            $footer.contentDocument.body.classList.remove("admin")
+            menu.setAdmin(false)
+        }
+    })
+    classObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ["class"],
+    })
 }

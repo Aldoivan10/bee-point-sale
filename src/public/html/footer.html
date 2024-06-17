@@ -12,7 +12,9 @@
         />
         <title>Footer</title>
     </head>
-    <body class="overflow-hidden">
+    <body
+        class="overflow-hidden [&:not(.admin)_footer_div:nth-child(2)]:hidden"
+    >
         <footer
             id="$menu"
             class="btm-nav bg-base-200 [&_div:is(.active)]:text-primary"

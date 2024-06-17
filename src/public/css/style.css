@@ -3854,6 +3854,10 @@ html:has(.drawer-toggle:checked) {
   height: 65px;
 }
 
+.h-\[calc\(100dvh-64px\)\] {
+  height: calc(100dvh - 64px);
+}
+
 .h-\[calc\(100dvh-96px\)\] {
   height: calc(100dvh - 96px);
 }
@@ -4866,6 +4870,10 @@ html:has(.drawer-toggle:checked) {
   display: none;
 }
 
+.\[\&\:is\(\.admin\)_footer_div\:nth-child\(2\)\]\:hidden:is(.admin) footer div:nth-child(2) {
+  display: none;
+}
+
 .\[\&\:is\(\.clientes\)_td\:nth-child\(2\)\]\:hidden:is(.clientes) td:nth-child(2) {
   display: none;
 }
@@ -4879,6 +4887,10 @@ html:has(.drawer-toggle:checked) {
 }
 
 .\[\&\:not\(\.admin\)_\.productos_td\:nth-child\(n\+11\)\]\:hidden:not(.admin) .productos td:nth-child(n+11) {
+  display: none;
+}
+
+.\[\&\:not\(\.admin\)_footer_div\:nth-child\(2\)\]\:hidden:not(.admin) footer div:nth-child(2) {
   display: none;
 }
 
@@ -4993,14 +5005,6 @@ html:has(.drawer-toggle:checked) {
   box-sizing: border-box;
 }
 
-.\[\&_\*\]\:\!text-\[50\%\] * {
-  font-size: 50% !important;
-}
-
-.\[\&_\*\]\:\!text-\[55\%\] * {
-  font-size: 55% !important;
-}
-
 .\[\&_\*\]\:\!text-\[70\%\] * {
   font-size: 70% !important;
 }
@@ -5072,6 +5076,11 @@ html:has(.drawer-toggle:checked) {
 
 .\[\&_div\:nth-child\(even\)_label\:has\(input\:focus\)\]\:fill-accent div:nth-child(even) label:has(input:focus) {
   fill: var(--fallback-a,oklch(var(--a)/1));
+}
+
+.\[\&_footer\]\:bg-red-400 footer {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
 .\[\&_input\:first-child\:nth-last-child\(1\)\]\:rounded input:first-child:nth-last-child(1) {

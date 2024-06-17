@@ -610,7 +610,7 @@ class Client extends Scheme {
         filter = filter ? filter : ""
         const query = `
             SELECT 
-                E.id_entidad, 
+                E.id_entidad ID, 
                 COALESCE(E.RFC, 'S/D') RFC, 
                 E.nombre AS Nombre,
                 COALESCE(E.direccion, 'S/D') AS Dirección,
@@ -800,6 +800,8 @@ class Ticket extends Scheme {
     }
 }
 
+class Log extends Scheme {}
+
 module.exports = {
     Product,
     User,
@@ -810,4 +812,5 @@ module.exports = {
     Departament,
     Rol,
     Ticket,
+    Log,
 }

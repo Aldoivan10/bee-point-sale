@@ -107,7 +107,7 @@ class PaginedTableController extends TableController {
         this.api.get(pageSize, offset, filter).then((data) => {
             const endOfCodes = this.model.setHeaders(data)
             this.model.setData(data)
-            this.view.hideColumns(endOfCodes, endOfCodes + 2)
+            if (endOfCodes) this.view.hideColumns(endOfCodes, endOfCodes + 2)
         })
     }
 

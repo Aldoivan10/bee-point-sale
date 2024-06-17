@@ -186,3 +186,12 @@ app.whenReady().then(async () => {
 
     createWindow()
 })
+
+/* const printer = new BrowserWindow()
+const printerOptions = {
+    silent: true,
+    deviceName: "My-Printer",
+}
+ */
+const Printer = require("node-printer")
+Printer.list()

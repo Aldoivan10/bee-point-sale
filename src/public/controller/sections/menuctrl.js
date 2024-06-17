@@ -1,6 +1,11 @@
 class Menu extends Listener {
     constructor() {
         super()
+        this.admin = false
+    }
+
+    setAdmin(admin = true) {
+        this.admin = admin
     }
 
     setButtons = (arrChilds) => {
@@ -50,6 +55,7 @@ class MenuOptions {
                 },
                 class: "productos",
                 ctrl: productCtrl,
+                adnin: false,
             },
             Clientes: {
                 api: window.parent.clients,
@@ -57,6 +63,7 @@ class MenuOptions {
                 mapper: {},
                 class: "clientes",
                 ctrl: clientCtrl,
+                admin: true,
             },
         }
     }
