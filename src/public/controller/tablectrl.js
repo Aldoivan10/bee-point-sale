@@ -17,6 +17,7 @@ class TableController {
     async getData() {
         this.view.cleanRows()
         this.api.get().then((data) => {
+            if (data.length > 1) return
             this.model.setHeaders(data)
             this.model.setData(data)
         })
@@ -105,9 +106,12 @@ class PaginedTableController extends TableController {
     async getData(pageSize, offset, filter = null) {
         this.view.cleanRows()
         this.api.get(pageSize, offset, filter).then((data) => {
-            const endOfCodes = this.model.setHeaders(data)
-            this.model.setData(data)
-            if (endOfCodes) this.view.hideColumns(endOfCodes, endOfCodes + 2)
+            if (data.length !== 0) {
+                const endOfCodes = this.model.setHeaders(data)
+                this.model.setData(data)
+                if (endOfCodes)
+                    this.view.hideColumns(endOfCodes, endOfCodes + 2)
+            } else this.view.setEmpty()
         })
     }
 

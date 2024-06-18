@@ -809,7 +809,28 @@ class Ticket extends Scheme {
     }
 }
 
-class Log extends Scheme {}
+class ShoppingCart extends Scheme {
+    items = []
+
+    all() {
+        return this.items
+    }
+
+    clear() {
+        this.items = []
+    }
+
+    addItem(item) {
+        this.items.push(item)
+    }
+
+    remove(item) {}
+
+    save(data) {
+        const user = data.user
+        const entity = data.entity
+    }
+}
 
 module.exports = {
     Product,
@@ -821,5 +842,5 @@ module.exports = {
     Departament,
     Rol,
     Ticket,
-    Log,
+    ShoppingCart,
 }

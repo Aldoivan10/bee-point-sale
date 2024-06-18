@@ -9,6 +9,7 @@ const {
     KeyBoard,
     Departament,
     Ticket,
+    ShoppingCart,
 } = require("../model/schemes.js")
 const path = require("node:path")
 const DB = require("../model/db.js")
@@ -25,6 +26,7 @@ const keyBoard = new KeyBoard(db)
 const departamentScheme = new Departament(db)
 const rolScheme = new Rol(db)
 const ticketScheme = new Ticket(db)
+const shoppingCart = new ShoppingCart(db)
 
 const createWindow = async () => {
     const win = new BrowserWindow({
@@ -46,7 +48,6 @@ const createWindow = async () => {
     for (const key of Object.keys(keys)) {
         globalShortcut.register(key, () => {
             const map = keys[key]
-            console.log(map.func, map.func.includes("view"))
             if (map.func.includes("view"))
                 win.webContents.send("change-view", map.view, map.admin)
             else win.webContents.send(map.func)
@@ -56,7 +57,10 @@ const createWindow = async () => {
     app.on("browser-window-focus", () => {
         for (const key of Object.keys(keys)) {
             globalShortcut.register(key, () => {
-                win.webContents.send(keys[key])
+                const map = keys[key]
+                if (map.func.includes("view"))
+                    win.webContents.send("change-view", map.view, map.admin)
+                else win.webContents.send(map.func)
             })
         }
     })
@@ -184,6 +188,8 @@ app.whenReady().then(async () => {
         "update-ticket",
         async (_, ticket) => await ticketScheme.update(ticket)
     )
+    /* CART */
+
     /* globalShortcut.unregister("F5")
     globalShortcut.unregister("CommandOrControl+R") */
 

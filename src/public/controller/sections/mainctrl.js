@@ -20,7 +20,8 @@ tableCtrl.onEdit(async ($rows) => {
 
 const menuOpt = new MenuOptions(
     window.parent.productController,
-    window.parent.clientController
+    window.parent.clientController,
+    window.parent.cartController
 ).setPaginedTableController(tableCtrl)
 
 $footer.onload = () => {
@@ -28,7 +29,6 @@ $footer.onload = () => {
     const doc = $footer.ownerDocument
 
     const changeView = (view, admin) => {
-        console.log(view)
         const objects = window.parent.document.querySelectorAll("object")
         for (const obj of objects) {
             if (obj.contentWindow === window) {

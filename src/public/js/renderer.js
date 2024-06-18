@@ -8,4 +8,5 @@ $header.onload = async (evt) => {
     )
     window.productController = drawer.productController
     window.clientController = null
+    window.cartController = null
 }

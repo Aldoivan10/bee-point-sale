@@ -13,7 +13,7 @@
         <title>Main</title>
     </head>
     <body
-        class="flex flex-col overflow-hidden h-[calc(100dvh-64px)] [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px] [&:not(.admin)_.btn-admin]:hidden [&:not(.admin)_td:nth-child(1)]:hidden [&:not(.admin)_.productos_td:nth-child(n+11)]:hidden"
+        class="flex flex-col overflow-hidden h-[calc(100dvh-64px)] [&_mark]:bg-secondary/[0.5] [&_mark]:rounded [&_mark]:px-[2px] [&:not(.admin)_.btn-admin]:hidden [&:not(.admin)_td:not([colspan=100%]):nth-child(1)]:hidden [&:not(.admin)_.productos_td:nth-child(n+11)]:hidden"
     >
         <main
             class="grow flex flex-col p-4 [&:has(input[type=checkbox]:checked)_.btn-error]:bg-opacity-100 [&:has(input[type=checkbox]:checked)_.btn-error]:pointer-events-auto"
@@ -151,6 +151,14 @@
         ></script>
         <script
             src="../controller/tablectrl.js"
+            defer
+        ></script>
+        <script
+            src="../controller/cartctrl.js"
+            defer
+        ></script>
+        <script
+            src="../model/components/cartmodel.js"
             defer
         ></script>
         <script

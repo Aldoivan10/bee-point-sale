@@ -54,15 +54,17 @@ contextBridge.exposeInMainWorld("departaments", {
     edit: (obj) => ipcRenderer.invoke("edit-departament", obj),
 })
 
+contextBridge.exposeInMainWorld("cart", {
+    get: () => ipcRenderer.invoke("fetch-cart"),
+    create: (data) => ipcRenderer.invoke("save-cart", data),
+    delete: (items) => ipcRenderer.invoke("delete-item-cart", items),
+    add: (item) => ipcRenderer.invoke("add-item-cart", item),
+    clear: () => ipcRenderer.invoke("clear-cart"),
+})
+
 contextBridge.exposeInMainWorld("api", {
     onAddTab: (callback) => ipcRenderer.on("add-tab", (_event) => callback()),
     onDelTab: (callback) => ipcRenderer.on("del-tab", (_event) => callback()),
-    /* onClientsView: (callback) =>
-        ipcRenderer.on("clients-view", (_event) => callback("Clientes", true)),
-    onProductsView: (callback) =>
-        ipcRenderer.on("products-view", (_event) =>
-            callback("Productos", false)
-        ), */
     onChangeView: (callback) =>
         ipcRenderer.on("change-view", (_event, view, admin) =>
             callback(view, admin)

@@ -4890,6 +4890,10 @@ html:has(.drawer-toggle:checked) {
   display: none;
 }
 
+.\[\&\:not\(\.admin\)_td\:not\(\[colspan\=100\%\]\)\:nth-child\(1\)\]\:hidden:not(.admin) td:not([colspan=100%]):nth-child(1) {
+  display: none;
+}
+
 .\[\&\:not\(\.admin\)_td\:nth-child\(1\)\]\:hidden:not(.admin) td:nth-child(1) {
   display: none;
 }

@@ -14,6 +14,7 @@ class Pagination extends Listener {
 
     buildPagination(total) {
         this.removeChilds(this.$pagination)
+        if (total === 0) return
         this.steps = Math.ceil(total / this.pageSize)
         const numButtons =
             this.steps < this.maxSteps ? this.steps : this.maxSteps
