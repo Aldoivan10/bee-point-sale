@@ -7,6 +7,6 @@ $header.onload = async (evt) => {
         $header
     )
     window.productController = drawer.productController
-    window.clientController = null
-    window.cartController = null
+    window.clientController = drawer.clientController
+    window.cartController = drawer.cartController
 }

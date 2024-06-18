@@ -5396,6 +5396,28 @@ html:has(.drawer-toggle:checked) {
   flex-grow: 1;
 }
 
+.\[\&_tr\:hover\]\:bg-red-200 tr:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+
+.\[\&_tr\:hover\]\:\!bg-red-200 tr:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity)) !important;
+}
+
+.\[\&_tr\:hover\]\:\!bg-primary\/20 tr:hover {
+  background-color: var(--fallback-p,oklch(var(--p)/0.2)) !important;
+}
+
+.\[\&_tr\:hover\]\:\!bg-primary\/10 tr:hover {
+  background-color: var(--fallback-p,oklch(var(--p)/0.1)) !important;
+}
+
+.\[\&_tr\:hover\]\:\!bg-secondary\/10 tr:hover {
+  background-color: var(--fallback-s,oklch(var(--s)/0.1)) !important;
+}
+
 .\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/10 tr:nth-child(even) {
   background-color: rgb(100 116 139 / 0.1);
 }

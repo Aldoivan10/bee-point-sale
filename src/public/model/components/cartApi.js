@@ -17,6 +17,11 @@ class CartApi {
     }
 
     add(item) {
+        const index = this.items.findIndex(
+            (i) => i["Producto"] === item["Producto"]
+        )
+        if (index != -1) return
+        item["ID"] = crypto.randomUUID()
         this.items.push(item)
     }
 

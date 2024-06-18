@@ -88,6 +88,8 @@ class Drawer {
         return productController
     }
 
+    initCartController() {}
+
     getOption(text, keyCombination, path, focusEvent, action) {
         const $li = document.createElement("li")
         const $btn = document.createElement("button")
