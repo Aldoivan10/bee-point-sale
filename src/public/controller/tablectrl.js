@@ -63,6 +63,10 @@ class TableController {
         this.view.addListener(listener)
     }
 
+    onDblClick(listener) {
+        this.view.addListener(listener, "dblclick")
+    }
+
     showAlert(alertObj, alerts) {
         const alert = alerts ? alerts : this.alerts
         if (alertObj.status === "success") {
@@ -106,12 +110,10 @@ class PaginedTableController extends TableController {
     async getData(pageSize, offset, filter = null) {
         this.view.cleanRows()
         this.api.get(pageSize, offset, filter).then((data) => {
-            if (data.length !== 0) {
-                const endOfCodes = this.model.setHeaders(data)
-                this.model.setData(data)
-                if (endOfCodes)
-                    this.view.hideColumns(endOfCodes, endOfCodes + 2)
-            } else this.view.setEmpty()
+            const endOfCodes =
+                data.length > 0 ? this.model.setHeaders(data) : null
+            this.model.setData(data)
+            if (endOfCodes) this.view.hideColumns(endOfCodes, endOfCodes + 2)
         })
     }
 

@@ -1,4 +1,4 @@
-class CartModel {
+class CartApi {
     constructor() {
         this.items = []
         this.clear()

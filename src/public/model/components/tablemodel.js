@@ -105,9 +105,15 @@ class ProductModel extends TableModel {
                 obj["id_producto"] = row["id_producto"]
                 accRows.push({ ...base, ...obj })
             }
-
             return rows.concat(accRows)
         }, [])
         super.setData(mappedRows)
+    }
+}
+
+class CartModel extends TableModel {
+    setData(data) {
+        super.setData(data)
+        this.setHeaders(["Producto", "Unidad", "Cantidad", "Precio", "Total"])
     }
 }

@@ -1,6 +1,6 @@
 class TableView extends Listener {
     constructor($table) {
-        super()
+        super("main", "dblclick")
         this.$table = $table
         this.$header = $table.querySelector("thead > tr")
         this.$body = $table.querySelector("tbody")
@@ -123,6 +123,19 @@ class TableView extends Listener {
                 )
             else $row.innerHTML += `<td class="hover">${row[key]}</td>`
         }
+
+        $row.addEventListener("dblclick", () => {
+            const row = {}
+            const headers = Array.from(this.$header.childNodes).map(
+                (td) => td.textContent
+            )
+            const data = Array.from($row.childNodes).map((td) => td.textContent)
+            headers.forEach((header, index) => {
+                if (!header.includes("Seleccionar")) row[header] = data[index]
+            })
+
+            this.notify("dblclick", row, this.getClass())
+        })
         this.$body.appendChild($row)
     }
 

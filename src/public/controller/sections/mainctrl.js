@@ -11,6 +11,14 @@ const tableCtrl = new PaginedTableController(
     $delItems
 )
 
+const menuOpt = new MenuOptions(
+    window.parent.productController,
+    window.parent.clientController,
+    window.parent.cartController
+).setPaginedTableController(tableCtrl)
+
+const cartApi = menuOpt.getApi("Venta")
+
 tableCtrl.onEdit(async ($rows) => {
     const $row = $rows[0]
     const id = +$row.querySelector(".hidden").textContent
@@ -18,11 +26,36 @@ tableCtrl.onEdit(async ($rows) => {
     ctrl.showModal(obj, id)
 })
 
-const menuOpt = new MenuOptions(
-    window.parent.productController,
-    window.parent.clientController,
-    window.parent.cartController
-).setPaginedTableController(tableCtrl)
+tableCtrl.onDblClick((arr) => {
+    const name = arr[1]
+    if (name !== "productos") return
+    const $dialog = parent.$cart
+    const row = arr[0]
+    const btn = $dialog.querySelector(".btn-success")
+    const input = $dialog.querySelector("input")
+
+    $dialog.addEventListener("keyup", (evt) => {
+        if (evt.key === "Enter" && input.value) btn.click()
+    })
+    input.addEventListener("change", () => {
+        const val = input.value
+        if (val) input.value = Math.min(Math.max(val, 1), +row["Cantidad"])
+    })
+    input.max = row["Cantidad"]
+    btn.onclick = () => {
+        const price = +row["Precio de compra"].split("$")[1]
+        const item = {
+            Producto: row["Nombre"],
+            Unidad: row["Unidad"],
+            Cantidad: +input.value,
+            Precio: price,
+            Total: price * +input.value,
+        }
+        cartApi.add(item)
+        $dialog.close()
+    }
+    $dialog.showModal()
+})
 
 $footer.onload = () => {
     const menu = new Menu()

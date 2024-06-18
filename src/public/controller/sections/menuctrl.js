@@ -64,13 +64,30 @@ class MenuOptions {
                 ctrl: clientCtrl,
             },
             Venta: {
-                api: new CartModel(),
-                model: new TableModel(),
-                mapper: {},
+                api: new CartApi(),
+                model: new CartModel(),
+                mapper: {
+                    Precio: (val) => {
+                        return val.toLocaleString("es-MX", {
+                            style: "currency",
+                            currency: "MXN",
+                        })
+                    },
+                    Total: (val) => {
+                        return val.toLocaleString("es-MX", {
+                            style: "currency",
+                            currency: "MXN",
+                        })
+                    },
+                },
                 class: "carrito",
                 ctrl: cartCtrl,
             },
         }
+    }
+
+    getApi(api) {
+        return this.options[api].api
     }
 
     setPaginedTableController(ctrl, opt = "Productos") {
