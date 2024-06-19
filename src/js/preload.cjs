@@ -80,4 +80,5 @@ contextBridge.exposeInMainWorld("api", {
     getkeyMap: () => ipcRenderer.invoke("key-map"),
     ticket: () => ipcRenderer.invoke("fetch-ticket"),
     updateTicket: (ticket) => ipcRenderer.invoke("update-ticket", ticket),
+    saveLog: (data) => ipcRenderer.invoke("save-log", data),
 })

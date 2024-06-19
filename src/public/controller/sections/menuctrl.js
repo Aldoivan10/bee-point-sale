@@ -28,7 +28,14 @@ class Menu extends Listener {
 }
 
 class MenuOptions {
-    constructor(productCtrl, clientCtrl, cartCtrl) {
+    constructor(productCtrl, clientCtrl) {
+        const cartModel = new CartApi()
+        const cartCtrl = new CartControlller(
+            new CartView(parent.$sell),
+            cartModel,
+            parent.$confirm
+        )
+
         this.options = {
             Productos: {
                 api: window.parent.products,
@@ -64,7 +71,7 @@ class MenuOptions {
                 ctrl: clientCtrl,
             },
             Venta: {
-                api: new CartApi(),
+                api: cartModel,
                 model: new CartModel(),
                 mapper: {
                     Precio: (val) => {

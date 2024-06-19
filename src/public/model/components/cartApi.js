@@ -4,8 +4,19 @@ class CartApi {
         this.clear()
     }
 
-    save() {
-        this.clear()
+    async save(user, entity) {
+        const response = await parent.api.saveLog({
+            user: user,
+            entity: entity,
+            items: this.items,
+        })
+        if (response.status === "success") {
+            parent.appAlert.success(response.msg)
+            this.clear()
+        } else {
+            parent.appAlert.error(response.msg)
+            console.log(response.data)
+        }
     }
 
     get() {
@@ -34,5 +45,12 @@ class CartApi {
         this.items = []
         this.user = ""
         this.entityt = ""
+    }
+
+    amount() {
+        return this.items.reduce(
+            (acc, item) => acc + +item.Total.split("$")[1],
+            0
+        )
     }
 }

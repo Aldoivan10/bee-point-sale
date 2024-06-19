@@ -4367,11 +4367,6 @@ html:has(.drawer-toggle:checked) {
   opacity: 0.7;
 }
 
-.blur {
-  --tw-blur: blur(8px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -4390,23 +4385,23 @@ html:has(.drawer-toggle:checked) {
   transition-duration: 150ms;
 }
 
-.\[\&\:has\(input\:-moz-placeholder-shown\)_\#\$add\]\:btn-disabled:has(input:-moz-placeholder-shown) #$add {
+.\[\&\:has\(\#buy\:-moz-placeholder-shown\)_\#pay-ticket\]\:btn-disabled:has(#buy:-moz-placeholder-shown) #pay-ticket {
   pointer-events: none;
 }
 
-.\[\&\:has\(input\:placeholder-shown\)_\#\$add\]\:btn-disabled:has(input:placeholder-shown) #$add {
+.\[\&\:has\(\#buy\:placeholder-shown\)_\#pay-ticket\]\:btn-disabled:has(#buy:placeholder-shown) #pay-ticket {
   pointer-events: none;
 }
 
 @media (hover: hover) {
-  .\[\&\:has\(input\:-moz-placeholder-shown\)_\#\$add\]\:btn-disabled:has(input:-moz-placeholder-shown) #$add:hover {
+  .\[\&\:has\(\#buy\:-moz-placeholder-shown\)_\#pay-ticket\]\:btn-disabled:has(#buy:-moz-placeholder-shown) #pay-ticket:hover {
     --tw-border-opacity: 0;
     background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
     --tw-bg-opacity: 0.2;
     color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
     --tw-text-opacity: 0.2;
   }
-  .\[\&\:has\(input\:placeholder-shown\)_\#\$add\]\:btn-disabled:has(input:placeholder-shown) #$add:hover {
+  .\[\&\:has\(\#buy\:placeholder-shown\)_\#pay-ticket\]\:btn-disabled:has(#buy:placeholder-shown) #pay-ticket:hover {
     --tw-border-opacity: 0;
     background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
     --tw-bg-opacity: 0.2;
@@ -4415,7 +4410,7 @@ html:has(.drawer-toggle:checked) {
   }
 }
 
-.\[\&\:has\(input\:-moz-placeholder-shown\)_\#\$add\]\:btn-disabled:has(input:-moz-placeholder-shown) #$add.btn {
+.\[\&\:has\(\#buy\:-moz-placeholder-shown\)_\#pay-ticket\]\:btn-disabled:has(#buy:-moz-placeholder-shown) #pay-ticket.btn {
   --tw-border-opacity: 0;
   background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
   --tw-bg-opacity: 0.2;
@@ -4423,7 +4418,70 @@ html:has(.drawer-toggle:checked) {
   --tw-text-opacity: 0.2;
 }
 
-.\[\&\:has\(input\:placeholder-shown\)_\#\$add\]\:btn-disabled:has(input:placeholder-shown) #$add.btn {
+.\[\&\:has\(\#buy\:placeholder-shown\)_\#pay-ticket\]\:btn-disabled:has(#buy:placeholder-shown) #pay-ticket.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.\[\&\:has\(\#buy\:-moz-placeholder-shown\)_\#pay\]\:btn-disabled:has(#buy:-moz-placeholder-shown) #pay {
+  pointer-events: none;
+}
+
+.\[\&\:has\(\#buy\:placeholder-shown\)_\#pay\]\:btn-disabled:has(#buy:placeholder-shown) #pay {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .\[\&\:has\(\#buy\:-moz-placeholder-shown\)_\#pay\]\:btn-disabled:has(#buy:-moz-placeholder-shown) #pay:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+  .\[\&\:has\(\#buy\:placeholder-shown\)_\#pay\]\:btn-disabled:has(#buy:placeholder-shown) #pay:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.\[\&\:has\(\#buy\:-moz-placeholder-shown\)_\#pay\]\:btn-disabled:has(#buy:-moz-placeholder-shown) #pay.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.\[\&\:has\(\#buy\:placeholder-shown\)_\#pay\]\:btn-disabled:has(#buy:placeholder-shown) #pay.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:has(.carrito):not(:has(td[colspan])) .btn-sell {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:has(.carrito):not(:has(td[colspan])) .btn-sell:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:has(.carrito):not(:has(td[colspan])) .btn-sell.btn {
   --tw-border-opacity: 0;
   background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
   --tw-bg-opacity: 0.2;
@@ -4465,6 +4523,28 @@ html:has(.drawer-toggle:checked) {
 }
 
 .\[\&\:has\(input\:placeholder-shown\)_\.btn-success\]\:btn-disabled:has(input:placeholder-shown) .btn-success.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
+.\[\&\:has\(td\[colspan\]\)_\.btn-sell\]\:btn-disabled:has(td[colspan]) .btn-sell {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .\[\&\:has\(td\[colspan\]\)_\.btn-sell\]\:btn-disabled:has(td[colspan]) .btn-sell:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.\[\&\:has\(td\[colspan\]\)_\.btn-sell\]\:btn-disabled:has(td[colspan]) .btn-sell.btn {
   --tw-border-opacity: 0;
   background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
   --tw-bg-opacity: 0.2;
@@ -4821,6 +4901,28 @@ html:has(.drawer-toggle:checked) {
   color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity)));
 }
 
+.\[\&\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:not(:has(td[colspan])) .btn-sell {
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .\[\&\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:not(:has(td[colspan])) .btn-sell:hover {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+  }
+}
+
+.\[\&\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:not(:has(td[colspan])) .btn-sell.btn {
+  --tw-border-opacity: 0;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  --tw-bg-opacity: 0.2;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --tw-text-opacity: 0.2;
+}
+
 .\[\&_div\:nth-child\(even\)_label\]\:input-accent div:nth-child(even) label {
   --tw-border-opacity: 1;
   border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
@@ -4941,26 +5043,66 @@ html:has(.drawer-toggle:checked) {
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
 
-.\[\&\:has\(\.carrito\)\]\:bg-red-300:has(.carrito) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
-}
-
-.\[\&\:has\(\.carrito\)\]\:\!bg-red-300:has(.carrito) {
+.\[\&\:has\(\#\$buy\:-moz-placeholder-shown\)\]\:\!bg-red-300:has(#$buy:-moz-placeholder-shown) {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
 }
 
-.\[\&\:has\(\.carrito\)_\#\$delItems\]\:block:has(.carrito) #$delItems {
-  display: block;
+.\[\&\:has\(\#\$buy\:placeholder-shown\)\]\:\!bg-red-300:has(#$buy:placeholder-shown) {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
 }
 
-.\[\&\:has\(\.carrito\)_\#\$delItems\]\:\!block:has(.carrito) #$delItems {
-  display: block !important;
+.\[\&\:has\(\#buy\:-moz-placeholder-shown\)\]\:\!bg-red-300:has(#buy:-moz-placeholder-shown) {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
 }
 
-.\[\&\:has\(\.carrito\)_\.btn-del\]\:block:has(.carrito) .btn-del {
-  display: block;
+.\[\&\:has\(\#buy\:placeholder-shown\)\]\:\!bg-red-300:has(#buy:placeholder-shown) {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
+}
+
+.\[\&\:has\(\#buy\:-moz-placeholder-shown\)_\:where\(\)\]\:\!bg-red-300:has(#buy:-moz-placeholder-shown) :where() {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
+}
+
+.\[\&\:has\(\#buy\:placeholder-shown\)_\:where\(\)\]\:\!bg-red-300:has(#buy:placeholder-shown) :where() {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
+}
+
+.\[\&\:has\(\$buy\:-moz-placeholder-shown\)\]\:bg-red-300:has($buy:-moz-placeholder-shown) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
+.\[\&\:has\(\$buy\:placeholder-shown\)\]\:bg-red-300:has($buy:placeholder-shown) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
+.\[\&\:has\(\$buy\:-moz-placeholder-shown\)\]\:\!bg-red-300:has($buy:-moz-placeholder-shown) {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
+}
+
+.\[\&\:has\(\$buy\:placeholder-shown\)\]\:\!bg-red-300:has($buy:placeholder-shown) {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
+}
+
+.\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\>button\]\:bg-opacity-100:has(.carrito):not(:has(td[colspan])) .btn-sell>button {
+  --tw-bg-opacity: 1;
+}
+
+.\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\>button\]\:opacity-100:has(.carrito):not(:has(td[colspan])) .btn-sell>button {
+  opacity: 1;
+}
+
+.\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:opacity-100:has(.carrito):not(:has(td[colspan])) .btn-sell {
+  opacity: 1;
 }
 
 .\[\&\:has\(\.carrito\)_\.btn-del\]\:\!block:has(.carrito) .btn-del {
@@ -4971,32 +5113,22 @@ html:has(.drawer-toggle:checked) {
   width: 100%;
 }
 
-.\[\&\:has\(\.carrito\)_\.buttons\]\:items-end:has(.carrito) .buttons {
-  align-items: flex-end;
-}
-
 .\[\&\:has\(\.carrito\)_\.buttons\]\:justify-end:has(.carrito) .buttons {
   justify-content: flex-end;
-}
-
-.\[\&\:has\(\.carrito\)_\.page-size\]\:hidden:has(.carrito) .page-size {
-  display: none;
 }
 
 .\[\&\:has\(\.carrito\)_\:where\(\.filter\2c \.btn-add\)\]\:hidden:has(.carrito) :where(.filter,.btn-add) {
   display: none;
 }
 
-.\[\&\:has\(\.carrito\)_\:where\(\.filters\2c \.btn-add\)\]\:hidden:has(.carrito) :where(.filters,.btn-add) {
-  display: none;
+.\[\&\:has\(\:not\(\$buy\:-moz-placeholder-shown\)\)\]\:bg-red-300:has(:not($buy:-moz-placeholder-shown)) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
-.\[\&\:has\(\.carrito\)_\:where\(\.page-size\2c \)\]\:hidden:has(.carrito) :where(.page-size,) {
-  display: none;
-}
-
-.\[\&\:has\(\.carrito\)_\:where\(\.page-size\2c \.btn-add\)\]\:hidden:has(.carrito) :where(.page-size,.btn-add) {
-  display: none;
+.\[\&\:has\(\:not\(\$buy\:placeholder-shown\)\)\]\:bg-red-300:has(:not($buy:placeholder-shown)) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
 .\[\&\:has\(input\[type\=checkbox\]\:checked\)_\.btn-error\]\:pointer-events-auto:has(input[type=checkbox]:checked) .btn-error {
@@ -5011,27 +5143,11 @@ html:has(.drawer-toggle:checked) {
   display: none;
 }
 
-.\[\&\:has\(td\[colspan\=100\%\]\)_thead_td\:last-child\]\:hidden:has(td[colspan=100%]) thead td:last-child {
-  display: none;
-}
-
 .\[\&\:is\(\.admin\)_\.btn-login\]\:hidden:is(.admin) .btn-login {
   display: none;
 }
 
-.\[\&\:is\(\.carrito\)\:has\(tbody_td\[colspan\=100\%\]\)_thead_td\:last-child\]\:hidden:is(.carrito):has(tbody td[colspan=100%]) thead td:last-child {
-  display: none;
-}
-
-.\[\&\:is\(\.carrito\)\:has\(td\[colspan\=100\%\]\)_thead_td\:last-child\]\:hidden:is(.carrito):has(td[colspan=100%]) thead td:last-child {
-  display: none;
-}
-
-.\[\&\:is\(\.carrito\)_\#\$delItems\]\:block:is(.carrito) #$delItems {
-  display: block;
-}
-
-.\[\&\:is\(\.carrito\)_td\:last-child\:not\(\[colspan\=100\%\]\)\]\:hidden:is(.carrito) td:last-child:not([colspan=100%]) {
+.\[\&\:is\(\.carrito\)_tbody_td\:nth-child\(7\)\]\:hidden:is(.carrito) tbody td:nth-child(7) {
   display: none;
 }
 
@@ -5039,16 +5155,12 @@ html:has(.drawer-toggle:checked) {
   display: none;
 }
 
-.\[\&\:is\(\.carrito\)_td\:last-child\]\:hidden:is(.carrito) td:last-child {
-  display: none;
-}
-
-.\[\&\:is\(\.carrito\)_thead_td\:last-child\]\:hidden:is(.carrito) thead td:last-child {
-  display: none;
-}
-
 .\[\&\:is\(\.clientes\)_td\:nth-child\(2\)\]\:hidden:is(.clientes) td:nth-child(2) {
   display: none;
+}
+
+.\[\&\:is\(\.productos\)_tbody_tr\:not\(\:has\(td\[colspan\]\)\)\:hover\]\:\!bg-secondary\/10:is(.productos) tbody tr:not(:has(td[colspan])):hover {
+  background-color: var(--fallback-s,oklch(var(--s)/0.1)) !important;
 }
 
 .\[\&\:not\(\.admin\)_\.btn-admin\]\:hidden:not(.admin) .btn-admin {
@@ -5071,10 +5183,6 @@ html:has(.drawer-toggle:checked) {
   display: none;
 }
 
-.\[\&\:not\(\.admin\)_td\:nth-child\(1\)\]\:hidden:not(.admin) td:nth-child(1) {
-  display: none;
-}
-
 .\[\&\:not\(\.admin\)_ul_li\:nth-child\(2\)\]\:hidden:not(.admin) ul li:nth-child(2) {
   display: none;
 }
@@ -5084,6 +5192,10 @@ html:has(.drawer-toggle:checked) {
 }
 
 .\[\&\:not\(\.admin\)_ul_li\:nth-child\(5\)\]\:hidden:not(.admin) ul li:nth-child(5) {
+  display: none;
+}
+
+.\[\&\:not\(\:has\(\.carrito\)\)_\.btn-sell\]\:hidden:not(:has(.carrito)) .btn-sell {
   display: none;
 }
 
@@ -5394,28 +5506,6 @@ html:has(.drawer-toggle:checked) {
 
 .\[\&_textarea\]\:grow textarea {
   flex-grow: 1;
-}
-
-.\[\&_tr\:hover\]\:bg-red-200 tr:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
-}
-
-.\[\&_tr\:hover\]\:\!bg-red-200 tr:hover {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity)) !important;
-}
-
-.\[\&_tr\:hover\]\:\!bg-primary\/20 tr:hover {
-  background-color: var(--fallback-p,oklch(var(--p)/0.2)) !important;
-}
-
-.\[\&_tr\:hover\]\:\!bg-primary\/10 tr:hover {
-  background-color: var(--fallback-p,oklch(var(--p)/0.1)) !important;
-}
-
-.\[\&_tr\:hover\]\:\!bg-secondary\/10 tr:hover {
-  background-color: var(--fallback-s,oklch(var(--s)/0.1)) !important;
 }
 
 .\[\&_tr\:nth-child\(even\)\]\:bg-slate-500\/10 tr:nth-child(even) {

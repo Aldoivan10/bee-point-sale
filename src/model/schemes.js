@@ -809,26 +809,11 @@ class Ticket extends Scheme {
     }
 }
 
-class ShoppingCart extends Scheme {
-    items = []
-
-    all() {
-        return this.items
-    }
-
-    clear() {
-        this.items = []
-    }
-
-    addItem(item) {
-        this.items.push(item)
-    }
-
-    remove(item) {}
-
-    save(data) {
+class Log extends Scheme {
+    async save(data) {
         const user = data.user
         const entity = data.entity
+        const items = data.items
     }
 }
 
@@ -842,5 +827,5 @@ module.exports = {
     Departament,
     Rol,
     Ticket,
-    ShoppingCart,
+    Log,
 }

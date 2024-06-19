@@ -9,7 +9,7 @@ const {
     KeyBoard,
     Departament,
     Ticket,
-    ShoppingCart,
+    Log,
 } = require("../model/schemes.js")
 const path = require("node:path")
 const DB = require("../model/db.js")
@@ -26,7 +26,7 @@ const keyBoard = new KeyBoard(db)
 const departamentScheme = new Departament(db)
 const rolScheme = new Rol(db)
 const ticketScheme = new Ticket(db)
-const shoppingCart = new ShoppingCart(db)
+const logScheme = new Log(db)
 
 const createWindow = async () => {
     const win = new BrowserWindow({
@@ -188,7 +188,8 @@ app.whenReady().then(async () => {
         "update-ticket",
         async (_, ticket) => await ticketScheme.update(ticket)
     )
-    /* CART */
+    /* LOG */
+    ipcMain.handle("save-log", async (_, data) => await logScheme.save(data))
 
     /* globalShortcut.unregister("F5")
     globalShortcut.unregister("CommandOrControl+R") */

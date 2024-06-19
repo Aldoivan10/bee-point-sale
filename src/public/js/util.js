@@ -8,7 +8,7 @@ function confirmDialog(title, text, onAccept, onCancel = () => {}) {
     $confirm.querySelector("h3").textContent = title
     $confirm.querySelector("p").textContent = text
     $confirm.querySelector(".btn-success").onclick = onAccept
-    $confirm.querySelector(".btn-error").onclick = onCancel
+    $confirm.querySelector(".btn").onclick = onCancel
     $confirm.showModal()
 }
 
