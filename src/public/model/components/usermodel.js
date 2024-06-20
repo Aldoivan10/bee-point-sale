@@ -7,8 +7,8 @@ class UserModel {
     }
 
     check() {
-        const userName = this.get("user")
-        if (userName) this.login(userName, this.get("type"))
+        this.userName = this.get("user")
+        if (this.userName) this.login(this.userName, this.get("type"))
         return this
     }
 

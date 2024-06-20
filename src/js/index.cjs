@@ -153,6 +153,7 @@ app.whenReady().then(async () => {
         async (_, pageSize, offset, filter) =>
             await clientScheme.all(pageSize, offset, filter)
     )
+    ipcMain.handle("get-clients", async () => await clientScheme.onlyClients())
     ipcMain.handle(
         "fetch-total-clients",
         async (_, filter) => await clientScheme.total(filter)

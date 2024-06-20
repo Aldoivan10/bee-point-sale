@@ -37,6 +37,7 @@ contextBridge.exposeInMainWorld("clients", {
     total: (filter) => ipcRenderer.invoke("fetch-total-clients", filter),
     delete: (ids) => ipcRenderer.invoke("delete-clients", ids),
     edit: (obj) => ipcRenderer.invoke("edit-client", obj),
+    clients: () => ipcRenderer.invoke("get-clients"),
 })
 
 contextBridge.exposeInMainWorld("roles", {

@@ -647,6 +647,24 @@ class Client extends Scheme {
         })
     }
 
+    async onlyClients() {
+        const query = `
+            SELECT 
+                E.nombre AS Nombre
+            FROM 
+                Entidad E
+            INNER JOIN
+                Tipo_Entidad TE
+            ON
+                TE.id_tipo_entidad = E.id_tipo_entidad
+            WHERE
+                E.id_tipo_entidad = 1
+            ORDER BY
+                E.nombre
+        `
+        return await this.db.fetch(query, [], (rows) => rows)
+    }
+
     async total(filter) {
         const sql = `
         SELECT

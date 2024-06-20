@@ -11,3 +11,5 @@ const userView = new UserView(
     $index.$sendUser
 )
 const userCtrl = new UserController(userModel, userView, $index.$login)
+
+parent.userCtrl = userCtrl

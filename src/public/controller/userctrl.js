@@ -29,4 +29,8 @@ class UserController {
         if (user) this.view.login(user, type)
         else this.view.logout()
     }
+
+    getUser = () => {
+        return this.model.userName
+    }
 }

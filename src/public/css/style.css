@@ -3774,6 +3774,11 @@ html:has(.drawer-toggle:checked) {
   margin-bottom: 0.5rem;
 }
 
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .me-2 {
   margin-inline-end: 0.5rem;
 }
@@ -4467,28 +4472,6 @@ html:has(.drawer-toggle:checked) {
   --tw-text-opacity: 0.2;
 }
 
-.\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:has(.carrito):not(:has(td[colspan])) .btn-sell {
-  pointer-events: none;
-}
-
-@media (hover: hover) {
-  .\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:has(.carrito):not(:has(td[colspan])) .btn-sell:hover {
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-}
-
-.\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:has(.carrito):not(:has(td[colspan])) .btn-sell.btn {
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
-}
-
 .\[\&\:has\(input\:-moz-placeholder-shown\)_\.btn-success\]\:btn-disabled:has(input:-moz-placeholder-shown) .btn-success {
   pointer-events: none;
 }
@@ -4901,28 +4884,6 @@ html:has(.drawer-toggle:checked) {
   color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity)));
 }
 
-.\[\&\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:not(:has(td[colspan])) .btn-sell {
-  pointer-events: none;
-}
-
-@media (hover: hover) {
-  .\[\&\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:not(:has(td[colspan])) .btn-sell:hover {
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-}
-
-.\[\&\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:btn-disabled:not(:has(td[colspan])) .btn-sell.btn {
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
-}
-
 .\[\&_div\:nth-child\(even\)_label\]\:input-accent div:nth-child(even) label {
   --tw-border-opacity: 1;
   border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
@@ -5043,66 +5004,8 @@ html:has(.drawer-toggle:checked) {
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
 
-.\[\&\:has\(\#\$buy\:-moz-placeholder-shown\)\]\:\!bg-red-300:has(#$buy:-moz-placeholder-shown) {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
-}
-
-.\[\&\:has\(\#\$buy\:placeholder-shown\)\]\:\!bg-red-300:has(#$buy:placeholder-shown) {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
-}
-
-.\[\&\:has\(\#buy\:-moz-placeholder-shown\)\]\:\!bg-red-300:has(#buy:-moz-placeholder-shown) {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
-}
-
-.\[\&\:has\(\#buy\:placeholder-shown\)\]\:\!bg-red-300:has(#buy:placeholder-shown) {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
-}
-
-.\[\&\:has\(\#buy\:-moz-placeholder-shown\)_\:where\(\)\]\:\!bg-red-300:has(#buy:-moz-placeholder-shown) :where() {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
-}
-
-.\[\&\:has\(\#buy\:placeholder-shown\)_\:where\(\)\]\:\!bg-red-300:has(#buy:placeholder-shown) :where() {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
-}
-
-.\[\&\:has\(\$buy\:-moz-placeholder-shown\)\]\:bg-red-300:has($buy:-moz-placeholder-shown) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
-}
-
-.\[\&\:has\(\$buy\:placeholder-shown\)\]\:bg-red-300:has($buy:placeholder-shown) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
-}
-
-.\[\&\:has\(\$buy\:-moz-placeholder-shown\)\]\:\!bg-red-300:has($buy:-moz-placeholder-shown) {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
-}
-
-.\[\&\:has\(\$buy\:placeholder-shown\)\]\:\!bg-red-300:has($buy:placeholder-shown) {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity)) !important;
-}
-
 .\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\>button\]\:bg-opacity-100:has(.carrito):not(:has(td[colspan])) .btn-sell>button {
   --tw-bg-opacity: 1;
-}
-
-.\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\>button\]\:opacity-100:has(.carrito):not(:has(td[colspan])) .btn-sell>button {
-  opacity: 1;
-}
-
-.\[\&\:has\(\.carrito\)\:not\(\:has\(td\[colspan\]\)\)_\.btn-sell\]\:opacity-100:has(.carrito):not(:has(td[colspan])) .btn-sell {
-  opacity: 1;
 }
 
 .\[\&\:has\(\.carrito\)_\.btn-del\]\:\!block:has(.carrito) .btn-del {
@@ -5119,16 +5022,6 @@ html:has(.drawer-toggle:checked) {
 
 .\[\&\:has\(\.carrito\)_\:where\(\.filter\2c \.btn-add\)\]\:hidden:has(.carrito) :where(.filter,.btn-add) {
   display: none;
-}
-
-.\[\&\:has\(\:not\(\$buy\:-moz-placeholder-shown\)\)\]\:bg-red-300:has(:not($buy:-moz-placeholder-shown)) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
-}
-
-.\[\&\:has\(\:not\(\$buy\:placeholder-shown\)\)\]\:bg-red-300:has(:not($buy:placeholder-shown)) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
 .\[\&\:has\(input\[type\=checkbox\]\:checked\)_\.btn-error\]\:pointer-events-auto:has(input[type=checkbox]:checked) .btn-error {

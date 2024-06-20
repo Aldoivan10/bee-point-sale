@@ -33,7 +33,7 @@ class MenuOptions {
         const cartCtrl = new CartControlller(
             new CartView(parent.$sell),
             cartModel,
-            parent.$confirm
+            parent.$entity
         )
 
         this.options = {

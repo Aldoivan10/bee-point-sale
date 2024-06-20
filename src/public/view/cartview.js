@@ -10,7 +10,7 @@ class CartView {
         }
     }
 
-    show(total) {
+    show(total, user, entity) {
         this.$amount.value = total
         this.$modal.showModal()
     }
