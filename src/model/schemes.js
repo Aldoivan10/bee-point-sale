@@ -829,9 +829,83 @@ class Ticket extends Scheme {
 
 class Log extends Scheme {
     async save(data) {
-        const user = data.user
-        const entity = data.entity
-        const items = data.items
+        try {
+            const user = data.user ? data.user : "Desconocido"
+            const entity = data.entity
+            const items = data.items
+
+            const insertLog = `INSERT INTO 
+                Log (id_log, usuario, entidad) 
+            VALUES 
+            (
+                (
+                    WITH cte AS
+                    (
+                        SELECT id_log FROM Log
+                        UNION ALL 
+                        SELECT 0
+                    )
+                    SELECT MIN(id_log) + 1
+                    FROM cte
+                    WHERE NOT EXISTS
+                    (
+                        SELECT * 
+                        FROM Log 
+                        WHERE Log.id_log = cte.id_log + 1
+                    )
+                )
+            , 
+            ?, 
+            ?)`
+            let res = await this.db.insert(
+                insertLog,
+                [user, entity],
+                (res) => res
+            )
+            const id_log = res.lastID
+            const log_venta = `INSERT INTO Log_Venta VALUES (?, ?)`
+
+            const insertVenta = `
+            INSERT INTO
+                Venta
+            VALUES
+            (
+                (
+                    WITH cte AS
+                    (
+                        SELECT id_venta FROM Venta
+                        UNION ALL 
+                        SELECT 0
+                    )
+                    SELECT MIN(id_venta) + 1
+                    FROM cte
+                    WHERE NOT EXISTS
+                    (
+                        SELECT * 
+                        FROM Venta 
+                        WHERE Venta.id_venta = cte.id_venta + 1
+                    )
+                ),
+                ?,
+                ?,
+                ?
+            )
+            `
+
+            for (const item of items) {
+                res = await this.db.insert(
+                    insertVenta,
+                    [item.Producto, item.Unidad, item.Cantidad],
+                    (res) => res
+                )
+                await this.db.insert(log_venta, [id_log, res.lastID])
+            }
+
+            return this.ok("Venta completada")
+        } catch (err) {
+            console.log(err)
+            return this.error("No se completo la venta", err)
+        }
     }
 }
 

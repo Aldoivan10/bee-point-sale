@@ -24,7 +24,8 @@ class CartControlller {
             this.view.show(
                 this.model.amount(),
                 parent.userCtrl.getUser(),
-                this.$select.value
+                this.$select.value,
+                this.model.items
             )
         }
         this.$modal.showModal()

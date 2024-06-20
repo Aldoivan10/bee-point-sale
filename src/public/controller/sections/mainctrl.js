@@ -34,6 +34,8 @@ tableCtrl.onDblClick((arr) => {
     const btn = $dialog.querySelector(".btn-success")
     const input = $dialog.querySelector("input")
 
+    input.value = ""
+
     $dialog.addEventListener("keyup", (evt) => {
         if (evt.key === "Enter" && input.value) btn.click()
     })
