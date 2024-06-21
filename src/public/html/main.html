@@ -117,7 +117,7 @@
             >
                 <table
                     id="$table"
-                    class="table [&:is(.carrito)_tbody_td:nth-child(7)]:hidden table-pin-rows table-pin-cols absolute h-full w-full left-0 top-0 [&:is(.clientes)_td:nth-child(2)]:hidden [&:is(.carrito)_td:last-child:not([colspan])]:hidden [&:is(.productos)_tbody_tr:not(:has(td[colspan])):hover]:!bg-secondary/10"
+                    class="table [&:is(.carrito)_td:nth-child(2)]:!hidden [&:is(.carrito)_tbody_td:nth-child(n+8)]:hidden table-pin-rows table-pin-cols absolute h-full w-full left-0 top-0 [&:is(.clientes)_td:nth-child(2)]:hidden [&:is(.carrito)_td:last-child:not([colspan])]:hidden [&:is(.productos)_tbody_tr:not(:has(td[colspan])):hover]:!bg-secondary/10"
                 >
                     <thead>
                         <tr
@@ -181,7 +181,7 @@
             defer
         ></script>
         <script
-            src="../model/components/cartApi.js"
+            src="../model/components/cartapi.js"
             defer
         ></script>
         <script

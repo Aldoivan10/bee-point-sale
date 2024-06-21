@@ -1,22 +1,6 @@
 class CartApi {
     constructor() {
         this.items = []
-        this.clear()
-    }
-
-    async save(user, entity) {
-        const response = await parent.api.saveLog({
-            user: user,
-            entity: entity,
-            items: this.items,
-        })
-        if (response.status === "success") {
-            parent.appAlert.success(response.msg)
-            this.clear()
-        } else {
-            parent.appAlert.error(response.msg)
-            console.log(response.data)
-        }
     }
 
     get() {
@@ -24,7 +8,7 @@ class CartApi {
     }
 
     total() {
-        return new Promise((resolve) => resolve(this.items.length))
+        return new Promise((resolve) => resolve(0))
     }
 
     add(item) {
@@ -32,19 +16,13 @@ class CartApi {
             (i) => i["Producto"] === item["Producto"]
         )
         if (index != -1) return
-        item["ID"] = crypto.randomUUID()
         this.items.push(item)
     }
 
-    delete(item) {
+    delete(items) {
+        console.log(items)
         const del = this.items.indexOf((i) => i === item)
         if (del > -1) this.items.slice(del, 1)
-    }
-
-    clear() {
-        this.items = []
-        this.user = ""
-        this.entityt = ""
     }
 
     amount() {

@@ -47,6 +47,7 @@ tableCtrl.onDblClick((arr) => {
     btn.onclick = () => {
         const price = +row["Precio de compra"].split("$")[1]
         const item = {
+            ID: row["ID"],
             Producto: row["Nombre"],
             Unidad: row["Unidad"],
             Cantidad: +input.value,

@@ -1,5 +1,6 @@
-class CartView {
+class CartView extends Listener {
     constructor($modal) {
+        super()
         this.$modal = $modal
         this.$amount = $modal.querySelector("input")
         this.$buy = $modal.querySelector("#buy")
@@ -18,6 +19,7 @@ class CartView {
         }
         this.$buy.value = 0
         this.$exchange.value = 0
+        this.notify()
     }
 
     show(total, user, entity, items) {

@@ -1,10 +1,14 @@
 class CartControlller {
-    constructor(view, model, $modal) {
+    constructor(view, api, $modal, model) {
         this.view = view
-        this.model = model
+        this.api = api
         this.$modal = $modal
         this.$select = $modal.querySelector("select")
         this.fillClients(this.$select)
+        view.addListener(() => {
+            this.api.items = []
+            model.setData([])
+        })
     }
 
     async fillClients(select) {
@@ -22,10 +26,10 @@ class CartControlller {
         this.$modal.querySelector(".btn-success").onclick = () => {
             this.$modal.close()
             this.view.show(
-                this.model.amount(),
+                this.api.amount(),
                 parent.userCtrl.getUser(),
                 this.$select.value,
-                this.model.items
+                this.api.items
             )
         }
         this.$modal.showModal()

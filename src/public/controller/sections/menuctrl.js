@@ -29,11 +29,13 @@ class Menu extends Listener {
 
 class MenuOptions {
     constructor(productCtrl, clientCtrl) {
-        const cartModel = new CartApi()
+        const cartApi = new CartApi()
+        const cartModel = new CartModel()
         const cartCtrl = new CartControlller(
             new CartView(parent.$sell),
-            cartModel,
-            parent.$entity
+            cartApi,
+            parent.$entity,
+            cartModel
         )
 
         this.options = {
@@ -71,8 +73,8 @@ class MenuOptions {
                 ctrl: clientCtrl,
             },
             Venta: {
-                api: cartModel,
-                model: new CartModel(),
+                api: cartApi,
+                model: cartModel,
                 mapper: {
                     Precio: (val) => {
                         return val.toLocaleString("es-MX", {

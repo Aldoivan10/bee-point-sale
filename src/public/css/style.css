@@ -5040,11 +5040,39 @@ html:has(.drawer-toggle:checked) {
   display: none;
 }
 
+.\[\&\:is\(\.carrito\)_tbody_td\:nth-child\(2\)\]\:hidden:is(.carrito) tbody td:nth-child(2) {
+  display: none;
+}
+
+.\[\&\:is\(\.carrito\)_tbody_td\:nth-child\(2\)\]\:\!hidden:is(.carrito) tbody td:nth-child(2) {
+  display: none !important;
+}
+
 .\[\&\:is\(\.carrito\)_tbody_td\:nth-child\(7\)\]\:hidden:is(.carrito) tbody td:nth-child(7) {
   display: none;
 }
 
+.\[\&\:is\(\.carrito\)_tbody_td\:nth-child\(8\)\]\:hidden:is(.carrito) tbody td:nth-child(8) {
+  display: none;
+}
+
+.\[\&\:is\(\.carrito\)_tbody_td\:nth-child\(n\+8\)\]\:hidden:is(.carrito) tbody td:nth-child(n+8) {
+  display: none;
+}
+
 .\[\&\:is\(\.carrito\)_td\:last-child\:not\(\[colspan\]\)\]\:hidden:is(.carrito) td:last-child:not([colspan]) {
+  display: none;
+}
+
+.\[\&\:is\(\.carrito\)_td\:nth-child\(2\)\]\:\!hidden:is(.carrito) td:nth-child(2) {
+  display: none !important;
+}
+
+.\[\&\:is\(\.carrito\)_td\:nth-child\(2\)\]\:hidden:is(.carrito) td:nth-child(2) {
+  display: none;
+}
+
+.\[\&\:is\(\.carrito\)_td\:nth-child\(6\)\]\:hidden:is(.carrito) td:nth-child(6) {
   display: none;
 }
 

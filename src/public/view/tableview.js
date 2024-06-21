@@ -74,6 +74,7 @@ class TableView extends Listener {
     }
 
     buildBody(rows, headers) {
+        this.cleanRows()
         if (rows.length > 0) {
             let currentID = -1
             let addCheckBox = false

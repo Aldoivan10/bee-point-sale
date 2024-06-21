@@ -114,6 +114,13 @@ class ProductModel extends TableModel {
 class CartModel extends TableModel {
     setData(data) {
         super.setData(data)
-        this.setHeaders(["Producto", "Unidad", "Cantidad", "Precio", "Total"])
+        this.setHeaders([
+            "ID",
+            "Producto",
+            "Unidad",
+            "Cantidad",
+            "Precio",
+            "Total",
+        ])
     }
 }
